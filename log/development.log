@@ -3909,3 +3909,39 @@ Started GET "/assets/materialize/font/material-design-icons/Material-Design-Icon
 
 Started GET "/assets/materialize/font/roboto/Roboto-Bold.ttf" for 127.0.0.1 at 2015-02-22 21:34:30 -0500
 >>>>>>> d412d2dcd83b23efff8853c4562767ef06a6fc12
+
+
+Started GET "/home" for 127.0.0.1 at 2015-02-23 16:13:05 -0500
+Processing by StaticController#home as HTML
+  Rendered static/home.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 152ms (Views: 137.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/materialize/css/materialize.css?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/materialize/css/materialize.min.css?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/js/materialize.js?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/js/materialize.min.js?body=1" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
+
+
+Started GET "/assets/materialize/font/roboto/Roboto-Regular.ttf" for 127.0.0.1 at 2015-02-23 16:13:06 -0500
