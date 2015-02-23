@@ -1,4 +1,9 @@
 HCEF::Application.routes.draw do
+  get 'home' => 'static#home'
+  root :to => 'static#login'
+
+  get 'create_child' => 'static#create_child'
+  #get ':action' => 'static#:action'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
