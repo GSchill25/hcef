@@ -5,7 +5,7 @@ class StaticController < ApplicationController
   def login
   end
 
-  def create_user
+  def create_child
   end
 
 end
