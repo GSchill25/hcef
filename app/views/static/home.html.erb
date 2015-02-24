@@ -1,11 +1,75 @@
+<div id='main-container'>
+
 <div class='row'>
-
-  <div class='col s3'>
-    <p>Sidebar</p>
+  <div class='col s6 offset-s3 card-panel amber lighten-5'> 
+    <h5>Summary Data</h5>
+    <p>
+    Students attended: 15 <br />
+    Students absent: 3
+    </p>
   </div>
-
-  <div class='col s9'>
-    <p>Main</p>
+  <div class='col s1 right'>
+    <p style='padding-bottom: 0; margin-bottom: 0;'>Hello, Staff</p>
+    <p style='padding-top: 0; margin-top: 0;'><a href='#logout'>Log out?</a></p>
   </div>
-
 </div>
+<div class='row'>
+  <div class='col s6 offset-s3'> 
+    <div id="slider"></div>
+  </div>
+</div>
+<div class='row'>
+  <div id=''>
+  <div class='col s2'>
+    <ul id='sidebar' class='orange lighten-4'>
+    <h5>Programs</h5>
+      <li class='sidebar-highlight'><a class='black-text' href='#!'>Allegheny Elemetary</a></li>
+      <li><a class='black-text' href='#!'>Mt. Lebanon K-8</a></li>
+      <li><a class='black-text' href='#!'>Arlington Tots</a></li>
+      <li><a class='black-text' href='#!'>Fulton PreK-5</a></li>
+    <br />
+    <h5>Partners</h5>
+      <li><a class='black-text' href='#!'>Lab Rats</a></li>
+      <li><a class='black-text' href='#!'>Art Expression, Inc</a></li>
+      <li><a class='black-text' href='#!'>Andy Warhol Museum</a></li>
+    </ul>
+  </div>
+  </div>
+  <div class='col s10'> 
+    <div id='info-container'>
+
+      <div id='info-nav'>
+        <nav>
+        <div class="nav-wrapper amber lighten-2">
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a id='after_school' class='black-text nav-highlight' href="#AfterSchool">After School</a></li>
+            <li><a id='enrichment' class='black-text' href="#Enrichment">Enrichment</a></li>
+            <li><a id='field_trip' class='black-text' href="#FieldTrip">Field Trip</a></li>
+          </ul>
+        </div>
+        </nav>
+      </div> <!-- info-nav -->
+
+      <div id='form'>
+        <div id='after_school-form'>
+          <h4 class='title'>After School</h4>
+          <ul id='students'>
+          </ul>
+        </div>
+        <div id='enrichment-form' style='display: none'>
+          <h4 class='title'>Enrichment</h4>
+          <ul id='students'>
+          </ul>
+        </div>
+        <div id='field_trip-form' style='display: none'>
+          <h4 class='title'>Field Trip</h4>
+          <ul id='students'>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div> <!-- main-container -->
