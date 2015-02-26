@@ -38,11 +38,11 @@ class GuardiansController < ApplicationController
 
 	private
 
-		def set_school
+		def set_guardian
 			@guardian = Guardian.find(params[:id])
 		end
 
-		def school_params
+		def guardian_params
 			params.require(:guardian).permit(:first_name, :last_name, :phone, :email, :user_id)
 		end
 end

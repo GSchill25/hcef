@@ -38,11 +38,11 @@ class ChildrenController < ApplicationController
 
 	private
 
-		def set_school
+		def set_child
 			@child = Child.find(params[:id])
 		end
 
-		def school_params
+		def child_params
 			params.require(:child).permit(:first_name, :last_name, :date_of_birth, :grade, :school_id, :guardian_id, :active)
 		end
 end
