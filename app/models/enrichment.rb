@@ -4,5 +4,5 @@ class Enrichment < ActiveRecord::Base
   has_one :program
 
   # Validations
-  validates_presence_of :length
+  validates_numericality_of :length, presence: true
 end
