@@ -1,4 +1,8 @@
 HCEF::Application.routes.draw do
+  resources :schools
+  resources :children
+  resources :guardians
+
   get 'home' => 'static#home'
   root :to => 'static#login'
 

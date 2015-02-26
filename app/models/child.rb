@@ -6,4 +6,13 @@ class Child < ActiveRecord::Base
 	#validations
 	validates_presence_of :first_name, :last_name, :date_of_birth
 	#validates_date
+
+
+
+	#methods
+	def name
+		"#{first_name} #{last_name}"
+	end
+
+	
 end
