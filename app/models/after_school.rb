@@ -12,4 +12,9 @@ class AfterSchool < ActiveRecord::Base
   :literacy_time
   :technology_time
 =end
+
+  # Scopes
+  scope :ascending, -> { order("date") }
+  scope :descending, -> { order("date DESC") }
+
 end
