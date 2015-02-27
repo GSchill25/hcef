@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
     has_one :instructor
-    #belongs_to :guardian
+    #has_one :guardian
     #does this work?
 
 	has_secure_password
