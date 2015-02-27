@@ -21,19 +21,40 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use jquery UI
+gem 'jquery-ui-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# For date and time validations
+gem 'validates_timeliness', '~> 3.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
+# Gems used only in testing
+group :test do
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'mocha', require: false
+  gem 'simplecov'
+  gem 'turn'
+  gem 'single_test'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'capybara'
+end
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'

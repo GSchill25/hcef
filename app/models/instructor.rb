@@ -1,6 +1,6 @@
 class Instructor < ActiveRecord::Base
 
-	has_one :user
+	belongs_to :user
 	has_many :assignments
 
 	validates :first_name, presence: true
