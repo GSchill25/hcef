@@ -3,5 +3,6 @@ class FieldTrip < ActiveRecord::Base
   belongs_to :program
 
   # Validations
-  validates_numericality_of :length, presence: true
+  validates_presence_of :length
+  validates_numericality_of :length
 end

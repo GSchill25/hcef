@@ -4,7 +4,8 @@ class AfterSchool < ActiveRecord::Base
   #belongs_to :parent?
   
   # Validations
-  validates_date :date, presence: true
+  validates_presence_of :date
+  validates_date :date, allow_nil: false
   validates_presence_of :time_in
   validates_presence_of :time_out
   #validates_format_of :time_in, with: /[0-9]{1,4}/[0-9]{1,2}/[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/, :allow_nil => false, :allow_blank => false
