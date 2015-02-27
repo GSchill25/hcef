@@ -1,8 +1,8 @@
 class Program < ActiveRecord::Base
   # Relationships
   belongs_to :location
-  has_one :enrichment
   has_many :after_schools
+  has_one :enrichment
   has_one :field_trip
   
   # Validations

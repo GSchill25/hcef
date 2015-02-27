@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class ProviderTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should have_many(:enrichments)
+
+  should validate_presence_of(:name)
+  should validate_uniqueness_of(:name)
+  #test case_sensitive
+
 end
