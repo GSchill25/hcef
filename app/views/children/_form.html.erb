@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="col l8 m10 s12">
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<%= image_tag("blank_profile.png", class: "activator", height: "400", width: "450") %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">New Child<i class="mdi-navigation-more-vert right"></i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">New Child <i class="mdi-navigation-close right"></i></span>
+        
+        <%= form_for(@child, :url=>{:action=>"create"}, html: {class: "col s12"}) do |f| %>
+			<div class="row">
+				<div class="input-field col l6 m6 s12">
+					<i class="mdi-action-account-circle prefix"></i>
+	        		<%= f.text_field :first_name, html: {id: "icon_prefix"} %>
+	        		<label for="icon_prefix">First Name</label>
+				</div>
+				<div class="input-field col l6 m6 s12">
+					<i class="mdi-action-account-circle prefix"></i>
+	        		<%= f.text_field :last_name, html: {id: "icon_prefix"} %>
+	        		<label for="icon_prefix">Last Name</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="field col l4 m6 s12">
+					<label>Parent/Guardian</label>
+  					<%= f.select :guardian_id, options_for_select(Guardian.all.map{|g| [g.name]}) %>
+  					<!-- Add date of birth to this select as well -->
+				</div>
+				<div class="col l4 m6 s12 offset-l2">
+					<label>School</label>
+  					<%= f.collection_select(:school_id, School.all, :id, :name) %>
+				</div>
+				<div class="col l4 m6 s12 offset-l2">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col l4 m6 ">
+					<!--input type="date" class="datepicker"-->
+					<!--label>Date of Birth</label-->
+					<%= f.label :date_of_birth %>
+					<%= f.date_select(:date_of_birth, :start_year => 2000) %>
+					
+				</div>
+				<div class="input-field col l6 m6 s8 offset-l2">
+					<label> Grade </label>
+					<%= f.number_field :grade %>
+	  			</div>
+			</div>
+			<div class="row">
+				<div class="col l4 offset-l2">
+					<!--div class="switch">
+				    <label>
+				      Active
+				      <input type="checkbox">
+				      <span class="lever"></span>
+				      Inactive
+				    </label>
+					</div-->
+				</div>
+				<div class="col l4 offset-l2">
+					  <%= f.submit "Create", class: "btn waves-effect waves-light" %>
+				</div>
+
+			</div>
+
+		<% end %>
+		</div>
+    </div>
+	</div>
+
+</div>
+
+
+
+
