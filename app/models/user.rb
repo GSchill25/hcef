@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     validates_length_of :password, minimum: 7, message: "must be at least 7 characters long", allow_blank: true
 
 	private
-	
+
 	def self.authenticate(login,password)
       find_by_username(login).try(:authenticate, password)
     end
