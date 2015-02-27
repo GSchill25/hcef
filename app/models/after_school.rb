@@ -5,8 +5,11 @@ class AfterSchool < ActiveRecord::Base
   
   # Validations
   validates_date :date, presence: true
-  validates_timestamp :time_in
-  validates_timestamp :time_out, after: :time_in
+  validates_presence_of :time_in
+  validates_presence_of :time_out
+  #validates_format_of :time_in, with: /[0-9]{1,4}/[0-9]{1,2}/[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/, :allow_nil => false, :allow_blank => false
+  #validates_format_of :time_out, with: /[0-9]{1,4}/[0-9]{1,2}/[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/, :allow_nil => false, :allow_blank => false
+  #validates :time_out, after: :time_in
   validates_numericality_of :total_hours, greater_than_or_equal_to: 0
 =begin
   validates_time :homework_time,
