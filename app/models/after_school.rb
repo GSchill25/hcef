@@ -16,5 +16,4 @@ class AfterSchool < ActiveRecord::Base
   # Scopes
   scope :ascending, -> { order("date") }
   scope :descending, -> { order("date DESC") }
-
 end

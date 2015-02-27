@@ -11,11 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226191610) do
+ActiveRecord::Schema.define(version: 20150226215300) do
+
+  create_table "after_schools", force: true do |t|
+    t.date     "date"
+    t.datetime "time_in"
+    t.datetime "time_out"
+    t.float    "total_hours"
+    t.time     "homework_time"
+    t.time     "literacy_time"
+    t.time     "technology_time"
+    t.time     "reading_specialist_time"
+    t.text     "goal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "enrichments", force: true do |t|
     t.float    "length"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "programs", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.date     "start_date"
+    t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
