@@ -1,6 +1,6 @@
 class Provider < ActiveRecord::Base
   # Relationships
-  belongs_to :enrichment
+  has_many :enrichments
 
   # Validations
   validates :name, presence: true, uniqueness: { case_sensitive: false}

@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
   # Relationships
-  has_one :program
+  has_many :programs
   
   # Validations
   validates_presence_of :name

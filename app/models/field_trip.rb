@@ -1,6 +1,5 @@
-class Enrichment < ActiveRecord::Base
+class FieldTrip < ActiveRecord::Base
   # Relationships
-  belongs_to :provider
   belongs_to :program
 
   # Validations
