@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150227013915) do
 
   create_table "after_schools", force: true do |t|
@@ -26,18 +27,6 @@ ActiveRecord::Schema.define(version: 20150227013915) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
-  end
-
-  create_table "children", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "date_of_birth"
-    t.string   "grade"
-    t.integer  "school_id"
-    t.integer  "guardian_id"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "enrichments", force: true do |t|
@@ -57,6 +46,23 @@ ActiveRecord::Schema.define(version: 20150227013915) do
     t.integer  "program_id"
   end
 
+  create_table "locations", force: true do |t|
+    t.string   "name"
+=======
+ActiveRecord::Schema.define(version: 20150224193500) do
+
+  create_table "children", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "grade"
+    t.integer  "school_id"
+    t.integer  "guardian_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "guardians", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -67,13 +73,16 @@ ActiveRecord::Schema.define(version: 20150227013915) do
     t.datetime "updated_at"
   end
 
-  create_table "locations", force: true do |t|
+  create_table "schools", force: true do |t|
     t.string   "name"
+    t.string   "phone"
+>>>>>>> 82285acff3fd47c71d6cda1b43b6f401b7f18208
     t.string   "address_line_one"
     t.string   "address_line_two"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+<<<<<<< HEAD
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -91,18 +100,8 @@ ActiveRecord::Schema.define(version: 20150227013915) do
 
   create_table "providers", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "schools", force: true do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.string   "address_line_one"
-    t.string   "address_line_two"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+=======
+>>>>>>> 82285acff3fd47c71d6cda1b43b6f401b7f18208
     t.datetime "created_at"
     t.datetime "updated_at"
   end
