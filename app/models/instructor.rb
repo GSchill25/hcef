@@ -2,6 +2,7 @@ class Instructor < ActiveRecord::Base
 
 	belongs_to :user
 	has_many :assignments
+	has_many :programs, through: :assignments
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true

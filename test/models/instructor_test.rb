@@ -3,7 +3,7 @@ require 'test_helper'
 class InstructorTest < ActiveSupport::TestCase
   # test relationships
   should have_many(:assignments)
-  #should have_many(:programs).through(:assignments)
+  should have_many(:programs).through(:assignments)
   should belong_to(:user)
 
   # test validations

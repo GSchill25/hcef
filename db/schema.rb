@@ -11,21 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150227192502) do
-
-  create_table "assignments", force: true do |t|
-    t.integer  "instructor_id"
-    t.integer  "program_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "instructors", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-=======
-ActiveRecord::Schema.define(version: 20150227013915) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -40,6 +26,13 @@ ActiveRecord::Schema.define(version: 20150227013915) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
+  end
+
+  create_table "assignments", force: true do |t|
+    t.integer  "instructor_id"
+    t.integer  "program_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "children", force: true do |t|
@@ -76,19 +69,19 @@ ActiveRecord::Schema.define(version: 20150227013915) do
     t.string   "last_name"
     t.string   "phone"
     t.string   "email"
->>>>>>> 7f2abd0a3ec5d0bfd1b40386f9102214aa426cba
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.string   "role"
-    t.boolean  "active"
-=======
+  create_table "instructors", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "address_line_one"
@@ -125,7 +118,15 @@ ActiveRecord::Schema.define(version: 20150227013915) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
->>>>>>> 7f2abd0a3ec5d0bfd1b40386f9102214aa426cba
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.string   "role"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
