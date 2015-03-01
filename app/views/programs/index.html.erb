@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
+      <th>Program type</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Location</th>
@@ -18,7 +18,7 @@
     <% @programs.each do |program| %>
       <tr>
         <td><%= program.name %></td>
-        <td><%= program.type %></td>
+        <td><%= program.program_type %></td>
         <td><%= program.start_date %></td>
         <td><%= program.end_date %></td>
         <td><%= program.location_id %></td>

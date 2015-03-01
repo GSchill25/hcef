@@ -18,7 +18,7 @@ class ProgramsControllerTest < ActionController::TestCase
 
   test "should create program" do
     assert_difference('Program.count') do
-      post :create, program: { end_date: @program.end_date, location_id: @program.location_id, name: @program.name, start_date: @program.start_date, program_type: @program.program_type }
+      post :create, program: { end_date: @program.end_date, location_id: @program.location_id, name: @program.name, program_type: @program.program_type, start_date: @program.start_date }
     end
 
     assert_redirected_to program_path(assigns(:program))
@@ -35,7 +35,7 @@ class ProgramsControllerTest < ActionController::TestCase
   end
 
   test "should update program" do
-    patch :update, id: @program, program: { end_date: @program.end_date, location_id: @program.location_id, name: @program.name, start_date: @program.start_date, program_type: @program.program_type }
+    patch :update, id: @program, program: { end_date: @program.end_date, location_id: @program.location_id, name: @program.name, program_type: @program.program_type, start_date: @program.start_date }
     assert_redirected_to program_path(assigns(:program))
   end
 

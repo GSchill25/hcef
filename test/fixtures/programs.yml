@@ -3,11 +3,13 @@
 one:
   name: MyString
   program_type: MyString
-  start_date: 2015-02-26
-  end_date: 2015-02-26
+  start_date: MyString
+  end_date: MyString
+  location_id: MyString
 
 two:
   name: MyString
   program_type: MyString
-  start_date: 2015-02-26
-  end_date: 2015-02-26
+  start_date: MyString
+  end_date: MyString
+  location_id: MyString
