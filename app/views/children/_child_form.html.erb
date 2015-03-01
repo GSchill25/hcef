@@ -1,0 +1,48 @@
+		<%= form_for(@child, :url=>{:action=>"create"}, html: {class: "col s12"}) do |f| %>
+			<div class="row">
+				<div class="input-field col l6 m6 s12">
+					<i class="mdi-action-account-circle prefix"></i>
+	        		<%= f.text_field :first_name, html: {id: "icon_prefix"} %>
+	        		<label for="icon_prefix">First Name</label>
+				</div>
+				<div class="input-field col l6 m6 s12">
+					<i class="mdi-action-account-circle prefix"></i>
+	        		<%= f.text_field :last_name, html: {id: "icon_prefix"} %>
+	        		<label for="icon_prefix">Last Name</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="field col l4 m6 s12">
+					<label>Parent/Guardian</label>
+  					<%= f.collection_select :guardian_id, Guardian.all, :id, :name %>
+  					<!-- Add date of birth to this select as well -->
+				</div>
+				<div class="field col l4 m6 s12 offset-l2">
+					<%= f.label :school_id %></br>
+  					<%= f.collection_select :school_id, School.all, :id, :name %>
+				</div>
+				<div class="col l4 m6 s12 offset-l2">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col l4 m6 s12 ">
+					<!--input type="date" class="datepicker"-->
+					<!--label>Date of Birth</label-->
+					<%= f.label :date_of_birth %></br>
+					<%= f.date_select(:date_of_birth, :start_year => 1990) %>
+					
+				</div>
+				<div class="col l6 m6 s8 offset-l2">
+					<div class="input-field">
+						<%= f.label :grade %>
+						<%= f.number_field :grade %></br></br>
+					</div>
+					<div class="input-field">
+						<%= f.label :active %>
+						<%= f.check_box :active %></br></br></br>
+					</div>
+					<%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
+	  			</div>
+			</div>
+		<% end %>

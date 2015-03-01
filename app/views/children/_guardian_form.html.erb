@@ -1,0 +1,31 @@
+</br></br>
+					<%= form_for(@guardian, :url=>{:controller=>"guardians", :action=>"create"}, html: {class: "col s12"}) do |f| %>
+						<div class="row">
+							<div class="input-field col l6 m6 s12">
+								<i class="mdi-action-account-circle prefix"></i>
+				        		<%= f.text_field :first_name, html: {id: "icon_prefix"} %>
+				        		<label for="icon_prefix">First Name</label>
+							</div>
+							<div class="input-field col l6 m6 s12">
+								<i class="mdi-action-account-circle prefix"></i>
+				        		<%= f.text_field :last_name, html: {id: "icon_prefix"} %>
+				        		<label for="icon_prefix">Last Name</label>
+							</div>
+						</div></br></br>
+						<div class="row">
+							<div class="input-field col s6">
+						        <i class="mdi-communication-phone prefix"></i>
+						        <%= f.text_field :phone, html: {id: "icon_telephone"} %> 
+						        <label for="icon_telephone">Telephone</label>
+						    </div>
+						    <div class="input-field col s6">
+						        <%= f.text_field :email %>
+						        <label for="email">Email</label>
+						    </div>
+						</div></br></br>
+						<div class="row">
+							<div class="col s3 offset-s8">
+								  <%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
+							</div>
+						</div>
+					<% end %>
