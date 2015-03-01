@@ -7,8 +7,8 @@ class Program < ActiveRecord::Base
   
   # Validations
   validates_presence_of :name
-  validates_presence_of :type
-  validates_inclusion_of :type, in: %w( enrichment after_school field_trip) #Test case_sensitivity
+  validates_presence_of :program_type
+  validates_inclusion_of :program_type, in: %w( enrichment after_school field_trip) #Test case_sensitivity
   validates_date :start_date #In case they're putting programs in from old years
   validates_date :end_date, on_or_after: :start_date
 

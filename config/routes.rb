@@ -1,4 +1,8 @@
 HCEF::Application.routes.draw do
+
+  resources :programs
+
+  resources :locations
   resources :schools
   resources :children
   resources :guardians

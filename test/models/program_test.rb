@@ -7,7 +7,7 @@ class ProgramTest < ActiveSupport::TestCase
   should have_one(:field_trip)
 
   should validate_presence_of(:name)
-  should validate_presence_of(:type)
+  should validate_presence_of(:program_type)
   #inclusion in [enrichment, after_school, field_trip]
   #should validate_date(:start_date)
   #should validate_date(:end_date)
