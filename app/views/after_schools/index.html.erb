@@ -1,0 +1,47 @@
+<h1>Listing after_schools</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Program</th>
+      <th>Guardian</th>
+      <th>Date</th>
+      <th>Time in</th>
+      <th>Time out</th>
+      <th>Total hours</th>
+      <th>Homework time</th>
+      <th>Literacy time</th>
+      <th>Technology time</th>
+      <th>Reading specialist time</th>
+      <th>Goal</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @after_schools.each do |after_school| %>
+      <tr>
+        <td><%= after_school.program_id %></td>
+        <td><%= after_school.guardian_id %></td>
+        <td><%= after_school.date %></td>
+        <td><%= after_school.time_in %></td>
+        <td><%= after_school.time_out %></td>
+        <td><%= after_school.total_hours %></td>
+        <td><%= after_school.homework_time %></td>
+        <td><%= after_school.literacy_time %></td>
+        <td><%= after_school.technology_time %></td>
+        <td><%= after_school.reading_specialist_time %></td>
+        <td><%= after_school.goal %></td>
+        <td><%= link_to 'Show', after_school %></td>
+        <td><%= link_to 'Edit', edit_after_school_path(after_school) %></td>
+        <td><%= link_to 'Destroy', after_school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New After school', new_after_school_path %>
