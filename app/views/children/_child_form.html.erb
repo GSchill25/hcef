@@ -38,9 +38,13 @@
 						<%= f.label :grade %>
 						<%= f.number_field :grade %></br></br>
 					</div>
-					<div class="input-field">
-						<%= f.label :active %>
-						<%= f.check_box :active %></br></br></br>
+					<div>
+						<%#= f.label :active %>
+						<p>
+							<%= f.check_box :active, html: {id: "active"} %>
+						    <label for="active">Active</label>
+						</p></br></br>
+
 					</div>
 					<%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
 	  			</div>
