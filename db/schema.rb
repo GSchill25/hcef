@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301235415) do
+ActiveRecord::Schema.define(version: 20150302003357) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150301235415) do
     t.string   "program_type"
     t.string   "start_date"
     t.string   "end_date"
-    t.integer  "location_id"
+    t.string   "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
