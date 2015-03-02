@@ -17,7 +17,7 @@ class SchoolsController < ApplicationController
 	def create
 		@school = School.new(school_params)
 		if @school.save
-			redirect_to @camp, notice: "The school #{@school.name} was added to the system"
+			redirect_to @school, notice: "The school #{@school.name} was added to the system"
 		else
 			render action: 'new'
 		end

@@ -9,6 +9,8 @@ class ChildrenController < ApplicationController
 
   def new
   	@child = Child.new
+  	@guardian = Guardian.new
+  	@school = School.new
   end
 
   def edit

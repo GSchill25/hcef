@@ -2,12 +2,14 @@
 
 one:
   name: MyString
-  type: 
-  start_date: 2015-02-26
-  end_date: 2015-02-26
+  program_type: MyString
+  start_date: MyString
+  end_date: MyString
+  location_id: MyString
 
 two:
   name: MyString
-  type: 
-  start_date: 2015-02-26
-  end_date: 2015-02-26
+  program_type: MyString
+  start_date: MyString
+  end_date: MyString
+  location_id: MyString
