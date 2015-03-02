@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301230115) do
+ActiveRecord::Schema.define(version: 20150301235415) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150301230115) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
+    t.integer  "guardian_id"
   end
 
   create_table "children", force: true do |t|
@@ -84,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150301230115) do
     t.string   "program_type"
     t.string   "start_date"
     t.string   "end_date"
-    t.string   "location_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

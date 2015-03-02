@@ -1,5 +1,7 @@
 HCEF::Application.routes.draw do
 
+  resources :after_schools
+
   resources :programs
 
   resources :locations

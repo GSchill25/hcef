@@ -1,0 +1,61 @@
+<%= form_for(@after_school) do |f| %>
+  <% if @after_school.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@after_school.errors.count, "error") %> prohibited this after_school from being saved:</h2>
+
+      <ul>
+      <% @after_school.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :program_id %><br>
+    <%= f.text_field :program_id %>
+  </div>
+  <div class="field">
+    <%= f.label :guardian_id %><br>
+    <%= f.text_field :guardian_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :time_in %><br>
+    <%= f.text_field :time_in %>
+  </div>
+  <div class="field">
+    <%= f.label :time_out %><br>
+    <%= f.text_field :time_out %>
+  </div>
+  <div class="field">
+    <%= f.label :total_hours %><br>
+    <%= f.text_field :total_hours %>
+  </div>
+  <div class="field">
+    <%= f.label :homework_time %><br>
+    <%= f.text_field :homework_time %>
+  </div>
+  <div class="field">
+    <%= f.label :literacy_time %><br>
+    <%= f.text_field :literacy_time %>
+  </div>
+  <div class="field">
+    <%= f.label :technology_time %><br>
+    <%= f.text_field :technology_time %>
+  </div>
+  <div class="field">
+    <%= f.label :reading_specialist_time %><br>
+    <%= f.text_field :reading_specialist_time %>
+  </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
