@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150302003357) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date_of_birth"
   end
 
   create_table "locations", force: true do |t|

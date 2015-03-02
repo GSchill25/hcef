@@ -1,5 +1,4 @@
 class CreatePrograms < ActiveRecord::Migration
-  drop_table :programs
   def change
     create_table :programs do |t|
       t.string :name
