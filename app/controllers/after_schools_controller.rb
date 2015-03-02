@@ -34,7 +34,7 @@ class AfterSchoolsController < ApplicationController
 
   def destroy
     @after_school.destroy
-    redirect_to locations_url, notice: "#{@after_school.date} has been destroyed"
+    redirect_to after_schools_url, notice: "#{@after_school.date} has been destroyed"
   end
 
   private
