@@ -1,29 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @program.name %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <table>
+      <tr>
+        <thead>
+          <th>
+            Name
+          </th>
+          <th>
+            Program type
+          </th>
+          <th>
+            Start date
+          </th>
+          <th>
+            End date
+          </th>
+          <th>
+            Attendance
+          </th>
+        </thead>
+      </tr>
+      <tr>
+        <td><%= @program.name %></td>
+        <td><%= @program.end_date %></td>
+        <td><%= @program.program_type %></td>
+        <td><%= @program.start_date %></td>
+        <td><%= @program.children.count %></td>
+      </tr>
+      </table>
+    </div>
 
-<p>
-  <strong>Program type:</strong>
-  <%= @program.program_type %>
-</p>
+    <div class="col l6 m8 s12">
+      </br></br></br></br>
+      <u><h6>Children Present</h6></u>
+      <ol>
+        <% @program.children.each do |child| %>
+          <li><%= child.name %></li>
+        <% end %>
+      </ol>
+    </div> 
 
-<p>
-  <strong>Start date:</strong>
-  <%= @program.start_date %>
-</p>
+  </div>
+  </br></br>
+  <%= link_to 'Edit', edit_program_path(@program) %> |
+  <%= link_to 'Back', programs_path %>
+</div>
 
-<p>
-  <strong>End date:</strong>
-  <%= @program.end_date %>
-</p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @program.location_id %>
-</p>
-
-<%= link_to 'Edit', edit_program_path(@program) %> |
-<%= link_to 'Back', programs_path %>
