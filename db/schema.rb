@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20150302003357) do
     t.integer  "guardian_id"
   end
 
+  create_table "assignments", force: true do |t|
+    t.integer  "instructor_id"
+    t.integer  "program_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "children", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -69,6 +76,14 @@ ActiveRecord::Schema.define(version: 20150302003357) do
     t.date     "date_of_birth"
   end
 
+  create_table "instructors", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "address_line_one"
@@ -105,6 +120,15 @@ ActiveRecord::Schema.define(version: 20150302003357) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.string   "role"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
