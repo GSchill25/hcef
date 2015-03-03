@@ -20,10 +20,10 @@
       <% @programs.each do |program| %>
         <tr>
           <td><%= link_to program.name, program_path(program) %></td>
-          <td><%= program.program_type %></td>
+        <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
           <td><%= program.start_date %></td>
-          <td><%= program.end_date %></td>
-          <td><%= program.location ? program.location.name : "None" %></td>
+          <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+          <td><%= program.location == "" ? "None" : program.location.name %></td>
           <td><%= program.children.count %></td>
           <td><%= link_to 'Edit', edit_program_path(program) %></td>
           <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
