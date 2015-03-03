@@ -7,7 +7,7 @@
 
 <p>
   <strong>Program type:</strong>
-  <%= @program.program_type %>
+  <%= @program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @program.location_id %>
+  <%= @program.location.name %>
 </p>
 
 <%= link_to 'Edit', edit_program_path(@program) %> |
