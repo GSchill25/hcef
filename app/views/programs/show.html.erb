@@ -21,14 +21,16 @@
           <th>
             Attendance
           </th>
+          <th>
+            Location
+          </th>
         </thead>
       </tr>
       <tr>
         <td><%= @program.name %></td>
-        <td><%= @program.end_date %></td>
-        <td><%= @program.program_type %></td>
-        <td><%= @program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+        <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
         <td><%= @program.start_date %></td>
+        <td><%= @program.end_date %></td>
         <td><%= @program.children.count %></td>
         <td><%= @program.location.name %></td>
       </tr>
@@ -48,5 +50,4 @@
   </div>
   </br></br>
   <%= link_to 'Edit', edit_program_path(@program) %> |
-  <%= link_to 'Back', programs_path %>
 </div>

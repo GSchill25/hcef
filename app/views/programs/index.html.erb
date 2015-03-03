@@ -8,7 +8,7 @@
         <th>Program type</th>
         <th>Start date</th>
         <th>End date</th>
-        <!--th>Location</th-->
+        <th>Location</th>
         <th>Total Attendance</th>
         <th></th>
         <th></th>
@@ -23,9 +23,8 @@
           <td><%= program.program_type %></td>
           <td><%= program.start_date %></td>
           <td><%= program.end_date %></td>
-          <!--td><%= program.location_id %></td-->
+          <td><%= program.location ? program.location.name : "None" %></td>
           <td><%= program.children.count %></td>
-          <td><%= link_to 'Show', program %></td>
           <td><%= link_to 'Edit', edit_program_path(program) %></td>
           <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
