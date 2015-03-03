@@ -4,6 +4,8 @@ class Program < ActiveRecord::Base
   has_many :after_schools
   has_one :enrichment
   has_one :field_trip
+  has_many :enrollments
+  has_many :children, through: :enrollments
   
   # Validations
   validates_presence_of :name
