@@ -41,7 +41,7 @@
       <%= f.label :location_id %><br>
       <%= collection_select(:program, :location_id, Location.alphabetical, :id, :name, prompt: true) %>
     </div>
-    <div class="col s4 offset-s2">
+    <div class="col s8 offset-s2">
       <div class="checkboxes">
         <h6> Add Children to This Program </h6>
         <% for child in Child.all %>
