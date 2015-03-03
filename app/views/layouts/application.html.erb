@@ -12,8 +12,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render :partial => "partials/flash" %>
-<%= yield %>
+	<div class="row">
+	    <%= render :partial => "partials/nav" %>
+	</div>
+
+	<%= render :partial => "partials/flash" %>
+	<%= yield %>
 
 </body>
 </html>
