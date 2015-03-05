@@ -12,3 +12,16 @@
  *= require_self
  *= require_tree .
  */
+
+
+.top-pad{
+	padding-top: 20px;
+}
+
+#pad-left{
+	padding-left: 50px;
+}
+
+#pad-right{
+	padding-right: 50px;
+}

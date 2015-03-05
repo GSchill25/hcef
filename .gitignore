@@ -2,3 +2,5 @@ tmp/
 log/
 db/test.sqlite3
 db/development.sqlite3
+*.swp
+*.swo

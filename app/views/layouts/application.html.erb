@@ -11,9 +11,13 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%= render :partial => "partials/flash" %>
-<%= yield %>
+<body class="<%= controller_name %> <%= action_name %>">
+	<div class="row">
+	    <%= render :partial => "partials/nav" %>
+	</div>
+
+	<%= render :partial => "partials/flash" %>
+	<%= yield %>
 
 </body>
 </html>

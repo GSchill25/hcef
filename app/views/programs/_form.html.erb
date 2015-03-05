@@ -1,7 +1,9 @@
+<div class='container'>
+  <h4>Program</h4>
 <%= form_for(@program) do |f| %>
   <% if @program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@program.errors.count, 'error') %> prohibited this program from being saved:</h2>
 
       <ul>
       <% @program.errors.full_messages.each do |msg| %>
@@ -10,28 +12,49 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="row">
+  <div class="col s5">
+    <div class='field'>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class='field'>
+      <%= f.label :program_type, 'Program Type' %>
+      <div id='radio-inputs'>
+        <%= f.radio_button :program_type, 'after_school', :id => 'after_school', :checked => true %> 
+        <%= f.label :program_type, 'After School', :for => 'after_school' %><br />
+        <%= f.radio_button :program_type, 'enrichment', :id => 'enrichment' %> 
+        <%= f.label :program_type, 'Enrichment', :for => 'enrichment' %><br />
+        <%= f.radio_button :program_type, 'field_trip', :id => 'field_trip' %> 
+        <%= f.label :program_type, 'Field Trip', :for => 'field_trip' %><br /><br />
+      </div>
+    </div>
+    <div class='field'>
+      <%= f.label :start_date, 'Start Date', :for => 'start_date' %>
+      <%= f.text_field :start_date, :id=> 'start_date', :class => 'datepick' %>
+    </div>
+    <div class='field'>
+      <%= f.label :end_date, 'End Date', :for => 'end_date' %>
+      <%= f.text_field :end_date, :id=> 'end_date', :class => 'datepick' %>
+    </div>
+    <div class='field'>
+      <%= f.label :location_id %><br>
+      <%= collection_select(:program, :location_id, Location.alphabetical, :id, :name, prompt: true) %>
+    </div>
+    <div class="col s8 offset-s2">
+      <div class="checkboxes">
+        <h6> Add Children to This Program </h6>
+        <% for child in Child.all %>
+          <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
+          <label for="<%= child.id %>"><%= child.name %></label>
+          <br />
+        <% end  %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :program_type %><br>
-    <%= f.text_field :program_type %>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.text_field :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.text_field :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.text_field :location_id %>
-  </div>
-  <div class="actions">
+  <div class='actions'>
     <%= f.submit %>
   </div>
 <% end %>
+</div>

@@ -13,13 +13,12 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery_readyselector
 //= require_tree .
 
 
 $(document).ready(function() {
-	$('ul.tabs').tabs();
-    $('select').material_select();
-
+	//$('ul.tabs').tabs();
+  //$('select').material_select();
 });
 
