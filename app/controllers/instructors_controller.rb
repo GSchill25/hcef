@@ -6,7 +6,6 @@ class InstructorsController < ApplicationController
   end
 
   def show
-  	@
   end
 
   def new
