@@ -20,10 +20,11 @@ padding-top: 15px;
   background-color:yellow;
 }
 
-ul.#nav-mobile li a {
+/* BUG */
+/*ul.#nav-mobile li a {
   text-color: #0F0;
 }
-
+*/
 .nav-highlight {
   background-color: #ffa000; /* amber darken-2 */
 }
