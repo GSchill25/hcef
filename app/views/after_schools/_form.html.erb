@@ -10,8 +10,35 @@
       </ul>
     </div>
   <% end %>
+  <% @students = AfterSchool.program.
+  <% for i in AfterSchool.
 
-  <div class="field">
+<!-- Start hot -->
+<div id="hot"></div>
+<script>
+ var data = [
+    ["", "Homework", "Literacy", "Technology", "Readying Specialist", "Goal"],
+    ["","","","","",""],
+    ["","","","","",""],
+    ["","","","","",""],
+  ];
+
+  var container = document.getElementById('hot');
+  var hot = new Handsontable(container,
+    {
+      data: data,
+      minSpareRows: 1,
+      colHeaders: true,
+      contextMenu: true
+    });
+</script>
+
+<!-- End hot -->
+
+
+
+
+  <!--div class="field">
     <%= f.label :program_id %><br>
     <%= f.text_field :program_id %>
   </div>
@@ -57,5 +84,5 @@
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div-->
 <% end %>
