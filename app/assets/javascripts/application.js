@@ -13,14 +13,14 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery_readyselector
 //= require_tree .
 
+/*
 
 $(document).ready(function() {
 	$('ul.tabs').tabs();
   $('select').material_select();
-/*
    $('.datepicker').pickadate({
     onSelect: function(date) {
                   alert(date);
@@ -29,10 +29,9 @@ $(document).ready(function() {
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
-*/
    $('.datepick').datepicker({
    });
    $("#start_date").datepicker( "setDate" , new Date() );
-
 });
 
+*/
