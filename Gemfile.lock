@@ -172,7 +172,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   capybara
-  coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner
   factory_girl_rails
