@@ -10,26 +10,30 @@
       </ul>
     </div>
   <% end %>
-  <% @students = AfterSchool.program.
-  <% for i in AfterSchool.
 
 <!-- Start hot -->
 <div id="hot"></div>
 <script>
- var data = [
-    ["", "Homework", "Literacy", "Technology", "Readying Specialist", "Goal"],
-    ["","","","","",""],
-    ["","","","","",""],
-    ["","","","","",""],
-  ];
+ var data = <%= raw @data.to_json %>;
 
   var container = document.getElementById('hot');
   var hot = new Handsontable(container,
     {
       data: data,
-      minSpareRows: 1,
-      colHeaders: true,
-      contextMenu: true
+      colHeaders: ["Child", "Homework (mins)", "Literacy (mins)", "Technology (mins)", "Reading Specialist (mins)", "Goal"],
+      // changes = [[row, prop, oldVal, newVal], [cell2_row, ...], ...]
+      afterChange: function(change, source) { 
+        var row = change[0][0];
+        var col = change[0][1];
+        var value = change[0][3];
+        console.log("Saving " + value);
+      }
+      /*columns: [{data: 'child'},
+                {data: 'homework', type: 'numeric'},
+                {data: 'literacy', type: 'numeric'},
+                {data: 'technology', type: 'numeric'},
+                {data: 'reading_specialist', type: 'numeric'},
+                {data: 'goal'}] */
     });
 </script>
 

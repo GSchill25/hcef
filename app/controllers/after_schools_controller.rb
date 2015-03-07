@@ -10,6 +10,11 @@ class AfterSchoolsController < ApplicationController
 
   def new
     @after_school = AfterSchool.new
+    @data = []
+    # Change to child for this
+    for child in Child.all
+      @data.push([child.name] + [0]*4 + [""])
+    end
   end
 
   def edit
