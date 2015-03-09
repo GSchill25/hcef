@@ -20,13 +20,16 @@
   var hot = new Handsontable(container,
     {
       data: data,
-      colHeaders: ["Child", "Homework (mins)", "Literacy (mins)", "Technology (mins)", "Reading Specialist (mins)", "Goal"],
+      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal"],
+      colWidths: [130, 80, 60, 82, 130, 400],
       // changes = [[row, prop, oldVal, newVal], [cell2_row, ...], ...]
       afterChange: function(change, source) { 
-        var row = change[0][0];
-        var col = change[0][1];
-        var value = change[0][3];
-        console.log("Saving " + value);
+        if (change) {
+          var row = change[0][0];
+          var col = change[0][1];
+          var value = change[0][3];
+          console.log("Saving " + value);
+        }
       }
       /*columns: [{data: 'child'},
                 {data: 'homework', type: 'numeric'},
