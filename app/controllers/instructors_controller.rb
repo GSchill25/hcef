@@ -11,7 +11,6 @@ class InstructorsController < ApplicationController
   def new
   	@instructor = Instructor.new
   	@instructor.build_user
-  	authorize! :new, @instructor
   end
 
   def edit
@@ -19,11 +18,15 @@ class InstructorsController < ApplicationController
 
   def create
 		@instructor = Instructor.new(instructor_params)
-		if @instructor.save
-			redirect_to @instructor, notice: "#{@instructor.name} was added to the system"
-		else
-			render action: 'new'
-		end
+		respond_to do |format|
+	      if @instructor.save
+	        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+	        format.json { render action: 'show', status: :created, location: @instructor }
+	      else
+	        format.html { render action: 'new' }
+	        format.json { render json: @instructor.errors, status: :unprocessable_entity }
+	      end
+    end
 	end
 
 	def update

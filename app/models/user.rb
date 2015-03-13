@@ -4,11 +4,9 @@ class User < ActiveRecord::Base
     has_one :guardian
     #does this work?
 
-	has_secure_password
+	  has_secure_password
 
-	validates_presence_of :username
-
-	validates :username, presence: true, uniqueness: {case_sensitive: false}
+	  validates :username, presence: true, uniqueness: {case_sensitive: false}
     validates :role, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
     validates_presence_of :password, on: :create 
     validates_presence_of :password_confirmation, on: :create 

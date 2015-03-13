@@ -1,0 +1,16 @@
+<%= form_for(@users) do |f| %>	
+	<div class="input-field col s12">
+			<%= f.text_field :username %>
+			<label for="icon_prefix">Username</label>
+		</div>
+		<div>
+			<%= f.password_field :password %>
+			<label for="icon_prefix">
+		</div>
+		<div>
+			<%= f.password_field :password_confirmation %>
+			<label for="icon_prefix">
+		</div>
+
+	<% if can? :new, @instructor %><%= f.input :role, :collection => [['Administrator', 'admin'], ['Instructor', 'instructor'], ,['Guardian', 'guardian']], :prompt => "Select Role" %><% end %>
+<% end %>
