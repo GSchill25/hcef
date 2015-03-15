@@ -13,7 +13,8 @@
 
 		        <% @instructors.each do |instructor| %>
 		        <tbody>
-		        	<td align="center"><%= link_to instructor.first_name, instructor_path(instructor) %></td>	
+		        	<td align="center"><%= link_to instructor.first_name, instructor_path(instructor) %></td>
+		        	<td align="center"><%= link_to instructor.last_name, instructor_path(instructor) %></td>		
 		        </tbody>
 		        <% end %>
 		</table>
