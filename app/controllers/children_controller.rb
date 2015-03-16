@@ -11,6 +11,7 @@ class ChildrenController < ApplicationController
   	@child = Child.new
   	@guardian = Guardian.new
   	@school = School.new
+  	@locations = Location.all
   end
 
   def edit

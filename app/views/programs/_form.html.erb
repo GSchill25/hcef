@@ -43,12 +43,14 @@
     </div>
     <div class="col s8 offset-s2">
       <div class="checkboxes">
-        <h6> Add Children to This Program </h6>
-        <% for child in Child.all %>
-          <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
-          <label for="<%= child.id %>"><%= child.name %></label>
-          <br />
-        <% end  %>
+        <% if controller.action_name == "edit" %>
+          <h6> Add Children to This Program </h6>
+          <% for child in @children %>
+            <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
+            <label for="<%= child.id %>"><%= child.name %></label>
+            <br />
+          <% end  %>
+        <% end %>
       </div>
     </div>
   </div>

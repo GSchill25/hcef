@@ -43,6 +43,9 @@
 						</br></br>
 
 					</div>
+					<div class="select">
+						<%= select_tag "child[location_ids][]", options_for_select(@locations.collect{ |l| [l.name, l.id]}) %>
+					</div>
 					<%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
 	  			</div>
 			</div>
