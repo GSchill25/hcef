@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child_id: 1
+  location_id: 1
+  start_date: 2015-03-15
+  end_date: 2015-03-15
+
+two:
+  child_id: 1
+  location_id: 1
+  start_date: 2015-03-15
+  end_date: 2015-03-15

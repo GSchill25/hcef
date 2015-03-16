@@ -11,6 +11,7 @@ class ChildrenController < ApplicationController
   	@child = Child.new
   	@guardian = Guardian.new
   	@school = School.new
+  	@locations = Location.all
   end
 
   def edit
@@ -45,6 +46,6 @@ class ChildrenController < ApplicationController
 		end
 
 		def child_params
-			params.require(:child).permit(:first_name, :last_name, :date_of_birth, :grade, :school_id, :guardian_id, :active)
+			params.require(:child).permit(:first_name, :last_name, :date_of_birth, :grade, :school_id, :guardian_id, :active, :location_ids => [])
 		end
 end

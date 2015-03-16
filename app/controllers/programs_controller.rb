@@ -19,6 +19,7 @@ class ProgramsController < ApplicationController
 
   # GET /programs/1/edit
   def edit
+    @children = @program.by_location(@program.location_id)
   end
 
   # POST /programs
