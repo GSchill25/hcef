@@ -1,7 +1,9 @@
+<div class='container'>
+<h4> After School </h4>
 <%= form_for(@after_school) do |f| %>
   <% if @after_school.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@after_school.errors.count, "error") %> prohibited this after_school from being saved:</h2>
+      <h2><%= pluralize(@after_school.errors.count, "error") %> prohibited this After School Form from being saved:</h2>
 
       <ul>
       <% @after_school.errors.full_messages.each do |msg| %>
@@ -11,8 +13,13 @@
     </div>
   <% end %>
 
-<!-- Start hot -->
-<div id="hot"></div>
+  <%= f.label :date, 'Date', :for => 'date' %>
+  <%= f.text_field :date, :id=> 'date', :class => 'datepick' %>
+
+  <!-- Start hot -->
+  <div id="hot"></div>
+
+
 <script>
  var data = <%= raw @data.to_json %>;
 
@@ -93,3 +100,4 @@
     <%= f.submit %>
   </div-->
 <% end %>
+</div>
