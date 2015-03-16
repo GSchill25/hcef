@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303014933) do
+ActiveRecord::Schema.define(version: 20150316003624) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 20150303014933) do
   create_table "assignments", force: true do |t|
     t.integer  "instructor_id"
     t.integer  "program_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "child_locations", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "location_id"
+    t.date     "start_date"
+    t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -109,7 +118,7 @@ ActiveRecord::Schema.define(version: 20150303014933) do
     t.string   "program_type"
     t.string   "start_date"
     t.string   "end_date"
-    t.string   "location_id"
+    t.integer  "location_id",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

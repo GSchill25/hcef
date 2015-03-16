@@ -1,6 +1,8 @@
 class Location < ActiveRecord::Base
   # Relationships
   has_many :programs
+  has_many :child_locations
+  has_many :children, through: :child_locations
   
   # Validations
   validates_presence_of :name

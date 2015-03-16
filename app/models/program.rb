@@ -21,4 +21,16 @@ class Program < ActiveRecord::Base
   scope :upcoming, -> { where("start_date > ?", Date.today) }
   scope :active, -> { where("end_date >= ?", Date.today) }
   scope :inactive, -> { where("end_date < ?", Date.today) }
+
+  # Methods
+
+  def by_location(loc_id)
+    children = []
+    ChildLocation.all.each do |c|
+      if c.location_id == loc_id
+        children << c.child
+      end
+    end
+    return children
+  end
 end
