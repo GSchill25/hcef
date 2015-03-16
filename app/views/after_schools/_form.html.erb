@@ -13,42 +13,41 @@
     </div>
   <% end %>
 
-  <%= f.label :date, 'Date', :for => 'date' %>
+  <%= f.label :date, 'Date', :for => 'date' %><br />
   <%= f.text_field :date, :id=> 'date', :class => 'datepick' %>
 
   <!-- Start hot -->
-  <div id="hot"></div>
+  <div id="hot"></div><br /><br />
+    <script>
+     var data = <%= raw @data.to_json %>;
 
-
-<script>
- var data = <%= raw @data.to_json %>;
-
-  var container = document.getElementById('hot');
-  var hot = new Handsontable(container,
-    {
-      data: data,
-      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal"],
-      colWidths: [130, 80, 60, 82, 130, 400],
-      // changes = [[row, prop, oldVal, newVal], [cell2_row, ...], ...]
-      afterChange: function(change, source) { 
-        if (change) {
-          var row = change[0][0];
-          var col = change[0][1];
-          var value = change[0][3];
-          console.log("Saving " + value);
-        }
-      }
-      /*columns: [{data: 'child'},
-                {data: 'homework', type: 'numeric'},
-                {data: 'literacy', type: 'numeric'},
-                {data: 'technology', type: 'numeric'},
-                {data: 'reading_specialist', type: 'numeric'},
-                {data: 'goal'}] */
-    });
-</script>
-
+      var container = document.getElementById('hot');
+      var hot = new Handsontable(container,
+        {
+          data: data,
+          colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal"],
+          colWidths: [130, 80, 60, 82, 130, 400],
+          // changes = [[row, prop, oldVal, newVal], [cell2_row, ...], ...]
+          afterChange: function(change, source) { 
+            if (change) {
+              var row = change[0][0];
+              var col = change[0][1];
+              var value = change[0][3];
+              console.log("Saving " + value);
+            }
+          }
+          /*columns: [{data: 'child'},
+                    {data: 'homework', type: 'numeric'},
+                    {data: 'literacy', type: 'numeric'},
+                    {data: 'technology', type: 'numeric'},
+                    {data: 'reading_specialist', type: 'numeric'},
+                    {data: 'goal'}] */
+        });
+    </script>
 <!-- End hot -->
-
+  <div class='actions'>
+    <%= f.submit "Create" %>
+  </div>
 
 
 
