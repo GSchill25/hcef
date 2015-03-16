@@ -36,17 +36,22 @@
 						<%= f.label :grade %>
 						<%= f.number_field :grade %></br></br>
 					</div>
-					<div class="field">
+				</div>
+			</div>
+			<div class="row">
+
+					<div class="col l5 m6 s8">
+						<%= select_tag "child[location_ids][]", options_for_select(@locations.collect{ |l| [l.name, l.id]}) %>
+					</div>
+				</br></br>
+					<div class="field col l3 m2 s5 offset-l1">
 						<%#= f.label :active %>
 							<%= f.check_box :active %>
 						    <%= f.label :active %>
-						</br></br>
 
 					</div>
-					<div class="select">
-						<%= select_tag "child[location_ids][]", options_for_select(@locations.collect{ |l| [l.name, l.id]}) %>
+					<div class="col l3 m4 s5">
+						<%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
 					</div>
-					<%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
-	  			</div>
 			</div>
 		<% end %>
