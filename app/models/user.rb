@@ -1,19 +1,17 @@
 class User < ActiveRecord::Base
 
+    has_secure_password
+
     has_one :instructor
     has_one :guardian
     #does this work?
 
-	has_secure_password
-
-	validates_presence_of :username
-
-	validates :username, presence: true, uniqueness: {case_sensitive: false}
-    validates :role, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
+	  validates :username, presence: true, uniqueness: {case_sensitive: false}
+    validates :role, presence: true, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
     validates_presence_of :password, on: :create 
     validates_presence_of :password_confirmation, on: :create 
     validates_confirmation_of :password, message: "does not match"
-    validates_length_of :password, minimum: 7, message: "must be at least 7 characters long", allow_blank: true
+    validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
 	private
 
@@ -21,7 +19,7 @@ class User < ActiveRecord::Base
       find_by_username(login).try(:authenticate, password)
     end
 
-  	ROLES = [['Administrator', :admin],['Instructor', :instructor],['Guardian', :guardian]]
+  	ROLES = ['admin', 'instructor', 'guardian']
 
     def role?(authorized_role)
       return false if role.nil?

@@ -1,0 +1,24 @@
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h3 class="header black-text">Instructors</h3>
+		<table, class="hover">
+		        <thead>
+		          <tr>
+		              <th data-field="name">First Name</th>
+		              <th data-field="name">Last Name</th>
+		              <th data-field="programs">Programs</th>
+		          </tr>
+		        </thead>
+
+		        <% @instructors.each do |instructor| %>
+		        <tbody>
+		        	<td align="center"><%= link_to instructor.first_name, instructor_path(instructor) %></td>
+		        	<td align="center"><%= link_to instructor.last_name, instructor_path(instructor) %></td>		
+		        </tbody>
+		        <% end %>
+		</table>
+		<br><br>
+		<%= link_to 'New Instructor', new_instructor_path %>
+	</div>
+</div>

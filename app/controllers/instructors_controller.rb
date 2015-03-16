@@ -10,6 +10,7 @@ class InstructorsController < ApplicationController
 
   def new
   	@instructor = Instructor.new
+  	@instructor.build_user
   end
 
   def edit
@@ -17,11 +18,15 @@ class InstructorsController < ApplicationController
 
   def create
 		@instructor = Instructor.new(instructor_params)
-		if @instructor.save
-			redirect_to @instructor, notice: "#{@instructor.name} was added to the system"
-		else
-			render action: 'new'
-		end
+		respond_to do |format|
+	      if @instructor.save
+	        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+	        format.json { render action: 'show', status: :created, location: @instructor }
+	      else
+	        format.html { render action: 'new' }
+	        format.json { render json: @instructor.errors, status: :unprocessable_entity }
+	      end
+    end
 	end
 
 	def update
@@ -40,10 +45,10 @@ class InstructorsController < ApplicationController
 	private
 
 		def set_instructor
-			@instructor = instructor.find(params[:id])
+			@instructor = Instructor.find(params[:id])
 		end
 
 		def instructor_params
-			params.require(:instructor).permit(:first_name, :last_name)
+			params.require(:instructor).permit(:first_name, :last_name, :user_id, user_attributes: [:id, :username, :password, :password_confirmation, :role])
 		end
 end

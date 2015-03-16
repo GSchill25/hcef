@@ -1,8 +1,10 @@
 class Instructor < ActiveRecord::Base
 
-	belongs_to :user
+	belongs_to :user, :dependent => :destroy, :foreign_key => 'user_id'
 	has_many :assignments
 	has_many :programs, through: :assignments
+	
+	accepts_nested_attributes_for :user, reject_if: lambda { |user| user[:username].blank? || user[:password].blank? }, allow_destroy: true
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true

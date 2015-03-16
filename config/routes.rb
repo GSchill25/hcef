@@ -6,9 +6,10 @@ HCEF::Application.routes.draw do
   resources :schools
   resources :children
   resources :guardians
+  resources :instructors
 
   get 'home' => 'static#home'
-  root :to => 'static#login'
+  root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'
   #get ':action' => 'static#:action'
