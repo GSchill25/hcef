@@ -20,6 +20,7 @@
   <div id="hot"></div><br /><br />
     <script>
      var data = <%= raw @data.to_json %>;
+     var children_ids = <%= raw @children_ids.to_json %>;
 
       var container = document.getElementById('hot');
       var hot = new Handsontable(container,
@@ -35,11 +36,13 @@
               var value = change[0][3];
               console.log("Saving " + value);
               <!--%= @children[row].name %-->
-              var url = '/after_schools/update_by_id/' + row;
+              var url = '/after_schools/update_by_id/' + children_ids[row];
               var request = new XMLHttpRequest();
-              var params = null;
+              var params = {col: value};
               request.open("POST", url, true);
-              request.send(params);
+              request.setRequestHeader("Content-Type", "application/json");
+              request.send('{"value":"hello"}');
+              console.log(children_ids[row]);
             }
           }
           /*columns: [{data: 'child'},

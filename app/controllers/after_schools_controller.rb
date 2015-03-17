@@ -16,9 +16,11 @@ class AfterSchoolsController < ApplicationController
     @after_school = AfterSchool.new
     @data = []
     @children = @program.children
+    @children_ids = []
     # Change to child for this
     for child in @children
       @data.push([child.name] + [0]*4 + [""])
+      @children_ids.push(child.id)
     end
   end
 
@@ -45,6 +47,7 @@ class AfterSchoolsController < ApplicationController
   def update_by_id
     puts "Updated id!"
     # Don't need to return anything
+    puts params["value"]
     head :ok
   end
 
