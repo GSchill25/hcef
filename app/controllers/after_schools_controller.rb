@@ -9,10 +9,12 @@ class AfterSchoolsController < ApplicationController
   end
 
   def new
+    program_id = params[:program_id]
+    @program = Program.find(program_id)
     @after_school = AfterSchool.new
     @data = []
     # Change to child for this
-    for child in Child.all
+    for child in @program.children
       @data.push([child.name] + [0]*4 + [""])
     end
   end
