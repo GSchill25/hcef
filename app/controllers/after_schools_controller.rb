@@ -1,5 +1,7 @@
 class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
+  # Turn off protect_from_forgery for this action
+  protect_from_forgery except: :update_by_id
 
   def index
     @after_schools = AfterSchool.all
@@ -13,8 +15,9 @@ class AfterSchoolsController < ApplicationController
     @program = Program.find(program_id)
     @after_school = AfterSchool.new
     @data = []
+    @children = @program.children
     # Change to child for this
-    for child in @program.children
+    for child in @children
       @data.push([child.name] + [0]*4 + [""])
     end
   end
@@ -37,6 +40,12 @@ class AfterSchoolsController < ApplicationController
     else
       render action: "edit"
     end
+  end
+
+  def update_by_id
+    puts "Updated id!"
+    # Don't need to return anything
+    head :ok
   end
 
   def destroy

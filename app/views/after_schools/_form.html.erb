@@ -34,6 +34,12 @@
               var col = change[0][1];
               var value = change[0][3];
               console.log("Saving " + value);
+              <!--%= @children[row].name %-->
+              var url = '/after_schools/update_by_id/' + row;
+              var request = new XMLHttpRequest();
+              var params = null;
+              request.open("POST", url, true);
+              request.send(params);
             }
           }
           /*columns: [{data: 'child'},
