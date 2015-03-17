@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
       find_by_username(login).try(:authenticate, password)
     end
 
-  	ROLES = ['admin', 'instructor', 'guardian']
+  	ROLES = [['admin', :admin],['instructor', :instructor], ['guardian', :guardian]]
 
     def role?(authorized_role)
       return false if role.nil?
