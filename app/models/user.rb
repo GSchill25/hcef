@@ -2,12 +2,11 @@ class User < ActiveRecord::Base
 
     has_secure_password
 
-    has_one :instructor
-    has_one :guardian
-    #does this work?
+    #relationships
+    belongs_to :instructor
 
 	  validates :username, presence: true, uniqueness: {case_sensitive: false}
-    validates :role, presence: true, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
+    #validates :role, presence: true, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
     validates_presence_of :password, on: :create 
     validates_presence_of :password_confirmation, on: :create 
     validates_confirmation_of :password, message: "does not match"

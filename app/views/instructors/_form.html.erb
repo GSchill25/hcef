@@ -1,4 +1,4 @@
-<h1 class="header center black-text">Create new Instructor</h1>
+<h5 class="header center black-text">Instructor Sign Up</h5>
 <% if @instructor.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h4>
@@ -10,7 +10,7 @@
       </ul>
     </div>
 <% end %>
-<%= form_for(@instructor, :url=>{:action=>"create"}, html: {class: "col s12"}) do |f| %>
+<%= nested_form_for(@instructor, :url=>{:action=>"create"}, html: {class: "col s12"}) do |f| %>
 	<div class="container">
 		<div class="col l8 m10 s12">
 			<div class="card white">
@@ -25,7 +25,7 @@
 					    	<label for="icon_prefix">Last Name</label>
 						</div>
 						<%= f.fields_for :user do |users| %>
-							<%= render :partial => "user_form", :locals => { :user => users } %>
+							<%= render :partial => "user_form", :locals => { :f => users } %>
 						<% end %>
 						<div class="col l12">
 							<button class="btn waves-effect waves-light" type="submit" name="action">Submit

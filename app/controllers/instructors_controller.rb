@@ -14,6 +14,9 @@ class InstructorsController < ApplicationController
   end
 
   def edit
+  	if @instructor.user.nil?
+        @instructor.build_user
+    end
   end
 
   def create
@@ -26,7 +29,7 @@ class InstructorsController < ApplicationController
 	        format.html { render action: 'new' }
 	        format.json { render json: @instructor.errors, status: :unprocessable_entity }
 	      end
-    end
+    	end
 	end
 
 	def update
@@ -49,6 +52,6 @@ class InstructorsController < ApplicationController
 		end
 
 		def instructor_params
-			params.require(:instructor).permit(:first_name, :last_name, :user_id, user_attributes: [:id, :username, :password, :password_confirmation, :role])
+			params.require(:instructor).permit(:first_name, :last_name, user_attributes: [:id, :username, :password, :password_confirmation, :role])
 		end
 end
