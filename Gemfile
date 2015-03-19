@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 1.2'
 # For date and time validations
 gem 'validates_timeliness', '~> 3.0'
 
+#nested forms
+gem "nested_form"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
