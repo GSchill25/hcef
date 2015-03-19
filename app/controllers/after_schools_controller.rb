@@ -45,9 +45,33 @@ class AfterSchoolsController < ApplicationController
   end
 
   def update_by_id
-    puts "Updated id!"
+    #@after_school = .find_or_initialize_by(name: "Roger")
+    child_id = params[:id]
+    guardian_id = Child.find(child_id).guardian_id
+    date = Date.strptime(params["date"],"%m/%d/%Y")
+    col = params["col"]
+    value = params["value"]
+    puts "Value: #{value}"
+    @after_school = AfterSchool.find_or_initialize_by(guardian_id: guardian_id, date: date)
+    # Note on methods:
+    # update_attribute does NOT validate
+    # update           does validate
+    case col
+    when 1 # homework_time
+      puts @after_school.homework_time
+      @after_school.update_attribute(:homework_time, value)
+      puts @after_school.homework_time
+    when 2 # literacy_time
+      @after_school.update_attribute(:literacy_time, value)
+    when 3 # technology_time
+      @after_school.update_attribute(:technology_time, value)
+    when 4 # reading_specialist_time
+      @after_school.update_attribute(:reading_specialist_time, value)
+    when 5 # goal
+      @after_school.update_attribute(:goal, value)
+    else
+    end
     # Don't need to return anything
-    puts params["value"]
     head :ok
   end
 

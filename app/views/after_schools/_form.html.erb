@@ -23,26 +23,48 @@
      var children_ids = <%= raw @children_ids.to_json %>;
 
       var container = document.getElementById('hot');
+      var readOnlyRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+        Handsontable.renderers.TextRenderer.apply(this, arguments);
+        td.style.backgroundColor = '#FAFAFA';
+        td.style.color = 'black';
+      };
+      var headerRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+        Handsontable.renderers.TextRenderer.apply(this, arguments);
+        td.style.zIndex = '-1';
+        td.style.backgroundColor = 'black';
+      }
       var hot = new Handsontable(container,
         {
           data: data,
           colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal"],
           colWidths: [130, 80, 60, 82, 130, 400],
           // changes = [[row, prop, oldVal, newVal], [cell2_row, ...], ...]
+          cells: function(row, col, prop) {
+            var cellProperties = {};
+            if (col === 0) {
+              cellProperties.readOnly = true;
+              this.renderer = readOnlyRenderer;
+            }
+            /*if ( == 0) {
+              this.renderer = headerRenderer;
+            }*/
+            return cellProperties;        
+          },
+
           afterChange: function(change, source) { 
             if (change) {
               var row = change[0][0];
               var col = change[0][1];
               var value = change[0][3];
-              console.log("Saving " + value);
+              console.log(col);
               <!--%= @children[row].name %-->
               var url = '/after_schools/update_by_id/' + children_ids[row];
+              var date = document.getElementById('date').value;
+              var params = JSON.stringify({col: col, value: value, date: date});
               var request = new XMLHttpRequest();
-              var params = {col: value};
               request.open("POST", url, true);
               request.setRequestHeader("Content-Type", "application/json");
-              request.send('{"value":"hello"}');
-              console.log(children_ids[row]);
+              request.send(params);
             }
           }
           /*columns: [{data: 'child'},
