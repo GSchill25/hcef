@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316003624) do
+ActiveRecord::Schema.define(version: 20150319150524) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
     t.datetime "time_in"
     t.datetime "time_out"
     t.float    "total_hours"
-    t.time     "homework_time"
-    t.time     "literacy_time"
-    t.time     "technology_time"
-    t.time     "reading_specialist_time"
+    t.integer  "homework_time"
+    t.integer  "literacy_time"
+    t.integer  "technology_time"
+    t.integer  "reading_specialist_time"
     t.text     "goal"
     t.datetime "created_at"
     t.datetime "updated_at"
