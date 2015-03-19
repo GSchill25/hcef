@@ -8,3 +8,4 @@ $(".after_schools.new").ready(function() {
    $('.datepick').datepicker({ });
    $("#date").datepicker( "setDate" , new Date() );
 });
+
