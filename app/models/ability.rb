@@ -28,5 +28,32 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    user ||= User.new
+    if user.role? :admin
+        can :manage, :all
+    else
+        if user.role? :instructor
+            #afterschool
+            can :update, Afterschool do |afterschool|
+                afterschool_ins = afterschool.program.instructors.map(&:id)
+            end
+            #assignment
+            #child
+            #enrichment
+            #enrollment
+            #field_trip
+            #guardian
+            #instructor
+            can :update, Instructor do |instructor|
+                instructor.id == user.instructor_id
+            end
+            #location
+            #program
+            #provider
+            #school
+            #user
+        end
+    end
+
   end
 end
