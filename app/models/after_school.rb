@@ -1,4 +1,4 @@
-class AfterSchool < ActiveRecord::Base
+class After_school < ActiveRecord::Base
   # Relationships
   belongs_to :program
   #belongs_to :parent?

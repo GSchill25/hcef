@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
     validates_confirmation_of :password, message: "does not match"
     validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
-	private
+	def role?(authorized_role)
+      return false if role.nil?
+      role.to_sym == authorized_role
+    end
+
+  private
 
 	def self.authenticate(login,password)
       find_by_username(login).try(:authenticate, password)
@@ -20,9 +25,5 @@ class User < ActiveRecord::Base
 
   	ROLES = [['admin', :admin],['instructor', :instructor], ['guardian', :guardian]]
 
-    def role?(authorized_role)
-      return false if role.nil?
-      role.to_sym == authorized_role
-    end
 
 end
