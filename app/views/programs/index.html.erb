@@ -26,7 +26,6 @@
           <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
           <td><%= program.children.count %></td>
           <td><%= link_to 'Edit', edit_program_path(program) %></td>
-          <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

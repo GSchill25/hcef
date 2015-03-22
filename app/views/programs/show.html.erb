@@ -36,7 +36,14 @@
       </tr>
       </table>
     </div>
-
+    <div id="days">
+        <ul>
+          <li>Day 3/14/2015</li>
+          <li>Day 3/15/2015</li>
+          <li>Day 3/16/2015</li>
+        </ul>
+    </div>
+      <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
     <div class="col l6 m8 s12">
       </br></br></br></br>
       <u><h6>Children Present</h6></u>

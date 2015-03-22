@@ -14,11 +14,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery_readyselector
+//= require jquery_nested_form
 //= require_tree .
-
-
-$(document).ready(function() {
-	//$('ul.tabs').tabs();
-  $('select').material_select();
-});
 

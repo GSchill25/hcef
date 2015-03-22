@@ -6,7 +6,11 @@
         <li class="top-pad"><%= link_to "Add Program", new_program_path %></li>
         <li class="top-pad"><%= link_to "View Programs", programs_url %></li>
         <li class="top-pad"><%= link_to "Add Child", new_child_path %></li>
-        <li class="top-pad"><%= link_to "Add AfterSchool", new_after_school_path %></li>
+        <li class="top-pad"><% if logged_in? %>
+            <%= link_to 'Logout -', logout_path %><%= current_user.username %>
+          <% else %>
+            <%= link_to 'Login', login_path %>
+          <% end %></li>
       </ul>
     </div>
   </nav>

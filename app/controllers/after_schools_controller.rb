@@ -1,5 +1,7 @@
 class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
+  # Turn off protect_from_forgery for this action
+  protect_from_forgery except: :update_by_id
 
   def index
     @after_schools = AfterSchool.all
@@ -9,11 +11,16 @@ class AfterSchoolsController < ApplicationController
   end
 
   def new
+    program_id = params[:program_id]
+    @program = Program.find(program_id)
     @after_school = AfterSchool.new
     @data = []
+    @children = @program.children
+    @children_ids = []
     # Change to child for this
-    for child in Child.all
+    for child in @children
       @data.push([child.name] + [0]*4 + [""])
+      @children_ids.push(child.id)
     end
   end
 
@@ -35,6 +42,35 @@ class AfterSchoolsController < ApplicationController
     else
       render action: "edit"
     end
+  end
+
+  def update_by_id
+    #@after_school = .find_or_initialize_by(name: "Roger")
+    child_id = params[:id]
+    guardian_id = Child.find(child_id).guardian_id
+    date = Date.strptime(params["date"],"%m/%d/%Y")
+    col = params["col"]
+    value = params["value"]
+
+    @after_school = AfterSchool.find_or_initialize_by(guardian_id: guardian_id, date: date)
+    # Note on methods:
+    # update_attribute does NOT validate
+    # update           does validate
+    case col
+    when 1
+      @after_school.update_attribute(:homework_time, value)
+    when 2
+      @after_school.update_attribute(:literacy_time, value)
+    when 3
+      @after_school.update_attribute(:technology_time, value)
+    when 4
+      @after_school.update_attribute(:reading_specialist_time, value)
+    when 5
+      @after_school.update_attribute(:goal, value)
+    end
+
+    # Don't need to return anything
+    head :ok
   end
 
   def destroy
