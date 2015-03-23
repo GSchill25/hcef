@@ -77,7 +77,8 @@ namespace :db do
     hearth.zip = '15116'
     hearth.phone = '412-366-9801'
     hearth.save!
-
+=begin
+    # Future locations
     hearth = Location.new
     hearth.name = 
     hearth.address_line_one = 
@@ -87,8 +88,19 @@ namespace :db do
     hearth.zip =
     hearth.phone = 
     hearth.save!
+=end
+    # Program
+    actionP = Program.new
+    actionP.name = 'Action-Housing Program'
+    actionP.program_type = 'after_school'
+    actionP.start_date = Faker::Date.between(2.years.ago, Date.today)
+    actionP.location_id = action.id
 
-    Program
+    hearthP = Program.new
+    hearthP.name = 'HEARTH Program'
+    hearthP.program_type = 'after_school'
+    hearthP.start_date = Faker::Date.between(2.years.ago, Date.today)
+    hearthP.location_id = hearth.id
 
     Enrollment
 
