@@ -34,29 +34,6 @@ namespace :db do
 
     # School
 
-    # Child
-    Guardian.all.each do |g|
-      c1 = Child.new
-      c1.first_name = Faker::Name.first_name
-      c1.last_name = g.last_name
-      c1.date_of_birth = Faker::Date.between(12.years.ago, 7.years.ago)
-      c1.grade = rand(1..8)
-      c1.active = true
-      c1.guardian_id = g.id
-      c1.save!
-
-      c2 = Child.new
-      c2.first_name = Faker::Name.first_name
-      c2.last_name = g.last_name
-      c2.date_of_birth = Faker::Date.between(12.years.ago, 7.years.ago)
-      c2.grade = rand(1..8)
-      c2.active = true
-      c2.guardian_id = g.id
-      c2.save!
-    end
-
-    # StudentInfo
-    
     # Location
     action = Location.new
     action.name = 'ACTION-Housing'
@@ -71,35 +48,78 @@ namespace :db do
     hearth = Location.new
     hearth.name = 'HEARTH'
     hearth.address_line_one = '3724 Mount Royal Blvd'
-    hearth.address_line_two =
+    hearth.address_line_two = 'abc'
     hearth.city = 'Glenshaw'
     hearth.state = 'PA'
     hearth.zip = '15116'
-    hearth.phone = '412-366-9801'
+    hearth.phone = '4123669801'
     hearth.save!
 
     hearth = Location.new
-    hearth.name = 
-    hearth.address_line_one = 
-    hearth.address_line_two =
-    hearth.city =
+    hearth.name =  'Sojourner House'
+    hearth.address_line_one = '1234 Pitt Street'
+    hearth.address_line_two = 'PO Box 1234'
+    hearth.city = 'Pittsburgh'
     hearth.state = 'PA'
-    hearth.zip =
-    hearth.phone = 
+    hearth.zip = '15213'
+    hearth.phone = '1234567890'
     hearth.save!
 
-    Program
+    # Child
+    Guardian.all.each do |g|
+      c1 = Child.new
+      c1.first_name = Faker::Name.first_name
+      c1.last_name = g.last_name
+      c1.date_of_birth = Faker::Date.between(12.years.ago, 7.years.ago)
+      c1.grade = rand(1..8)
+      c1.active = true
+      c1.guardian_id = g.id
+      c1.save!
 
-    Enrollment
+      cl= ChildLocation.new
+      cl.child = c1
+      cl.location = Location.first
+      cl.save!
 
-    Assignment
+      c2 = Child.new
+      c2.first_name = Faker::Name.first_name
+      c2.last_name = g.last_name
+      c2.date_of_birth = Faker::Date.between(12.years.ago, 7.years.ago)
+      c2.grade = rand(1..8)
+      c2.active = true
+      c2.guardian_id = g.id
+      c2.save!
 
-    AfterSchool
+      cl2= ChildLocation.new
+      cl2.child = c2
+      cl2.location = Location.last
+      cl2.save!
+    end
 
-    Provider
+    # StudentInfo
+    
+    
 
-    Enrichment
+    #Program
 
-    FieldTrip
+     Program.populate 10 do |p|
+       p.name = Faker::Company.name
+       p.program_type = "after_school"
+       p.start_date = Faker::Date.between(5.years.ago, 1.year.ago)
+       p.end_date = p.start_date + 200.days
+       p.location_id = hearth.id
+     end
+
+    #Enrollment
+
+    #Assignment
+
+    #AfterSchool
+
+    #Provider
+
+    #Enrichment
+
+    #FieldTrip
   end
 end
