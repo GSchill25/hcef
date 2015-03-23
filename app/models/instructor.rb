@@ -11,11 +11,11 @@ class Instructor < ActiveRecord::Base
 
 	scope :alphabetical, -> { order('last_name', 'first_name')}
 
-	private
-
 	def name
 		"#{self.last_name}, #{self.first_name}"
 	end
+
+	private
 
 	def proper_name
 		"#{self.first_name} #{self.last_name}"

@@ -5,7 +5,9 @@ class Program < ActiveRecord::Base
   has_one :enrichment
   has_one :field_trip
   has_many :enrollments
+  has_many :assignments
   has_many :children, through: :enrollments
+  has_many :instructors, through: :assignments
   
   # Validations
   validates_presence_of :name

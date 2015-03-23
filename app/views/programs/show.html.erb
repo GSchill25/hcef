@@ -46,6 +46,13 @@
       <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
     <div class="col l6 m8 s12">
       </br></br></br></br>
+      <u><h6>Instructors Assigned to this Program</h6></u>
+      <ol>
+        <% @program.instructors.each do |instructor| %>
+          <li><%= instructor.name %></li>
+        <% end %>
+      </ol>
+      </br>
       <u><h6>Children Present</h6></u>
       <ol>
         <% @program.children.each do |child| %>
