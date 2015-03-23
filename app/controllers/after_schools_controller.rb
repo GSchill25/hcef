@@ -47,12 +47,11 @@ class AfterSchoolsController < ApplicationController
   def update_by_id
     #@after_school = .find_or_initialize_by(name: "Roger")
     child_id = params[:id]
-    guardian_id = Child.find(child_id).guardian_id
     date = Date.strptime(params["date"],"%m/%d/%Y")
     col = params["col"]
     value = params["value"]
 
-    @after_school = AfterSchool.find_or_initialize_by(guardian_id: guardian_id, date: date)
+    @after_school = AfterSchool.find_or_initialize_by(child_id: child_id, date: date)
     # Note on methods:
     # update_attribute does NOT validate
     # update           does validate
@@ -84,6 +83,6 @@ class AfterSchoolsController < ApplicationController
     end
 
     def after_school_params
-      params.require(:after_school).permit(:program_id, :guardian_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :goal)
+      params.require(:after_school).permit(:program_id, :child_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :goal)
     end
 end

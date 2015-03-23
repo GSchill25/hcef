@@ -26,6 +26,7 @@ class Ability
             instructor.id == user.instructor_id
         end
         can :read, Program
+        can :update, Program
         #location
         #program
         #provider

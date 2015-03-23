@@ -1,7 +1,7 @@
 class AfterSchool < ActiveRecord::Base
   # Relationships
   belongs_to :program
-  #belongs_to :parent?
+  belongs_to :child
   
   # Validations
   validates_presence_of :date
