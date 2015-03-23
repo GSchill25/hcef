@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You do not have permission to view this page."
-    redirect_to root_url
+    redirect_to :back
   end
 end
