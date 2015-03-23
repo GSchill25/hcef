@@ -1,4 +1,5 @@
 class InstructorsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -23,7 +24,7 @@ class InstructorsController < ApplicationController
 		@instructor = Instructor.new(instructor_params)
 		respond_to do |format|
 	      if @instructor.save
-	        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+	        format.html { redirect_to @instructor, notice: '#{@instructor.role} was successfully created.' }
 	        format.json { render action: 'show', status: :created, location: @instructor }
 	      else
 	        format.html { render action: 'new' }

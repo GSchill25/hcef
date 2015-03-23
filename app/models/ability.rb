@@ -20,6 +20,7 @@ class Ability
         #field_trip
         #guardian
         #instructor
+        can :read, Instructor
         can :update, Instructor do |instructor|
             instructor.id == user.instructor_id
         end
@@ -29,6 +30,11 @@ class Ability
         #provider
         #school
         #user
+    
+    #elsif user.role? :guardian
+    #    can :manage, Child do |child|
+    #        child.guardian.id == user.guardian_id
+    #    end
     end
   end
 end
