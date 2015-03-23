@@ -16,16 +16,24 @@ class Ability
         #can :update, After_school do |afterschool|
             #afterschool_ins = afterschool.program.instructors.map(&:id)
         #end
+
+
         #assignment
+        
         #child
         can :manage, Child do |child|
             child_instructors = user.instructor.programs.map{|c| c.children.map(&:id)}
             child_instructors.include? child.id
         end
+        can :create, Child
         #enrichment
+        
         #enrollment
+        
         #field_trip
+        
         #guardian
+        
         #instructor
         can :read, Instructor
         can :update, Instructor do |instructor|
@@ -35,10 +43,15 @@ class Ability
             program_instructors = user.instructor.programs.map(&:id)
             program_instructors.include? program.id
         end
+
         #location
+
         #program
+
         #provider
+        
         #school
+        
         #user
     
     #elsif user.role? :guardian
