@@ -27,19 +27,9 @@
 						<%= f.fields_for :user do |users| %>
 							<%= render :partial => "user_form", :locals => { :f => users } %>
 						<% end %>
-						<div class="col s8 offset-s2">
-					      	<div class="checkboxes">
-					        	<% if controller.action_name == "edit" %>
-						          	<h6> Assign Instructor to Program </h6>
-						          	<div class="row left">
-						          	<% for program in Program.all %>
-						            	<%= check_box_tag "instructor[program_ids][]", program.id, @instructor.programs.include?(program), {id: program.id} %>
-						            	<label for="<%= program.id %>"><%= program.name %></label>
-						            	<br />
-					          		<% end  %>
-					        	<% end %>
-					      	</div>
-					    </div>	
+						<% if can? :create, Instructor %>
+							<%= render :partial => "form" %>
+						<% end %>	
 						<div class="col l12">
 							<button class="btn waves-effect waves-light" type="submit" name="action">Submit
 								<i class="mdi-content-send right"></i>
