@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     belongs_to :instructor
 
 	  validates :username, presence: true, uniqueness: {case_sensitive: false}
-    #validates :role, presence: true, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
+    validates :role, presence: true, inclusion: { in: %w[admin instructor guardian], message: "is not a recognized role in system" }
     validates_presence_of :password, on: :create 
     validates_presence_of :password_confirmation, on: :create 
     validates_confirmation_of :password, message: "does not match"

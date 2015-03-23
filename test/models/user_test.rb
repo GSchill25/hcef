@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  should have_one(:instructor)
-  should have_one(:guardian)
+  should belong_to(:instructor)
   should have_secure_password
 
   # test validations
