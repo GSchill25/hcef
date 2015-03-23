@@ -25,6 +25,7 @@ class Ability
             child_instructors = user.instructor.programs.map{|c| c.children.map(&:id)}
             child_instructors.include? child.id
         end
+        #keep in mind this may change
         can :create, Child
         #enrichment
         

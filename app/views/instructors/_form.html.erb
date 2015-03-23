@@ -28,7 +28,7 @@
 							<%= render :partial => "user_form", :locals => { :f => users } %>
 						<% end %>
 						<% if can? :create, Instructor %>
-							<%= render :partial => "form" %>
+							<%= render :partial => "program_box" %>
 						<% end %>	
 						<div class="col l12">
 							<button class="btn waves-effect waves-light" type="submit" name="action">Submit
