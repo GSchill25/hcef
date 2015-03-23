@@ -8,6 +8,7 @@ class Ability
         can :manage, :all
     elsif user.role? :instructor
         #afterschool
+        can :create, AfterSchool
         #can :read, After_school
         #can :update, After_school do |afterschool|
             #afterschool_ins = afterschool.program.instructors.map(&:id)
