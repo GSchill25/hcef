@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+  <h4><%= @program.name %></h4>
   <div class="row">
     <div class="col l12 m12 s12">
       <table>
@@ -37,16 +38,16 @@
       </table>
     </div>
     </br></br>
-    <div id="days">
-        <%= render :partial => "days" %>
 
-        <ul>
-          <li>Day 3/14/2015</li>
-          <li>Day 3/15/2015</li>
-          <li>Day 3/16/2015</li>
-        </ul>
+    <div id="days">
+      </br></br></br></br></br></br></br>
+      <h5 align="center"> Daily Attendance/Time Allocation </h5>
+      </br>
+      <%= render :partial => "days" %>
     </div>
-      <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
+
+      <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %> | 
+      <%= link_to 'Edit Program', edit_program_path(@program) %> 
     <div class="col l6 m8 s12">
       </br></br></br></br>
       <u><h6>Children Present</h6></u>
@@ -59,5 +60,4 @@
 
   </div>
   </br></br>
-  <%= link_to 'Edit', edit_program_path(@program) %> |
 </div>

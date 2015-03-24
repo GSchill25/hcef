@@ -10,7 +10,8 @@ HCEF::Application.routes.draw do
   resources :instructors
   resources :sessions
 
-  get 'home' => 'static#home'
+  get 'home' => 'static#beta'
+  get 'master_view' => 'static#home'
   root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'
