@@ -15,6 +15,7 @@ class ChildrenController < ApplicationController
   end
 
   def edit
+  	@locations = Location.all
   end
 
   def create

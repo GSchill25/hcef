@@ -10,6 +10,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+    @days=AfterSchool.for_program(@program.id).ascending
   end
 
   # GET /programs/new

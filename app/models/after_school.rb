@@ -21,4 +21,6 @@ class AfterSchool < ActiveRecord::Base
   # Scopes
   scope :ascending, -> { order("date") }
   scope :descending, -> { order("date DESC") }
+  scope :for_program, ->(program_id) { where("program_id = ?", program_id)}
+
 end
