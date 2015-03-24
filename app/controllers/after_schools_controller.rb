@@ -11,8 +11,8 @@ class AfterSchoolsController < ApplicationController
   end
 
   def new
-    program_id = params[:program_id]
-    @program = Program.find(program_id)
+    @program_id = params[:program_id]
+    @program = Program.find(@program_id)
     @after_school = AfterSchool.new
     @data = []
     @children = @program.children
@@ -45,13 +45,13 @@ class AfterSchoolsController < ApplicationController
   end
 
   def update_by_id
-    #@after_school = .find_or_initialize_by(name: "Roger")
+    program_id = params["program_id"]
     child_id = params[:id]
     date = Date.strptime(params["date"],"%m/%d/%Y")
     col = params["col"]
     value = params["value"]
 
-    @after_school = AfterSchool.find_or_initialize_by(child_id: child_id, date: date)
+    @after_school = AfterSchool.find_or_initialize_by(program_id: program_id, child_id: child_id, date: date)
     # Note on methods:
     # update_attribute does NOT validate
     # update           does validate
