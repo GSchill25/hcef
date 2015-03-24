@@ -13,6 +13,14 @@ namespace :db do
     i_active = true
     i_user.save!
 
+    a_user = User.new
+    a_user.username = 'admin'
+    a_user.password = 'admin'
+    a_user.password_confirmation = 'admin'
+    a_user.role = 'admin'
+    a_active = true
+    a_user.save!
+
     # Instructor
     i = Instructor.new
     i.first_name = 'John'
