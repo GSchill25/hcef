@@ -41,8 +41,15 @@
 			<div class="row">
 
 					<div class="col l5 m6 s8">
-						<%= select_tag "child[location_ids][]", options_for_select(@locations.collect{ |l| [l.name, l.id]}) %>
+						<p>
+						  <% for loc in @locations %>
+						    <%= check_box_tag "child[location_ids][]", loc.id, @child.locations.include?(loc) %>
+						    <%= loc.name %>
+						    <br />
+						  <% end  %>
+						</p>
 					</div>
+
 				</br></br>
 					<div class="field col l3 m2 s5 offset-l1">
 						<%#= f.label :active %>

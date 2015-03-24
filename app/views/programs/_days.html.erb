@@ -1,0 +1,40 @@
+<div class='row'>
+
+<div class="col l12 m12 s12">
+      <table>
+      <tr>
+        <thead>
+          <th>
+            Date
+          </th>
+          <th>
+            Student
+          </th>
+          <th>
+            Tech Time
+          </th>
+          <th>
+            Literature Time
+          </th>
+          <th>
+            Homework Time
+          </th>
+          <th>
+            Reading Time
+          </th>
+        </thead>
+      </tr>
+        <% @days.each do |d| %>
+	      <tr>
+	        <td><%= d.date %></td>
+	        <td><%= d.child.name %></td>
+	        <td><%= d.technology_time %></td>
+	        <td><%= d.literacy_time %></td>
+	        <td><%= d.homework_time %></td>
+	        <td><%= d.reading_specialist_time %></td>
+	      </tr>
+	    <% end %>
+      </table>
+</div>
+
+
