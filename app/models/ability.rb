@@ -8,7 +8,9 @@ class Ability
         can :manage, :all
     elsif user.role? :instructor
         #afterschool
-        can :manage, AfterSchool do |afterschool|
+        #this next line of code does not work; figure out why
+        can :create, AfterSchool
+        can :read, AfterSchool do |afterschool|
             afterschool_instructors = user.instructor.programs.map{|c| c.after_schools.map(&:id)}
             afterschool_instructors.include? afterschool.id
         end
@@ -16,7 +18,6 @@ class Ability
         #can :update, After_school do |afterschool|
             #afterschool_ins = afterschool.program.instructors.map(&:id)
         #end
-
 
         #assignment
         
@@ -27,6 +28,7 @@ class Ability
         end
         #keep in mind this may change
         can :create, Child
+        
         #enrichment
         
         #enrollment
@@ -34,20 +36,22 @@ class Ability
         #field_trip
         
         #guardian
+        #make sure instructors can only see guardians linked to the child
         
         #instructor
         can :read, Instructor
         can :update, Instructor do |instructor|
             instructor.id == user.instructor_id
         end
+
+        #location
+        can :manage, Location
+
+        #program
         can :read, Program do |program|
             program_instructors = user.instructor.programs.map(&:id)
             program_instructors.include? program.id
         end
-
-        #location
-
-        #program
 
         #provider
         

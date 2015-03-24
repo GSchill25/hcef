@@ -2,7 +2,7 @@
    	<div class="checkboxes">
       	<% if controller.action_name == "edit" %>
           	<h6> Assign Instructor to Program </h6>
-          	<div class="row left">
+          	<div class="row">
           	<% for program in Program.all %>
             	<%= check_box_tag "instructor[program_ids][]", program.id, @instructor.programs.include?(program), {id: program.id} %>
             	<label for="<%= program.id %>"><%= program.name %></label>
