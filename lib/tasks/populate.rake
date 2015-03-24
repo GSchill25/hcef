@@ -65,6 +65,19 @@ namespace :db do
     hearth.phone = '1234567890'
     hearth.save!
 
+=begin
+    # Future locations
+    hearth = Location.new
+    hearth.name = 
+    hearth.address_line_one = 
+    hearth.address_line_two =
+    hearth.city =
+    hearth.state = 'PA'
+    hearth.zip =
+    hearth.phone = 
+    hearth.save!
+=end
+
     # Child
     Guardian.all.each do |g|
       c1 = Child.new
@@ -97,11 +110,8 @@ namespace :db do
     end
 
     # StudentInfo
-    
-    
 
-    #Program
-
+    # Program
      Program.populate 10 do |p|
        p.name = Faker::Company.name
        p.program_type = "after_school"
@@ -109,6 +119,20 @@ namespace :db do
        p.end_date = p.start_date + 200.days
        p.location_id = hearth.id
      end
+
+=begin    
+    actionP = Program.new
+    actionP.name = 'Action-Housing Program'
+    actionP.program_type = 'after_school'
+    actionP.start_date = Faker::Date.between(2.years.ago, Date.today)
+    actionP.location_id = action.id
+
+    hearthP = Program.new
+    hearthP.name = 'HEARTH Program'
+    hearthP.program_type = 'after_school'
+    hearthP.start_date = Faker::Date.between(2.years.ago, Date.today)
+    hearthP.location_id = hearth.id
+=end
 
     #Enrollment
 
