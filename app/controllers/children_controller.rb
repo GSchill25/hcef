@@ -21,10 +21,9 @@ class ChildrenController < ApplicationController
   def create
   		@locations = Location.all
 		@child = Child.new(child_params)
-		if @child.save!
+		if @child.save
 			redirect_to new_child_path, notice: "#{@child.name} was added to the system"
 		else
-			@child.save
 			redirect_to new_child_path
 		end
 	end
