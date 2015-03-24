@@ -8,8 +8,8 @@ class Child < ActiveRecord::Base
 	has_many :locations, through: :child_locations
 
 	#validations
-	validates_presence_of :first_name, :last_name, :date_of_birth
-	validates_date :date_of_birth, :before => lambda { Date.today }, on:  :create
+	validates_presence_of :first_name, :last_name #:date_of_birth
+	validates_date :date_of_birth, :before => lambda { Date.today }, allow_blank: true, on:  :create
 
 
 	#scopes

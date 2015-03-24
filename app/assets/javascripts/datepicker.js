@@ -9,3 +9,8 @@ $(".after_schools.new").ready(function() {
    $("#date").datepicker( "setDate" , new Date() );
 });
 
+$(".children.new").ready(function() {
+   $('.datepick').datepicker({ });
+   $("#date").datepicker( "setDate" , new Date() );
+});
+
