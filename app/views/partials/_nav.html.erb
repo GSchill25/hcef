@@ -4,6 +4,7 @@
       <a href="/" class="brand-logo" id="pad-left"> HCEF</a>
       <ul class="right hide-on-med-and-down" id="pad-right">
         <% if !current_user.nil? %>
+          <li class="top-pad"><%= link_to "Add Instructor", new_instructor_path %></li>
           <li class="top-pad"><%= link_to "Add Program", new_program_path %></li>
           <li class="top-pad"><%= link_to "View Programs", programs_url %></li>
           <li class="top-pad"><%= link_to "Add Child", new_child_path %></li>
