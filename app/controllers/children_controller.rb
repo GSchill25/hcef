@@ -13,6 +13,7 @@ class ChildrenController < ApplicationController
   	@guardian = Guardian.new
   	@school = School.new
   	@locations = Location.all
+  	@locs = Location.all
   end
 
   def edit

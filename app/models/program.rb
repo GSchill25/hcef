@@ -33,4 +33,24 @@ class Program < ActiveRecord::Base
     end
     return children
   end
+
+  def average_time
+    homework_time = 0
+    literacy_time = 0
+    technology_time = 0
+    reading_specialist_time = 0
+    total_days = self.after_schools.count
+    self.after_schools.each do |a|
+      #just add 0 if the students time is nil for that particular activity
+      homework_time += a.homework_time || 0
+      literacy_time += a.literacy_time || 0
+      technology_time += a.technology_time || 0
+      reading_specialist_time += a.reading_specialist_time || 0
+    end
+    return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+  end
+
+
 end
+
+
