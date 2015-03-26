@@ -41,6 +41,9 @@ gem 'faker'
 #Permissions Gem for different users
 gem 'cancan'
 
+#charts
+gem 'chartkick'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
