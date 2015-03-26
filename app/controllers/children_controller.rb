@@ -1,5 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
   end
