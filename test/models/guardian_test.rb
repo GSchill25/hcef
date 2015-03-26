@@ -6,6 +6,8 @@ class GuardianTest < ActiveSupport::TestCase
   # end
 
   should have_many(:children)
+  should have_many(:guardian_locations)
+  should have_many(:locations).through(:guardian_locations)
 
   should validate_presence_of(:first_name)
   should validate_presence_of(:last_name)
