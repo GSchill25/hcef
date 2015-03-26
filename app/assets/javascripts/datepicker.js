@@ -5,8 +5,13 @@ $(".programs.new").ready(function() {
 
 
 $(".after_schools.new").ready(function() {
-   $('.datepick').datepicker({ });
+   $('.datepick').datepicker({ 
+     onSelect: function() {
+       $("#toggleTables").show();
+     }
+   });
    $("#date").datepicker( "setDate" , new Date() );
+   //$('#date').datepicker( "onSelect", alert("selected") );
 });
 
 $(".children.new").ready(function() {
