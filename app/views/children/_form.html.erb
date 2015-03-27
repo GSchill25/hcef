@@ -1,38 +1,18 @@
-<div class="container">
-	<div class="col l8 m10 s12">
-	<div class="card">
-		<div class="card-image waves-effect waves-block waves-light">
-			<%= image_tag("blank_profile.png", class: "activator", height: "400", width: "450") %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">New Child<i class="mdi-navigation-more-vert right"></i></span>
-        </div>
-        <div class="card-reveal">
-          <div class="row">
-    			<div class="col s9">
-		        	<ul class="tabs">
-		        		<li class="tab col s3"><a href="#child" class="active">Add Child</a></li>
-		        		<li class="tab col s3"><a href="#guardian">Add Guardian</a></li>
-		        		<li class="tab col s3"><a href="#school">Add School</a></li>
+			<%= image_tag("blank_profile.png", height: "400", width: "450") %>
+          <span class="">New Child<i class=""></i></span>
+		        	<ul class="">
+		        		<li class=""><a href="#child" class="">Add Child</a></li>
+		        		<li class=""><a href="#guardian">Add Guardian</a></li>
+		        		<li class=""><a href="#school">Add School</a></li>
 		      		</ul>
-		      	</div>
-          	<!--span class="card-title grey-text text-darken-4">New Child <i class="mdi-navigation-close right"></i></span-->
-          	<div id="child" class="col s12">
+          	<div id="child" class="">
           		<%= render :partial => "child_form" %>
           	</div>
 
-          	<div id="guardian" class="col s12">
+          	<div id="guardian" class="">
             	<%= render :partial => "guardian_form" %>
             </div>
 
             <div id="school" class="col s12">
           		<%= render :partial => "school_form" %>
           	</div>
-        
-
-		  </div>
-		</div>
-    </div>
-	</div>
-</div>
-
