@@ -1,33 +1,19 @@
 <!-- Log-in page -->
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center black-text">Log in</h1>
-      <div class="row center">
-      	<%= form_tag sessions_path do %>
-			  <div class="input-field col s12">
-			    <%= label_tag :username, "Username" %><br />
-			    <%= text_field_tag :username, params[:username] %>
-			  </div>
-			  <div class="input-field col s12">
-			    <%= label_tag :password %><br />
-			    <%= password_field_tag :password %>
-			  </div>
-		      <button class="btn waves-effect waves-light" type="submit" name="action">Log in
-		        <i class="mdi-content-send right"></i>
-		      </button>
-		      <br>
-		      <p>Forgotten Username/Password?</p>
+<br><br>
+<h1 class="header center black-text">Log in</h1>
+  <%= form_tag sessions_path do %>
+    <%= label_tag :username, "Username" %><br />
+    <%= text_field_tag :username, params[:username] %>
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Log in
+    </button>
+    <br>
+    <p>Forgotten Username/Password?</p>
 
-	    <% end %>
+  <% end %>
 
-      </div>
-      <br><br>
+<br><br>
 
-    </div>
-  </div>
-
-
-
-  </body>
+</body>
 </html>

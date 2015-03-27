@@ -1,42 +1,18 @@
 </br>
-					<%= form_for(@school, :url=>{:controller=>"schools", :action=>"create"}, html: {class: "col s12"}) do |f| %>
-						<div class="row">
-							<div class="input-field col l6 m6 s12">
-								<i class="mdi-action-account-circle prefix"></i>
+					<%= form_for(@school, :url=>{:controller=>"schools", :action=>"create"}, html: {class: ""}) do |f| %>
 				        		<%= f.text_field :name, html: {id: "icon_prefix"} %>
 				        		<label for="icon_prefix">Name</label>
-							</div>
-							<div class="input-field col s6">
-						        <i class="mdi-communication-phone prefix"></i>
 						        <%= f.text_field :phone, html: {id: "icon_telephone"} %>
 						        <label for="icon_telephone">Phone</label>
-						    </div>
-						</div></br>
-						<div class="row">
-						    <div class="input-field col s6">
 						        <%= f.text_field :address_line_one %>
 						        <label for="addr_one">Address Line One</label>
-						    </div>
-						    <div class="input-field col s6">
 						        <%= f.text_field :address_line_two %>
 						        <label for="addr_one">Address Line Two</label>
-						    </div>
-						    <div class="input-field col s6">
 						        <%= f.text_field :city %>
 						        <label for="city">City</label>
-						    </div>
-						    <div class="input-field col s6">
 						        <%= f.text_field :state %>
 						        <label for="state">State</label>
-						    </div>
-						    <div class="input-field col s6">
 						        <%= f.text_field :zip %>
 						        <label for="zip">Zip Code</label>
-						    </div>
-						</div>
-						<div class="row">
-							<div class="col s3 offset-s8">
-								  <%= f.submit "Create", html: {class: "btn waves-effect waves-light"} %>
-							</div>
-						</div>
+								  <%= f.submit "Create", html: {class: ""} %>
 					<% end %>
