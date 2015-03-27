@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
 
-<div class="container">
   <h4><%= @program.name %></h4>
-  <div class="row">
-    <div class="col l12 m12 s12">
+
       <table>
       <tr>
         <thead>
@@ -32,26 +29,19 @@
         <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
       </tr>
       </table>
-    </div>
+
     </br></br>
 
-    <div class="row">
-      <div class="col l12 m12 s12">
         </br></br>
         <h5><u> Average Activity Time for All Children </u></h5>
         <%= bar_chart @average_times, colors: ["orange", "blue", "red", "green"] %>
-      </div>
-    </div>
 
-    <div id="days">
       </br>
       <h5 align="center"> Daily Attendance/Time Allocation </h5>
       </br>
       <%= render :partial => "days" %>
-    </div>
+
 
       <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %> | 
       <%= link_to 'Edit Program', edit_program_path(@program) %> 
 
-  </div>
-</div>
