@@ -1,19 +1,17 @@
 
   <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo" id="pad-left"> HCEF</a>
-      <ul class="right hide-on-med-and-down" id="pad-right">
+      <a href="/" class="" id=""> HCEF</a>
+      <ul class="" id="">
         <% if !current_user.nil? %>
-          <li class="top-pad"><%= link_to "Add Instructor", new_instructor_path %></li>
-          <li class="top-pad"><%= link_to "Add Program", new_program_path %></li>
-          <li class="top-pad"><%= link_to "View Programs", programs_url %></li>
-          <li class="top-pad"><%= link_to "Add Child", new_child_path %></li>
-          <li class="top-pad"><% if logged_in? %>
+          <li class=""><%= link_to "Add Instructor", new_instructor_path %></li>
+          <li class=""><%= link_to "Add Program", new_program_path %></li>
+          <li class=""><%= link_to "View Programs", programs_url %></li>
+          <li class=""><%= link_to "Add Child", new_child_path %></li>
+          <li class=""><% if logged_in? %>
         <% end %>
             <%= link_to 'Logout -', logout_path %><%= current_user.username %>
           <% else %>
             <%= link_to 'Login', login_path %>
           <% end %></li>
       </ul>
-    </div>
   </nav>
