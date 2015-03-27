@@ -11,9 +11,10 @@
       </ul>
     </div>
   <% end %>
-
-  <%= f.label :date, 'Date', :for => 'date' %><br />
-  <%= f.text_field :date, :id=> 'date', :class => 'datepick' %>
+  <div class="field">
+    <%= f.label :date, 'Date', :for => 'date' %><br />
+    <%= f.text_field :date, :id=> 'date', :class => 'datepick' %>
+  </div>
 
   <div id='toggleTables'>
       <button onclick='return showHot()'>Daily Log</button>
