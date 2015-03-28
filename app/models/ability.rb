@@ -10,10 +10,6 @@ class Ability
         #afterschool
         #this next line of code does not work; figure out why
         can :create, AfterSchool
-        can :read, AfterSchool do |afterschool|
-            afterschool_instructors = user.instructor.programs.map{|c| c.after_schools.map(&:id)}
-            afterschool_instructors.include? afterschool.id
-        end
         #can :read, After_school
         #can :update, After_school do |afterschool|
             #afterschool_ins = afterschool.program.instructors.map(&:id)

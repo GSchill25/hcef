@@ -9,6 +9,7 @@ HCEF::Application.routes.draw do
   resources :guardians
   resources :instructors
   resources :sessions
+  resources :sub_locations
 
   get 'home' => 'static#home'
   root :to => 'static#beta'
