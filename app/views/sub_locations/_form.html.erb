@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="row">
     <%= f.label :location_id %></br>
     <%= f.collection_select :location_id, Location.all, :id, :name %>
   </div>
