@@ -1,6 +1,6 @@
       <br><br>
       <h3 class="">Instructors</h3>
-		<table, class="">
+		<table class="table table-condensed">
 		        <thead>
 		          <tr>
 		              <th data-field="name">First Name</th>
@@ -11,10 +11,15 @@
 
 		        <% @instructors.each do |instructor| %>
 		        <tbody>
-		        	<td align="center"><%= link_to instructor.first_name, instructor_path(instructor) %></td>
-		        	<td align="center"><%= link_to instructor.last_name, instructor_path(instructor) %></td>		
+		        	<tr>
+		        	<td><%= link_to instructor.first_name, instructor_path(instructor) %></td>
+		        	<td><%= link_to instructor.last_name, instructor_path(instructor) %></td>	
+		        </tr>
 		        </tbody>
 		        <% end %>
 		</table>
 		<br><br>
+
+		<button  type="button" class="btn btn-default">
 		<%= link_to 'New Instructor', new_instructor_path %>
+		</button></br></br>
