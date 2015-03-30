@@ -47,10 +47,13 @@
       <h5 align="center"> Daily Attendance/Time Allocation </h5>
       </br>
       <%= render :partial => "days" %>
+      </br>
 
-
-      <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %> | 
-      <%= link_to 'Edit Program', edit_program_path(@program) %> 
-
+      <button type="button" class="btn btn-default">
+        <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
+      </button>
+      <button type="button" class="btn btn-default">
+        <%= link_to 'Edit Program', edit_program_path(@program) %> 
+      </button></br></br>
 </div>
 
