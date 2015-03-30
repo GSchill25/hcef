@@ -13,7 +13,7 @@
           
         <% end %>
           <li><% if logged_in? %>
-            <span><%= link_to 'Logout -', logout_path %><%= current_user.username %></span>
+            <span><%= link_to 'Logout - ', logout_path %><%= current_user.username %></span>
           <% else %>
             <%= link_to 'Login', login_path %>
           <% end %></li>
