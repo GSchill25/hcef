@@ -1,34 +1,41 @@
+<div class="container">
+  <h2 align="center"><%= @program.name %></h2>
 
-  <h4><%= @program.name %></h4>
-
-      <table>
-      <tr>
-        <thead>
-          <th>
-            Type
-          </th>
-          <th>
-            Start date
-          </th>
-          <th>
-            End date
-          </th>
-          <th>
-            Children
-          </th>
-          <th>
-            Location
-          </th>
-        </thead>
-      </tr>
-      <tr>
-        <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
-        <td><%= @program.start_date %></td>
-        <td><%= @program.end_date %></td>
-        <td><%= @program.children.count %></td>
-        <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
-      </tr>
+<div class="panel panel-warning">
+      
+      <table class="table table-condensed">
+      <div class="panel-heading">
+        <tr>
+          <thead>
+            <th>
+              Type
+            </th>
+            <th>
+              Start date
+            </th>
+            <th>
+              End date
+            </th>
+            <th>
+              Children
+            </th>
+            <th>
+              Location
+            </th>
+          </thead>
+        </tr>
+      </div>
+      <div class="panel-body">
+        <tr>
+          <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+          <td><%= @program.start_date %></td>
+          <td><%= @program.end_date %></td>
+          <td><%= @program.children.count %></td>
+          <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
+        </tr>
       </table>
+    </div>
+</div>
 
     </br></br>
 
@@ -44,4 +51,6 @@
 
       <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %> | 
       <%= link_to 'Edit Program', edit_program_path(@program) %> 
+
+</div>
 
