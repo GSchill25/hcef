@@ -26,7 +26,19 @@
 	padding-right: 50px;
 }
 
-footer{
-	background-color: #4f759b;
+html {
+  position: relative;
+  min-height: 100%;
 }
 
+body {
+  padding-bottom: 50px; /* Footer height */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+	background-color: #4f759b;
+}
