@@ -108,3 +108,8 @@ window.hot_sign_in = new Handsontable(container_sign_in,
 });
 
 } /* end window.onload */
+
+$(document).on('click', '.btn', function() {
+   $(".btn").removeClass('active');
+   $(this).addClass('active');
+ });

@@ -1,4 +1,3 @@
-<h4> After School </h4>
 <%= form_for(@after_school) do |f| %>
   <% if @after_school.errors.any? %>
     <div id="error_explanation">
@@ -11,18 +10,31 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+
+  <div class='row'>
+    <div class='col-md-12 text-center'>
     <%= f.label :date, 'Date', :for => 'date' %><br />
     <%= f.text_field :date, :id=> 'date', :class => 'datepick' %>
+    </div>
   </div>
-
   <div id='toggleTables'>
-      <button onclick='return showHot()'>Daily Log</button>
-      <button onclick='return showHotSignIn()'>Sign-in</button>
-
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <div id='button' class='btn-group' role='group'>
+          <button type='button' class='btn btn-default active' onclick='return showHotSignIn()'>Sign-in</button>
+          <button type='button' class='btn btn-default' onclick='return showHot()'>Daily Log</button>
+        </div>
+      </div>
+    </div>
     <!-- Start hot -->
-    <div id='hot'></div>
-    <div id='hot_sign_in'></div>
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <div id='hot'></div>
+      </div>
+    </div>
+    <div class='row'>
+      <div id='hot_sign_in'></div>
+    </div>
   </div>
   <br /><br />
     <script>
