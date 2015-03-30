@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #date {
-  width: 280px;
+  width: 300px;
   z-index: 2;
+  margin-bottom: 20px;
 }
 
 #toggleTables {
@@ -14,11 +15,16 @@
   width: 150px;
 }
 
+#buttons {
+  /*width: 300px; */
+}
+
 #hot {
   z-index: 1;
-  display: block;
+  display: none;
 }
 
 #hot_sign_in {
-  display: none;
+  z-index: 1;
+  display: block;
 }
