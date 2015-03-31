@@ -99,6 +99,7 @@ FactoryGirl.define do
   end
 
   factory :programs do
+  end
     
 
   #-----------------------------------------------HUE
