@@ -8,10 +8,7 @@
       <tr>
         <thead>
           <th>
-            Name
-          </th>
-          <th>
-            Program type
+            Type
           </th>
           <th>
             Start date
@@ -20,7 +17,7 @@
             End date
           </th>
           <th>
-            Attendance
+            Children
           </th>
           <th>
             Location
@@ -28,7 +25,6 @@
         </thead>
       </tr>
       <tr>
-        <td><%= @program.name %></td>
         <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
         <td><%= @program.start_date %></td>
         <td><%= @program.end_date %></td>
@@ -39,8 +35,21 @@
     </div>
     </br></br>
 
+<<<<<<< HEAD
     <div id="days">
       </br></br></br></br></br></br></br>
+=======
+    <div class="row">
+      <div class="col l12 m12 s12">
+        </br></br>
+        <h5><u> Average Activity Time for All Children </u></h5>
+        <%= bar_chart @average_times, colors: ["red"] %>
+      </div>
+    </div>
+
+    <div id="days">
+      </br>
+>>>>>>> c1fd38be9412b5306da73ad938cc92bcd4c985f8
       <h5 align="center"> Daily Attendance/Time Allocation </h5>
       </br>
       <%= render :partial => "days" %>
@@ -48,6 +57,7 @@
 
       <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %> | 
       <%= link_to 'Edit Program', edit_program_path(@program) %> 
+<<<<<<< HEAD
     <div class="col l6 m8 s12">
       </br></br></br></br>
       <u><h6>Instructors Assigned to this Program</h6></u>
@@ -67,4 +77,8 @@
 
   </div>
   </br></br>
+=======
+
+  </div>
+>>>>>>> c1fd38be9412b5306da73ad938cc92bcd4c985f8
 </div>

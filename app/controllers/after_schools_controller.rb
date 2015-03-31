@@ -12,15 +12,16 @@ class AfterSchoolsController < ApplicationController
   end
 
   def new
-    program_id = params[:program_id]
-    @program = Program.find(program_id)
+    @program_id = params[:program_id]
+    @program = Program.find(@program_id)
     @after_school = AfterSchool.new
     @data = []
+    @data_sign_in = []
     @children = @program.children
     @children_ids = []
-    # Change to child for this
     for child in @children
       @data.push([child.name] + [0]*4 + [""])
+      @data_sign_in.push([child.name] + [""] + [""])
       @children_ids.push(child.id)
     end
   end
@@ -46,13 +47,13 @@ class AfterSchoolsController < ApplicationController
   end
 
   def update_by_id
-    #@after_school = .find_or_initialize_by(name: "Roger")
+    program_id = params["program_id"]
     child_id = params[:id]
     date = Date.strptime(params["date"],"%m/%d/%Y")
     col = params["col"]
     value = params["value"]
 
-    @after_school = AfterSchool.find_or_initialize_by(child_id: child_id, date: date)
+    @after_school = AfterSchool.find_or_initialize_by(program_id: program_id, child_id: child_id, date: date)
     # Note on methods:
     # update_attribute does NOT validate
     # update           does validate
@@ -67,6 +68,42 @@ class AfterSchoolsController < ApplicationController
       @after_school.update_attribute(:reading_specialist_time, value)
     when 5
       @after_school.update_attribute(:goal, value)
+    end
+
+    # Don't need to return anything
+    head :ok
+  end
+  
+  def update_sign_in_by_id
+    program_id = params["program_id"]
+    child_id = params[:id]
+    date = Date.strptime(params["date"],"%m/%d/%Y")
+    col = params["col"]
+    value = params["value"]
+
+    @after_school = AfterSchool.find_or_initialize_by(program_id: program_id, child_id: child_id, date: date)
+    # Note on methods:
+    # update_attribute does NOT validate
+    # update           does validate
+    case col
+    when 1
+      @after_school.update_attribute(:time_in, value)
+      if !@after_school.time_out.nil?
+        total_minutes = ((@after_school.time_out - @after_school.time_in) / 60).to_i # minutes
+        #TODO migrate total_hours => total_minutes
+        if total_minutes > 0
+          @after_school.update_attribute(:total_hours, total_minutes)
+        end
+      end
+    when 2
+      @after_school.update_attribute(:time_out, value)
+      # update totalHours
+      if !@after_school.time_in.nil?
+        total_minutes =( (@after_school.time_out - @after_school.time_in) / 60).to_i # minutes
+        if total_minutes > 0
+          @after_school.update_attribute(:total_hours, total_minutes)
+        end
+      end
     end
 
     # Don't need to return anything

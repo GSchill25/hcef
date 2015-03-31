@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
   load_and_authorize_resource
   before_action :set_child, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
   end
@@ -13,17 +14,20 @@ class ChildrenController < ApplicationController
   	@guardian = Guardian.new
   	@school = School.new
   	@locations = Location.all
+  	@locs = Location.all
   end
 
   def edit
+  	@locations = Location.all
   end
 
   def create
+  		@locations = Location.all
 		@child = Child.new(child_params)
 		if @child.save
 			redirect_to new_child_path, notice: "#{@child.name} was added to the system"
 		else
-			render action: 'new'
+			redirect_to new_child_path
 		end
 	end
 

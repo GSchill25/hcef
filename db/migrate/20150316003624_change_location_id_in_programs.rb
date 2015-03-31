@@ -1,13 +1,5 @@
 class ChangeLocationIdInPrograms < ActiveRecord::Migration
-  def up
-  	change_table :programs do |t|
-  		t.change :location_id, :integer
-  	end
-  end
-
-  def down
-  	change_table :programs do |t|
-  		t.change :location_id, :string
-  	end
+  def change
+    change_column :programs, :location_id, 'integer USING CAST(location_id AS integer)'
   end
 end

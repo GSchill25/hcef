@@ -2,11 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
-  before_filter do
-    resource = controller_name.singularize.to_sym
-    method = "#{resource}_params"
-    params[resource] &&= send(method) if respond_to?(method, true)
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "You are not authorized to take this action."
+    redirect_to home_path
   end
 
   private
@@ -22,10 +20,5 @@ class ApplicationController < ActionController::Base
 
   def check_login
     redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
-  end
-
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "You do not have permission to view this page."
-    redirect_to root_url
   end
 end

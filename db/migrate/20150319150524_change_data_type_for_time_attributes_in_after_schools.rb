@@ -1,14 +1,8 @@
 class ChangeDataTypeForTimeAttributesInAfterSchools < ActiveRecord::Migration
-  def up
-    change_column :after_schools, :homework_time, :integer
-    change_column :after_schools, :literacy_time, :integer
-    change_column :after_schools, :technology_time, :integer
-    change_column :after_schools, :reading_specialist_time, :integer
-  end
-  def down
-    change_column :after_schools, :homework_time, :time
-    change_column :after_schools, :literacy_time, :time
-    change_column :after_schools, :technology_time, :time
-    change_column :after_schools, :reading_specialist_time, :time
+  def change
+    change_column :after_schools, :homework_time, 'integer USING CAST(extract(epoch from homework_time) AS integer)'
+    change_column :after_schools, :literacy_time, 'integer USING CAST(extract(epoch from literacy_time) AS integer)'
+    change_column :after_schools, :technology_time, 'integer USING CAST(extract(epoch from technology_time) AS integer)'
+    change_column :after_schools, :reading_specialist_time, 'integer USING CAST(extract(epoch from reading_specialist_time) AS integer)'
   end
 end

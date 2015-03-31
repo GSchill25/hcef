@@ -2,6 +2,7 @@ HCEF::Application.routes.draw do
 
   resources :after_schools
   match "/after_schools/update_by_id/:id" => "after_schools#update_by_id", via: :post
+  match "/after_schools/update_sign_in_by_id/:id" => "after_schools#update_sign_in_by_id", via: :post
   resources :programs
   resources :locations
   resources :schools
@@ -11,7 +12,8 @@ HCEF::Application.routes.draw do
   resources :sessions
   resources :sub_locations
 
-  get 'home' => 'static#home'
+  get 'home' => 'static#beta'
+  get 'master_view' => 'static#home'
   root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'
