@@ -1,19 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo" id="pad-left"> HCEF</a>
-      <ul class="right hide-on-med-and-down" id="pad-right">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <a class="navbar-brand" href="/">
+        <img alt="Logo" src="">
+      </a>
+      <ul class="nav navbar-nav navbar-left">
         <% if !current_user.nil? %>
-          <li class="top-pad"><%= link_to "Add Instructor", new_instructor_path %></li>
-          <li class="top-pad"><%= link_to "Add Program", new_program_path %></li>
-          <li class="top-pad"><%= link_to "View Programs", programs_url %></li>
-          <li class="top-pad"><%= link_to "Add Child", new_child_path %></li>
-          <li class="top-pad"><% if logged_in? %>
+          <li><%= link_to "View Programs", programs_url %></li>
+          <li><%= link_to "Add Program", new_program_path %></li>
+          <li><%= link_to "View Instructors", instructors_url %></li>
+          <li><%= link_to "Add Instructor", new_instructor_path %></li>
+          <li><%= link_to "Add Child", new_child_path %></li>
         <% end %>
-            <%= link_to 'Logout -', logout_path %><%= current_user.username %>
-          <% else %>
-            <%= link_to 'Login', login_path %>
-          <% end %></li>
       </ul>
-    </div>
-  </nav>
+      <% if logged_in? %>
+       <p class='navbar-text navbar-right'>
+         <%= current_user.username %> &nbsp
+         <%= link_to '(Logout?)', logout_path %>
+       </p>
+      <% else %>
+        <p class='navbar-text navbar-right'><%= link_to 'Login', login_path %></p>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -10,7 +10,7 @@ $(".after_schools.new").ready(function() {
        $("#toggleTables").show();
      }
    });
-   $("#date").datepicker( "setDate" , new Date() );
+   //$("#date").datepicker( "setDate" , new Date() );
    //$('#date').datepicker( "onSelect", alert("selected") );
 });
 

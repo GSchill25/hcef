@@ -25,3 +25,49 @@
 #pad-right{
 	padding-right: 50px;
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: 50px; /* Footer height */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+	background-color: #4f759b;
+  background-color: #0078B4;
+}
+
+.navbar-default {
+  border-radius: 0 !important;
+  background-color: #0078B4 !important;
+  border-color: #0078B4 !important;
+}
+
+/* Sign-in Username */
+.navbar-default .navbar-text {
+  color: #FFFFFF !important;
+}
+
+/* Login/Logout */
+.navbar-default a {
+  color: #FFFFFF !important;
+}
+
+.navbar-default li a {
+  color: #FFFFFF !important;
+}
+
+.navbar-default .navbar-text {
+  color: #FFFFFF !important;
+}
+
+.navbar-brand {
+  color: #FFFFFF !important;
+}
