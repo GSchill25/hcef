@@ -1,7 +1,5 @@
 class InstructorsController < ApplicationController
-  #load_and_authorize_resource
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
-  authorize_resource
 
   def index
   	@instructors = Instructor.all
@@ -25,7 +23,7 @@ class InstructorsController < ApplicationController
 		@instructor = Instructor.new(instructor_params)
 		respond_to do |format|
 	      if @instructor.save
-	        format.html { redirect_to @instructor, notice: '#{@instructor.role} was successfully created.' }
+	        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
 	        format.json { render action: 'show', status: :created, location: @instructor }
 	      else
 	        format.html { render action: 'new' }
@@ -54,6 +52,6 @@ class InstructorsController < ApplicationController
 		end
 
 		def instructor_params
-			params.require(:instructor).permit(:first_name, :last_name, :program_ids => [], user_attributes: [:id, :username, :password, :password_confirmation, :role])
+			params.require(:instructor).permit(:first_name, :last_name, user_attributes: [:id, :username, :password, :password_confirmation, :role])
 		end
 end

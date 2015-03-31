@@ -1,7 +1,5 @@
 class ChildrenController < ApplicationController
-  load_and_authorize_resource
   before_action :set_child, only: [:show, :edit, :update, :destroy]
-  authorize_resource
 
   def index
   end
@@ -14,7 +12,6 @@ class ChildrenController < ApplicationController
   	@guardian = Guardian.new
   	@school = School.new
   	@locations = Location.all
-  	@locs = Location.all
   end
 
   def edit

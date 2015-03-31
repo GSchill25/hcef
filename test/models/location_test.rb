@@ -2,11 +2,6 @@ require 'test_helper'
 
 class LocationTest < ActiveSupport::TestCase
   should have_many(:programs)
-  should have_many(:guardian_locations)
-  should have_many(:child_locations)
-  should have_many(:children).through(:child_locations)
-  should have_many(:guardians).through(:guardian_locations)
-
 
   should validate_presence_of(:name)
   should validate_presence_of(:address_line_one)

@@ -22,9 +22,6 @@
           <th>
             Reading Time
           </th>
-          <th>
-            Total Minutes
-          </th>
         </thead>
       </tr>
         <% @days.each do |d| %>
@@ -35,7 +32,6 @@
 	        <td><%= d.literacy_time %></td>
 	        <td><%= d.homework_time %></td>
 	        <td><%= d.reading_specialist_time %></td>
-	        <td><%= d.total_hours %></td>
 	      </tr>
 	    <% end %>
       </table>

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150327064645) do
-=======
-ActiveRecord::Schema.define(version: 20150326145811) do
->>>>>>> c1fd38be9412b5306da73ad938cc92bcd4c985f8
+ActiveRecord::Schema.define(version: 20150323010814) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -86,15 +82,6 @@ ActiveRecord::Schema.define(version: 20150326145811) do
     t.integer  "program_id"
   end
 
-  create_table "guardian_locations", force: true do |t|
-    t.integer  "guardian_id"
-    t.integer  "location_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "guardians", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -154,24 +141,11 @@ ActiveRecord::Schema.define(version: 20150326145811) do
     t.datetime "updated_at"
   end
 
-  create_table "sub_locations", force: true do |t|
-    t.string   "name"
-    t.string   "address_line_one"
-    t.string   "address_line_two"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "phone"
-    t.integer  "location_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password_digest"
     t.string   "role"
-    t.boolean  "active",          default: true
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "instructor_id"

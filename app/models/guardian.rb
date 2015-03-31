@@ -3,8 +3,6 @@ class Guardian < ActiveRecord::Base
 
 	#relationships
 	has_many :children
-	has_many :guardian_locations
-	has_many :locations, through: :guardian_locations
 
 	#validations
 	validates_presence_of :first_name, :last_name, :phone, :email

@@ -38,12 +38,6 @@ gem "nested_form"
 gem 'populator'
 gem 'faker'
 
-#Permissions Gem for different users
-gem 'cancan'
-
-#charts
-gem 'chartkick'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -80,5 +74,3 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem 'cancan'

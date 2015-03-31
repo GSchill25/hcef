@@ -1,6 +1,5 @@
 class SchoolsController < ApplicationController
 	before_action :set_school, only: [:show, :edit, :update, :destroy]
-	authorize_resource
 
 	def index
 	end
