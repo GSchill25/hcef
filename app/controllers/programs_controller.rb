@@ -1,5 +1,6 @@
 class ProgramsController < ApplicationController
   before_action :set_program, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /programs
   # GET /programs.json
@@ -10,6 +11,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+    @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
   end
 

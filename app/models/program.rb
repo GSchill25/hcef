@@ -33,7 +33,8 @@ class Program < ActiveRecord::Base
     end
     return children
   end
-def average_time
+
+  def average_time
     homework_time = 0
     literacy_time = 0
     technology_time = 0
@@ -52,8 +53,9 @@ def average_time
       technology_time = technology_time/total_days
       reading_specialist_time = reading_specialist_time/total_days
     end
-    return [["Homework", homework_time], ["Literacy", literacy_time], ["Technology", technology_time], ["Reading Specialist", reading_specialist_time]]
-  end
+    re
 
 
 end
+
+

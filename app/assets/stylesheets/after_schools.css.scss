@@ -6,7 +6,19 @@
   z-index: 2;
 }
 
-#hot {
-z-index: 1;
+#toggleTables {
+  display: none;
 }
 
+#toggleTables button{
+  width: 150px;
+}
+
+#hot {
+  z-index: 1;
+  display: block;
+}
+
+#hot_sign_in {
+  display: none;
+}
