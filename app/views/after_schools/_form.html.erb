@@ -14,7 +14,7 @@
   <div class='row'>
     <div class='col-md-12 text-center'>
     <%= f.label :date, 'Date', :for => 'date' %><br />
-    <%= f.text_field :date, :id=> 'date', :class => 'datepick' %>
+    <%= f.text_field :date, :id=> 'date', :class => 'datepick', :placeholder => "Select Date*" %>
     </div>
   </div>
   <div id='toggleTables'>
@@ -33,7 +33,9 @@
       </div>
     </div>
     <div class='row'>
-      <div id='hot_sign_in'></div>
+      <div class='col-md-12 text-center'>
+        <div id='hot_sign_in'></div>
+      </div>
     </div>
   </div>
   <br /><br />

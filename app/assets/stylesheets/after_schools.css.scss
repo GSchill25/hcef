@@ -7,6 +7,14 @@
   margin-bottom: 20px;
 }
 
+*::-webkit-input-placeholder {
+  color: red;
+}
+
+#date input-placeholder{
+  color: red;
+}
+
 #toggleTables {
   display: none;
 }
