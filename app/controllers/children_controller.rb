@@ -1,5 +1,4 @@
 class ChildrenController < ApplicationController
-  load_and_authorize_resource
   before_action :set_child, only: [:show, :edit, :update, :destroy]
   authorize_resource
 

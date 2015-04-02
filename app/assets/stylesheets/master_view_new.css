@@ -1,0 +1,24 @@
+#sidebar1 {
+  background-color: #F2F2F2;
+}
+
+/* Parent links */
+#sidebar1 li>a {
+  font-size: 13px ;
+  padding-left: 0px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Child links */
+#sidebar1 .nav>li>a {
+  font-size: 12px;
+  padding-left: 15px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+#sidebar1 .nav>.active>a {
+  color: #563d7c; 
+}
+

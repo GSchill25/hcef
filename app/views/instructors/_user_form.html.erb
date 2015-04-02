@@ -1,15 +1,20 @@
-<div class="input-field col s12">
-	<%= f.text_field :username %>
-<label for="icon_prefix">Username</label>
+<div class="row">
+	<div class="col-lg-4">
+		<label for="icon_prefix">Username</label>
+		<%= f.text_field :username %>
+	</div>
+    <div class="col-lg-4">	
+    	<label for="icon_prefix">Password</label>
+		<%= f.password_field :password %>
+	   	
+	</div>
+
+	<div class="col-lg-4">
+		<label for="icon_prefix">Confirm</label>
+		<%= f.password_field :password_confirmation %>	
+	</div>
 </div>
-<div class="input-field col s12">
-	<%= f.password_field :password %>
-   	<label for="icon_prefix">Password</label>
-</div>
-<div class="input-field col s12">
-	<%= f.password_field :password_confirmation %>
-   	<label for="icon_prefix">Password Confirmation</label>
-</div>
-<div class="input-field col s12 m8 l6">
-	<%= f.select :role, User::ROLES %>
-</div>
+</br>
+<label>Role</label>
+<%= f.select :role, User::ROLES %>
+</br></br>

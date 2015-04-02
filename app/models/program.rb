@@ -5,9 +5,7 @@ class Program < ActiveRecord::Base
   has_one :enrichment
   has_one :field_trip
   has_many :enrollments
-  has_many :assignments
   has_many :children, through: :enrollments
-  has_many :instructors, through: :assignments
   
   # Validations
   validates_presence_of :name
@@ -49,9 +47,14 @@ class Program < ActiveRecord::Base
       technology_time += a.technology_time || 0
       reading_specialist_time += a.reading_specialist_time || 0
     end
-    return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+    if total_days != 0
+      homework_time = homework_time/total_days
+      literacy_time = literacy_time/total_days
+      technology_time = technology_time/total_days
+      reading_specialist_time = reading_specialist_time/total_days
+    end
+    return [["Homework", homework_time], ["Literacy", literacy_time], ["Technology", technology_time], ["Reading Specialist", reading_specialist_time]]
   end
-
 
 end
 

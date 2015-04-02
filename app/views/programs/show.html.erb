@@ -1,84 +1,59 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
-  <h4><%= @program.name %></h4>
-  <div class="row">
-    <div class="col l12 m12 s12">
-      <table>
-      <tr>
-        <thead>
-          <th>
-            Type
-          </th>
-          <th>
-            Start date
-          </th>
-          <th>
-            End date
-          </th>
-          <th>
-            Children
-          </th>
-          <th>
-            Location
-          </th>
-        </thead>
-      </tr>
-      <tr>
-        <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
-        <td><%= @program.start_date %></td>
-        <td><%= @program.end_date %></td>
-        <td><%= @program.children.count %></td>
-        <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
-      </tr>
+  <h2 align="center"><%= @program.name %></h2>
+
+<div class="panel panel-warning">
+      
+      <table class="table table-condensed">
+      <div class="panel-heading">
+        <tr>
+          <thead>
+            <th>
+              Type
+            </th>
+            <th>
+              Start date
+            </th>
+            <th>
+              End date
+            </th>
+            <th>
+              Children
+            </th>
+            <th>
+              Location
+            </th>
+          </thead>
+        </tr>
+      </div>
+      <div class="panel-body">
+        <tr>
+          <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+          <td><%= @program.start_date %></td>
+          <td><%= @program.end_date %></td>
+          <td><%= @program.children.count %></td>
+          <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
+        </tr>
       </table>
     </div>
+</div>
+
     </br></br>
 
-<<<<<<< HEAD
-    <div id="days">
-      </br></br></br></br></br></br></br>
-=======
-    <div class="row">
-      <div class="col l12 m12 s12">
         </br></br>
         <h5><u> Average Activity Time for All Children </u></h5>
-        <%= bar_chart @average_times, colors: ["red"] %>
-      </div>
-    </div>
+        <%= bar_chart @average_times, colors: ["orange", "blue", "red", "green"] %>
 
-    <div id="days">
       </br>
->>>>>>> c1fd38be9412b5306da73ad938cc92bcd4c985f8
       <h5 align="center"> Daily Attendance/Time Allocation </h5>
       </br>
       <%= render :partial => "days" %>
-    </div>
-
-      <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %> | 
-      <%= link_to 'Edit Program', edit_program_path(@program) %> 
-<<<<<<< HEAD
-    <div class="col l6 m8 s12">
-      </br></br></br></br>
-      <u><h6>Instructors Assigned to this Program</h6></u>
-      <ol>
-        <% @program.instructors.each do |instructor| %>
-          <li><%= instructor.name %></li>
-        <% end %>
-      </ol>
       </br>
-      <u><h6>Children Present</h6></u>
-      <ol>
-        <% @program.children.each do |child| %>
-          <li><%= child.name %></li>
-        <% end %>
-      </ol>
-    </div> 
 
-  </div>
-  </br></br>
-=======
-
-  </div>
->>>>>>> c1fd38be9412b5306da73ad938cc92bcd4c985f8
+      <button type="button" class="btn btn-default">
+        <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
+      </button>
+      <button type="button" class="btn btn-default">
+        <%= link_to 'Edit Program', edit_program_path(@program) %> 
+      </button></br></br>
 </div>
+

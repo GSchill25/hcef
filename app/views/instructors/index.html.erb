@@ -1,31 +1,25 @@
-<div class="container">
-  <h1>Instructors</h1>
+<h3 class="">Instructors</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+      <th data-field="programs">Programs</th>
+    </tr>
+  </thead>
 
-  <table>
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Programs</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @instructors.each do |instructor| %>
-        <tr>
-          <td><%= instructor.first_name %></td>
-          <td><%= instructor.last_name %></td>
-          <td></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-  <% if can? :create, Instructor %>
-    <%= link_to 'New Instructor', new_instructor_path %>
+  <tbody>
+  <% @instructors.each do |instructor| %>
+    <tr>
+      <td><%= link_to instructor.first_name + " " + instructor.last_name, instructor_path(instructor) %></td>
+      <td>Programs</td>
+      <td><%= link_to 'Edit', edit_program_path(instructor) %></td>
+  </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
+
+<br><br>
+
+<button  type="button" class="btn btn-default">
+<%= link_to 'New Instructor', new_instructor_path %>
+</button></br></br>

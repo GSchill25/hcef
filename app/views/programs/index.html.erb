@@ -1,7 +1,6 @@
-<div class="container">
   <h1>Programs This Year</h1>
 
-  <table>
+  <table class='table table-striped'>
     <thead>
       <tr>
         <th>Name</th>
@@ -18,25 +17,19 @@
 
     <tbody>
       <% @programs.each do |program| %>
-        <% if can? :read, program %>
-          <tr>
-            <td><%= link_to program.name, program_path(program) %></td>
-            <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
-            <td><%= program.start_date %></td>
-            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
-            <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
-            <td><%= program.children.count %></td>
-            <% if can? :update, program %>
-              <td><%= link_to 'Edit', edit_program_path(program) %></td>
-            <% end %>
-          </tr>
-        <% end %>
+        <tr>
+          <td><%= link_to program.name, program_path(program) %></td>
+        <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+          <td><%= program.start_date %></td>
+          <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+          <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
+          <td><%= program.children.count %></td>
+          <td><%= link_to 'Edit', edit_program_path(program) %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
 
   <br>
-  <% if can? :create, Program %>
-    <%= link_to 'New Program', new_program_path %>
-  <% end %>
-</div>
+
+  <%= link_to 'New Program', new_program_path %>

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150327064645) do
-=======
-ActiveRecord::Schema.define(version: 20150326145811) do
->>>>>>> c1fd38be9412b5306da73ad938cc92bcd4c985f8
+ActiveRecord::Schema.define(version: 20150402214918) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -162,7 +158,6 @@ ActiveRecord::Schema.define(version: 20150326145811) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,7 +166,7 @@ ActiveRecord::Schema.define(version: 20150326145811) do
     t.string   "username"
     t.string   "password_digest"
     t.string   "role"
-    t.boolean  "active",          default: true
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "instructor_id"

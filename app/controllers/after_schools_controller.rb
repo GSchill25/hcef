@@ -1,5 +1,4 @@
 class AfterSchoolsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
   # Turn off protect_from_forgery for this action
   protect_from_forgery except: :update_by_id

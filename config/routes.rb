@@ -10,10 +10,10 @@ HCEF::Application.routes.draw do
   resources :guardians
   resources :instructors
   resources :sessions
-  resources :sub_locations
 
   get 'home' => 'static#beta'
   get 'master_view' => 'static#home'
+  get 'master_view_new' => 'static#master_view_new'
   root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'
