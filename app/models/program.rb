@@ -47,7 +47,11 @@ class Program < ActiveRecord::Base
       technology_time += a.technology_time || 0
       reading_specialist_time += a.reading_specialist_time || 0
     end
-    return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+    if total_days!=0
+      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+    else
+      return [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0]]
+    end
   end
 
 
