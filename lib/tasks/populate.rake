@@ -63,15 +63,15 @@ namespace :db do
     hearth.phone = '4123669801'
     hearth.save!
 
-    hearth = Location.new
-    hearth.name =  'Sojourner House'
-    hearth.address_line_one = '1234 Pitt Street'
-    hearth.address_line_two = 'PO Box 1234'
-    hearth.city = 'Pittsburgh'
-    hearth.state = 'PA'
-    hearth.zip = '15213'
-    hearth.phone = '1234567890'
-    hearth.save!
+    soj = Location.new
+    soj.name =  'Sojourner House'
+    soj.address_line_one = '1234 Pitt Street'
+    soj.address_line_two = 'PO Box 1234'
+    soj.city = 'Pittsburgh'
+    soj.state = 'PA'
+    soj.zip = '15213'
+    soj.phone = '1234567890'
+    soj.save!
 
 =begin
     # Future locations
@@ -128,7 +128,17 @@ namespace :db do
        p.location_id = hearth.id
      end
 
+
+
     #Sojourner House Test
+    p2 = Program.new
+    p2.name = "Sojourner House Moms Afterschool"
+    p2.program_type = "after_school"
+    p2.start_date = 1.year.ago.to_date
+    p2.location_id = soj.id
+    p2.save!
+
+
     s1 = School.new
     s1.name = "Sunnyside"
     s1.save!
