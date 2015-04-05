@@ -13,6 +13,7 @@ HCEF::Application.routes.draw do
 
   get 'home' => 'static#beta'
   get 'master_view' => 'static#home'
+  get 'master_view_new' => 'static#master_view_new'
   root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'
