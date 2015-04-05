@@ -331,13 +331,6 @@ namespace :db do
     cl0.location = Location.last
     cl0.save!
 
-
-
-
-
-
-
-
     #Enrollment
 
     #Assignment
