@@ -2,6 +2,7 @@ class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
   # Turn off protect_from_forgery for this action
   protect_from_forgery except: :update_by_id
+  authorize_resource
 
   def index
     @after_schools = AfterSchool.all

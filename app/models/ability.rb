@@ -15,6 +15,7 @@ class Ability
             afterschool_instructors = user.instructor.programs.map{|c| c.after_schools.map(&:id)}
             afterschool_instructors.include? after_school.id
         end
+        
         #can :read, After_school
         #can :update, After_school do |afterschool|
             #afterschool_ins = afterschool.program.instructors.map(&:id)
@@ -47,6 +48,7 @@ class Ability
         end
         
         #guardian
+        can :manage, Guardian
         #make sure instructors can only see guardians linked to the child
         
         #instructor
@@ -56,9 +58,17 @@ class Ability
         end
 
         #location
-        can :manage, Location
+        can :create, Location
+        can :manage, Location do |location|
+            program_instructors = user.instructor.programs.map{|c| c.location.id}
+            program_instructors.include? location.id
+        end
 
         #program
+        can :update, Program do |program|
+            program_instructors = user.instructor.programs.map(&:id)
+            program_instructors.include? program.id
+        end
         can :read, Program do |program|
             program_instructors = user.instructor.programs.map(&:id)
             program_instructors.include? program.id
