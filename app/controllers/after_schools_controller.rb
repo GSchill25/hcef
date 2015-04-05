@@ -24,6 +24,9 @@ class AfterSchoolsController < ApplicationController
       @data_sign_in.push([child.name] + [""] + [""])
       @children_ids.push(child.id)
     end
+    if cannot? :read, @program
+      redirect_to "public/404.html"
+    end
   end
 
   def edit
