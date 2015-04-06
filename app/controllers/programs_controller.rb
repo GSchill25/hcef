@@ -13,6 +13,7 @@ class ProgramsController < ApplicationController
   def show
     @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
+    @dates = @program.program_days
   end
 
   # GET /programs/new

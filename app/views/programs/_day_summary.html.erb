@@ -1,0 +1,23 @@
+      <table class="table table-striped">
+      <tr>
+        <thead>
+          <th>
+            Date
+          </th>
+          <th>
+            Day of Week
+          </th>
+          <th>
+            Students Present
+          </th>
+          
+        </thead>
+      </tr>
+        <% @dates.each do |d| %>
+	      <tr>
+	        <td><%= link_to d[0], programs_url %></td>
+	        <td><%= d[0].strftime("%A") %></td>
+          <td><%= d[1] %></td>
+	      </tr>
+	    <% end %>
+      </table>
