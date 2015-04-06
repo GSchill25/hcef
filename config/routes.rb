@@ -4,6 +4,8 @@ HCEF::Application.routes.draw do
   match "/after_schools/update_by_id/:id" => "after_schools#update_by_id", via: :post
   match "/after_schools/update_sign_in_by_id/:id" => "after_schools#update_sign_in_by_id", via: :post
   match "/after_schools/load_data" => "after_schools#load_data", via: :post
+  get 'program/:id/:date' => "programs#show_day"
+
   resources :programs
   resources :locations
   resources :schools
