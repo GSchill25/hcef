@@ -1,1 +1,56 @@
-asdf
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @instructor.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @instructor.last_name %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @instructor.user.role %>
+</p>
+<% if @instructor.user.role != "admin" %>
+	<p>
+	  <strong>Assigned Programs:</strong>
+	  <table class='table table-striped'>
+	    <thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Program type</th>
+	        <th>Start date</th>
+	        <th>End date</th>
+	        <th>Location</th>
+	        <th></th>
+	        <th></th>
+	        <th></th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	      <% @instructor.programs.each do |program| %>
+	        <% if can? :read, program %>
+	          <tr>
+	            <td><%= link_to program.name, program_path(program) %></td>
+	            <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+	            <td><%= program.start_date %></td>
+	            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+	            <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
+	            <% if can? :edit, program %>
+	            	<td><%= link_to 'Edit', edit_program_path(program) %></td>
+	            <% end %>
+	          </tr>
+	        <% end %>
+	      <% end %>
+	    </tbody>
+	  </table>
+	</p>
+<% end %>
+<% if can? :edit, @instructor %>
+	<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<% end %>
+<%= link_to 'Back', instructor_path %>

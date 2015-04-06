@@ -2,6 +2,7 @@ class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
   # Turn off protect_from_forgery for this action
   protect_from_forgery except: :update_by_id
+  authorize_resource
 
   def index
     @after_schools = AfterSchool.all
@@ -22,6 +23,9 @@ class AfterSchoolsController < ApplicationController
       @data.push([child.name] + [0]*4 + [""])
       @data_sign_in.push([child.name] + [""] + [""])
       @children_ids.push(child.id)
+    end
+    if cannot? :read, @program
+      redirect_to "public/404.html"
     end
   end
 

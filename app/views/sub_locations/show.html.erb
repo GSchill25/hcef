@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sub_location.name %>
+</p>
+
+<p>
+  <strong>Main Location:</strong>
+  <%= @sub_location.location.name %>
+</p>
+
+<p>
+  <strong>Address line one:</strong>
+  <%= @sub_location.address_line_one %>
+</p>
+
+<p>
+  <strong>Address line two:</strong>
+  <%= @sub_location.address_line_two %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @sub_location.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @sub_location.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @sub_location.zip %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @sub_location.phone %>
+</p>
+
+<%= link_to 'Edit', edit_sub_location_path(@sub_location) %> |
+<%= link_to 'Back', sub_locations_path %>

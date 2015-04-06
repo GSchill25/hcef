@@ -12,7 +12,9 @@
     <tr>
       <td><%= link_to instructor.first_name + " " + instructor.last_name, instructor_path(instructor) %></td>
       <td>Programs</td>
-      <td><%= link_to 'Edit', edit_program_path(instructor) %></td>
+      <% if can? :edit, @instructor %>
+        <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+      <% end %>
   </tr>
   <% end %>
   </tbody>

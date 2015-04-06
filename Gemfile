@@ -39,7 +39,7 @@ gem 'populator'
 gem 'faker'
 
 #Permissions Gem for different users
-gem 'cancan'
+gem 'cancancan'
 
 #charts
 gem 'chartkick'

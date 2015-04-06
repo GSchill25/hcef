@@ -21,4 +21,6 @@ class ChildTest < ActiveSupport::TestCase
   should_not allow_value(Date.today).for(:date_of_birth)
   should_not allow_value("bad").for(:date_of_birth)
   should_not allow_value(2).for(:date_of_birth)
+
+  #alphabetical
 end
