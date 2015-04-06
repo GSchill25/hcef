@@ -42,5 +42,5 @@
 
 /* Hover color */
 #sidebar1 .nav > li > a:hover, #sidebar1 .nav > li > a:focus {
-  background-color: #000;
+  /* background-color: #000; */
 }
