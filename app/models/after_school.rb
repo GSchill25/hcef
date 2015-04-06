@@ -22,6 +22,7 @@ class AfterSchool < ActiveRecord::Base
   scope :ascending, -> { order("date") }
   scope :descending, -> { order("date DESC") }
   scope :for_program, ->(program_id) { where("program_id = ?", program_id)}
+  scope :for_date, ->(date) { where("date = ?", date)}
 
 
   def total_time
