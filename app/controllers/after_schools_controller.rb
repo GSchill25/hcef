@@ -1,7 +1,8 @@
 class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
-  # Turn off protect_from_forgery for this action
+  # Turn off protect_from_forgery for these actions
   protect_from_forgery except: :update_by_id
+  protect_from_forgery except: :load_data
   authorize_resource
 
   def index
