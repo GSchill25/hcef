@@ -1,8 +1,7 @@
 class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
   # Turn off protect_from_forgery for these actions
-  protect_from_forgery except: :update_by_id
-  protect_from_forgery except: :load_data
+  protect_from_forgery :except => [:update_by_id, :update_sign_in_by_id, :load_data]
   authorize_resource
 
   def index
@@ -128,6 +127,7 @@ class AfterSchoolsController < ApplicationController
       
       # If the record exists, give the row this data
       if !record.nil?
+        p record
 
         if record.homework_time.nil?
           data[index][1] = 0
@@ -158,12 +158,18 @@ class AfterSchoolsController < ApplicationController
         if record.time_in.nil?
           data_sign_in[index][1] = ""
         else
-          data_sign_in[index][2] = "#{record.time_in.hour}:#{record.time_in.min}"
+          hour = record.time_in.hour
+          minutes = record.time_in.min 
+          minutes = minutes < 10 ? "0#{minutes}" : minutes;
+          data_sign_in[index][1] = "#{hour}:#{minutes}"
         end
         if record.time_out.nil?
           data_sign_in[index][2] = ""
         else
-          data_sign_in[index][2] = "#{record.time_out.hour}:#{record.time_out.min}"
+          hour = record.time_in.hour
+          minutes = record.time_in.min 
+          minutes = minutes < 10 ? "0#{minutes}" : minutes;
+          data_sign_in[index][2] = "#{hour}:#{minutes}"
         end
 
       # If the record doesn't exist, set the row to initial, zero'd values
