@@ -136,7 +136,7 @@ $('.datepick').change(function(){
 
 } /* end window.onload */
 
-$(document).on('click', '.btn', function() {
-   $(".btn").removeClass('active');
+$(document).on('click', '.custom_btn', function() {
+   $(".custom_btn").removeClass('active');
    $(this).addClass('active');
  });
