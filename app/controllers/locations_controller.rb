@@ -11,9 +11,11 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    @instructor = Instructor.all
   end
 
   def edit
+    @instructor = Instructor.all
   end
 
   def create
@@ -44,6 +46,6 @@ class LocationsController < ApplicationController
     end
 
     def location_params
-      params.require(:location).permit(:name, :address_line_one, :address_line_two, :city, :state, :zip, :phone)
+      params.require(:location).permit(:name, :address_line_one, :address_line_two, :city, :state, :zip, :phone, :instructor_ids => [])
     end
 end
