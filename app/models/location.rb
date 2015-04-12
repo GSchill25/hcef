@@ -5,6 +5,8 @@ class Location < ActiveRecord::Base
   has_many :children, through: :child_locations
   has_many :guardian_locations
   has_many :guardians, through: :guardian_locations
+  has_many :assignments
+  has_many :instructors, through: :assignments  
   
   # Validations
   validates_presence_of :name

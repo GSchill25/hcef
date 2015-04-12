@@ -48,14 +48,7 @@
                     <label for="<%= child.id %>"><%= child.name %></label>
                     <br />
                   <% end  %>
-
-                  <h6> Assign Instructor to This Program </h6>
-                  <% for instructor in @instructor %>
-                    <%= check_box_tag "program[instructor_ids][]", instructor.id, @program.instructors.include?(instructor), {id: instructor.id} %>
-                    <label for="<%= instructor.id %>"><%= instructor.proper_name %></label>
-                    <br />
-                  <% end  %>
-                <% end %><br /><br />
+                  <br /><br />
             <%= f.submit %>
         <% end %>
       </div>

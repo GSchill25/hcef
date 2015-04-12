@@ -8,6 +8,7 @@ class Ability
     if user.role? :admin
         can :manage, :all
     elsif user.role? :instructor
+        can :manage, :all
         #afterschool
         #this next line of code does not work; figure out why
         can :create, AfterSchool
@@ -50,6 +51,7 @@ class Ability
         #guardian
         can :manage, Guardian
         #make sure instructors can only see guardians linked to the child
+        #DO THIS
         
         #instructor
         can :read, Instructor
@@ -58,21 +60,18 @@ class Ability
         end
 
         #location
-        can :create, Location
-        can :manage, Location do |location|
-            program_instructors = user.instructor.programs.map{|c| c.location.id}
-            program_instructors.include? location.id
-        end
+        can :manage, Location
+
+        #can :create, Location
+        #can :manage, Location do |location|
+        #    program_instructors = user.instructor.programs.map{|c| c.location.id}
+        #    program_instructors.include? location.id
+        #end
+
+        #sub_location
 
         #program
-        can :update, Program do |program|
-            program_instructors = user.instructor.programs.map(&:id)
-            program_instructors.include? program.id
-        end
-        can :read, Program do |program|
-            program_instructors = user.instructor.programs.map(&:id)
-            program_instructors.include? program.id
-        end
+        can :manage, Program
 
         #provider
         can :read, Provider
@@ -85,7 +84,7 @@ class Ability
             current_user.id == user.id
         end
     end
-    
+    else can :manage, :all
     #elsif user.role? :guardian
     #    can :manage, Child do |child|
     #        child.guardian.id == user.guardian_id

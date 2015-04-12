@@ -25,6 +25,10 @@
 			<% end %>
 			<button class="" type="submit" name="action">Submit
 			</button>
+			<% if can? :create, @instructor %>
+				<%= f.label :location_id %>
+            	<%= collection_select(:instructor, :location_id, Location.alphabetical, :id, :name, prompt: true) %>
+            <% end %>
 		<% end %>
 	  </div>
     </div>
