@@ -14,6 +14,8 @@ HCEF::Application.routes.draw do
   resources :instructors
   resources :sessions
   resources :sub_locations
+  resources :enrichments
+  resources :field_trips
 
   get 'home' => 'static#beta'
   get 'master_view' => 'static#home'
@@ -27,6 +29,5 @@ HCEF::Application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
-
  
 end

@@ -9,6 +9,9 @@ class Program < ActiveRecord::Base
   has_many :children, through: :enrollments
   has_many :instructors, through: :assignments
 
+  accepts_nested_attributes_for :enrichment, reject_if: lambda { |enr| enr[:length].blank? }
+  accepts_nested_attributes_for :field_trip, reject_if: lambda { |ft| ft[:length].blank? }
+
   # Validations
   validates_presence_of :name
   validates_presence_of :program_type
