@@ -2,7 +2,7 @@ class Instructor < ActiveRecord::Base
 
 	has_one :user
 	has_many :assignments
-	has_many :programs, through: :assignments
+	has_many :locations, through: :assignments
 	
 	accepts_nested_attributes_for :user, reject_if: lambda { |user| user[:username].blank? or user[:password].blank? }
 

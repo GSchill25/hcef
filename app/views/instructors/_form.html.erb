@@ -23,6 +23,12 @@
 			<%= f.fields_for :user do |users| %>
 				<%= render :partial => "user_form", :locals => { :f => users } %>
 			<% end %>
+			<h6> Assign Instructor Location </h6>
+                  <% for location in Location.all %>
+                    <%= check_box_tag "instructor[location_ids][]", location.id, @instructor.locations.include?(location), {id: location.id} %>
+                    <label for="<%= location.id %>"><%= location.name %></label>
+                    <br />
+                  <% end  %>
 			<button class="" type="submit" name="action">Submit
 			</button>
 		<% end %>
