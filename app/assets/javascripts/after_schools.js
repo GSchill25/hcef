@@ -121,6 +121,7 @@ $('.datepick').change(function(){
           var response = JSON.parse(request.responseText);
           data = response.data
           data_sign_in = response.data_sign_in
+          console.log(data_sign_in);
 
           hot.loadData(data);
           hot_sign_in.loadData(data_sign_in);
