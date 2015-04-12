@@ -107,6 +107,33 @@ window.hot_sign_in = new Handsontable(container_sign_in,
     afterChange: onChange_sign_in
 });
 
+/* On change of date, load in data from this day */
+$('.datepick').change(function(){
+    var url = '/after_schools/load_data'
+    var date = document.getElementById('date').value;
+    var params = JSON.stringify({data: data, data_sign_in: data_sign_in, program_id: program_id, children_ids: children_ids, date: date});
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function() { 
+      if (request.readyState == 4) { // `DONE`
+        var status = request.status;
+        if (status == 200) {
+          var response = JSON.parse(request.responseText);
+          data = response.data
+          data_sign_in = response.data_sign_in
+          console.log(data_sign_in);
+
+          hot.loadData(data);
+          hot_sign_in.loadData(data_sign_in);
+        }
+      }
+    }
+
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(params);
+});
+
 } /* end window.onload */
 
 $(document).on('click', '.btn', function() {

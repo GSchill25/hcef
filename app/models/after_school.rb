@@ -22,5 +22,18 @@ class AfterSchool < ActiveRecord::Base
   scope :ascending, -> { order("date") }
   scope :descending, -> { order("date DESC") }
   scope :for_program, ->(program_id) { where("program_id = ?", program_id)}
+  scope :for_date, ->(date) { where("date = ?", date)}
+
+
+  def total_time
+    times = [self.reading_specialist_time, self.technology_time, self.homework_time, self.literacy_time]
+    total = 0
+    times.each do |t|
+      if !t.nil?
+        total += t
+      end
+    end
+    return total
+  end
 
 end

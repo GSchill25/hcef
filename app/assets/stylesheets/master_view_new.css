@@ -1,10 +1,20 @@
-#sidebar1 {
+#locationsText {
   background-color: #F2F2F2;
 }
 
+#locations {
+  background-color: #FBFBFB;
+}
+
+#providers {
+  background-color: #F2F2F2;
+}
+
+/*  text-color: #0078B4; */
+
 /* Parent links */
 #sidebar1 li>a {
-  font-size: 13px ;
+  font-size: 15px ;
   padding-left: 0px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -12,8 +22,16 @@
 
 /* Child links */
 #sidebar1 .nav>li>a {
-  font-size: 12px;
+  font-size: 13px;
   padding-left: 15px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+/* Baby links */
+#sidebar1 .nav ul>li>a{
+  font-size: 11px;
+  padding-left: 30px;
   padding-top: 1px;
   padding-bottom: 1px;
 }
@@ -22,3 +40,7 @@
   color: #563d7c; 
 }
 
+/* Hover color */
+#sidebar1 .nav > li > a:hover, #sidebar1 .nav > li > a:focus {
+  /* background-color: #000; */
+}

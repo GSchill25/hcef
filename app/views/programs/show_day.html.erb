@@ -39,21 +39,10 @@
 
     </br></br>
 
-        </br></br>
-        <h5><u> Average Activity Time for All Children </u></h5>
-        <%= bar_chart @average_times, colors: ["orange", "blue", "red", "green"] %>
 
-      </br>
       <h5 align="center"> Daily Attendance/Time Allocation </h5>
       </br>
-      <%= render :partial => "day_summary" %>
+      <%= render :partial => "days" %>
       </br>
 
-      <button type="button" class="btn btn-default">
-        <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
-      </button>
-      <button type="button" class="btn btn-default">
-        <%= link_to 'Edit Program', edit_program_path(@program) %> 
-      </button></br></br>
 </div>
-

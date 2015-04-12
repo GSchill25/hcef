@@ -8,10 +8,10 @@ $(".after_schools.new").ready(function() {
    $('.datepick').datepicker({ 
      onSelect: function() {
        $("#toggleTables").show();
+       /* Triggers reloading of table data */
+       $(this).change();
      }
    });
-   //$("#date").datepicker( "setDate" , new Date() );
-   //$('#date').datepicker( "onSelect", alert("selected") );
 });
 
 $(".children.new").ready(function() {

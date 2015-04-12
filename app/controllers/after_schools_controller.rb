@@ -1,7 +1,7 @@
 class AfterSchoolsController < ApplicationController
   before_action :set_after_school, only: [:show, :edit, :update, :destroy]
-  # Turn off protect_from_forgery for this action
-  protect_from_forgery except: :update_by_id
+  # Turn off protect_from_forgery for these actions
+  protect_from_forgery :except => [:update_by_id, :update_sign_in_by_id, :load_data]
   authorize_resource
 
   def index
@@ -113,12 +113,84 @@ class AfterSchoolsController < ApplicationController
     head :ok
   end
 
+  def load_data
+    data = params["data"]
+    data_sign_in = params["data_sign_in"]
+    program_id = params["program_id"]
+    children_ids = params["children_ids"]
+    date = Date.strptime(params["date"],"%m/%d/%Y")
+    
+    # Look at every child to check if a record exists
+    for index in 0..children_ids.count-1
+      child_id = children_ids[index]
+      record = AfterSchool.where(:program_id=>program_id).where(:child_id=>child_id).where(:date=>date).first
+      
+      # If the record exists, give the row this data
+      if !record.nil?
+        p record
+
+        if record.homework_time.nil?
+          data[index][1] = 0
+        else
+          data[index][1] = record.homework_time
+        end
+        if record.literacy_time.nil?
+          data[index][2] = 0
+        else
+          data[index][2] = record.literacy_time
+        end
+        if record.technology_time.nil?
+          data[index][3] = 0
+        else
+          data[index][3] = record.technology_time
+        end
+        if record.reading_specialist_time.nil?
+          data[index][4] = 0
+        else
+          data[index][4] = record.reading_specialist_time
+        end
+        if record.goal.nil?
+          data[index][5] = ""
+        else
+          data[index][5] = record.goal
+        end
+
+        if record.time_in.nil?
+          data_sign_in[index][1] = ""
+        else
+          hour = record.time_in.hour
+          minutes = record.time_in.min 
+          minutes = minutes < 10 ? "0#{minutes}" : minutes;
+          data_sign_in[index][1] = "#{hour}:#{minutes}"
+        end
+        if record.time_out.nil?
+          data_sign_in[index][2] = ""
+        else
+          hour = record.time_in.hour
+          minutes = record.time_in.min 
+          minutes = minutes < 10 ? "0#{minutes}" : minutes;
+          data_sign_in[index][2] = "#{hour}:#{minutes}"
+        end
+
+      # If the record doesn't exist, set the row to initial, zero'd values
+      else
+        data[index] = [data[index][0]] + [0]*4 + [""]
+        
+        data_sign_in[index][1] = ""
+        data_sign_in[index][2] = ""
+      end
+    end
+    
+    render :json => {data: data, data_sign_in: data_sign_in}
+    end
+
   def destroy
     @after_school.destroy
     redirect_to after_schools_url, notice: "#{@after_school.date} has been destroyed"
   end
 
   private
+
     def set_after_school
       @after_school = AfterSchool.find(params[:id])
     end
