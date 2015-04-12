@@ -4,7 +4,11 @@
   <div class="col-lg-7">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h4>Enrichment Program</h4>
+        <% if @program.program_type=="enrichment" %>
+          <h4>Enrichment Program</h4>
+        <% elsif @program.program_type=="field_trip" %>
+          <h4>Field Trip Program</h4>
+        <% end %>
       </div>
       <div class="panel-body">
         <%= nested_form_for(@program) do |f| %>
@@ -45,8 +49,14 @@
            
             
             <div class="col-lg-6">
-              <%= f.fields_for :enrichment do |enrich| %>
-                <%= render :partial => "enrich_fields", :locals => { :f => enrich } %>
+              <% if @program.program_type=="enrichment" %>
+                <%= f.fields_for :enrichment do |enrich| %>
+                  <%= render :partial => "enrich_fields", :locals => { :f => enrich } %>
+                <% end %>
+              <% elsif @program.program_type=="field_trip" %>
+                <%= f.fields_for :field_trip do |trip| %>
+                  <%= render :partial => "enrich_fields", :locals => { :f => trip } %>
+                <% end %>
               <% end %>
             </div>
            </div>
