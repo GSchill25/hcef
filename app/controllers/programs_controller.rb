@@ -8,6 +8,7 @@ class ProgramsController < ApplicationController
     @programs = Program.all
   end
 
+
   # GET /programs/1
   # GET /programs/1.json
   def show
