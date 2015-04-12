@@ -1,16 +1,17 @@
-#locationsText {
-  background-color: #F2F2F2;
+#sidebar1 {
+  width: 100%;
 }
-
-#locations {
-  background-color: #FBFBFB;
+#locations{
+  background-color: #EBEBEB;
 }
 
 #providers {
-  background-color: #F2F2F2;
+  background-color: #EBEBEB;
 }
 
-/*  text-color: #0078B4; */
+.btn-group {
+  width: 100%;
+}
 
 /* Parent links */
 #sidebar1 li>a {
@@ -21,17 +22,27 @@
 }
 
 /* Child links */
-#sidebar1 .nav>li>a {
+#sidebar1 .nav>div>li>label {
+  text-align: left;
+  /*width: calc(100% - 10px);*/
+  width: 100%;
   font-size: 13px;
-  padding-left: 15px;
   padding-top: 1px;
   padding-bottom: 1px;
 }
 
 /* Baby links */
-#sidebar1 .nav ul>li>a{
+#sidebar1 .nav ul>div{
+  width: 100%;
+}
+
+#sidebar1 .nav ul>div>li{
+  margin-left: 15px;
+}
+
+#sidebar1 .nav ul>div>li>label{
+  text-align: left;
   font-size: 11px;
-  padding-left: 30px;
   padding-top: 1px;
   padding-bottom: 1px;
 }
@@ -43,4 +54,8 @@
 /* Hover color */
 #sidebar1 .nav > li > a:hover, #sidebar1 .nav > li > a:focus {
   /* background-color: #000; */
+}
+
+#sidebar1 .btn {
+  border-radius: 0px;
 }
