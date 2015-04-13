@@ -1,5 +1,6 @@
 <div class='row' id="no_container">
-  <div class='col-xs-9 col-xs-offset-3'>
+
+  <div class='col-xs-6 col-xs-offset-3'>
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-primary active">
         <input type="radio" >AfterSchool</label>
@@ -9,11 +10,13 @@
         <input type="radio">Field Trip</label>
     </div>
   </div>
+
+  <div id='submit-column' class='col-xs-3'>
+    <button type="submit" class="btn btn-default" onclick='return submit()'>Submit</button>
+  </div>
 </div>
 
-
 <div class='row'>
-<form role='form'>
 
 <!--TODO search-bar -->
 
@@ -23,93 +26,25 @@
     <a id='locationsText' data-toggle="collapse" href='#groupA'>Locations</a>
     <ul id='groupA' class='nav nav-stacked collapse'>
       <div class="btn-group" data-toggle="buttons">
-        <li><label class='btn btn-primary'><input type='checkbox'> All</li>
+        <li><label id='all' class='btn btn-primary'><input type='checkbox'> All</li></label>
       
-      <% @locations.each do |location| %>
-        <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %>
+        <% @locations.each do |location| %>
+          <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %>
 
-          <% if !location.sub_locations.empty? %>
-            <ul class='nav nav-stacked'>
-            <div class="btn-group">
-            <% location.sub_locations.each do |sl| %>
-              <li><label class='btn btn-primary'><input type='checkbox'> <%= sl.name %></label></li>
+            <% if !location.sub_locations.empty? %>
+              <ul class='nav nav-stacked'>
+                <div class="btn-group">
+                  <% location.sub_locations.each do |sl| %>
+                    <li><label class='btn btn-primary'><input type='checkbox'> <%= sl.name %></label></li>
+                  <% end %>
+                </div>
+              </ul>
             <% end %>
-            </div>
-            </ul>
-          <% end %>
-
-        </label></li>
-      <% end %>
-      </div>
-      </ul>
-          
-        <!--li><label class='btn btn-primary'><input type='checkbox'> All</li>
-        <li><label class='btn btn-primary'><input type='checkbox'> ACTION-Housing</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Allegheny Valley A.C.</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Alle-Kiski Area HOPE</label></li>
-        <li class='parent'><label class='btn btn-primary'><input type='checkbox'> Auberle</label>
-          <ul class='nav nav-stacked'>
-            <div class="btn-group">
-              <li><label class='btn btn-primary'><input type='checkbox'> Shelter Program</label></li>
-              <li><label class='btn btn-primary'><input type='checkbox'> Movin' On / Hartman </label></li>
-            </div>
-          </ul>
-        </li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Bridge to Independence</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Center for Victims</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Community Human Services</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Crisis Center North</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> East End Cooperative</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Familylinks</label>
-          <ul class='nav nav-stacked'>
-            <div class="btn-group">
-              <li><label class='btn btn-primary'><input type='checkbox'> Downtown Outreach</label></li>
-              <li><label class='btn btn-primary'><input type='checkbox'> Plum</label></li>
-              <li><label class='btn btn-primary'><input type='checkbox'> Sylvan</label></li>
-            </div>
-          </ul>
-        </li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Family Promise SWPA</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Gaudenzia Erie</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Gay and Lesbian CC</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Goodwill SWPA</label>
-          <ul class='nav nav-stacked'>
-            <div class="btn-group">
-              <li><label class='btn btn-primary'><input type='checkbox'> Healthy Start</label></li>
-              <li><label class='btn btn-primary'><input type='checkbox'> HEART</label></li>
-            </div>
-          </ul>
-        </li>
-        <li><label class='btn btn-primary'><input type='checkbox'> HEARTH</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Light of Life</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Naomi's Place</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Salvation Army</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Sisters Place</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Sojourner House</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Sojourner House MOMS</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Sojourner House MOMS East</label>
-          <ul class='nav nav-stacked'>
-            <div class="btn-group">
-              <li><label class='btn btn-primary'><input type='checkbox'> Open Arms</label></li>
-              <li><label class='btn btn-primary'><input type='checkbox'> Sankofa</label></li>
-            </div>
-          </ul>
-        </li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Three Rivers Youth</label>
-          <ul class='nav nav-stacked'>
-            <div class="btn-group">
-              <li><label class='btn btn-primary'><input type='checkbox'> Emergency</label></li>
-              <li><label class='btn btn-primary'><input type='checkbox'> The Hub</label></li>
-            </div>
-          </ul>
-        </li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Womanspace East</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Women's Center & Shelter</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> Western Psychiatric</label></li>
-        <li><label class='btn btn-primary'><input type='checkbox'> YWCA Greater Pittsburgh</label></li>
+          </label></li>
+        <% end %>
       </div>
     </ul>
-  </li-->
+          
   <li id='providers'>
     <a data-toggle="collapse" href='#groupB'>Providers</a>
     <ul id='groupB' class='nav nav-stacked collapse'>
@@ -129,5 +64,4 @@
   </li>
 </ul>
 </nav>
-</form>
 </div>
