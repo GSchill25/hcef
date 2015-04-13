@@ -87,6 +87,7 @@
       <% if @program.program_type=="after_school" %>
         <a class="btn btn-primary" href="<%= new_after_school_path(program_id: @program.id) %>" role="button"> New Day</a>
       <% end %>
-      <a class="btn btn-warning" href="<%= edit_program_path(@program) %>" role="button"> Edit Program</a></br></br>
+      <a class="btn btn-warning" href="<%= edit_program_path(@program) %>" role="button"> Edit Program</a>
+      <a class="btn btn-default" href="<%= programs_url %>" role="button"> All Programs</a></br></br>
 </div>
 
