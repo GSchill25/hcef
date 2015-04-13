@@ -24,6 +24,26 @@
     <ul id='groupA' class='nav nav-stacked collapse'>
       <div class="btn-group" data-toggle="buttons">
         <li><label class='btn btn-primary'><input type='checkbox'> All</li>
+      
+      <% @locations.each do |location| %>
+        <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %>
+
+          <% if !location.sub_locations.empty? %>
+            <ul class='nav nav-stacked'>
+            <div class="btn-group">
+            <% location.sub_locations.each do |sl| %>
+              <li><label class='btn btn-primary'><input type='checkbox'> <%= sl.name %></label></li>
+            <% end %>
+            </div>
+            </ul>
+          <% end %>
+
+        </label></li>
+      <% end %>
+      </div>
+      </ul>
+          
+        <!--li><label class='btn btn-primary'><input type='checkbox'> All</li>
         <li><label class='btn btn-primary'><input type='checkbox'> ACTION-Housing</label></li>
         <li><label class='btn btn-primary'><input type='checkbox'> Allegheny Valley A.C.</label></li>
         <li><label class='btn btn-primary'><input type='checkbox'> Alle-Kiski Area HOPE</label></li>
@@ -89,7 +109,7 @@
         <li><label class='btn btn-primary'><input type='checkbox'> YWCA Greater Pittsburgh</label></li>
       </div>
     </ul>
-  </li>
+  </li-->
   <li id='providers'>
     <a data-toggle="collapse" href='#groupB'>Providers</a>
     <ul id='groupB' class='nav nav-stacked collapse'>
