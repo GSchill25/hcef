@@ -9,6 +9,17 @@
   	<div class="panel-body">
   	  <div class="well well-lg">
     	<%= nested_form_for(@instructor, :url=>{:action=>"create"}, html: {class: ""}) do |f| %>
+	    	<% if @instructor.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this After School Form from being saved:</h2>
+
+			      <ul>
+			      <% @instructor.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			<% end %>
     		<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<label>First Name</label>

@@ -84,7 +84,6 @@ class Ability
             current_user.id == user.id
         end
     end
-    else can :manage, :all
     #elsif user.role? :guardian
     #    can :manage, Child do |child|
     #        child.guardian.id == user.guardian_id

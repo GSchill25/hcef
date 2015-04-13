@@ -12,6 +12,7 @@ class InstructorsController < ApplicationController
   def new
   	@instructor = Instructor.new
   	@instructor.build_user
+  	@locations = Location.all
   end
 
   def edit
