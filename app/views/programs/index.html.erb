@@ -1,4 +1,4 @@
-  <h1>Programs This Year</h1>
+  <h1>Programs </h1>
 
   <table class='table table-striped'>
     <thead>
@@ -35,3 +35,5 @@
   <br>
  
   <a class="btn btn-primary" href="<%= new_program_path %>" role="button"> New Program </a>
+
+  <%= will_paginate @programs %>
