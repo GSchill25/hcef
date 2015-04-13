@@ -10,8 +10,11 @@ class StaticController < ApplicationController
   end
 
   def master_view_submit
-    location_ids = params["locations"].map(&:to_i)
-    locations = Location.all.alphabetical.reject!.with_index { |l, i| !location_ids.include? i }
+    location_ids = params["locations"]
+    if !location_ids.nil? 
+      location_ids.map!(&:to_i)
+      locations = Location.all.alphabetical.reject!.with_index { |l, i| !location_ids.include? i }
+    end
     render :json => {locations: locations} 
   end
 
