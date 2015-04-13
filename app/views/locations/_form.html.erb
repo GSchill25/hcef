@@ -32,7 +32,7 @@
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
 
-    <h6> Assign Instructor to This Program </h6>
+    <h6> Assign Instructor to This Location </h6>
     <% for instructor in @instructor %>
       <%= check_box_tag "location[instructor_ids][]", instructor.id, @location.instructors.include?(instructor), {id: instructor.id} %>
         <label for="<%= instructor.id %>"><%= instructor.proper_name %></label>
