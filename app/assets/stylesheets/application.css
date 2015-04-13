@@ -44,7 +44,12 @@ footer {
   background-color: #0078B4;
 }
 
+.navbar-default .navbar-brand {
+  padding: 0px 30px;
+}
+
 .navbar-default {
+  border: none;
   border-radius: 0 !important;
   background-color: #0078B4 !important;
   border-color: #0078B4 !important;
