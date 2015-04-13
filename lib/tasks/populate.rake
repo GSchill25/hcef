@@ -52,7 +52,94 @@ namespace :db do
     action.zip = '15219'
     action.phone = '4122812102'
     action.save!
+
+    avac = Location.new
+    avac.name = 'Allegheny Valley A.C.'
+    avac.save!
+
+    akah = Location.new
+    akah.name = 'Alle-Kiski Area HOPE'
+    akah.save!
     
+    auberle = Location.new
+    auberle.name = 'Auberle'
+    auberle.save!
+      
+      sp = SubLocation.new
+      sp.name = 'Shelter Program'
+      sp.location = auberle
+      sp.save!
+      
+      moh = SubLocation.new
+      moh.name = 'Movin\' on / Hartman'
+      moh.location = auberle
+      moh.save!
+
+    bti = Location.new
+    bti.name = 'Bridge to Independence'
+    bti.save!
+
+    cfv = Location.new
+    cfv.name = 'Center for Victims'
+    cfv.save!
+
+    chs = Location.new
+    chs.name = 'Community Human Services'
+    chs.save!
+    
+    ccn = Location.new
+    ccn.name = 'Crisis Center North'
+    ccn.save!
+
+    eec = Location.new
+    eec.name = 'East End Cooperative'
+    eec.save!
+
+    familyLinks = Location.new
+    familyLinks.name = 'Familylinks'
+    familyLinks.save!
+
+      dout = SubLocation.new
+      dout.name = 'Downtown Outreach'
+      dout.location = familyLinks
+      dout.save!
+
+      plum = SubLocation.new
+      plum.name = 'Plum'
+      plum.location = familyLinks
+      plum.save!
+
+      sylvan = SubLocation.new
+      sylvan.name = 'Sylvan'
+      sylvan.location = familyLinks
+      sylvan.save!
+
+    fpSWPA = Location.new
+    fpSWPA.name = 'Family Promise SWPA'
+    fpSWPA.save!
+
+    ge = Location.new
+    ge.name = 'Gaudenzia Erie'
+    ge.save!
+
+    glcc = Location.new
+    glcc.name = 'Gay and Lesbian CC'
+    glcc.save!
+
+    gSWPA = Location.new
+    gSWPA.name = 'Goodwill SWPA'
+    gSWPA.save!
+      
+      healthyStart = SubLocation.new
+      healthyStart.name = 'Healthy Start'
+      healthyStart.location = gSWPA
+      healthyStart.save!
+
+      heart = SubLocation.new
+      heart.name = 'HEART'
+      heart.location = gSWPA
+      heart.save!
+
     hearth = Location.new
     hearth.name = 'HEARTH'
     hearth.address_line_one = '3724 Mount Royal Blvd'
@@ -63,6 +150,75 @@ namespace :db do
     hearth.phone = '4123669801'
     hearth.save!
 
+    lol = Location.new
+    lol.name = 'Light of Life'
+    lol.save!
+    
+    np = Location.new
+    np.name = 'Naomi\'s Place'
+    np.save!
+    
+    sa = Location.new
+    sa.name = 'Salvation Army'
+    sa.save!
+    
+    sp = Location.new
+    sp.name = 'Sisters Place'
+    sp.save!
+    
+    sj = Location.new
+    sj.name = 'Sojourner House'
+    sj.save!
+    
+    sjm = Location.new
+    sjm.name = 'Sojourner House MOMS'
+    sjm.save!
+    
+    sjme = Location.new
+    sjme.name = 'Sojourner House MOMS East'
+    sjme.save!
+    
+      oa = SubLocation.new
+      oa.name = 'Open Arms'
+      oa.location = sjme
+      oa.save!
+
+      sankofa = SubLocation.new
+      sankofa.name = 'Sankofa'
+      sankofa.location = sjme
+      sankofa.save!
+
+    try = Location.new
+    try.name = 'Three Rivers Youth'
+    try.save!
+    
+      emergency = SubLocation.new
+      emergency.name = 'Emergency'
+      emergency.location = try
+      emergency.save!
+
+      th = SubLocation.new
+      th.name = 'The Hub'
+      th.location = try
+      th.save!
+
+    we = Location.new
+    we.name = 'Womanspace East'
+    we.save!
+
+    wcs = Location.new
+    wcs.name = 'Women\'s Center & Shelter'
+    wcs.save!
+    
+    wp = Location.new
+    wp.name = 'Western Psychiatric'
+    wp.save!
+    
+    ygp = Location.new
+    ygp.name = 'YWCA Greater Pittsburgh'
+    ygp.save!
+    
+
     soj = Location.new
     soj.name =  'Sojourner House'
     soj.address_line_one = '1234 Pitt Street'
@@ -72,6 +228,8 @@ namespace :db do
     soj.zip = '15213'
     soj.phone = '1234567890'
     soj.save!
+
+
 
 =begin
     # Future locations
