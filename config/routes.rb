@@ -15,6 +15,8 @@ HCEF::Application.routes.draw do
   resources :instructors
   resources :sessions
   resources :sub_locations
+  resources :enrichments
+  resources :field_trips
 
   get 'home' => 'static#beta'
   get 'master_view' => 'static#home'

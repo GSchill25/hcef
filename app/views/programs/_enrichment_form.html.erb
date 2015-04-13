@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-lg-2">
+  </div>
+  <div class="col-lg-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <% if @program.program_type=="enrichment" %>
+          <h4>Enrichment Program</h4>
+        <% elsif @program.program_type=="field_trip" %>
+          <h4>Field Trip Program</h4>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <%= nested_form_for(@program) do |f| %>
+          <% if @program.errors.any? %>
+
+              <h2><%= pluralize(@program.errors.count, 'error') %> prohibited this program from being saved:</h2>
+
+              <ul>
+              <% @program.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+
+          <% end %>
+            <div class="row">
+              <div class="col-lg-6">
+                <%= f.label :name %><br>
+                <%= f.text_field :name %>
+              <br /><br />
+
+                <% if controller.action_name == "edit" %>
+                  <h6> Add Children to This Program </h6>
+                  <% for child in @children %>
+                    <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
+                    <label for="<%= child.id %>"><%= child.name %></label>
+                    <br />
+                  <% end  %>
+
+                  <h6> Assign Instructor to This Program </h6>
+                  <% for instructor in @instructor %>
+                    <%= check_box_tag "program[instructor_ids][]", instructor.id, @program.instructors.include?(instructor), {id: instructor.id} %>
+                    <label for="<%= instructor.id %>"><%= instructor.proper_name %></label>
+                    <br />
+                  <% end  %>
+                <% end %><br /><br />
+                <%= f.submit %>
+            </div>
+           
+            
+            <div class="col-lg-6">
+              <% if @program.program_type=="enrichment" %>
+                <%= f.fields_for :enrichment do |enrich| %>
+                  <%= render :partial => "enrich_fields", :locals => { :f => enrich } %>
+                <% end %>
+              <% elsif @program.program_type=="field_trip" %>
+                <%= f.fields_for :field_trip do |trip| %>
+                  <%= render :partial => "enrich_fields", :locals => { :f => trip } %>
+                <% end %>
+              <% end %>
+            </div>
+           </div>
+            
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <div class="col-lg-3">
+  </div>
+</div>

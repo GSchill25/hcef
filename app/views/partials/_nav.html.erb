@@ -28,7 +28,7 @@
       <% if logged_in? %>
        <p class='navbar-text navbar-right'>
          <%= current_user.username %> &nbsp
-         <%= link_to '(Logout?)', logout_path %>
+         <%= link_to '(Logout)', logout_path %>
        </p>
       <% else %>
         <p class='navbar-text navbar-right'><%= link_to 'Login', login_path %></p>

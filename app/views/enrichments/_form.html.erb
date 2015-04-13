@@ -1,0 +1,33 @@
+<%= form_for(@enrichment) do |f| %>
+  <% if @enrichment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@enrichment.errors.count, "error") %> prohibited this enrichment from being saved:</h2>
+
+      <ul>
+      <% @enrichment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= f.label :length %></br>
+      <%= f.text_field :length %>
+      
+      <p>
+      <%= f.label :notes %></br>
+      <%= f.text_field :notes %>
+      </p>
+
+      <p>
+      <%= f.label :provider_id %></br>
+      <%= f.collection_select :provider_id, Provider.all, :id, :name %>
+      </p>
+      
+      <br>
+      <%= f.submit %>
+    </div>
+
+  </div>
+<% end %>

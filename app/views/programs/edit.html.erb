@@ -1,1 +1,5 @@
-<%= render 'form' %>
+<% if @program.program_type == "enrichment" or @program.program_type == "field_trip" %>
+	<%= render 'enrichment_form' %>
+<% else %>
+	<%= render 'form' %>
+<% end %>

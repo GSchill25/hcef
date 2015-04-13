@@ -5,8 +5,9 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.json
   def index
-    @programs = Program.all
+    @programs = Program.all.descending.paginate(:page => params[:page], :per_page => 10)
   end
+
 
   # GET /programs/1
   # GET /programs/1.json
@@ -14,6 +15,11 @@ class ProgramsController < ApplicationController
     @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
     @dates = @program.program_days
+    if !@program.field_trip.nil?
+      @info = @program.field_trip
+    elsif !@program.enrichment.nil?
+      @info = @program.enrichment
+    end
   end
 
   def show_day
@@ -24,12 +30,18 @@ class ProgramsController < ApplicationController
   # GET /programs/new
   def new
     @program = Program.new
+    
   end
 
   # GET /programs/1/edit
   def edit
     @children = @program.by_location(@program.location_id)
     @instructor = Instructor.all
+    if @program.program_type=="enrichment" and @program.enrichment.nil?
+      @program.build_enrichment
+    elsif @program.program_type=="field_trip" and @program.field_trip.nil?
+      @program.build_field_trip
+    end
   end
 
   # POST /programs
@@ -80,6 +92,6 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:name, :program_type, :start_date, :end_date, :location_id, :child_ids => [], :instructor_ids => [])
+      params.require(:program).permit(:name, :program_type, :start_date, :end_date, :location_id, :child_ids => [], :instructor_ids => [], enrichment_attributes: [:id, :length, :notes, :program_id, :provider_id], field_trip_attributes: [:id, :length, :notes, :program_id, :provider_id])
     end
 end
