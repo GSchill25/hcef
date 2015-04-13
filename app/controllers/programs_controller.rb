@@ -15,6 +15,11 @@ class ProgramsController < ApplicationController
     @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
     @dates = @program.program_days
+    if !@program.field_trip.nil?
+      @info = @program.field_trip
+    elsif !@program.enrichment.nil?
+      @info = @program.enrichment
+    end
   end
 
   def show_day

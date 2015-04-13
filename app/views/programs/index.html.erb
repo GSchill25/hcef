@@ -25,7 +25,7 @@
             <td><%= program.end_date == "" ? "None" : program.end_date %></td>
             <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
             <td><%= program.children.count %></td>
-            <td><%= link_to 'Edit', edit_program_path(program) %></td>
+            <td><a class="btn btn-warning" href="<%= edit_program_path(program) %>" role="button"> Edit</a></td>
           </tr>
         <% end %>
       <% end %>
@@ -33,5 +33,5 @@
   </table>
 
   <br>
-
-  <%= link_to 'New Program', new_program_path %>
+ 
+  <a class="btn btn-primary" href="<%= new_program_path %>" role="button"> New Program </a>
