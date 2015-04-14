@@ -57,7 +57,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Length</div>
             <div class="panel-body">
-              <%= @info.length %>
+              <%= @info.nil? ? "" : @info.length %>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Notes</div>
             <div class="panel-body">
-              <%= @info.notes %>
+              <%= @info.nil? ? "" : @info.notes %>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Provider</div>
             <div class="panel-body">
-              <%= @info.provider %>
+              <%= @info.nil? ? "" : @info.provider  %>
             </div>
             
           </div>
