@@ -1,16 +1,36 @@
 $(document).ready(function() {
   $('.parent-button').click(function() {
-
     /* Button about to be made active */
     if (!$(this).hasClass('active')) {
-      $(this).find($('.btn')).each(function() {
-        $(this).addClass('active');
+      $(this).next().find($('.btn')).each(function() {
+        if (!$(this).hasClass('active')) {
+          $(this).trigger('click');
+        }
       });
     }
     /* Button about to be made inactive */
     else {
-      $(this).find($('.btn')).each(function() {
-        $(this).removeClass('active');
+      $(this).next().find($('.btn')).each(function() {
+        if ($(this).hasClass('active')) {
+          $(this).trigger('click');
+        }
+      });
+    }
+  });
+
+  $('#locations-all').click(function() {
+    if (!$(this).hasClass('active')) {
+      $('#locations').find($('.parent-button')).each(function() {
+        if (!$(this).hasClass('active')) {
+          $(this).trigger('click');
+        }
+      });
+    }
+    else {
+      $('#locations').find($('.parent-button')).each(function() {
+        if ($(this).hasClass('active')) {
+          $(this).trigger('click');
+        }
       });
     }
   });

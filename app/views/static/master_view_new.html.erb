@@ -26,21 +26,21 @@
     <a id='locationsText' data-toggle="collapse" href='#groupA'>Locations</a>
     <ul id='groupA' class='nav nav-stacked collapse'>
       <div class="btn-group" data-toggle="buttons">
-        <li><label id='all' class='btn btn-primary'><input type='checkbox'> All</li></label>
+        <li><label id='locations-all' class='btn btn-primary'><input type='checkbox'> All</li></label>
       
         <% @locations.each do |location| %>
-          <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %>
+          <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %></label>
 
             <% if !location.sub_locations.empty? %>
               <ul class='nav nav-stacked'>
                 <div class="btn-group">
                   <% location.sub_locations.each do |sl| %>
-                    <li><label class='btn btn-primary'><input type='checkbox'> <%= sl.name %></label></li>
+                    <li><label class='btn btn-primary child-button'><input type='checkbox'> <%= sl.name %></label></li>
                   <% end %>
                 </div>
               </ul>
             <% end %>
-          </label></li>
+          </li>
         <% end %>
       </div>
     </ul>
