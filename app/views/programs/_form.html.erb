@@ -47,8 +47,9 @@
                     <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
                     <label for="<%= child.id %>"><%= child.name %></label>
                     <br />
-                  <% end  %>
+                  <% end %>
                   <br /><br />
+                <% end %>
             <%= f.submit %>
         <% end %>
       </div>

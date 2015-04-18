@@ -74,6 +74,7 @@ class ProgramTest < ActiveSupport::TestCase
     should "show that descending works" do
       assert_equal ["Upcoming", "AfterSchool", "Enrichment", "FieldTrip", "Inactive"], Program.descending.all.map(&:name)
     end
+  end
 
     #by_location
 end

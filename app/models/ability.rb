@@ -8,13 +8,16 @@ class Ability
     if user.role? :admin
         can :manage, :all
     elsif user.role? :instructor
-        can :manage, :all
         #afterschool
         #this next line of code does not work; figure out why
         can :create, AfterSchool
         can :manage, AfterSchool do |afterschool|
             afterschool_instructors = user.instructor.programs.map{|c| c.after_schools.map(&:id)}
             afterschool_instructors.include? after_school.id
+
+            locations_instructors = user.instructor.locations.map{|c| c.programs }
+            for locations_instructors do |afterschool|
+                
         end
         
         #can :read, After_school
@@ -71,7 +74,10 @@ class Ability
         #sub_location
 
         #program
-        can :manage, Program
+        can :manage, Program do |program|
+            location_instructors = user.instructor.locations.map{|c| c.programs.map }
+            location_instructors.include? program.id
+        end
 
         #provider
         can :read, Provider
