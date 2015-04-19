@@ -2,13 +2,13 @@ module Contexts
   module AssignmentContexts
   	def create_after_schools
       # assumes create_curriculums prior
-      @CMU_assignment = FactoryGirl.create(:assignment, )
-      @UPitt_assignment
+      @CMU_assignment = FactoryGirl.create(:assignment, instructor: @instructor1, location: @CMU)
+      @UPitt_assignment = FactoryGirl.create(:assignment, instructor: @instructor3, location: @UPitt)
     end
 
     def delete_after_schools
-      @as1.delete
-      @as2.delete
+      @CMU_assignment.delete
+      @UPitt_assignment.delete
     end
   end
 end
