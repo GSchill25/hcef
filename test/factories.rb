@@ -11,9 +11,9 @@ FactoryGirl.define do
   factory :after_school do
     association :program
     association :child
-    date
-    time_in
-    time_out
+    date Date.today
+    time_in 
+    time_out 
     total_hours 6
     homework_time 2
     literacy_time 2
@@ -30,8 +30,8 @@ FactoryGirl.define do
   factory :child_location do
     association :child
     association :location
-    start_date
-    end_date
+    start_date Date.today
+    end_date Date.today
   end
 
   factory :child do
@@ -54,7 +54,7 @@ FactoryGirl.define do
   factory :enrollment do
     association :program
     association :child
-    date_enrolled
+    date_enrolled Date.today
   end
 
   factory :field_trip do
@@ -66,72 +66,73 @@ FactoryGirl.define do
   factory :guardian_location do
     association :locatoin
     association :guardian
-    start_date
-    end_date
+    start_date Date.today
+    end_date Date.today
   end
 
   factory :guardian do
     association :user
-    first_name
-    last_name
-    phone
-    email
+    first_name "James"
+    last_name "Kim"
+    phone "4125551234"
+    email "jkim@sample.com"
     date_of_birth
   end
 
   factory :instructor do
     association :user
-    first_name
-    last_name
+    first_name "Alex"
+    last_name "Kim"
   end
 
   factory :location do
-    name
-    address_line_one
-    address_line_two
-    city
-    start_date
-    zip
-    phone
+    name "Starbucks"
+    address_line_one "417 S Craig Street"
+    address_line_two ""
+    city "Pittsburgh"
+    state "PA"
+    zip 15213
+    phone "4125550987"
   end
 
   factory :program do
     association :location
-    name
-    program_type
-    start_date
-    end_date
+    name "Afterschool Program"
+    program_type "after_school"
+    start_date Date.today
+    end_date Date.today
   end
 
   factory :provider do
-    name
+    name "CMU Provider"
   end
 
   factory :school do
-    name
-    phone
-    address_line_one
-    address_line_two
-    city
-    state
-    zip
+    name "CMU"
+    phone "4125551234"
+    address_line_one "5000 Forbes Ave"
+    address_line_two ""
+    city "Pittsburgh"
+    state "PA"
+    zip 15213
   end
 
-  factory sub_location do
+  factory :sub_location do
     association :location
-    name
-    address_line_one
-    address_line_two
-    city
-    statezip
-    phone
+    name "Skibo Cafe"
+    address_line_one "5000 Forbes Ave"
+    address_line_two ""
+    city "Pittsburgh"
+    state "PA"
+    zip 15213
+    phone "4125551111"
   end
 
-  factory user do
-    username
-    password
-    password_confirmation
-    role
-    active
+  factory :user do
+    username "admin"
+    password "password"
+    password_confirmation "password"
+    role "admin"
+    active true
   end
 end

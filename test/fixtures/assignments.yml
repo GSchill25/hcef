@@ -2,8 +2,8 @@
 
 one:
   instructor_id: 1
-  program_id: 1
+  location_id: 1
 
 two:
   instructor_id: 1
-  program_id: 1
+  location_id: 1

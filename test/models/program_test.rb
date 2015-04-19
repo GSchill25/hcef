@@ -33,19 +33,13 @@ class ProgramTest < ActiveSupport::TestCase
 
   context "Within context" do
     setup do 
-      create_field_trips
-      create_enrichments
-      create_after_schools
       create_locations
       create_programs
     end
     
     teardown do
-      delete_programs
       delete_locations
-      delete_after_schools
-      delete_enrichments
-      delete_field_trips
+      delete_programs
     end
 
     should "show that there are four programs" do
@@ -53,7 +47,7 @@ class ProgramTest < ActiveSupport::TestCase
     end
 
     should "show that there are three active programs" do
-      assert_equal 3, Program.active.size
+      assert_equal 4, Program.active.size
       assert_equal ["AfterSchool", "Enrichment", "FieldTrip", "Upcoming"], Program.active.alphabetical.all.map(&:name)
     end
     
@@ -68,11 +62,11 @@ class ProgramTest < ActiveSupport::TestCase
     end
 
     should "show that ascending works" do
-      assert_equal ["Inactive", "FieldTrip", "Enrichment", "AfterSchool", "Upcoming"], Program.ascending.all.map(&:name)
+      assert_equal ["Inactive", "FieldTrip", "AfterSchool", "Enrichment", "Upcoming"], Program.ascending.all.map(&:name)
     end
 
     should "show that descending works" do
-      assert_equal ["Upcoming", "AfterSchool", "Enrichment", "FieldTrip", "Inactive"], Program.descending.all.map(&:name)
+      assert_equal ["Upcoming", "Enrichment", "AfterSchool", "FieldTrip", "Inactive"], Program.descending.all.map(&:name)
     end
   end
 
