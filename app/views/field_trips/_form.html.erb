@@ -1,6 +1,6 @@
   <div class="row">
     <div class="col-lg-6">
-      <%= form_for(@enrichment) do |f| %>
+      <%= form_for(@field_trip) do |f| %>
       <%= f.label :length %></br>
       <%= f.text_field :length %>
       
@@ -39,6 +39,6 @@
                     <% end  %>
          <% end  %>
       </div>
-      <%= f.submit  "Create" %>
+      <%= f.submit "Create" %>
       <% end %>
   </div>

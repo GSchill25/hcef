@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20150420045249) do
     t.datetime "updated_at"
   end
 
+  create_table "enrichment_days", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "enrichment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "enrichments", force: true do |t|
     t.float    "length"
     t.text     "notes"
@@ -71,6 +78,13 @@ ActiveRecord::Schema.define(version: 20150420045249) do
     t.integer  "program_id"
     t.integer  "child_id"
     t.date     "date_enrolled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "field_trip_days", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "field_trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

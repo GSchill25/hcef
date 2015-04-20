@@ -11,5 +11,21 @@
       <%= f.label :provider_id %></br>
       <%= f.collection_select :provider_id, Provider.all, :id, :name %>
       </p>
+
+      <% if @program.program_type=="field_trip" %>
+                  <h6> Field Trip Attendance </h6>
+                  <% for child in @children %>
+                    <%= check_box_tag "field_trip[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
+                    <label for="<%= child.id %>"><%= child.name %></label>
+                    <br />
+                  <% end  %>
+      <% elsif @program.program_type=="enrichment" %>
+                  <h6> Enrichment Attendance </h6>
+                  <% for child in @children %>
+                    <%= check_box_tag "enrichment[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
+                    <label for="<%= child.id %>"><%= child.name %></label>
+                    <br />
+                  <% end  %>
+       <% end  %>
       
   </div>

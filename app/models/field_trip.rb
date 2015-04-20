@@ -2,6 +2,9 @@ class FieldTrip < ActiveRecord::Base
   # Relationships
   belongs_to :program
   belongs_to :provider
+  has_many :field_trip_days
+  has_many :children, through: :field_trip_days
+
 
   # Validations
   validates_presence_of :length
