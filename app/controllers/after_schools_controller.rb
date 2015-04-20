@@ -89,7 +89,7 @@ class AfterSchoolsController < ApplicationController
     # update_attribute does NOT validate
     # update           does validate
     case col
-    when 1
+    when 3 # time in changed
       @after_school.update_attribute(:time_in, value)
       if !@after_school.time_out.nil?
         total_minutes = ((@after_school.time_out - @after_school.time_in) / 60).to_i # minutes
@@ -98,7 +98,7 @@ class AfterSchoolsController < ApplicationController
           @after_school.update_attribute(:total_hours, total_minutes)
         end
       end
-    when 2
+    when 4 # time out changed
       @after_school.update_attribute(:time_out, value)
       # update totalHours
       if !@after_school.time_in.nil?
@@ -156,28 +156,28 @@ class AfterSchoolsController < ApplicationController
         end
 
         if record.time_in.nil?
-          data_sign_in[index][1] = ""
+          data_sign_in[index][3] = ""
         else
           hour = record.time_in.hour
           minutes = record.time_in.min 
           minutes = minutes < 10 ? "0#{minutes}" : minutes;
-          data_sign_in[index][1] = "#{hour}:#{minutes}"
+          data_sign_in[index][3] = "#{hour}:#{minutes}"
         end
         if record.time_out.nil?
-          data_sign_in[index][2] = ""
+          data_sign_in[index][4] = ""
         else
           hour = record.time_in.hour
           minutes = record.time_in.min 
           minutes = minutes < 10 ? "0#{minutes}" : minutes;
-          data_sign_in[index][2] = "#{hour}:#{minutes}"
+          data_sign_in[index][4] = "#{hour}:#{minutes}"
         end
 
       # If the record doesn't exist, set the row to initial, zero'd values
       else
         data[index] = [data[index][0]] + [0]*4 + [""]
         
-        data_sign_in[index][1] = ""
-        data_sign_in[index][2] = ""
+        data_sign_in[index][3] = ""
+        data_sign_in[index][4] = ""
       end
     end
     
