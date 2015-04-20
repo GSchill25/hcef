@@ -20,7 +20,7 @@ class AfterSchoolsController < ApplicationController
     @children = @program.children
     @children_ids = []
     for child in @children
-      @data.push([child.name] + [0]*4 + [""])
+      @data.push([child.name] + [0]*4 + [""] + [""])
       @data_sign_in.push([child.name] + [""] + [""])
       @children_ids.push(child.id)
     end
@@ -71,6 +71,8 @@ class AfterSchoolsController < ApplicationController
       @after_school.update_attribute(:reading_specialist_time, value)
     when 5
       @after_school.update_attribute(:goal, value)
+    when 6
+      @after_school.update_attribute(:notes, value)
     end
 
     # Don't need to return anything
@@ -154,6 +156,11 @@ class AfterSchoolsController < ApplicationController
         else
           data[index][5] = record.goal
         end
+        if record.notes.nil?
+          data[index][6] = ""
+        else
+          data[index][6] = record.notes
+        end
 
         if record.time_in.nil?
           data_sign_in[index][3] = ""
@@ -174,7 +181,7 @@ class AfterSchoolsController < ApplicationController
 
       # If the record doesn't exist, set the row to initial, zero'd values
       else
-        data[index] = [data[index][0]] + [0]*4 + [""]
+        data[index] = [data[index][0]] + [0]*4 + [""] + [""]
         
         data_sign_in[index][3] = ""
         data_sign_in[index][4] = ""
@@ -196,6 +203,6 @@ class AfterSchoolsController < ApplicationController
     end
 
     def after_school_params
-      params.require(:after_school).permit(:program_id, :child_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :goal)
+      params.require(:after_school).permit(:program_id, :child_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :goal, :notes)
     end
 end

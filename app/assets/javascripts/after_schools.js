@@ -86,8 +86,8 @@ var onChange_sign_in = function(change, source) {
 
 window.hot = new Handsontable(container,
     { data: data,
-      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal"],
-      colWidths: [130, 80, 60, 82, 130, 400],
+      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal", "Notes"],
+      colWidths: [130, 80, 60, 82, 130, 200, 400],
       cells: createCellProperties,
       afterChange: onChange
   });
