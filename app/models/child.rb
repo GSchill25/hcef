@@ -6,6 +6,10 @@ class Child < ActiveRecord::Base
 	has_many :programs, through: :enrollments
 	has_many :child_locations
 	has_many :locations, through: :child_locations
+	has_many :field_trip_days
+	has_many :field_trips, through: :field_trip_days
+	has_many :enrichment_days
+	has_many :enrichments, through: :enrichment_days
 
 	#validations
 	validates_presence_of :first_name, :last_name #:date_of_birth

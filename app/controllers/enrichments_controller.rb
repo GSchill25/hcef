@@ -44,6 +44,6 @@ class EnrichmentsController < ApplicationController
 		end
 
 		def enrichment_params
-			params.require(:enrichment).permit(:length, :notes, :provider_id, :program_id)
+			params.require(:enrichment).permit(:length, :notes, :provider_id, :program_id, :child_ids => [])
 		end
 end

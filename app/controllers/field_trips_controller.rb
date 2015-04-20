@@ -44,6 +44,6 @@ class FieldTripsController < ApplicationController
 		end
 
 		def field_trip_params
-			params.require(:field_trip).permit(:length, :notes, :provider_id, :program_id)
+			params.require(:field_trip).permit(:length, :notes, :provider_id, :program_id, :child_ids => [])
 		end
 end
