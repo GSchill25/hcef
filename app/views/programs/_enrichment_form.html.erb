@@ -29,14 +29,17 @@
                 <%= f.text_field :name %>
               <br /><br />
 
-                <% if controller.action_name == "edit" %>
+                <% if controller.action_name == "edit" and @program.program_type=="after_school" %>
                   <h6> Add Children to This Program </h6>
                   <% for child in @children %>
                     <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
                     <label for="<%= child.id %>"><%= child.name %></label>
                     <br />
                   <% end  %>
+                  
+                <% end  %>
 
+                <% if controller.action_name == "edit" %>
                   <h6> Assign Instructor to This Program </h6>
                   <% for instructor in @instructor %>
                     <%= check_box_tag "program[instructor_ids][]", instructor.id, @program.instructors.include?(instructor), {id: instructor.id} %>

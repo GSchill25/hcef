@@ -10,6 +10,12 @@ class EnrichmentsController < ApplicationController
 
 	def new
 		@enrichment = Enrichment.new
+		if !params[:program_id].nil?
+			@program = Program.find(params[:program_id])
+			@enrichment.program = @program
+			@enrichment.save
+			@children = @program.by_location(@program.location_id)
+		end
 	end
 
 	def edit
@@ -18,7 +24,7 @@ class EnrichmentsController < ApplicationController
 	def create
 		@enrichment = Enrichment.new(enrichment_params)
 		if @enrichment.save
-			redirect_to new_enrichment_path, notice: "The enrichment was added to the system"
+			redirect_to program_path(@enrichment.program), notice: "The enrichment was added to the system"
 		else
 			render action: 'new'
 		end
@@ -40,7 +46,7 @@ class EnrichmentsController < ApplicationController
 	private
 
 		def set_enrichment
-			@enrichment = enrichment.find(params[:id])
+			@enrichment = Enrichment.find(params[:id])
 		end
 
 		def enrichment_params

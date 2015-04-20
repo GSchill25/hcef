@@ -2,15 +2,15 @@ class Program < ActiveRecord::Base
   # Relationships
   belongs_to :location
   has_many :after_schools
-  has_one :enrichment
-  has_one :field_trip
+  has_many :enrichments
+  has_many :field_trips
   has_many :enrollments
   has_many :assignments
   has_many :children, through: :enrollments
   has_many :instructors, through: :assignments
 
-  accepts_nested_attributes_for :enrichment, reject_if: lambda { |enr| enr[:length].blank? }
-  accepts_nested_attributes_for :field_trip, reject_if: lambda { |ft| ft[:length].blank? }
+  accepts_nested_attributes_for :enrichments, reject_if: lambda { |enr| enr[:length].blank? }
+  accepts_nested_attributes_for :field_trips, reject_if: lambda { |ft| ft[:length].blank? }
 
   # Validations
   validates_presence_of :name

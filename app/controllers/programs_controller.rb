@@ -15,10 +15,12 @@ class ProgramsController < ApplicationController
     @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
     @dates = @program.program_days
-    if !@program.field_trip.nil?
-      @info = @program.field_trip
-    elsif !@program.enrichment.nil?
-      @info = @program.enrichment
+    if !@program.field_trips.nil?
+      @info = @program.field_trips
+    end
+
+    if !@program.enrichments.nil?
+      @enrich_info = @program.enrichments
     end
   end
 
@@ -37,11 +39,11 @@ class ProgramsController < ApplicationController
   def edit
     @children = @program.by_location(@program.location_id)
     @instructor = Instructor.all
-    if @program.program_type=="enrichment" and @program.enrichment.nil?
-      @program.build_enrichment
-    elsif @program.program_type=="field_trip" and @program.field_trip.nil?
-      @program.build_field_trip
-    end
+    # if @program.program_type=="enrichment" and @program.enrichment.nil?
+    #   @program.build_enrichment
+    # elsif @program.program_type=="field_trip" and @program.field_trip.nil?
+    #   @program.build_field_trip
+    # end
   end
 
   # POST /programs

@@ -10,6 +10,12 @@ class FieldTripsController < ApplicationController
 
 	def new
 		@field_trip = FieldTrip.new
+		if !params[:program_id].nil?
+			@program = Program.find(params[:program_id])
+			@field_trip.program = @program
+			@field_trip.save
+			@children = @program.by_location(@program.location_id)
+		end
 	end
 
 	def edit
@@ -18,7 +24,7 @@ class FieldTripsController < ApplicationController
 	def create
 		@field_trip = FieldTrip.new(field_trip_params)
 		if @field_trip.save
-			redirect_to new_field_trip_path, notice: "The field trip  was added to the system"
+			redirect_to program_path(@field_trip.program), notice: "The field trip  was added to the system"
 		else
 			render action: 'new'
 		end
@@ -40,7 +46,7 @@ class FieldTripsController < ApplicationController
 	private
 
 		def set_field_trip
-			@field_trip = field_trip.find(params[:id])
+			@field_trip = FieldTrip.find(params[:id])
 		end
 
 		def field_trip_params
