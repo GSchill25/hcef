@@ -278,7 +278,7 @@ namespace :db do
     # StudentInfo
 
     # Program
-     Program.populate 10 do |p|
+     Program.populate 3 do |p|
        p.name = Faker::Company.name
        p.program_type = "after_school"
        p.start_date = Faker::Date.between(5.years.ago, 1.year.ago)
