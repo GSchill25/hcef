@@ -115,7 +115,7 @@
             <% @info.each do |i| %>
               <tr>
                 <td><%= Date.today %></td>
-                <td><%= i.provider %></td>
+                <td><%= i.provider.name %></td>
                 <td><%= i.notes %></td>
                 <td><%= i.length %></td>
                 <td><%= "#{i.children.count}/#{@program.children.count}" %></td>
@@ -125,7 +125,7 @@
             <% @enrich_info.each do |i| %>
               <tr>
                   <td><%= Date.today %></td>
-                  <td><%= i.provider %></td>
+                  <td><%= i.provider.name %></td>
                   <td><%= i.notes %></td>
                   <td><%= i.length %></td>
                   <td><%= "#{i.children.count}/#{@program.children.count}" %></td>
