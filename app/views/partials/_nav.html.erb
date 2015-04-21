@@ -23,6 +23,9 @@
           <% if can? :create, Child %>  
             <li><%= link_to "Add Child", new_child_path %></li>
           <% end %>
+          <% if can? :manage, Program %>  
+            <li><%= link_to "Dash", dash_path %></li>
+          <% end %>
         <% end %>
       </ul>
       <% if logged_in? %>

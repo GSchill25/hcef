@@ -40,4 +40,15 @@ class StaticController < ApplicationController
   def create_child
   end
 
+  def admin_dash
+    @student_count = Child.all.count
+    @program_count = Program.all.count
+    @afterschool = Program.where("program_type=?", "after_school").count
+    @enrichment = Program.where("program_type=?", "enrichment").count
+    @field_trip = Program.where("program_type=?", "field_trip").count
+    @location_count = Location.all.count
+    @children = Child.all.alphabetical.paginate(:page => params[:page], :per_page => 10)
+    @instructors = Instructor.all.alphabetical.paginate(:page => params[:page], :per_page => 10)
+  end
+
 end
