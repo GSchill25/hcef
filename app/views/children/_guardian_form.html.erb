@@ -27,13 +27,8 @@
 								</div>
 	        					<div class="col-lg-6 col-md-6 col-sm-12">
 									<p>
-										<% for loc in @locs %>
-											<% if can? :manage, loc %>
-												<%= radio_button_tag "guardian[location_ids][]", loc.id + 10000, @guardian.locations.include?(loc), {id: loc.id + 10000 } %>
-												<label for="<%= loc.id + 10000 %>"><%= loc.name %></label>
-									           	<br />
-									        <% end %>
-										<% end  %>
+										<%= f.label :location_ids %>
+										<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}) %>
 									</p>
 								</div>
 				        	</div></br></br>

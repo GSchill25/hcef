@@ -16,10 +16,7 @@ class GuardiansController < ApplicationController
   end
 
   def create
-  		gp = guardian_params
-  		gp[:location_ids][0] = gp[:location_ids][0].to_i-10000
-  		#workaround for having checkboxes with the same id/value (increment by 10000)
-		@guardian = Guardian.new(gp)
+		@guardian = Guardian.new(guardian_params)
 		if @guardian.save
 			redirect_to new_child_path, notice: "#{@guardian.name} was added to the system"
 		else
