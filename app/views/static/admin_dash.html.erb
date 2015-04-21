@@ -21,6 +21,59 @@
 	  		</br></br></br></br></br></br>
 
 	</div>
+
+	<div class="col-lg-6">
+		<h4>Children</h4>
+		<table class="table table-hover">
+		  <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Date of Birth</th>
+		        <th>Active/Inactive</th>
+		        <th>Delete</th>
+		      </tr>
+		  </thead>
+
+		  <tbody>
+		      <% @children.each do |child| %>
+		          <tr>
+		            <td><%= child.name %></td>
+		            <td><%= child.date_of_birth %></td>
+		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+		          </tr>
+		      <% end %>
+		    </tbody>
+		</table>
+		<%= will_paginate @children %>
+	</div>
+
+	<div class="col-lg-5 col-lg-offset-1">
+		<h4>Instructors</h4>
+		<table class="table table-hover">
+		  <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Active/Inactive</th>
+		        <th>Delete</th>
+		      </tr>
+		  </thead>
+
+		  <tbody>
+		      <% @instructors.each do |i| %>
+		          <tr>
+		            <td><%= i.name %></td>
+		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+		          </tr>
+		      <% end %>
+		    </tbody>
+		</table>
+	</div>
+
+
+
+
 	
 
 
