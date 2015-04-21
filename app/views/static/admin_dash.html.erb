@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="jumbotron">
+	  	<h3 align="center"> Admin Dashboard </h3>
+	  		<p>
+	  		<ul class="list-group col-lg-2">
+			  <li class="list-group-item">
+			    <span class="badge"><%= @student_count %></span>
+			    Students -
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge"><%= @program_count %></span> 
+			    Programs -  
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge"><%= @location_count %></span>
+			    Locations - 
+			  </li>
+			</ul>
+	  		</p>
+	  		<p class="col-lg-6 col-lg-offset-2" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </p>
+	  		</br></br></br></br></br></br>
+
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+</div>
