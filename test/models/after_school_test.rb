@@ -11,7 +11,5 @@ class AfterSchoolTest < ActiveSupport::TestCase
 
   should_not allow_value(nil).for(:date)
   
-  #ascending
-  #descending
-  #for_program
+  
 end

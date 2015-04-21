@@ -37,9 +37,24 @@ class GuardianTest < ActiveSupport::TestCase
   should_not allow_value("724/568/1539").for(:phone)
   should_not allow_value("724-9863-124").for(:phone)
 
-  should allow_value(1.day.ago.to_date).for(:date_of_birth)
+  should allow_value(2.days.ago.to_date).for(:date_of_birth)
   should_not allow_value(1.day.from_now.to_date).for(:date_of_birth)
   should_not allow_value(Date.today).for(:date_of_birth)
   should_not allow_value("bad").for(:date_of_birth)
   should_not allow_value(2).for(:date_of_birth)
+
+  context "Within context" do
+    setup do 
+      create_guardians
+    end
+    
+    teardown do
+      delete_guardians
+    end
+
+    should "show that name works with alphabetical" do
+      assert_equal ["Aaron Cho", "Kevin Kim", "Michael Lee", "Steve Park"], Guardian.alphabetical.all.map(&:name)
+    end
+    
+  end
 end

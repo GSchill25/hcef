@@ -1,25 +1,17 @@
 FactoryGirl.define do
-  
-  factory :curriculum do
-    name "Mastering Chess Tactics"
-    description "This camp is designed for any student who has mastered basic mating patterns and understands opening principles and is looking to improve his/her ability use chess tactics in game situations."
-    min_rating 400
-    max_rating 850
-    active true
-  end
-  
+
   factory :after_school do
     association :program
     association :child
     date Date.today
-    time_in 
-    time_out 
+    time_in DateTime.now
+    time_out DateTime.now
     total_hours 6
     homework_time 2
     literacy_time 2
     technology_time 1
     reading_specialist_time 1
-    goal "To finish most of the worl for the day"
+    goal "To finish most of the work for the day"
   end
 
   factory :assignment do
@@ -39,7 +31,7 @@ FactoryGirl.define do
     association :guardian
     first_name "Howard"
     last_name "Junior"
-    date_of_birth
+    date_of_birth Date.new(2005,1,1)
     grade 7
     active true
   end
@@ -64,19 +56,18 @@ FactoryGirl.define do
   end
 
   factory :guardian_location do
-    association :locatoin
+    association :location
     association :guardian
     start_date Date.today
     end_date Date.today
   end
 
   factory :guardian do
-    association :user
     first_name "James"
     last_name "Kim"
     phone "4125551234"
     email "jkim@sample.com"
-    date_of_birth
+    date_of_birth Date.new(1980,5,1)
   end
 
   factory :instructor do
@@ -108,7 +99,7 @@ FactoryGirl.define do
   end
 
   factory :school do
-    name "CMU"
+    name "Carnegie Mellon"
     phone "4125551234"
     address_line_one "5000 Forbes Ave"
     address_line_two ""
@@ -129,7 +120,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username "admin"
+    username "test_account"
     password "password"
     password_confirmation "password"
     role "admin"

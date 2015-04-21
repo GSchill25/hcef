@@ -35,11 +35,29 @@ class ProgramTest < ActiveSupport::TestCase
     setup do 
       create_locations
       create_programs
+      create_guardians
+      create_guardian_locations
+      create_schools
+      create_children
+      create_enrollments
+      create_child_locations
+      create_after_schools
+      create_enrichments
+      create_field_trips
     end
     
     teardown do
       delete_locations
       delete_programs
+      delete_guardians
+      delete_guardian_locations
+      delete_schools
+      delete_children
+      delete_child_locations
+      delete_enrollments
+      delete_after_schools
+      delete_enrichments
+      delete_field_trips
     end
 
     should "show that there are four programs" do
@@ -67,6 +85,11 @@ class ProgramTest < ActiveSupport::TestCase
 
     should "show that descending works" do
       assert_equal ["Upcoming", "Enrichment", "AfterSchool", "FieldTrip", "Inactive"], Program.descending.all.map(&:name)
+    end
+
+    should "show that average time works" do
+      assert_equal [["Homework", 6],["Literacy", 6],["Technology", 3],["Reading Specialist", 3]], @program1.average_time
+      assert_equal [["Homework", 0],["Literacy", 0],["Technology", 0],["Reading Specialist", 0]], @program4.average_time
     end
   end
 
