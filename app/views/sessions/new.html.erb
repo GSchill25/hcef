@@ -1,19 +1,25 @@
 <!-- Log-in page -->
 <br><br>
-<h1 class="">Log in</h1>
-  <%= form_tag sessions_path do %>
-    <%= label_tag :username, "Username" %><br />
-    <%= text_field_tag :username, params[:username] %>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-    <button class="" type="submit" name="action">Log in
-    </button>
-    <br>
-    <p>Forgotten Username/Password?</p>
+<div class="row">
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">Log In</div>
+          <div class="panel-body">
+            <%= form_tag sessions_path do %>
+                <%= label_tag :username, "Username" %><br />
+                <%= text_field_tag :username, params[:username] %></br></br>
+                <%= label_tag :password %><br />
+                <%= password_field_tag :password %></br></br>
+                <button class="" type="submit" name="action">Log in
+                </button>
+                <br>
 
-  <% end %>
+            <% end %>
+          </div>
+          </div>
+        </div>
+    </div>
 
 <br><br>
-
-</body>
-</html>

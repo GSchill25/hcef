@@ -278,7 +278,7 @@ namespace :db do
     # StudentInfo
 
     # Program
-     Program.populate 10 do |p|
+     Program.populate 3 do |p|
        p.name = Faker::Company.name
        p.program_type = "after_school"
        p.start_date = Faker::Date.between(5.years.ago, 1.year.ago)
@@ -489,16 +489,41 @@ namespace :db do
     cl0.location = Location.last
     cl0.save!
 
-    #Enrollment
+    #Providers
+    pv1 = Provider.new
+    pv1.name = "Sydelle Pearl"
+    pv1.save!
 
-    #Assignment
+    pv2 = Provider.new
+    pv2.name = "Petrie Dish: Edwin Gibson"
+    pv2.save!
 
-    #AfterSchool
+    pv3 = Provider.new
+    pv3.name = "Art Expression, Inc."
+    pv3.save!
 
-    #Provider
+    pv4 = Provider.new
+    pv4.name = "The Andy Warhol Museum"
+    pv4.save!
 
-    #Enrichment
+    pv5 = Provider.new
+    pv5.name = "America's Arts & Music Crossroads Center"
+    pv5.save!
 
-    #FieldTrip
+    pv6 = Provider.new
+    pv6.name = "Gateway to the Arts"
+    pv6.save!
+
+    pv7 = Provider.new
+    pv7.name = "Lab Ratz Science Club"
+    pv7.save!
+
+    pv8 = Provider.new
+    pv8.name = "Saturday Light Brigade Radio"
+    pv8.save!
+
+    pv9 = Provider.new
+    pv9.name = "The Outdoor Classroom"
+    pv9.save!
   end
 end
