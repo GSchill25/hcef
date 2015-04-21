@@ -161,14 +161,20 @@ namespace :db do
     sa = Location.new
     sa.name = 'Salvation Army'
     sa.save!
+
+    soj = Location.new
+    soj.name =  'Sojourner House'
+    soj.address_line_one = '1234 Pitt Street'
+    soj.address_line_two = 'PO Box 1234'
+    soj.city = 'Pittsburgh'
+    soj.state = 'PA'
+    soj.zip = '15213'
+    soj.phone = '1234567890'
+    soj.save!
     
     sp = Location.new
     sp.name = 'Sisters Place'
     sp.save!
-    
-    sj = Location.new
-    sj.name = 'Sojourner House'
-    sj.save!
     
     sjm = Location.new
     sjm.name = 'Sojourner House MOMS'
@@ -219,15 +225,6 @@ namespace :db do
     ygp.save!
     
 
-    soj = Location.new
-    soj.name =  'Sojourner House'
-    soj.address_line_one = '1234 Pitt Street'
-    soj.address_line_two = 'PO Box 1234'
-    soj.city = 'Pittsburgh'
-    soj.state = 'PA'
-    soj.zip = '15213'
-    soj.phone = '1234567890'
-    soj.save!
 
 
 
