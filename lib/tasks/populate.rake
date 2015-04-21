@@ -52,7 +52,94 @@ namespace :db do
     action.zip = '15219'
     action.phone = '4122812102'
     action.save!
+
+    avac = Location.new
+    avac.name = 'Allegheny Valley A.C.'
+    avac.save!
+
+    akah = Location.new
+    akah.name = 'Alle-Kiski Area HOPE'
+    akah.save!
     
+    auberle = Location.new
+    auberle.name = 'Auberle'
+    auberle.save!
+      
+      sp = SubLocation.new
+      sp.name = 'Shelter Program'
+      sp.location = auberle
+      sp.save!
+      
+      moh = SubLocation.new
+      moh.name = 'Movin\' on / Hartman'
+      moh.location = auberle
+      moh.save!
+
+    bti = Location.new
+    bti.name = 'Bridge to Independence'
+    bti.save!
+
+    cfv = Location.new
+    cfv.name = 'Center for Victims'
+    cfv.save!
+
+    chs = Location.new
+    chs.name = 'Community Human Services'
+    chs.save!
+    
+    ccn = Location.new
+    ccn.name = 'Crisis Center North'
+    ccn.save!
+
+    eec = Location.new
+    eec.name = 'East End Cooperative'
+    eec.save!
+
+    familyLinks = Location.new
+    familyLinks.name = 'Familylinks'
+    familyLinks.save!
+
+      dout = SubLocation.new
+      dout.name = 'Downtown Outreach'
+      dout.location = familyLinks
+      dout.save!
+
+      plum = SubLocation.new
+      plum.name = 'Plum'
+      plum.location = familyLinks
+      plum.save!
+
+      sylvan = SubLocation.new
+      sylvan.name = 'Sylvan'
+      sylvan.location = familyLinks
+      sylvan.save!
+
+    fpSWPA = Location.new
+    fpSWPA.name = 'Family Promise SWPA'
+    fpSWPA.save!
+
+    ge = Location.new
+    ge.name = 'Gaudenzia Erie'
+    ge.save!
+
+    glcc = Location.new
+    glcc.name = 'Gay and Lesbian CC'
+    glcc.save!
+
+    gSWPA = Location.new
+    gSWPA.name = 'Goodwill SWPA'
+    gSWPA.save!
+      
+      healthyStart = SubLocation.new
+      healthyStart.name = 'Healthy Start'
+      healthyStart.location = gSWPA
+      healthyStart.save!
+
+      heart = SubLocation.new
+      heart.name = 'HEART'
+      heart.location = gSWPA
+      heart.save!
+
     hearth = Location.new
     hearth.name = 'HEARTH'
     hearth.address_line_one = '3724 Mount Royal Blvd'
@@ -63,6 +150,18 @@ namespace :db do
     hearth.phone = '4123669801'
     hearth.save!
 
+    lol = Location.new
+    lol.name = 'Light of Life'
+    lol.save!
+    
+    np = Location.new
+    np.name = 'Naomi\'s Place'
+    np.save!
+    
+    sa = Location.new
+    sa.name = 'Salvation Army'
+    sa.save!
+
     soj = Location.new
     soj.name =  'Sojourner House'
     soj.address_line_one = '1234 Pitt Street'
@@ -72,6 +171,62 @@ namespace :db do
     soj.zip = '15213'
     soj.phone = '1234567890'
     soj.save!
+    
+    sp = Location.new
+    sp.name = 'Sisters Place'
+    sp.save!
+    
+    sjm = Location.new
+    sjm.name = 'Sojourner House MOMS'
+    sjm.save!
+    
+    sjme = Location.new
+    sjme.name = 'Sojourner House MOMS East'
+    sjme.save!
+    
+      oa = SubLocation.new
+      oa.name = 'Open Arms'
+      oa.location = sjme
+      oa.save!
+
+      sankofa = SubLocation.new
+      sankofa.name = 'Sankofa'
+      sankofa.location = sjme
+      sankofa.save!
+
+    try = Location.new
+    try.name = 'Three Rivers Youth'
+    try.save!
+    
+      emergency = SubLocation.new
+      emergency.name = 'Emergency'
+      emergency.location = try
+      emergency.save!
+
+      th = SubLocation.new
+      th.name = 'The Hub'
+      th.location = try
+      th.save!
+
+    we = Location.new
+    we.name = 'Womanspace East'
+    we.save!
+
+    wcs = Location.new
+    wcs.name = 'Women\'s Center & Shelter'
+    wcs.save!
+    
+    wp = Location.new
+    wp.name = 'Western Psychiatric'
+    wp.save!
+    
+    ygp = Location.new
+    ygp.name = 'YWCA Greater Pittsburgh'
+    ygp.save!
+    
+
+
+
 
 =begin
     # Future locations
@@ -120,7 +275,7 @@ namespace :db do
     # StudentInfo
 
     # Program
-     Program.populate 10 do |p|
+     Program.populate 3 do |p|
        p.name = Faker::Company.name
        p.program_type = "after_school"
        p.start_date = Faker::Date.between(5.years.ago, 1.year.ago)
@@ -331,16 +486,41 @@ namespace :db do
     cl0.location = Location.last
     cl0.save!
 
-    #Enrollment
+    #Providers
+    pv1 = Provider.new
+    pv1.name = "Sydelle Pearl"
+    pv1.save!
 
-    #Assignment
+    pv2 = Provider.new
+    pv2.name = "Petrie Dish: Edwin Gibson"
+    pv2.save!
 
-    #AfterSchool
+    pv3 = Provider.new
+    pv3.name = "Art Expression, Inc."
+    pv3.save!
 
-    #Provider
+    pv4 = Provider.new
+    pv4.name = "The Andy Warhol Museum"
+    pv4.save!
 
-    #Enrichment
+    pv5 = Provider.new
+    pv5.name = "America's Arts & Music Crossroads Center"
+    pv5.save!
 
-    #FieldTrip
+    pv6 = Provider.new
+    pv6.name = "Gateway to the Arts"
+    pv6.save!
+
+    pv7 = Provider.new
+    pv7.name = "Lab Ratz Science Club"
+    pv7.save!
+
+    pv8 = Provider.new
+    pv8.name = "Saturday Light Brigade Radio"
+    pv8.save!
+
+    pv9 = Provider.new
+    pv9.name = "The Outdoor Classroom"
+    pv9.save!
   end
 end

@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150412232655) do
+=======
+ActiveRecord::Schema.define(version: 20150420045249) do
+>>>>>>> 1d20254d3e5a4d1d2bd31bb6a5372abd8ad82453
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -27,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150412232655) do
     t.datetime "updated_at"
     t.integer  "program_id"
     t.integer  "child_id"
+    t.text     "notes"
   end
 
   create_table "assignments", force: true do |t|
@@ -57,6 +62,13 @@ ActiveRecord::Schema.define(version: 20150412232655) do
     t.datetime "updated_at"
   end
 
+  create_table "enrichment_days", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "enrichment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "enrichments", force: true do |t|
     t.float    "length"
     t.text     "notes"
@@ -74,12 +86,20 @@ ActiveRecord::Schema.define(version: 20150412232655) do
     t.datetime "updated_at"
   end
 
+  create_table "field_trip_days", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "field_trip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "field_trips", force: true do |t|
     t.float    "length"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "program_id"
+    t.integer  "provider_id"
   end
 
   create_table "guardian_locations", force: true do |t|

@@ -1,93 +1,103 @@
 <div class='row' id="no_container">
-  <div class='col-xs-9 col-xs-offset-3'>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a>AfterSchool</a></li>
-        <li><a>Enrichment</a></li>
-        <li><a>Field Trip</a></li>
-      <ul>
-    </div>
 
-  </nav>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <div class="btn-group" data-toggle="buttons">
+      <label id='afterSchoolButton' class="btn btn-primary active">
+        <input type="radio" >AfterSchool</label>
+      <label id='enrichmentButton' class="btn btn-primary">
+        <input type="radio" >Enrichment</label>
+      <label id='fieldTripButton' class="btn btn-primary">
+        <input type="radio">Field Trip</label>
+    </div>
   </div>
+
+  <div id='submit-column' class='col-xs-3'>
+    <button type="submit" class="btn btn-default" onclick='return submit()'>Submit</button>
   </div>
+</div>
 
 <div class='row'>
+
+<!--TODO search-bar -->
+
 <nav class='col-xs-3'>
-  <ul id='sidebar1' class='nav nav-stacked fixed'>
+<ul id='sidebar1' class='nav nav-stacked fixed'>
   <li id='locations'>
     <a id='locationsText' data-toggle="collapse" href='#groupA'>Locations</a>
     <ul id='groupA' class='nav nav-stacked collapse'>
-      <li><a href='#'>All</a></li>
-      <li><a href='#'>ACTION-Housing</a></li>
-      <li><a href='#'>Allegheny Valley A.C.</a></li>
-      <li><a href='#'>Alle-Kiski Area HOPE</a></li>
-      <li><a href='#'>Auberle</a>
-        <ul class='nav nav-stacked'>
-          <li><a href='#'>Shelter Program</a></li>
-          <li><a href='#'>Movin' On / Hartman </a></li>
-        </ul>
-      </li>
-      <li><a href='#'>Bridge to Independence</a></li>
-      <li><a href='#'>Center for Victims</a></li>
-      <li><a href='#'>Community Human Services</a></li>
-      <li><a href='#'>Crisis Center North</a></li>
-      <li><a href='#'>East End Cooperative</a></li>
-      <li><a href='#'>Familylinks</a>
-        <ul class='nav nav-stacked'>
-          <li><a href='#'>Downtown Outreach</a></li>
-          <li><a href='#'>Plum</a></li>
-          <li><a href='#'>Sylvan</a></li>
-        </ul>
-      </li>
-      <li><a href='#'>Family Promise SWPA</a></li>
-      <li><a href='#'>Gaudenzia Erie</a></li>
-      <li><a href='#'>Gay and Lesbian CC</a></li>
-      <li><a href='#'>Goodwill SWPA</a>
-        <ul class='nav nav-stacked'>
-          <li><a href='#'>Healthy Start</a></li>
-          <li><a href='#'>HEART</a></li>
-        </ul>
-      </li>
-      <li><a href='#'>HEARTH</a></li>
-      <li><a href='#'>Light of Life</a></li>
-      <li><a href='#'>Naomi's Place</a></li>
-      <li><a href='#'>Salvation Army</a></li>
-      <li><a href='#'>Sisters Place</a></li>
-      <li><a href='#'>Sojourner House</a></li>
-      <li><a href='#'>Sojourner House MOMS</a></li>
-      <li><a href='#'>Sojourner House MOMS East</a>
-        <ul class='nav nav-stacked'>
-          <li><a href='#'>Open Arms</a></li>
-          <li><a href='#'>Sankofa</a></li>
-        </ul>
-      </li>
-      <li><a href='#'>Three Rivers Youth</a>
-        <ul class='nav nav-stacked'>
-          <li><a href='#'>Emergency</a></li>
-          <li><a href='#'>The Hub</a></li>
-        </ul>
-      </li>
-      <li><a href='#'>Womanspace East</a></li>
-      <li><a href='#'>Women's Center & Shelter</a></li>
-      <li><a href='#'>Western Psychiatric</a></li>
-      <li><a href='#'>YWCA Greater Pittsburgh</a></li>
+      <div class="btn-group" data-toggle="buttons">
+        <li><label id='locations-all' class='btn btn-primary'><input type='checkbox'> All</li></label>
+      
+        <% @locations.each do |location| %>
+          <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %></label>
+
+            <% if !location.sub_locations.empty? %>
+              <ul class='nav nav-stacked'>
+                <div class="btn-group">
+                  <% location.sub_locations.each do |sl| %>
+                    <li><label class='btn btn-primary child-button'><input type='checkbox'> <%= sl.name %></label></li>
+                  <% end %>
+                </div>
+              </ul>
+            <% end %>
+          </li>
+        <% end %>
+      </div>
     </ul>
-  </li>
+          
   <li id='providers'>
     <a data-toggle="collapse" href='#groupB'>Providers</a>
     <ul id='groupB' class='nav nav-stacked collapse'>
-      <li><a href='#'>All</a></li>
-      <li><a href='#'>Sydelle Pearl</a></li>
-      <li><a href='#'>Petrie Dish</a></li>
-      <li><a href='#'>Art Expression, Inc.</a></li>
-      <li><a href='#'>Andy Warhol</a></li>
-      <li><a href='#'>America's Arts & Music</a></li>
-      <li><a href='#'>Gateway to the Arts</a></li>
-      <li><a href='#'>Lab Ratz</a></li>
-      <li><a href='#'>Saturday Light Brigade</a></li>
-      <li><a href='#'>The Outdoor Classroom</a></li>
+      <div class="btn-group" data-toggle='buttons'>
+        <li><label class='btn btn-primary'><input type='checkbox'> All</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Sydelle Pearl</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Petrie Dish</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Art Expression, Inc.</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Andy Warhol</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> America's Arts & Music</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Gateway to the Arts</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Lab Ratz</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> Saturday Light Brigade</label></li>
+        <li><label class='btn btn-primary'><input type='checkbox'> The Outdoor Classroom</label></li>
+      </div>
     </ul>
-  </nav>
+  </li>
+</ul>
+</nav>
+
+<div class='col-xs-9'> 
+
+  <table id='after_schools'  class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+  </table>
+
+  <table id='enrichments'  class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody id='table_body'>
+    </tbody>
+  </table>
+
+  <table id='field_trips'  class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody id='table_body'>
+    </tbody>
+  </table>
+
 </div>

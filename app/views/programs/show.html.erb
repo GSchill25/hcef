@@ -1,12 +1,17 @@
 <div class="container">
-  <h2 align="center"><%= @program.name %></h2>
+</br></br>
 
-<div class="panel panel-warning">
+
+<% if @program.program_type=="after_school" %>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 align="center"><%= @program.name %></h3>
+    </div>
       
       <table class="table table-condensed">
-      <div class="panel-heading">
-        <tr>
-          <thead>
+      <thead>
+        <tr class="info">
+            
             <th>
               Type
             </th>
@@ -22,10 +27,8 @@
             <th>
               Location
             </th>
-          </thead>
         </tr>
-      </div>
-      <div class="panel-body">
+      </thead>
         <tr>
           <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
           <td><%= @program.start_date %></td>
@@ -34,11 +37,44 @@
           <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
         </tr>
       </table>
-    </div>
+
+    
 </div>
+
+<% else %>
+<div class="row">
+        <div class="col-lg-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">Program Name</div>
+            <div class="panel-body">
+              <%= @program.name %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-lg-offset-1">
+          <div class="panel panel-default">
+            <div class="panel-heading">Type</div>
+            <div class="panel-body">
+              <%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-lg-offset-1">
+          <div class="panel panel-default">
+            <div class="panel-heading">Location</div>
+            <div class="panel-body">
+              <%= @program.location.name  %>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+<% end %>
 
     </br></br>
 
+
+    <% if @program.program_type=="after_school" %>
         </br></br>
         <h5><u> Average Activity Time for All Children </u></h5>
         <%= bar_chart @average_times, colors: ["orange", "blue", "red", "green"] %>
@@ -48,12 +84,70 @@
       </br>
       <%= render :partial => "day_summary" %>
       </br>
+    <% else %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 align="center">Attendance and Info</h3>
+        </div>
+          
+          <table class="table table-condensed">
+          <thead>
+            <tr class="info">
+                
+                <th>
+                  Date
+                </th>
+                <th>
+                  Provider
+                </th>
+                <th>
+                  Notes
+                </th>
+                <th>
+                  Length
+                </th>
+                <th>
+                  Attendance
+                </th>
+            </tr>
+          </thead>
+          <% if @program.program_type=="field_trip" %>
+            <% @info.each do |i| %>
+              <tr>
+                <td><%= Date.today %></td>
+                <td><%= i.provider.name %></td>
+                <td><%= i.notes %></td>
+                <td><%= i.length %></td>
+                <td><%= "#{i.children.count}/#{@program.children.count}" %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <% @enrich_info.each do |i| %>
+              <tr>
+                  <td><%= Date.today %></td>
+                  <td><%= i.provider.name %></td>
+                  <td><%= i.notes %></td>
+                  <td><%= i.length %></td>
+                  <td><%= "#{i.children.count}/#{@program.children.count}" %></td>
+                </tr>
+            <% end %>
+          <% end %>
+          </table>
+        
+        </div>
 
-      <button type="button" class="btn btn-default">
-        <%= link_to 'New Day', new_after_school_path(program_id: @program.id) %>
-      </button>
-      <button type="button" class="btn btn-default">
-        <%= link_to 'Edit Program', edit_program_path(@program) %> 
-      </button></br></br>
+
+
+    <% end %>
+
+      <% if @program.program_type=="after_school" %>
+        <a class="btn btn-primary" href="<%= new_after_school_path(program_id: @program.id) %>" role="button"> New Day</a>
+      <% elsif @program.program_type=="enrichment" %>
+        <a class="btn btn-primary" href="<%= new_enrichment_path(program_id: @program.id) %>" role="button">New Enrichment</a> 
+      <% else %>
+        <a class="btn btn-primary" href="<%= new_field_trip_path(program_id: @program.id) %>" role="button">New Field Trip</a>
+      <% end %>
+      <a class="btn btn-info" href="<%= edit_program_path(@program) %>" role="button"> Edit Program</a>
+      <a class="btn btn-default" href="<%= programs_url %>" role="button"> All Programs</a></br></br>
 </div>
 

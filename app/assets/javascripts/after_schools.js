@@ -48,7 +48,8 @@ var createCellProperties_sign_in = function(row, col, prop) {
     cellProperties.readOnly = true;
     this.renderer = readOnlyRenderer;
   }
-  if (col === 3 || col === 4) {
+  /* Sign in/out Buttons */
+  if (col === 1 || col === 2) {
     cellProperties.readOnly = true;
     this.renderer = "html";
   }
@@ -85,24 +86,24 @@ var onChange_sign_in = function(change, source) {
 
 window.hot = new Handsontable(container,
     { data: data,
-      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal"],
-      colWidths: [130, 80, 60, 82, 130, 400],
+      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal", "Notes"],
+      colWidths: [130, 80, 60, 82, 130, 200, 400],
       cells: createCellProperties,
       afterChange: onChange
   });
 
 
 data_sign_in.forEach( function(row, rowIndex) {
-  var timeInCol  = 1;
-  var timeOutCol = 2;
-  row[3] = "<button style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeInCol + ")'>Sign In</button>";
-  row[4] = "<button style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeOutCol + ")'>Sign Out</button>";
+  var timeInCol  = 3;
+  var timeOutCol = 4;
+  row[1] = "<button style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeInCol + ")'>Sign In</button>";
+  row[2] = "<button style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeOutCol + ")'>Sign Out</button>";
 });
 
 window.hot_sign_in = new Handsontable(container_sign_in,
   { data: data_sign_in,
-    colHeaders: ["Child", "Time in", "Time out", "", ""],
-    colWidths: [130, 130, 130, 150, 150],
+    colHeaders: ["Child", "", "", "Time in", "Time out"],
+    colWidths: [130, 150, 150, 130, 130],
     cells: createCellProperties_sign_in,
     afterChange: onChange_sign_in
 });
@@ -136,7 +137,7 @@ $('.datepick').change(function(){
 
 } /* end window.onload */
 
-$(document).on('click', '.btn', function() {
-   $(".btn").removeClass('active');
+$(document).on('click', '.custom_btn', function() {
+   $(".custom_btn").removeClass('active');
    $(this).addClass('active');
  });

@@ -1,0 +1,88 @@
+<div class="row">
+	<div class="jumbotron">
+	  	<h3 align="center"> Admin Dashboard </h3>
+	  		<p>
+	  		<ul class="list-group col-lg-2">
+			  <li class="list-group-item">
+			    <span class="badge"><%= @student_count %></span>
+			    Students -
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge"><%= @program_count %></span> 
+			    Programs -  
+			  </li>
+			  <li class="list-group-item">
+			    <span class="badge"><%= @location_count %></span>
+			    Locations - 
+			  </li>
+			</ul>
+	  		</p>
+	  		<p class="col-lg-6 col-lg-offset-2" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </p>
+	  		</br></br></br></br></br></br>
+
+	</div>
+
+	<div class="col-lg-6">
+		<h4>Children</h4>
+		<table class="table table-hover">
+		  <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Date of Birth</th>
+		        <th>Active/Inactive</th>
+		        <th>Delete</th>
+		      </tr>
+		  </thead>
+
+		  <tbody>
+		      <% @children.each do |child| %>
+		          <tr>
+		            <td><%= child.name %></td>
+		            <td><%= child.date_of_birth %></td>
+		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+		          </tr>
+		      <% end %>
+		    </tbody>
+		</table>
+		<%= will_paginate @children %>
+	</div>
+
+	<div class="col-lg-5 col-lg-offset-1">
+		<h4>Instructors</h4>
+		<table class="table table-hover">
+		  <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Active/Inactive</th>
+		        <th>Delete</th>
+		      </tr>
+		  </thead>
+
+		  <tbody>
+		      <% @instructors.each do |i| %>
+		          <tr>
+		            <td><%= i.name %></td>
+		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+		          </tr>
+		      <% end %>
+		    </tbody>
+		</table>
+	</div>
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+</div>
