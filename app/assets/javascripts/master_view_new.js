@@ -34,6 +34,25 @@ $(document).ready(function() {
       });
     }
   });
+
+  $('#afterSchoolButton').click(function() {
+    toggleTables(document.getElementById('after_schools'),
+                 document.getElementById('enrichments'),
+                 document.getElementById('field_trips'));
+  });
+
+  $('#enrichmentButton').click(function() {
+    toggleTables(document.getElementById('enrichments'),
+                 document.getElementById('after_schools'),
+                 document.getElementById('field_trips'));
+  });
+
+  $('#fieldTripButton').click(function() {
+    toggleTables(document.getElementById('field_trips'),
+                 document.getElementById('enrichments'),
+                 document.getElementById('after_schools'));
+  });
+
 });
 
 /* TODO: All button */
@@ -118,4 +137,13 @@ function populateTables(after_schools, enrichments, field_trips) {
         field_trips_table.appendChild(tr);
       }
   }
+  toggleTables(document.getElementById('after_schools'),
+               document.getElementById('enrichments'),
+               document.getElementById('field_trips'));
+}
+
+function toggleTables(showTable, hideTable1, hideTable2) {
+  showTable.style.display = 'block';
+  hideTable1.style.display = 'none';
+  hideTable2.style.display = 'none';
 }

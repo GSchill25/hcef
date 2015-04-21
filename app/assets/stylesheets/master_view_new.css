@@ -63,3 +63,15 @@
 #submit-column {
   text-align: right;
 }
+
+#after_schools {
+  display: none;
+}
+
+#enrichments {
+  display: none;
+}
+
+#field_trips {
+  display: none;
+}
