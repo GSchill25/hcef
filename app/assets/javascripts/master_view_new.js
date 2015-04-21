@@ -137,9 +137,8 @@ function populateTables(after_schools, enrichments, field_trips) {
         field_trips_table.appendChild(tr);
       }
   }
-  toggleTables(document.getElementById('after_schools'),
-               document.getElementById('enrichments'),
-               document.getElementById('field_trips'));
+  /* Restore AfterSchool filter toggle */
+  $('#afterSchoolButton').trigger('click');
 }
 
 function toggleTables(showTable, hideTable1, hideTable2) {
