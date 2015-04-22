@@ -3,8 +3,8 @@ require 'test_helper'
 class ProgramTest < ActiveSupport::TestCase
   should belong_to(:location)
   should have_many(:after_schools)
-  should have_one(:enrichment)
-  should have_one(:field_trip)
+  should have_many(:enrichments)
+  should have_many(:field_trips)
   should have_many(:enrollments)
   should have_many(:children).through(:enrollments)
 
@@ -91,7 +91,13 @@ class ProgramTest < ActiveSupport::TestCase
       assert_equal [["Homework", 6],["Literacy", 6],["Technology", 3],["Reading Specialist", 3]], @program1.average_time
       assert_equal [["Homework", 0],["Literacy", 0],["Technology", 0],["Reading Specialist", 0]], @program4.average_time
     end
-  end
 
-    #by_location
+    should "show program_days works" do
+      assert_equal [[1.day.ago.to_date, 1], [Date.today, 1]], @program1.program_days
+    end
+
+    should "show by_location works" do
+      assert_equal [@child1, @child2], @program1.by_location(1)
+    end
+  end
 end

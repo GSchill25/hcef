@@ -11,14 +11,15 @@ class Ability
         #afterschool
         #this next line of code does not work; figure out why
         can :create, AfterSchool
-        can :manage, AfterSchool do |afterschool|
-            afterschool_instructors = user.instructor.programs.map{|c| c.after_schools.map(&:id)}
-            afterschool_instructors.include? after_school.id
+        can :manage, AfterSchool
 
-            locations_instructors = user.instructor.locations.map{|c| c.programs }
-            for locations_instructors do |afterschool|
-                
-        end
+       # can :manage, AfterSchool do |afterschool|
+       #     afterschool_instructors = user.instructor.programs.map{|c| c.after_schools.map(&:id)}
+       #     afterschool_instructors.include? after_school.id
+       #     locations_instructors = user.instructor.locations.map{|c| c.programs }
+       #     for locations_instructors do |afterschool|
+       #     end                
+       # end
         
         #can :read, After_school
         #can :update, After_school do |afterschool|
@@ -30,16 +31,12 @@ class Ability
         #child
         can :create, Child
         can :manage, Child do |child|
-            child_instructors = user.instructor.programs.map{|c| c.children.map(&:id)}
-            child_instructors.include? child.id
         end
         #keep in mind this may change
         
         #enrichment
         can :create, Enrichment
         can :manage, Enrichment do |enrichment|
-            enrichment_instructors = user.instructor.programs.map{|c| c.enrichments.map(&:id)}
-            enrichment_instructors.include? enrichment.id
         end
         
         #enrollment
@@ -47,12 +44,11 @@ class Ability
         #field_trip
         can :create, FieldTrip
         can :manage, FieldTrip do |field_trip|
-            field_trip_instructors = user.instructor.programs.map{|c| c.field_trips.map(&:id)}
-            field_trip_instructors.include? field_trip.id
         end
         
         #guardian
-        can :manage, Guardian
+        can :manage, Guardian do |guardian|
+        end
         #make sure instructors can only see guardians linked to the child
         #DO THIS
         
@@ -63,7 +59,10 @@ class Ability
         end
 
         #location
-        can :manage, Location
+        can :read, Location do |location|
+            instructor_location = user.instructor.locations.map(&:id)
+            instructor_location.include? location.id
+        end
 
         #can :create, Location
         #can :manage, Location do |location|
@@ -74,9 +73,10 @@ class Ability
         #sub_location
 
         #program
-        can :manage, Program do |program|
-            location_instructors = user.instructor.locations.map{|c| c.programs.map }
-            location_instructors.include? program.id
+        can :read, Program do |program|
+            location_instructors = user.instructor.locations.map(&:id)
+            program_location = program.location.id
+            location_instructors.include? program.location.id
         end
 
         #provider
@@ -89,10 +89,12 @@ class Ability
         can :update, User do |current_user|
             current_user.id == user.id
         end
-    end
+    elsif
+        can :manage, :all
     #elsif user.role? :guardian
     #    can :manage, Child do |child|
     #        child.guardian.id == user.guardian_id
     #    end
+    end
   end
 end

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150412232655) do
-=======
 ActiveRecord::Schema.define(version: 20150420045249) do
->>>>>>> 1d20254d3e5a4d1d2bd31bb6a5372abd8ad82453
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
