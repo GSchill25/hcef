@@ -522,5 +522,25 @@ namespace :db do
     pv9 = Provider.new
     pv9.name = "The Outdoor Classroom"
     pv9.save!
+
+    pv10 = Provider.new
+    pv10.name = "Ducky Tours"
+    pv10.save!
+
+    pv11 = Provider.new
+    pv11.name = "Pittsburgh Zoo and PPG Aquarium"
+    pv11.save!
+
+    pv12 = Provider.new
+    pv12.name = "Pittsburgh National Aviary"
+    pv12.save!
+
+    pv13 = Provider.new
+    pv13.name = "Carnegie Science Center"
+    pv13.save!
+
+    pv14 = Provider.new
+    pv14.name = "Children's Museum"
+    pv14.save!
   end
 end

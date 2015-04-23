@@ -8,6 +8,7 @@
       <h3 align="center"><%= @program.name %></h3>
     </div>
       
+<div class="table-responsive">
       <table class="table table-condensed">
       <thead>
         <tr class="info">
@@ -37,13 +38,14 @@
           <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
         </tr>
       </table>
+</div>
 
     
 </div>
 
 <% else %>
 <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-sm-12">
           <div class="panel panel-default">
             <div class="panel-heading">Program Name</div>
             <div class="panel-body">
@@ -51,7 +53,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
+        <div class="col-lg-3 col-lg-offset-1 col-sm-12">
           <div class="panel panel-default">
             <div class="panel-heading">Type</div>
             <div class="panel-body">
@@ -59,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
+        <div class="col-lg-3 col-lg-offset-1 col-sm-12">
           <div class="panel panel-default">
             <div class="panel-heading">Location</div>
             <div class="panel-body">
@@ -89,7 +91,8 @@
         <div class="panel-heading">
           <h3 align="center">Attendance and Info</h3>
         </div>
-          
+        
+<div class="table-responsive">  
           <table class="table table-condensed">
           <thead>
             <tr class="info">
@@ -133,6 +136,7 @@
             <% end %>
           <% end %>
           </table>
+</div>
         
         </div>
 
