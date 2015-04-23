@@ -22,13 +22,11 @@ class ProgramTest < ActiveSupport::TestCase
   should allow_value(Date.today).for(:start_date)
   should allow_value(10.days.from_now).for(:start_date)
 
-  should_not allow_value(12345).for(:start_date)
   should_not allow_value(nil).for(:start_date)
 
   should allow_value(Date.today).for(:end_date)
   should allow_value(10.days.from_now).for(:end_date)
 
-  should_not allow_value(12345).for(:end_date)
   should_not allow_value(nil).for(:end_date)
 
   context "Within context" do
@@ -60,11 +58,12 @@ class ProgramTest < ActiveSupport::TestCase
       delete_field_trips
     end
 
-    should "show that there are four programs" do
+    should "show that there are five programs" do
+      assert_equal 5, Program.all.size
       assert_equal ["AfterSchool", "Enrichment", "FieldTrip", "Inactive", "Upcoming"], Program.alphabetical.all.map(&:name)
     end
 
-    should "show that there are three active programs" do
+    should "show that there are four active programs" do
       assert_equal 4, Program.active.size
       assert_equal ["AfterSchool", "Enrichment", "FieldTrip", "Upcoming"], Program.active.alphabetical.all.map(&:name)
     end
@@ -93,7 +92,7 @@ class ProgramTest < ActiveSupport::TestCase
     end
 
     should "show program_days works" do
-      assert_equal [[1.day.ago.to_date, 1], [Date.today, 1]], @program1.program_days
+      assert_equal [[Date.today-1, 1], [Date.today, 1]], @program1.program_days
     end
 
     should "show by_location works" do

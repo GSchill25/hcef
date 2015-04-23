@@ -1,9 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/home/supernovamaniac/development/hcef/app/models/child_location.rb": [
-        1,
-        null,
+      "/home/supernovamaniac/development/hcef/app/models/sub_location.rb": [
         1,
         1,
         null,
@@ -11,14 +9,14 @@
         1,
         1,
         1,
-        null,
-        null,
         1,
         1,
-        15,
-        5,
+        1,
+        1,
         1,
         null,
+        null,
+        2,
         null,
         null
       ],
@@ -48,75 +46,9 @@
         1,
         null,
         null
-      ],
-      "/home/supernovamaniac/development/hcef/app/models/child.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        5,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/supernovamaniac/development/hcef/app/models/guardian.rb": [
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        5,
-        1,
-        1,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null
-      ],
-      "/home/supernovamaniac/development/hcef/app/models/school.rb": [
-        1,
-        null,
-        1,
-        null,
-        null,
-        1,
-        null
       ]
     },
-    "timestamp": 1429666068
+    "timestamp": 1429762676
   },
   "MiniTest": {
     "coverage": {
@@ -217,7 +149,7 @@
         null,
         null,
         1,
-        52,
+        60,
         null,
         null,
         null,
@@ -299,7 +231,7 @@
         1,
         1,
         1,
-        1,
+        2,
         null,
         1,
         null,
@@ -331,7 +263,7 @@
         1,
         null,
         null,
-        1,
+        2,
         null,
         null
       ],
@@ -346,7 +278,7 @@
         null,
         null,
         1,
-        84,
+        92,
         1,
         1,
         null,
@@ -400,8 +332,8 @@
         null,
         1,
         1,
-        59,
-        49,
+        67,
+        57,
         1,
         null,
         null,
@@ -475,6 +407,13 @@
         1,
         null
       ],
+      "/home/supernovamaniac/development/hcef/app/models/enrichment_day.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/home/supernovamaniac/development/hcef/app/models/provider.rb": [
         1,
         null,
@@ -485,9 +424,14 @@
         1,
         null,
         null,
+        2,
+        null
+      ],
+      "/home/supernovamaniac/development/hcef/app/models/field_trip_day.rb": [
         1,
         1,
         1,
+        null,
         null
       ],
       "/home/supernovamaniac/development/hcef/app/models/user.rb": [
@@ -534,11 +478,11 @@
         1,
         null,
         null,
-        1,
+        2,
         null,
         null
       ]
     },
-    "timestamp": 1429672264
+    "timestamp": 1429762682
   }
 }

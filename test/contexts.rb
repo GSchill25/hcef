@@ -13,6 +13,7 @@ require './test/sets/location_contexts'
 require './test/sets/program_contexts'
 require './test/sets/provider_contexts'
 require './test/sets/school_contexts'
+require './test/sets/sub_location_contexts'
 require './test/sets/user_contexts'
 
 module Contexts
@@ -31,5 +32,6 @@ module Contexts
   include Contexts::ProgramContexts
   include Contexts::ProviderContexts
   include Contexts::SchoolContexts
+  include Contexts::SubLocationContexts
   include Contexts::UserContexts
 end
