@@ -23,7 +23,7 @@
             <li><%= link_to "Instructors", instructors_url %></li>
           <% end %>
           <% if can? :create, Child %>  
-            <li><%= link_to "Children", new_child_path %></li>
+            <li><%= link_to "Add Child", new_child_path %></li>
           <% end %>
           <% if can? :manage, Program %>  
             <li><%= link_to "Dash", dash_path %></li>
