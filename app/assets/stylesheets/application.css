@@ -80,3 +80,6 @@ footer {
 #nav-username {
   padding-left:15px;
 }
+#home-panels .panel{
+  height: 200px;
+}
