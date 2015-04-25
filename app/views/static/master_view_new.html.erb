@@ -3,11 +3,11 @@
   <div class='col-xs-6 col-xs-offset-3'>
     <div class="btn-group" data-toggle="buttons">
       <label id='afterSchoolButton' class="btn btn-primary active">
-        <input type="radio" >AfterSchool</label>
+        <input type="checkbox" >AfterSchool</label>
       <label id='enrichmentButton' class="btn btn-primary">
-        <input type="radio" >Enrichment</label>
+        <input type="checkbox" >Enrichment</label>
       <label id='fieldTripButton' class="btn btn-primary">
-        <input type="radio">Field Trip</label>
+        <input type="checkbox">Field Trip</label>
     </div>
   </div>
 
@@ -65,9 +65,10 @@
 </ul>
 </nav>
 
-<div class='col-xs-9'> 
+<div id='tables' class='col-xs-9'> 
 
   <table id='after_schools'  class='table table-striped'>
+    <caption><h4>AfterSchool</h4></caption>
     <thead>
       <tr>
         <th>Name</th>
@@ -79,6 +80,7 @@
   </table>
 
   <table id='enrichments'  class='table table-striped'>
+  <caption><h4>Enrichment</h4></caption>
     <thead>
       <tr>
         <th>Name</th>
@@ -90,6 +92,7 @@
   </table>
 
   <table id='field_trips'  class='table table-striped'>
+    <caption><h4>Field Trip</h4></caption>
     <thead>
       <tr>
         <th>Name</th>

@@ -65,7 +65,6 @@
 }
 
 #after_schools {
-  display: none;
 }
 
 #enrichments {
@@ -74,4 +73,11 @@
 
 #field_trips {
   display: none;
+}
+
+#field_trips caption{
+  min-width: 100px;
+}
+
+#tables table{
 }

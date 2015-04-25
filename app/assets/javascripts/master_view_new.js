@@ -1,4 +1,12 @@
+/*
+window.onbeforeunload = function (e) {
+  $('#main-container').addClass('container');
+  console.log(message);
+};
+*/
+
 $(document).ready(function() {
+  /* $('#main-container').removeClass('container'); */
   $('.parent-button').click(function() {
     /* Button about to be made active */
     if (!$(this).hasClass('active')) {
@@ -36,21 +44,15 @@ $(document).ready(function() {
   });
 
   $('#afterSchoolButton').click(function() {
-    toggleTables(document.getElementById('after_schools'),
-                 document.getElementById('enrichments'),
-                 document.getElementById('field_trips'));
+    $('#after_schools').toggle();
   });
 
   $('#enrichmentButton').click(function() {
-    toggleTables(document.getElementById('enrichments'),
-                 document.getElementById('after_schools'),
-                 document.getElementById('field_trips'));
+    $('#enrichments').toggle();
   });
 
   $('#fieldTripButton').click(function() {
-    toggleTables(document.getElementById('field_trips'),
-                 document.getElementById('enrichments'),
-                 document.getElementById('after_schools'));
+    $('#field_trips').toggle();
   });
 
 });
@@ -85,7 +87,7 @@ function submit() {
       populateTables(after_schools, enrichments, field_trips);
     }
   });
-return false;
+  return false;
 }
 
 function populateTables(after_schools, enrichments, field_trips) {
@@ -137,12 +139,4 @@ function populateTables(after_schools, enrichments, field_trips) {
         field_trips_table.appendChild(tr);
       }
   }
-  /* Restore AfterSchool filter toggle */
-  $('#afterSchoolButton').trigger('click');
-}
-
-function toggleTables(showTable, hideTable1, hideTable2) {
-  showTable.style.display = 'block';
-  hideTable1.style.display = 'none';
-  hideTable2.style.display = 'none';
 }
