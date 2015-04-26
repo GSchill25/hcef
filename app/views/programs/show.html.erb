@@ -74,18 +74,29 @@
 <% end %>
 
     </br></br>
-
-
     <% if @program.program_type=="after_school" %>
         </br></br>
         <h5><u> Average Activity Time for All Children </u></h5>
         <%= bar_chart @average_times, colors: ["orange", "blue", "red", "green"] %>
 
       </br>
-      <h5 align="center"> Daily Attendance/Time Allocation </h5>
-      </br>
-      <%= render :partial => "day_summary" %>
-      </br>
+      <div class='row'>
+        <div class='col-sm-8'>
+          <h5 align="center"> Daily Attendance/Time Allocation </h5>
+          </br>
+          <%= render :partial => "day_summary" %>
+          </br>
+        </div>
+        <!-- Display children -->
+        <div class='col-sm-4'>
+          <% if @children.nil? or @children.count == 0 %>
+            <h5>No children assigned to this program</h5>
+          <% else %>
+            <h4>Children</h4>
+            <%= render :partial => '/children/list_children', :locals => {:children => @children} %>
+          <% end %>
+        </div>
+      </div>
     <% else %>
       <div class="panel panel-primary">
         <div class="panel-heading">

@@ -7,6 +7,8 @@ window.onbeforeunload = function (e) {
 
 $(document).ready(function() {
   /* $('#main-container').removeClass('container'); */
+
+  /* Select sub-locations */
   $('.parent-button').click(function() {
     /* Button about to be made active */
     if (!$(this).hasClass('active')) {
@@ -26,6 +28,7 @@ $(document).ready(function() {
     }
   });
 
+  /* All Locations button */
   $('#locations-all').click(function() {
     if (!$(this).hasClass('active')) {
       $('#locations').find($('.parent-button')).each(function() {
@@ -42,7 +45,8 @@ $(document).ready(function() {
       });
     }
   });
-
+ 
+  /* Toggle visibility of tables */
   $('#afterSchoolButton').click(function() {
     $('#after_schools').toggle();
   });
@@ -65,12 +69,14 @@ $(document).ready(function() {
 
 function submit() {
   var locations = [];
+  /* Check which locations are selected */
   $('#locations .parent-button').each(function(index) {
     if (this.classList.contains('active')) {
       locations.push(index);
     }
   });
   var params = {locations: locations};
+  /* Request to get location data */
   $.ajax({
     type: "POST",
     url: '/master_view_new/submit', 
