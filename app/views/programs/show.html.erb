@@ -81,14 +81,14 @@
 
       </br>
       <div class='row'>
-        <div class='col-sm-8'>
+        <div class='col-xs-12 col-sm-9'>
           <h5 align="center"> Daily Attendance/Time Allocation </h5>
           </br>
           <%= render :partial => "day_summary" %>
           </br>
         </div>
         <!-- Display children -->
-        <div class='col-sm-4'>
+        <div class='col-sm-3'>
           <% if @children.nil? or @children.count == 0 %>
             <h5>No children assigned to this program</h5>
           <% else %>
