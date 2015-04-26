@@ -45,7 +45,7 @@
 		      <% end %>
 		    </tbody>
 		</table>
-		<%= will_paginate @children %>
+		<%= will_paginate @children, :param_name => 'children_page' %>
 	</div>
 
 	<div class="col-lg-5 col-lg-offset-1">
@@ -69,6 +69,7 @@
 		      <% end %>
 		    </tbody>
 		</table>
+		<%= will_paginate @instructors, :param_name => 'instructor_page' %>
 	</div>
 
 

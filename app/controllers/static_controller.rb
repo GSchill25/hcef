@@ -47,8 +47,8 @@ class StaticController < ApplicationController
     @enrichment = Program.where("program_type=?", "enrichment").count
     @field_trip = Program.where("program_type=?", "field_trip").count
     @location_count = Location.all.count
-    @children = Child.all.alphabetical.paginate(:page => params[:page], :per_page => 10)
-    @instructors = Instructor.all.alphabetical.paginate(:page => params[:page], :per_page => 10)
+    @children = Child.all.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
+    @instructors = Instructor.all.alphabetical.paginate(:page => params[:instructors_page], :per_page => 10)
   end
 
 end
