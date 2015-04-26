@@ -31,5 +31,5 @@ HCEF::Application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
- 
-end
+
+  #redirect unmatched routes to 404.html
