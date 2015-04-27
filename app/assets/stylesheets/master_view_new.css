@@ -81,3 +81,8 @@
 
 #tables table{
 }
+
+.hidden-row {
+  padding: 0 !important;
+  border: 0;
+}
