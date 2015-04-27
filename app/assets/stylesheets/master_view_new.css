@@ -84,5 +84,6 @@
 
 .hidden-row {
   padding: 0 !important;
-  border: 0;
+  padding-left: 20px !important;
 }
+
