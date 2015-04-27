@@ -10,8 +10,12 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "You are not authorized to take this action."
-    redirect_to home_path
+    if current_user 
+      flash[:error] = "You are not authorized to take this action."
+      redirect_to home_path
+    else
+      render :file => "#{Rails.root}/public/404.html", :status => 404
+    end
   end
 
   private

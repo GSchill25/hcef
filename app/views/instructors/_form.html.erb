@@ -36,6 +36,10 @@
 			<% end %>
 			<button class="" type="submit" name="action">Submit
 			</button>
+			<p>
+				<%= f.label :location_ids %>
+				<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}) %>
+			</p>
 		<% end %>
 	  </div>
     </div>

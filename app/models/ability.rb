@@ -44,7 +44,7 @@ class Ability
         can :read, Instructor do |instructor|
             user_location = user.instructor.locations.map(&:id)
             instructor_location = instructor.locations.map(&:id)
-            (user_location & guardian_location).any?            
+            (user_location & instructor_location).any?            
         end
 
         can :update, Instructor do |instructor|

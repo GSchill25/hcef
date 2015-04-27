@@ -46,6 +46,6 @@ class LocationsController < ApplicationController
     end
 
     def location_params
-      params.require(:location).permit(:name, :address_line_one, :address_line_two, :city, :state, :zip, :phone, :instructor_ids => [])
+      params.require(:location).permit(:name, :address_line_one, :address_line_two, :city, :state, :zip, :phone)
     end
 end

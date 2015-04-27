@@ -15,7 +15,7 @@ $(".after_schools.new").ready(function() {
 });
 
 $(".children.new").ready(function() {
-   $('.datepick').datepicker({ });
+   $('.datepick').datepicker({ changeYear: true, yearRange: "c-120:c+0", maxDate: "+0d" });
    $("#date").datepicker( "setDate" , new Date() );
 });
 
