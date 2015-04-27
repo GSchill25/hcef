@@ -18,13 +18,28 @@
 			</ul>
 	  		</p>
 	  		<p class="col-lg-6 col-lg-offset-2" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </p>
-	  		</br></br></br></br></br></br>
+	  		</br></br>
+	  		<div class="btn-group">
+	  			<a class="btn btn-primary" href="<%= new_location_path %>" role="button">New Location</a>
+	  			<a class="btn btn-primary" href="<%= new_school_path %>" role="button">New School</a>
+	  		 	<!-- Need a new provider form -->
+	  			<a class="btn btn-primary" href="<%#= new_provider_path %>" role="button">New Provider</a>
+	  			<a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
+	  		</div>
+	  	</br>
 
 	</div>
-
+<div class="panel panel-info">
+  <div class="panel-body">
 	<div class="col-lg-6">
-		<h4>Children</h4>
-		<table class="table table-hover">
+		<div>
+			<h4>Children</h4>
+			<%= search_form_for @q, url: dash_path do |f| %>
+				<%= f.search_field :first_name_or_last_name_cont %>
+				<%= f.submit %>
+			<% end %>
+		</div>
+		<table class="table table-hover table-striped2">
 		  <thead>
 		      <tr>
 		        <th>Name</th>
@@ -45,12 +60,12 @@
 		      <% end %>
 		    </tbody>
 		</table>
-		<%= will_paginate @children %>
+		<%= will_paginate @children, :param_name => 'children_page' %>
 	</div>
 
 	<div class="col-lg-5 col-lg-offset-1">
 		<h4>Instructors</h4>
-		<table class="table table-hover">
+		<table class="table table-hover table-striped2">
 		  <thead>
 		      <tr>
 		        <th>Name</th>
@@ -69,20 +84,61 @@
 		      <% end %>
 		    </tbody>
 		</table>
+		<%= will_paginate @instructors, :param_name => 'instructor_page' %>
+	</div>
+</div>
+</div>
+</br></br></br>
+
+<div class="panel panel-info">
+  <div class="panel-body">
+  		<div class="col-lg-6">
+		<h4>Locations</h4>
+		<table class="table table-hover table-striped2">
+		  <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Edit</th>
+		      </tr>
+		  </thead>
+
+		  <tbody>
+		      <% @locations.each do |loc| %>
+		          <tr>
+		            <td><%= loc.name %></td>
+		            <td><%= link_to 'Edit', edit_location_path(loc), class: "btn btn-warning" %></td>
+		          </tr>
+		      <% end %>
+		    </tbody>
+		</table>
+		<%= will_paginate @locations, :param_name => 'locations_page' %>
 	</div>
 
+	<div class="col-lg-5 col-lg-offset-1">
+		<h4>Schools</h4>
+		<table class="table table-hover table-striped2">
+		  <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Edit</th>
+		        <th>Delete</th>
+		      </tr>
+		  </thead>
 
-
-
-	
-
-
-
-
-
-
-
-
+		  <tbody>
+		      <% @schools.each do |s| %>
+		          <tr>
+		            <td><%= s.name %></td>
+		            <td><%= link_to 'Edit', edit_school_path(s), class: "btn btn-warning" %></td>
+		            <td><%= link_to 'Delete', school_path(s), data: { confirm: 'Are you sure you want to permanently remove this school from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+		          </tr>
+		      <% end %>
+		    </tbody>
+		</table>
+		<%= will_paginate @schools, :param_name => 'school_page' %>
+	</div>
+  </div>
+</div>
 
 
 </div>

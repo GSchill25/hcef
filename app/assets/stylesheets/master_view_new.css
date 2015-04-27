@@ -87,3 +87,7 @@
   padding-left: 20px !important;
 }
 
+/* Overrides application.css */
+.btn-group {
+  padding-left: 0;
+}
