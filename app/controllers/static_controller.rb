@@ -49,6 +49,8 @@ class StaticController < ApplicationController
     @location_count = Location.all.count
     @children = Child.all.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
     @instructors = Instructor.all.alphabetical.paginate(:page => params[:instructors_page], :per_page => 10)
+    @locations = Location.all.alphabetical.paginate(:page => params[:locations_page], :per_page => 10)
+    @schools = School.all.paginate(:page => params[:schools_page], :per_page => 10)
   end
 
 end
