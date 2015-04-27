@@ -20,11 +20,12 @@
 	  		<p class="col-lg-6 col-lg-offset-2" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </p>
 	  		</br></br></br></br></br></br>
 	  		<div class="btn-group col-lg-6 col-lg-offset-2">
+	  			<a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
 	  			<a class="btn btn-primary" href="<%= new_location_path %>" role="button">New Location</a>
 	  			<a class="btn btn-primary" href="<%= new_school_path %>" role="button">New School</a>
 	  		 	<!-- Need a new provider form -->
 	  			<a class="btn btn-primary" href="<%#= new_provider_path %>" role="button">New Provider</a>
-	  			<a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
+	  			
 	  		</div>
 	  	</br>
 
@@ -54,7 +55,11 @@
 		          <tr>
 		            <td><%= child.name %></td>
 		            <td><%= child.date_of_birth %></td>
-		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <% if child.active==true %>
+		           	 <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		           	<% else %>
+		           	 <td><a class="btn btn-info" href="<%= programs_url %>" role="button"> Make Active</a></td>
+		           	<% end %>
 		            <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
 		          </tr>
 		      <% end %>
