@@ -32,7 +32,13 @@
 <div class="panel panel-info">
   <div class="panel-body">
 	<div class="col-lg-6">
-		<h4>Children</h4>
+		<div>
+			<h4>Children</h4>
+			<%= search_form_for @q, url: dash_path do |f| %>
+				<%= f.search_field :last_name_cont %>
+				<%= f.submit %>
+			<% end %>
+		</div>
 		<table class="table table-hover table-striped2">
 		  <thead>
 		      <tr>
