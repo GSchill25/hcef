@@ -22,11 +22,11 @@ namespace :db do
     a_user.save!
 
     # Instructor
-    i = Instructor.new
-    i.first_name = 'John'
-    i.last_name = 'Instructoman'
-    i.user_id = i_user.id
-    i.save!
+    #i = Instructor.new
+    #i.first_name = 'John'
+    #i.last_name = 'Instructoman'
+    #i.user_id = i_user.id
+    #i.save!
 
     #i_user.instructor_id = i.id
     #i_user.save!
