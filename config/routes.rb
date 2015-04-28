@@ -22,6 +22,7 @@ HCEF::Application.routes.draw do
   get 'master_view' => 'static#home'
   get 'master_view_new' => 'static#master_view_new'
   get 'admin_dash' => 'static#admin_dash', :as => :dash
+  get "child/active/:id" => 'children#child_active', :as => :child_active
   root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'

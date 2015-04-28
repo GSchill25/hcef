@@ -56,9 +56,9 @@
 		            <td><%= child.name %></td>
 		            <td><%= child.date_of_birth %></td>
 		            <% if child.active==true %>
-		           	 <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		           	 <td><a class="btn btn-warning" href="<%= child_active_path(child) %>" role="button"> Make Inactive</a></td>
 		           	<% else %>
-		           	 <td><a class="btn btn-info" href="<%= programs_url %>" role="button"> Make Active</a></td>
+		           	 <td><a class="btn btn-info" href="<%= child_active_path(child) %>" role="button"> Make Active</a></td>
 		           	<% end %>
 		            <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
 		          </tr>

@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :set_child, only: [:show, :edit, :update, :destroy]
+  before_action :set_child, only: [:show, :edit, :update, :destroy, :child_active]
   authorize_resource
 
   def index
@@ -19,6 +19,18 @@ class ChildrenController < ApplicationController
 
   def edit
   	@locations = Location.all
+  end
+
+  def child_active
+  	if @child.active==true
+  		@child.active=false
+  		@child.save
+  		redirect_to dash_path, notice: "#{@child.name} was made inactive"
+  	else
+  		@child.active=true
+  		@child.save
+  		redirect_to dash_path, notice: "#{@child.name} was made active"
+  	end
   end
 
   def create
