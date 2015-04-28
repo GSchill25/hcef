@@ -13,12 +13,21 @@
 	    	</br></br>
 	        <div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12">
+<<<<<<< HEAD
 					<label>Parent/Guardian</label><%= mark_required(@child, :guardian_id) %>
   					<%= f.collection_select :guardian_id, Guardian.all, :id, :name %>
   				</div>
 	        	<div class="col-lg-6 col-md-6 col-sm-12">
 					<%= f.label :school_id %><%= mark_required(@child, :school_id) %>
   					<%= f.collection_select :school_id, School.all, :id, :name %>
+=======
+					<label>Parent/Guardian</label>
+  					<%= f.collection_select :guardian_id, Guardian.all, :id, :name, :prompt => "Select Guardian" %>
+  				</div>
+	        	<div class="col-lg-6 col-md-6 col-sm-12">
+					<%= f.label :school_id %></br>
+  					<%= f.collection_select :school_id, School.all, :id, :name, :prompt => "Select School" %>
+>>>>>>> 8f025b5da3091a2d9dca212f9e488397bced7f34
   				</div>
 	        </div>	
 	        </br></br>

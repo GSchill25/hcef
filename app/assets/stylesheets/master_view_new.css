@@ -24,7 +24,6 @@
 /* Child links */
 #sidebar1 .nav>div>li>label {
   text-align: left;
-  /*width: calc(100% - 10px);*/
   width: 100%;
   font-size: 13px;
   padding-top: 1px;
@@ -47,10 +46,6 @@
   padding-bottom: 1px;
 }
 
-#sidebar1 .nav>.active>a {
-  color: #563d7c; 
-}
-
 /* Hover color */
 #sidebar1 .nav > li > a:hover, #sidebar1 .nav > li > a:focus {
   /* background-color: #000; */
@@ -65,7 +60,7 @@
 }
 
 #after_schools {
-  display: none;
+
 }
 
 #enrichments {
@@ -74,4 +69,26 @@
 
 #field_trips {
   display: none;
+}
+
+#field_trips caption{
+  min-width: 100px;
+}
+
+.hidden-row {
+  padding: 0 !important;
+  padding-left: 20px !important;
+}
+
+/* Overrides application.css */
+.btn-group {
+  padding-left: 0;
+}
+
+#enrichmentButton {
+  
+}
+
+.view-button {
+  float: right;
 }

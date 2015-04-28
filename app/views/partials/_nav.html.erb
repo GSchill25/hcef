@@ -19,14 +19,14 @@
           <% if can? :read, Program %>
             <li><%= link_to "Programs", programs_url %></li>
           <% end %>
-          <% if can? :read, Instructor %>  
-            <li><%= link_to "Instructors", instructors_url %></li>
-          <% end %>
           <% if can? :create, Child %>  
-            <li><%= link_to "Add Child", new_child_path %></li>
+            <li><%= link_to "Add Content", new_child_path %></li>
           <% end %>
           <% if can? :manage, Program %>  
             <li><%= link_to "Dash", dash_path %></li>
+          <% end %>
+          <% if can? :manage, Program %>  
+            <li><%= link_to "Data Analysis", master_view_new_path %></li>
           <% end %>
         <% end %>
       </ul>

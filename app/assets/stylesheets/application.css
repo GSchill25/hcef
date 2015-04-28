@@ -49,7 +49,6 @@ footer {
 }
 
 .navbar-default {
-  border: none;
   border-radius: 0 !important;
   background-color: #0078B4 !important;
   border-color: #0078B4 !important;
@@ -76,7 +75,19 @@ footer {
 .navbar-brand {
   color: #FFFFFF !important;
 }
+
+#home-panels .panel{
+  height: 200px;
+}
 /* Ensure alignment on mobile collapse */
 #nav-username {
   padding-left:15px;
+}
+
+.table-striped2 > tbody > tr:nth-child(2n+1) > td, .table-striped2 > tbody > tr:nth-child(2n+1) > th {
+   background-color: #b1e4f4;
+}
+
+.btn-group {
+  padding-left: 35%;
 }

@@ -14,7 +14,7 @@ class ProgramsController < ApplicationController
   def show
     @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
-    @dates = @program.program_days
+    @dates = @program.program_days.paginate(:page => params[:dates_page], :per_page => 10)
     if !@program.field_trips.nil?
       @info = @program.field_trips
     end
@@ -22,6 +22,8 @@ class ProgramsController < ApplicationController
     if !@program.enrichments.nil?
       @enrich_info = @program.enrichments
     end
+
+    @children = @program.children.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
   end
 
   def show_day
