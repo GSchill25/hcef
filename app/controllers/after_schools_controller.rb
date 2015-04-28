@@ -133,7 +133,6 @@ class AfterSchoolsController < ApplicationController
       
       # If the record exists, give the row this data
       if !record.nil?
-        p record
 
         if record.homework_time.nil?
           data[index][1] = 0

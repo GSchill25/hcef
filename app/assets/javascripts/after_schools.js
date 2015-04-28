@@ -134,7 +134,6 @@ $('.datepick').change(function(){
           data_sign_in = response.data_sign_in
 
           hot.loadData(data);
-          console.log(data);
           hot_sign_in.loadData(data_sign_in);
         }
       }
