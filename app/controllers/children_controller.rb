@@ -8,6 +8,7 @@ class ChildrenController < ApplicationController
 
   def show
     @programs = @child.programs
+    @average_times = @child.average_activity_time
   end
 
   def new

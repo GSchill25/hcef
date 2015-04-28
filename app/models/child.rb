@@ -21,10 +21,40 @@ class Child < ActiveRecord::Base
 
 
 
-	#methods
-	def name
-		"#{first_name} #{last_name}"
+  def average_activity_time
+  	asprogram = nil
+  	self.programs.each do |p|
+  		if p.program_type == "after_school"
+  			asprogram = p
+  		end
+  	end
+  	if asprogram.nil?
+  		return nil
+  	else
+	    homework_time = 0
+	    literacy_time = 0
+	    technology_time = 0
+	    reading_specialist_time = 0
+	    total_days = asprogram.after_schools.count
+	    asprogram.after_schools.each do |a|
+	      #just add 0 if the students time is nil for that particular activity
+	      homework_time += a.homework_time || 0
+	      literacy_time += a.literacy_time || 0
+	      technology_time += a.technology_time || 0
+	      reading_specialist_time += a.reading_specialist_time || 0
+	    end
 	end
+
+    if total_days!=0
+      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+    else
+      return nil
+    end
+  end
+
+  def name
+  	return "#{self.first_name} #{self.last_name}"
+  end
 
 	
 end
