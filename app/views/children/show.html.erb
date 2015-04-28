@@ -1,2 +1,59 @@
-<h1>Children#show</h1>
-<p>Find me in app/views/children/show.html.erb</p>
+<div class="row">
+<div class="col-lg-8 col-md-12 col-sm-12 col-lg-offset-2">
+	<div class="jumbotron">
+	  <h3 align="center"><%= @child.name %></h3></br>
+	  <div class="panel panel-primary col-lg-5 col-lg-offset-1 col-sm-12">
+		  <div class="panel-body">
+		    <h5><%= "Date of Birth: #{@child.date_of_birth}" %></h5>
+		    <h5><%= "Grade: #{@child.grade}" %></h5>
+		    <h5><%= "School: #{@child.school.name}" %></h5>
+		  </div>
+	  </div>
+	  <div class="panel panel-primary col-lg-5 col-lg-offset-1 col-sm-12">
+		  <div class="panel-body">
+		    <h5><%= "Guardian: #{@child.guardian.name}" %></h5>
+		    <h5><%= "Location: #{@child.locations.last.name}" %></h5>
+		    <h5><%= "Programs: #{@programs.count}" %></h5>
+		  </div>
+      </div>
+	  <p align="right"><a class="btn btn-warning btn-sm" href="<%= edit_child_path(@child) %>" role="button">Edit Info</a></p>
+	</div>
+</div>
+</div>
+
+
+<div class="row">
+	<div class="panel panel-info">
+	<div class="panel-body">
+	<h3>Programs</h3>
+
+	<div class="table-responsive">
+	  <table class='table table-striped'>
+	    <thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Program type</th>
+	        <th>Start date</th>
+	        <th>End date</th>
+	        <th>Location</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	      <% @programs.each do |program| %>
+	        <% if can? :read, program %>
+	          <tr>
+	            <td><%= link_to program.name, program_path(program) %></td>
+	          <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+	            <td><%= program.start_date %></td>
+	            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+	            <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
+	          </tr>
+	        <% end %>
+	      <% end %>
+	    </tbody>
+	  </table>
+	</div>
+	</div>
+</div>
+</div>

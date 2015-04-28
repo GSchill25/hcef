@@ -7,6 +7,7 @@ class ChildrenController < ApplicationController
   end
 
   def show
+    @programs = @child.programs
   end
 
   def new
