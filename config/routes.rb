@@ -1,5 +1,7 @@
 HCEF::Application.routes.draw do
 
+  resources :school_districts
+
   resources :after_schools
   match "/after_schools/update_by_id/:id" => "after_schools#update_by_id", via: :post
   match "/after_schools/update_sign_in_by_id/:id" => "after_schools#update_sign_in_by_id", via: :post

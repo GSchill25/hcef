@@ -14,7 +14,9 @@ class ProgramsController < ApplicationController
   def show
     @average_times = @program.average_time
     @days=AfterSchool.for_program(@program.id).ascending
-    @dates = @program.program_days.paginate(:page => params[:dates_page], :per_page => 10)
+    if @program.program_days.count > 0
+      @dates = @program.program_days.paginate(:page => params[:dates_page], :per_page => 10)
+    end
     if !@program.field_trips.nil?
       @info = @program.field_trips
     end

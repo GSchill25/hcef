@@ -8,6 +8,7 @@
           <li role="presentation"class="active"><a href="#child" data-toggle="tab">New Child</a></li>
           <li role="presentation"><a href="#guardian" data-toggle="tab">New Guardian</a></li>
           <li role="presentation"><a href="#school" data-toggle="tab">New School</a></li>
+          <li role="presentation"><a href="#school_district" data-toggle="tab">New District</a></li>
         </ul>
       </div>
       <div class="panel-body">
@@ -23,6 +24,11 @@
                 <div id="school" class="tab-pane">
               		<%= render :partial => "school_form" %>
               	</div>
+
+                <div id="school_district" class="tab-pane">
+                  <%= render :partial => "school_district_form" %>
+                </div>
+
         </div>
       </div>
     </div>
