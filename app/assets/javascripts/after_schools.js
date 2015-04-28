@@ -104,14 +104,37 @@ data_sign_in.forEach( function(row, rowIndex) {
   row[2] = "<button class='btn btn-primary' style='width:70%'>Sign Out</button>";
 });
 
-window.hot_sign_in = new Handsontable(container_sign_in,
+var data1 = [
+      ['', 'Kia', 'Nissan', 'Toyota', 'Honda'],
+      ['2008', 10, 11, 12, 13],
+      ['2009', 20, 11, 14, 13],
+      ['20010', 30, 15, 12, 13],
+      ['20011', '', '', '', ''],
+      ['20012', '', '', '', '']
+    ];
+
+/*window.hot_sign_in = new Handsontable(container_sign_in,
   { data: data_sign_in,
     colHeaders: ["Child", "", "", "Time in", "Time out"],
     colWidths: [130, 150, 150, 130, 130],
     cells: createCellProperties_sign_in,
     afterChange: onChange_sign_in,
-    afterSelection: onSelection_sign_in
-});
+    afterSelection: onSelection_sign_in,
+    fillHandle: false
+}); */
+
+window.hot_sign_in = new Handsontable(container_sign_in, 
+  { startRows: 8,
+    startCols: 5,
+    rowHeaders: true,
+    colHeaders: true,
+    minSpareRows: 1
+  }); 
+window.hot_sign_in.loadData(data1);
+
+document.getElementById('toggleTables').style.display = 'block';
+hot_sign_in_Container.style.display = 'block';
+
 
 /* On change of date, load in data from this day */
 $('.datepick').change(function(){
