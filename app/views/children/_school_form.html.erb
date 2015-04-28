@@ -2,22 +2,22 @@
 					<%= form_for(@school, :url=>{:controller=>"schools", :action=>"create"}) do |f| %>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12">
-									<label>Name</label>
+									<label>Name</label><%= mark_required(@school, :name) %>
 					        		<%= f.text_field :name %>
 					        	</div>
 	        					<div class="col-lg-6 col-md-6 col-sm-12">
-					        		<label>Phone</label>
+					        		<label>Phone</label><%= mark_required(@school, :phone) %>
 							        <%= f.text_field :phone %>
 							    </div>
 				        	</div></br></br>
 						        
 						    <div class="row">
 								<div class="col-lg-4 col-md-6 col-sm-12">
-									<label>Address Line One</label>
+									<label>Address Line One</label><%= mark_required(@school, :address_line_one) %>
 						        	<%= f.text_field :address_line_one %>
 						        </div>
 	        					<div class="col-lg-4 col-md-6 col-sm-12">
-							        <label>Address Line Two</label>
+							        <label>Address Line Two</label><%= mark_required(@school, :address_line_two) %>
 							        <%= f.text_field :address_line_two %>
 							    </div>
 							    <div class="col-lg-4 col-md-6 col-sm-12"></div>
@@ -25,15 +25,15 @@
 
 				        	<div class="row">
 				        		<div class="col-lg-4 col-md-6 col-sm-12">
-							        <label>City</label>
+							        <label>City</label><%= mark_required(@school, :city) %>
 							        <%= f.text_field :city %>
 							    </div>
 						        <div class="col-lg-4 col-md-6 col-sm-12">
-							        <label>State</label>
+							        <label>State</label><%= mark_required(@school, :state) %>
 							        <%= f.text_field :state %>
 						        </div>
 						        <div class="col-lg-4 col-md-6 col-sm-12">
-							        <label>Zip Code</label>
+							        <label>Zip Code</label><%= mark_required(@school, :zip) %>
 							        <%= f.text_field :zip %>
 						        </div>
 						    </div></br></br>
