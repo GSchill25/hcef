@@ -85,7 +85,10 @@ var onChange_sign_in = function(change, source) {
 }
 
 var onSelection_sign_in = function(row, col) {
-  checkIn(row, col+2);
+  /* Ensure is button column */
+  if (col == 1 || col == 2) {
+    checkIn(row, col+2);
+  }
 }
 
 window.hot = new Handsontable(container,
