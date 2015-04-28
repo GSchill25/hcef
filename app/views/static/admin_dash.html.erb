@@ -83,7 +83,11 @@
 		      <% @instructors.each do |i| %>
 		          <tr>
 		            <td><%= i.name %></td>
-		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <% if i.user.active==true %>
+		           	 <td><a class="btn btn-warning" href="<%= instructor_active_path(i) %>" role="button"> Make Inactive</a></td>
+		           	<% else %>
+		           	 <td><a class="btn btn-info" href="<%= instructor_active_path(i) %>" role="button"> Make Active</a></td>
+		           	<% end %>
 		            <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
 		          </tr>
 		      <% end %>
