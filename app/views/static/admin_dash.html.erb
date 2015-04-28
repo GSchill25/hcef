@@ -81,6 +81,7 @@
 
 		  <tbody>
 		      <% @instructors.each do |i| %>
+            <% if !i.user.nil? %>
 		          <tr>
 		            <td><%= i.name %></td>
 		            <% if i.user.active==true %>
@@ -90,6 +91,7 @@
 		           	<% end %>
 		            <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
 		          </tr>
+            <% end %>
 		      <% end %>
 		    </tbody>
 		</table>
