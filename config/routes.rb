@@ -1,5 +1,7 @@
 HCEF::Application.routes.draw do
 
+  resources :school_districts
+
   resources :after_schools
   match "/after_schools/update_by_id/:id" => "after_schools#update_by_id", via: :post
   match "/after_schools/update_sign_in_by_id/:id" => "after_schools#update_sign_in_by_id", via: :post
@@ -22,6 +24,8 @@ HCEF::Application.routes.draw do
   get 'master_view' => 'static#home'
   get 'master_view_new' => 'static#master_view_new'
   get 'admin_dash' => 'static#admin_dash', :as => :dash
+  get "child/active/:id" => 'children#child_active', :as => :child_active
+  get "instructor/active/:id" => 'instructors#instructor_active', :as => :instructor_active
   root :to => 'static#beta'
 
   get 'create_child' => 'static#create_child'

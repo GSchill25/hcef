@@ -20,6 +20,7 @@
 $('.dropdown-toggle').dropdown();
 
 
+
 $(function() {
 
 	$('#select_all').click(function(event) {

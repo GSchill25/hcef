@@ -1,5 +1,5 @@
 class InstructorsController < ApplicationController
-  before_action :set_instructor, only: [:show, :edit, :update, :destroy]
+  before_action :set_instructor, only: [:show, :edit, :update, :destroy, :instructor_active]
   authorize_resource
 
   def index
@@ -43,8 +43,20 @@ class InstructorsController < ApplicationController
 	end
 
 	def destroy
-		@instructor.destory
+		@instructor.destroy
 		redirect_to instructors_url, notice: "#{@instructor.name} has been deleted"
+	end
+
+	def instructor_active
+	  	if @instructor.user.active==true
+	  		@instructor.user.active=false
+	  		@instructor.user.save
+	  		redirect_to dash_path, notice: "#{@instructor.name} was made inactive"
+	  	else
+	  		@instructor.user.active=true
+	  		@instructor.user.save
+	  		redirect_to dash_path, notice: "#{@instructor.name} was made active"
+	  	end
 	end
 
 	private

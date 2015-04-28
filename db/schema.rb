@@ -156,6 +156,12 @@ ActiveRecord::Schema.define(version: 20150428043500) do
     t.datetime "updated_at"
   end
 
+  create_table "school_districts", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schools", force: true do |t|
     t.string   "name"
     t.string   "phone"
@@ -166,6 +172,7 @@ ActiveRecord::Schema.define(version: 20150428043500) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "school_district_id"
   end
 
   create_table "sub_locations", force: true do |t|

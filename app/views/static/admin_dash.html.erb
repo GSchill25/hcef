@@ -17,14 +17,15 @@
 			  </li>
 			</ul>
 	  		</p>
-	  		<p class="col-lg-6 col-lg-offset-2" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </p>
-	  		</br></br>
-	  		<div class="btn-group">
+	  		<h4 class="col-lg-6 col-lg-offset-1" align="center" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </h4>
+	  		</br></br></br></br></br></br>
+	  		<div class="btn-group col-lg-6 col-lg-offset-1">
+	  			<a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
 	  			<a class="btn btn-primary" href="<%= new_location_path %>" role="button">New Location</a>
 	  			<a class="btn btn-primary" href="<%= new_school_path %>" role="button">New School</a>
 	  		 	<!-- Need a new provider form -->
 	  			<a class="btn btn-primary" href="<%#= new_provider_path %>" role="button">New Provider</a>
-	  			<a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
+	  			
 	  		</div>
 	  	</br>
 
@@ -52,9 +53,13 @@
 		  <tbody>
 		      <% @children.each do |child| %>
 		          <tr>
-		            <td><%= child.name %></td>
+		            <td><%= link_to child.name, child_path(child) %></td>
 		            <td><%= child.date_of_birth %></td>
-		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <% if child.active==true %>
+		           	 <td><a class="btn btn-warning" href="<%= child_active_path(child) %>" role="button"> Make Inactive</a></td>
+		           	<% else %>
+		           	 <td><a class="btn btn-info" href="<%= child_active_path(child) %>" role="button"> Make Active</a></td>
+		           	<% end %>
 		            <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
 		          </tr>
 		      <% end %>
@@ -78,7 +83,11 @@
 		      <% @instructors.each do |i| %>
 		          <tr>
 		            <td><%= i.name %></td>
-		            <td><a class="btn btn-warning" href="<%= programs_url %>" role="button"> Make Inactive</a></td>
+		            <% if i.user.active==true %>
+		           	 <td><a class="btn btn-warning" href="<%= instructor_active_path(i) %>" role="button"> Make Inactive</a></td>
+		           	<% else %>
+		           	 <td><a class="btn btn-info" href="<%= instructor_active_path(i) %>" role="button"> Make Active</a></td>
+		           	<% end %>
 		            <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
 		          </tr>
 		      <% end %>
