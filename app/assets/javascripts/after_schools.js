@@ -91,10 +91,11 @@ var onSelection_sign_in = function(row, col) {
   }
 }
 
+
 window.hot = new Handsontable(container,
     { data: data,
-      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal", "Notes"],
-      colWidths: [130, 80, 60, 82, 130, 200, 400],
+      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Physical", "Hands On", "Goal", "Notes"],
+      colWidths: [130, 80, 60, 82, 130, 80, 80, 200, 400],
       cells: createCellProperties,
       afterChange: onChange
   });
@@ -131,9 +132,9 @@ $('.datepick').change(function(){
           var response = JSON.parse(request.responseText);
           data = response.data
           data_sign_in = response.data_sign_in
-          console.log(data_sign_in);
 
           hot.loadData(data);
+          console.log(data);
           hot_sign_in.loadData(data_sign_in);
         }
       }

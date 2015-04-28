@@ -20,7 +20,7 @@ class AfterSchoolsController < ApplicationController
     @children = @program.children
     @children_ids = []
     for child in @children
-      @data.push([child.name] + [0]*4 + [""] + [""])
+      @data.push([child.name] + [0]*6 + [""] + [""])
       @data_sign_in.push([child.name] + [""] + [""])
       @children_ids.push(child.id)
     end
@@ -70,8 +70,12 @@ class AfterSchoolsController < ApplicationController
     when 4
       @after_school.update_attribute(:reading_specialist_time, value)
     when 5
-      @after_school.update_attribute(:goal, value)
+      @after_school.update_attribute(:physical_activity, value)
     when 6
+      @after_school.update_attribute(:hands_on_activity, value)
+    when 7
+      @after_school.update_attribute(:goal, value)
+    when 8
       @after_school.update_attribute(:notes, value)
     end
 
@@ -151,15 +155,25 @@ class AfterSchoolsController < ApplicationController
         else
           data[index][4] = record.reading_specialist_time
         end
-        if record.goal.nil?
-          data[index][5] = ""
+        if record.physical_activity.nil?
+          data[index][5] = 0
         else
-          data[index][5] = record.goal
+          data[index][5] = record.physical_activity
+        end
+        if record.hands_on_activity.nil?
+          data[index][6] = 0
+        else
+          data[index][6] = record.hands_on_activity
+        end
+        if record.goal.nil?
+          data[index][7] = ""
+        else
+          data[index][7] = record.goal
         end
         if record.notes.nil?
-          data[index][6] = ""
+          data[index][8] = ""
         else
-          data[index][6] = record.notes
+          data[index][8] = record.notes
         end
 
         if record.time_in.nil?
@@ -181,7 +195,7 @@ class AfterSchoolsController < ApplicationController
 
       # If the record doesn't exist, set the row to initial, zero'd values
       else
-        data[index] = [data[index][0]] + [0]*4 + [""] + [""]
+        data[index] = [data[index][0]] + [0]*6 + [""] + [""]
         
         data_sign_in[index][3] = ""
         data_sign_in[index][4] = ""
@@ -203,6 +217,6 @@ class AfterSchoolsController < ApplicationController
     end
 
     def after_school_params
-      params.require(:after_school).permit(:program_id, :child_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :goal, :notes)
+      params.require(:after_school).permit(:program_id, :child_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :physical_activity, :hands_on_activity, :goal, :notes)
     end
 end
