@@ -96,8 +96,8 @@ window.hot = new Handsontable(container,
 data_sign_in.forEach( function(row, rowIndex) {
   var timeInCol  = 3;
   var timeOutCol = 4;
-  row[1] = "<button style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeInCol + ")'>Sign In</button>";
-  row[2] = "<button style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeOutCol + ")'>Sign Out</button>";
+  row[1] = "<button class='btn btn-primary' style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeInCol + ")'>Sign In</button>";
+  row[2] = "<button class='btn btn-primary' style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeOutCol + ")'>Sign Out</button>";
 });
 
 window.hot_sign_in = new Handsontable(container_sign_in,
