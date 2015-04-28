@@ -8,7 +8,7 @@ window.onbeforeunload = function (e) {
 $(document).ready(function() {
   /* $('#main-container').removeClass('container'); */
 
-  /* Select sub-locations */
+  /* Select sub-locations on parent click */
   $('.parent-button').click(function() {
     /* Button about to be made active */
     if (!$(this).hasClass('active')) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
     }
   });
  
-  /* Toggle visibility of tables */
+  /* Toggle visibility of tables on button click*/
   $('#afterSchoolButton').click(function() {
     $('#after_schools').toggle();
   });
@@ -118,10 +118,21 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       var tr = document.createElement('tr');
       tr.setAttribute('data-toggle', 'collapse')
       tr.setAttribute('data-target', '#after-school' + i);
+
       var td = document.createElement('td');
+      /* Name of program */
+      var name = document.createElement('span');
+      name.innerHTML = after_schools[i].name;
+      td.appendChild(name);
+      /* View program button */
       var a = document.createElement('a');
       a.setAttribute('href','/programs/' + after_schools[i].id);
-      a.innerHTML = after_schools[i].name;
+      a.className = 'btn btn-default btn-xs view-button glyphicon glyphicon-search';
+      a.setAttribute('aria-hidden', 'true');
+      a.setAttribute('role', 'button');
+      /* Ensure link opens to new tab/page to preserve current page */
+      a.setAttribute('target', '_blank');
+
       td.appendChild(a);
       tr.appendChild(td);
       after_schools_table.appendChild(tr);
@@ -145,10 +156,21 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       var tr = document.createElement('tr');
       tr.setAttribute('data-toggle', 'collapse')
       tr.setAttribute('data-target', '#enrichment' + i);
+      
       var td = document.createElement('td');
+      /* Name of program */
+      var name = document.createElement('span');
+      name.innerHTML = enrichments[i].name;
+      td.appendChild(name);
+      /* View program button */
       var a = document.createElement('a');
       a.setAttribute('href','/programs/' + enrichments[i].id);
-      a.innerHTML = enrichments[i].name;
+      a.className = 'btn btn-default btn-xs view-button glyphicon glyphicon-search';
+      a.setAttribute('aria-hidden', 'true');
+      a.setAttribute('role', 'button');
+      /* Ensure link opens to new tab/page to preserve current page */
+      a.setAttribute('target', '_blank');
+
       td.appendChild(a);
       tr.appendChild(td);
       enrichments_table.appendChild(tr);
@@ -171,10 +193,21 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       var tr = document.createElement('tr');
       tr.setAttribute('data-toggle', 'collapse')
       tr.setAttribute('data-target', '#field-trip' + i);
+
       var td = document.createElement('td');
+      /* Name of program */
+      var name = document.createElement('span');
+      name.innerHTML = field_trips[i].name;
+      td.appendChild(name);
+      /* View program button */
       var a = document.createElement('a');
       a.setAttribute('href','/programs/' + field_trips[i].id);
-      a.innerHTML = field_trips[i].name;
+      a.className = 'btn btn-default btn-xs view-button glyphicon glyphicon-search';
+      a.setAttribute('aria-hidden', 'true');
+      a.setAttribute('role', 'button');
+      /* Ensure link opens to new tab/page to preserve current page */
+      a.setAttribute('target', '_blank');
+
       td.appendChild(a);
       tr.appendChild(td);
       field_trips_table.appendChild(tr);
