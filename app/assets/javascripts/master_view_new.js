@@ -61,12 +61,6 @@ $(document).ready(function() {
 
 });
 
-/* TODO: All button */
-
-/* TODO: Selecting locations unselects Providers and vice versa */
-
-/* TODO: Get sublocations on submit */
-
 function submit() {
   var locations = [];
   /* Check which locations are selected */
@@ -120,6 +114,11 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       tr.setAttribute('data-target', '#after-school' + i);
 
       var td = document.createElement('td');
+      /* Add expandable indicator */
+      var plus = document.createElement('span');
+      plus.className = 'glyphicon glyphicon-plus';
+      plus.setAttribute('aria-hidden', 'true');
+      td.appendChild(plus);
       /* Name of program */
       var name = document.createElement('span');
       name.innerHTML = after_schools[i].name;
@@ -136,6 +135,16 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       td.appendChild(a);
       tr.appendChild(td);
       after_schools_table.appendChild(tr);
+
+      /* Toggle expandable indicator */
+      tr.addEventListener('click', function(e) {
+        var symbol = this.firstChild.firstChild
+        if ( $(symbol).hasClass('glyphicon-plus') ) {
+          $(symbol).addClass('glyphicon-minus').removeClass('glyphicon-plus');
+        } else {
+          $(symbol).addClass('glyphicon-plus').removeClass('glyphicon-minus');
+        }
+      });
 
       /* Create program's empty child row */
       var tr_child = document.createElement('tr');
@@ -158,6 +167,11 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       tr.setAttribute('data-target', '#enrichment' + i);
       
       var td = document.createElement('td');
+      /* Add expandable indicator */
+      var plus = document.createElement('span');
+      plus.className = 'glyphicon glyphicon-plus';
+      plus.setAttribute('aria-hidden', 'true');
+      td.appendChild(plus);
       /* Name of program */
       var name = document.createElement('span');
       name.innerHTML = enrichments[i].name;
@@ -165,7 +179,10 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       /* View program button */
       var a = document.createElement('a');
       a.setAttribute('href','/programs/' + enrichments[i].id);
-      a.className = 'btn btn-default btn-xs view-button glyphicon glyphicon-search';
+      a.className = 'btn btn-default btn-xs';
+      a.className += ' glyphicon glyphicon-search ';
+      a.className += ' view-button';
+      a.className += ' prevent-toggle';
       a.setAttribute('aria-hidden', 'true');
       a.setAttribute('role', 'button');
       /* Ensure link opens to new tab/page to preserve current page */
@@ -174,6 +191,16 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       td.appendChild(a);
       tr.appendChild(td);
       enrichments_table.appendChild(tr);
+
+      /* Toggle expandable indicator */
+      tr.addEventListener('click', function(e) {
+        var symbol = this.firstChild.firstChild
+        if ( $(symbol).hasClass('glyphicon-plus') ) {
+          $(symbol).addClass('glyphicon-minus').removeClass('glyphicon-plus');
+        } else {
+          $(symbol).addClass('glyphicon-plus').removeClass('glyphicon-minus');
+        }
+      });
 
       /* Create program's empty child row */
       var tr_child = document.createElement('tr');
@@ -195,6 +222,11 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       tr.setAttribute('data-target', '#field-trip' + i);
 
       var td = document.createElement('td');
+      /* Add expandable indicator */
+      var plus = document.createElement('span');
+      plus.className = 'glyphicon glyphicon-plus';
+      plus.setAttribute('aria-hidden', 'true');
+      td.appendChild(plus);
       /* Name of program */
       var name = document.createElement('span');
       name.innerHTML = field_trips[i].name;
@@ -211,6 +243,16 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       td.appendChild(a);
       tr.appendChild(td);
       field_trips_table.appendChild(tr);
+
+      /* Toggle expandable indicator */
+      tr.addEventListener('click', function(e) {
+        var symbol = this.firstChild.firstChild
+        if ( $(symbol).hasClass('glyphicon-plus') ) {
+          $(symbol).addClass('glyphicon-minus').removeClass('glyphicon-plus');
+        } else {
+          $(symbol).addClass('glyphicon-plus').removeClass('glyphicon-minus');
+        }
+      });
 
       /* Create program's empty child row */
       var tr_child = document.createElement('tr');
@@ -310,6 +352,8 @@ function create_after_school_table(children) {
     var a = document.createElement('a');
     a.setAttribute('href', '/children/' + child.id);
     a.innerHTML = child.first_name + " " + child.last_name;
+    /* Ensure link opens to new tab/page to preserve current page */
+    a.setAttribute('target', '_blank');
     td.appendChild(a);
     tr.appendChild(td);
     
@@ -363,6 +407,8 @@ function create_enrichment_table(children) {
     var a = document.createElement('a');
     a.setAttribute('href', '/children/' + child.id);
     a.innerHTML = child.first_name + " " + child.last_name;
+    /* Ensure link opens to new tab/page to preserve current page */
+    a.setAttribute('target', '_blank');
     td.appendChild(a);
     tr.appendChild(td);
     tbody.appendChild(tr);
@@ -395,6 +441,8 @@ function create_field_trip_table(children) {
     var a = document.createElement('a');
     a.setAttribute('href', '/children/' + child.id);
     a.innerHTML = child.first_name + " " + child.last_name;
+    /* Ensure link opens to new tab/page to preserve current page */
+    a.setAttribute('target', '_blank');
     td.appendChild(a);
     tr.appendChild(td);
     tbody.appendChild(tr);
