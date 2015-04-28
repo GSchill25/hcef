@@ -2,7 +2,7 @@
 					<%= form_for(@school, :url=>{:controller=>"schools", :action=>"create"}) do |f| %>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12">
-									<label>Name</label>
+									<label>Name</label><%= mark_required(@school, :name) %>
 					        		<%= f.text_field :name %>
 					        	</div>
 					        	<div class="col-lg-6 col-md-6 col-sm-12">
