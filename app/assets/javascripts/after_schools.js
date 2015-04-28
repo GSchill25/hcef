@@ -84,6 +84,10 @@ var onChange_sign_in = function(change, source) {
   }
 }
 
+var onSelection_sign_in = function(row, col) {
+  checkIn(row, col+2);
+}
+
 window.hot = new Handsontable(container,
     { data: data,
       colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal", "Notes"],
@@ -96,8 +100,8 @@ window.hot = new Handsontable(container,
 data_sign_in.forEach( function(row, rowIndex) {
   var timeInCol  = 3;
   var timeOutCol = 4;
-  row[1] = "<button class='btn btn-primary' style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeInCol + ")'>Sign In</button>";
-  row[2] = "<button class='btn btn-primary' style='width:70%' onclick='return checkIn(" + rowIndex + ", " + timeOutCol + ")'>Sign Out</button>";
+  row[1] = "<button class='btn btn-primary' style='width:70%'>Sign In</button>";
+  row[2] = "<button class='btn btn-primary' style='width:70%'>Sign Out</button>";
 });
 
 window.hot_sign_in = new Handsontable(container_sign_in,
@@ -105,7 +109,8 @@ window.hot_sign_in = new Handsontable(container_sign_in,
     colHeaders: ["Child", "", "", "Time in", "Time out"],
     colWidths: [130, 150, 150, 130, 130],
     cells: createCellProperties_sign_in,
-    afterChange: onChange_sign_in
+    afterChange: onChange_sign_in,
+    afterSelection: onSelection_sign_in
 });
 
 /* On change of date, load in data from this day */
