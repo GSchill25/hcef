@@ -187,8 +187,8 @@ class AfterSchoolsController < ApplicationController
         if record.time_out.nil?
           data_sign_in[index][4] = ""
         else
-          hour = record.time_in.hour
-          minutes = record.time_in.min 
+          hour = record.time_out.hour
+          minutes = record.time_out.min 
           minutes = minutes < 10 ? "0#{minutes}" : minutes;
           data_sign_in[index][4] = "#{hour}:#{minutes}"
         end
