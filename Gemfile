@@ -15,6 +15,9 @@ gem 'uglifier', '>= 1.3.0'
 #search box
 gem 'ransack'
 
+#export to excel
+gem 'axlsx'
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby

@@ -5,4 +5,9 @@ class School < ActiveRecord::Base
 
 	#validations
 	validates_presence_of :name
+
+
+	def name
+		return self.name
+	end
 end
