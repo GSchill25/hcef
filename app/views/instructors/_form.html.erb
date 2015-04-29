@@ -11,7 +11,7 @@
     	<%= nested_form_for(@instructor, :url=>{:action=>"create"}, html: {class: ""}) do |f| %>
 	    	<% if @instructor.errors.any? %>
 			    <div id="error_explanation">
-			      <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this After School Form from being saved:</h2>
+			      <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
 
 			      <ul>
 			      <% @instructor.errors.full_messages.each do |msg| %>
@@ -36,7 +36,7 @@
 			<% end %>
 			<p>
 				<h6> Assign Instructor to Location </h6>
-                  <% for location in @location %>
+                  <% for location in Location.all %>
                     <%= check_box_tag "instructor[location_ids][]", location.id, @instructor.locations.include?(location), {id: location.id} %>
                     <label for="<%= location.id %>"><%= location.name %></label>
                     <br />

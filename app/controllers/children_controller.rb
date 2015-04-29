@@ -16,12 +16,12 @@ class ChildrenController < ApplicationController
   	@guardian = Guardian.new
   	@school = School.new
   	@locations = Location.all
-  	@locs = Location.all
+  	@locs = current_user.instructor.locations
     @school_district = SchoolDistrict.new
   end
 
   def edit
-  	@locations = Location.all
+  	@locations = Location.new
   end
 
   def child_active
