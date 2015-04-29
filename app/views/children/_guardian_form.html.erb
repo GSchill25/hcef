@@ -32,7 +32,7 @@
 	        					<div class="col-lg-6 col-md-6 col-sm-12">
 									<p>
 										<%= f.label :location_ids %><%= mark_required(@guardian, :location_ids) %>
-										<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}) %>
+										<%= f.select :location_ids, options_for_select(Location.all.map{|l| if can? :read, loc [l.name, [l.id]]}) %>
 									</p>
 								</div>
 				        	</div></br></br>

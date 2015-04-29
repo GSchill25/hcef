@@ -35,8 +35,12 @@
 				<%= render :partial => "user_form", :locals => { :f => users } %>
 			<% end %>
 			<p>
-				<%= f.label :location_ids %><%= mark_required(@instructor, :location_ids) %>
-				<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}) %>
+				<h6> Assign Instructor to Location </h6>
+                  <% for location in @location %>
+                    <%= check_box_tag "instructor[location_ids][]", location.id, @instructor.locations.include?(location), {id: location.id} %>
+                    <label for="<%= location.id %>"><%= location.name %></label>
+                    <br />
+                  <% end %>
 			</p>
 			<button class="" type="submit" name="action">Submit
 			</button>

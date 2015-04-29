@@ -12,7 +12,7 @@ class Child < ActiveRecord::Base
 	has_many :enrichments, through: :enrichment_days
 
 	#validations
-	validates_presence_of :first_name, :last_name, :date_of_birth
+	validates_presence_of :first_name, :last_name, :date_of_birth, :location_id
 	validates_date :date_of_birth, :before => lambda { Date.today }, on: :create
 
 
