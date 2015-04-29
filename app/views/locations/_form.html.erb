@@ -11,25 +11,25 @@
     </div>
   <% end %>
 
-    <%= f.label :name %><br>
+    <%= f.label :name %><%= mark_required(@location, :name) %><br>
     <%= f.text_field :name %>
 
-    <%= f.label :address_line_one %><br>
+    <%= f.label :address_line_one %><%= mark_required(@location, :address_line_one) %><br>
     <%= f.text_field :address_line_one %>
     
-    <%= f.label :address_line_two %><br>
+    <%= f.label :address_line_two %><%= mark_required(@location, :address_line_two) %><br>
     <%= f.text_field :address_line_two %>
 
-    <%= f.label :city %><br>
+    <%= f.label :city %><%= mark_required(@location, :city) %><br>
     <%= f.text_field :city %>
 
-    <%= f.label :state %><br>
+    <%= f.label :state %><%= mark_required(@location, :state) %><br>
     <%= f.text_field :state %>
 
-    <%= f.label :zip %><br>
+    <%= f.label :zip %><%= mark_required(@location, :zip) %><br>
     <%= f.text_field :zip %>
 
-    <%= f.label :phone %><br>
+    <%= f.label :phone %><%= mark_required(@location, :phone) %><br>
     <%= f.text_field :phone %>
 
     <%= f.submit %>

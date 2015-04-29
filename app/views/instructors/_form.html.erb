@@ -22,11 +22,11 @@
 			<% end %>
     		<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12">
-					<label>First Name</label>
+					<label>First Name</label><%= mark_required(@instructor, :first_name) %>
 					<%= f.text_field :first_name %>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12">
-			   		<label>Last Name</label>
+			   		<label>Last Name</label><%= mark_required(@instructor, :last_name) %>
 	        		<%= f.text_field :last_name %>
 	        	</div>
 	        </div>	
@@ -34,12 +34,12 @@
 			<%= f.fields_for :user do |users| %>
 				<%= render :partial => "user_form", :locals => { :f => users } %>
 			<% end %>
-			<button class="" type="submit" name="action">Submit
-			</button>
 			<p>
-				<%= f.label :location_ids %>
+				<%= f.label :location_ids %><%= mark_required(@instructor, :location_ids) %>
 				<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}) %>
 			</p>
+			<button class="" type="submit" name="action">Submit
+			</button>
 		<% end %>
 	  </div>
     </div>
