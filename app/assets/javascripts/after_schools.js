@@ -85,13 +85,17 @@ var onChange_sign_in = function(change, source) {
 }
 
 var onSelection_sign_in = function(row, col) {
-  checkIn(row, col+2);
+  /* Ensure is button column */
+  if (col == 1 || col == 2) {
+    checkIn(row, col+2);
+  }
 }
+
 
 window.hot = new Handsontable(container,
     { data: data,
-      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Goal", "Notes"],
-      colWidths: [130, 80, 60, 82, 130, 200, 400],
+      colHeaders: ["Child", "Homework", "Literacy", "Technology", "Reading Specialist", "Physical", "Hands On", "Goal", "Notes"],
+      colWidths: [130, 80, 60, 82, 130, 80, 80, 200, 400],
       cells: createCellProperties,
       afterChange: onChange
   });
@@ -110,7 +114,8 @@ window.hot_sign_in = new Handsontable(container_sign_in,
     colWidths: [130, 150, 150, 130, 130],
     cells: createCellProperties_sign_in,
     afterChange: onChange_sign_in,
-    afterSelection: onSelection_sign_in
+    afterSelection: onSelection_sign_in,
+    fillHandle: false
 });
 
 /* On change of date, load in data from this day */
@@ -127,7 +132,6 @@ $('.datepick').change(function(){
           var response = JSON.parse(request.responseText);
           data = response.data
           data_sign_in = response.data_sign_in
-          console.log(data_sign_in);
 
           hot.loadData(data);
           hot_sign_in.loadData(data_sign_in);

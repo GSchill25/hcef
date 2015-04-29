@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :set_child, only: [:show, :edit, :update, :destroy]
+  before_action :set_child, only: [:show, :edit, :update, :destroy, :child_active]
   authorize_resource
 
   def index
@@ -7,6 +7,8 @@ class ChildrenController < ApplicationController
   end
 
   def show
+    @programs = @child.programs
+    @average_times = @child.average_activity_time
   end
 
   def new
@@ -15,10 +17,23 @@ class ChildrenController < ApplicationController
   	@school = School.new
   	@locations = Location.all
   	@locs = Location.all
+    @school_district = SchoolDistrict.new
   end
 
   def edit
   	@locations = Location.all
+  end
+
+  def child_active
+  	if @child.active==true
+  		@child.active=false
+  		@child.save
+  		redirect_to dash_path, notice: "#{@child.name} was made inactive"
+  	else
+  		@child.active=true
+  		@child.save
+  		redirect_to dash_path, notice: "#{@child.name} was made active"
+  	end
   end
 
   def create

@@ -1,0 +1,27 @@
+<h1>Listing school_districts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @school_districts.each do |school_district| %>
+      <tr>
+        <td><%= school_district.name %></td>
+        <td><%= link_to 'Show', school_district %></td>
+        <td><%= link_to 'Edit', edit_school_district_path(school_district) %></td>
+        <td><%= link_to 'Destroy', school_district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New School district', new_school_district_path %>

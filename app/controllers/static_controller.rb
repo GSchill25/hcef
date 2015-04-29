@@ -68,8 +68,7 @@ class StaticController < ApplicationController
     render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children} 
   end
 
-  def create_child
-  end
+
 
   def admin_dash
     @student_count = Child.all.count
