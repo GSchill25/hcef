@@ -16,9 +16,13 @@ function showHotSignIn() {
 function checkIn(row, col) {
   var date = new Date();
   var hours = date.getHours();
+  console.log(hours);
   var minutes = date.getMinutes();
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  var currentTime = date.getHours() + ":" + minutes;
+  var meridiem = hours < 12 ? 'am' : 'pm';
+  hours = hours % 12;
+  hours = hours ? hours : 12 // Hour 0 should be 12am
+  minutes = minutes < 10 ? '0' + minutes : minutes; //Add the preceding 0 if it's absent
+  var currentTime = hours + ':' + minutes + ' ' + meridiem;
   window.hot_sign_in.setDataAtCell(row, col, currentTime);
   return false;
 }
