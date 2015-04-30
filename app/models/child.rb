@@ -35,8 +35,9 @@ class Child < ActiveRecord::Base
 	    literacy_time = 0
 	    technology_time = 0
 	    reading_specialist_time = 0
-	    total_days = asprogram.after_schools.count
-	    asprogram.after_schools.each do |a|
+	    child_days = asprogram.after_schools.where("child_id = ?", self.id)
+	    total_days = child_days.count
+	    child_days.each do |a|
 	      #just add 0 if the students time is nil for that particular activity
 	      homework_time += a.homework_time || 0
 	      literacy_time += a.literacy_time || 0
