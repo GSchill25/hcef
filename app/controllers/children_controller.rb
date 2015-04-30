@@ -15,8 +15,8 @@ class ChildrenController < ApplicationController
   	@child = Child.new
   	@guardian = Guardian.new
   	@school = School.new
-  	@locations = Location.all
-  	@locs = current_user.instructor.locations
+  	@locations = Location.all                      if current_user.role == 'admin'
+  	@locations = current_user.instructor.locations if current_user.role == 'instructor'
     @school_district = SchoolDistrict.new
   end
 
