@@ -32,7 +32,7 @@
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
 <br>
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <%= f.collection_select :location_id, Location.all, :id, :name, :prompt => "Select Location" %>
 
     <%= f.submit %>
 <% end %>
