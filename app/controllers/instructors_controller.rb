@@ -29,7 +29,7 @@ class InstructorsController < ApplicationController
 	        format.json { render action: 'show', status: :created, location: @instructor }
 	      else
 	        format.html { render action: 'new' }
-	        format.json { render json: @instructor.errors, status: :unprocessable_entity }
+	        format.json { render json: @instructor.errors.full_messages, status: :unprocessable_entity }
 	      end
     	end
 	end
