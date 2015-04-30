@@ -89,6 +89,8 @@ class AfterSchoolsController < ApplicationController
     date = Date.strptime(params["date"],"%m/%d/%Y")
     col = params["col"]
     value = params["value"]
+    puts value
+    time = toMilitaryTime(value)
 
     @after_school = AfterSchool.find_or_initialize_by(program_id: program_id, child_id: child_id, date: date)
     # Note on methods:
@@ -96,7 +98,7 @@ class AfterSchoolsController < ApplicationController
     # update           does validate
     case col
     when 3 # time in changed
-      @after_school.update_attribute(:time_in, value)
+      @after_school.update_attribute(:time_in, time)
       if !@after_school.time_out.nil?
         total_minutes = ((@after_school.time_out - @after_school.time_in) / 60).to_i # minutes
         #TODO migrate total_hours => total_minutes
@@ -105,7 +107,7 @@ class AfterSchoolsController < ApplicationController
         end
       end
     when 4 # time out changed
-      @after_school.update_attribute(:time_out, value)
+      @after_school.update_attribute(:time_out, time)
       # update totalHours
       if !@after_school.time_in.nil?
         total_minutes =( (@after_school.time_out - @after_school.time_in) / 60).to_i # minutes
@@ -114,7 +116,6 @@ class AfterSchoolsController < ApplicationController
         end
       end
     end
-
     # Don't need to return anything
     head :ok
   end
@@ -179,17 +180,17 @@ class AfterSchoolsController < ApplicationController
           data_sign_in[index][3] = ""
         else
           hour = record.time_in.hour
-          minutes = record.time_in.min 
-          minutes = minutes < 10 ? "0#{minutes}" : minutes;
-          data_sign_in[index][3] = "#{hour}:#{minutes}"
+          minute = record.time_in.min 
+          time = toStandardTime(hour, minute)
+          data_sign_in[index][3] = time
         end
         if record.time_out.nil?
           data_sign_in[index][4] = ""
         else
           hour = record.time_out.hour
-          minutes = record.time_out.min 
-          minutes = minutes < 10 ? "0#{minutes}" : minutes;
-          data_sign_in[index][4] = "#{hour}:#{minutes}"
+          minute = record.time_out.min 
+          time = toStandardTime(hour, minute)
+          data_sign_in[index][4] = time
         end
 
       # If the record doesn't exist, set the row to initial, zero'd values
@@ -210,6 +211,29 @@ class AfterSchoolsController < ApplicationController
   end
 
   private
+    # Expects string input "hh:mm pm"
+    def toMilitaryTime(time)
+      hour = time.split(':', 2)[0].to_i
+      minute = time.split(':', 2)[1].split(" ", 2)[0].to_i
+      meridiem = time.split(' ', 2)[1]
+      if meridiem.nil?
+        meridiem = 'am' if time.include?('am')
+        meridiem = 'pm' if time.include?('pm')
+      end
+      hour = 0 if meridiem == 'am' && hour == 12   # 12am goes to 0
+      hour += 12 if meridiem == 'pm' && hour != 12 # 12pm stays
+      minute = "0#{minute}" if minute < 10 # Leading zero
+      return hour.to_s + ":" + minute.to_s
+    end
+    def toStandardTime(hour, minute)
+      hour = hour.to_i
+      minute = minute.to_i
+      meridiem = hour < 12 ? 'am' : 'pm'
+      hour = hour % 12
+      hour = 12 if hour.zero? # 0 hour becomes 12am
+      minute = "0#{minute}" if minute < 10 # Leading zero
+      return hour.to_s + ':' + minute.to_s + ' ' + meridiem
+    end
 
     def set_after_school
       @after_school = AfterSchool.find(params[:id])
