@@ -37,6 +37,7 @@ HCEF::Application.routes.draw do
   get 'logout' => 'sessions#destroy', :as => :logout
 
   get 'download_children' => 'static#download_children', :as => :download_children
+  get 'download_programs' => 'static#download_programs', :as => :download_programs
 
   match '*post' => "errors#error_404", via: [:post, :get] 
 
