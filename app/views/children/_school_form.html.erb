@@ -6,7 +6,7 @@
 					        		<%= f.text_field :name %>
 					        	</div>
 					        	<div class="col-lg-6 col-md-6 col-sm-12">
-					        		<%= f.label :school_district_id %>
+					        		<%= f.label :school_district_id %></br>
 									<%= f.select :school_district_id, options_for_select(SchoolDistrict.all.map{|s| [s.name, [s.id]]}), :prompt => "Select District" %>
 								</div>
 						    </div></br></br>
