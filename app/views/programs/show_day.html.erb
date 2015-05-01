@@ -1,5 +1,10 @@
-<div class="container">
-  <h2 align="center"><%= @program.name %></h2>
+<ol class="breadcrumb">
+    <li><a href="<%= home_path %>">Home</a></li>
+    <li><a href="<%= programs_url %>">All Programs</a></li>
+    <li><a href="<%= program_path(@program) %>"><%= @program.name %></a></li>
+</ol>
+
+<h2 align="center"><%= @program.name %></h2>
 
 <div class="panel panel-warning">
       
