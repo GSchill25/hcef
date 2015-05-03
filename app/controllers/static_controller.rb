@@ -20,7 +20,6 @@ class StaticController < ApplicationController
       # The case where all locations are selected, so reject! will return nil since there is no change from allLocaitons
       locations = allLocations if locations.nil?
       after_schools = []
-        after_schools_days = []
         #Data of one element: [child record, avg homework, avg literacy, avg technology, avg reading_specialist, total_time]
         after_schools_children = []
       enrichments = []
@@ -31,18 +30,19 @@ class StaticController < ApplicationController
         field_trips_days = []
         #Data of one element: child record
         field_trips_children = []
-      locations.each do |l|
         after_school_index = 0
         enrichment_index = 0
         field_trip_index = 0
+      locations.each do |l|
         l.programs.each_with_index do |p, i|
           # Gather all program_types
           if p.program_type == 'after_school'
             after_schools << p
-            after_schools_days << p.after_schools.count
             after_schools_children[after_school_index] = [] if after_schools_children[after_school_index].nil?
             #Gather all children data
             p.children.each do |c|
+              puts "here #{after_school_index}"
+              puts p
               # Format: [[homework, time], [literacy, time], [technology, time], [readingSpecialist, time], [physical, time], [handson, time]]
               times = c.average_activity_time
               if times.nil?
@@ -59,6 +59,7 @@ class StaticController < ApplicationController
               end
             end
             after_school_index += 1
+            puts "there #{after_school_index}"
           elsif p.program_type == 'enrichment'
             enrichments << p
             enrichments_days << p.enrichments.count
@@ -81,7 +82,7 @@ class StaticController < ApplicationController
         end
       end
     end
-    render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children, after_schools_days: after_schools_days, enrichments_days: enrichments_days, field_trips_days: field_trips_days} 
+    render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children, enrichments_days: enrichments_days, field_trips_days: field_trips_days} 
   end
 
 
