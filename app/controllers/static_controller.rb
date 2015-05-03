@@ -20,12 +20,15 @@ class StaticController < ApplicationController
       # The case where all locations are selected, so reject! will return nil since there is no change from allLocaitons
       locations = allLocations if locations.nil?
       after_schools = []
+        after_schools_days = []
         #Data of one element: [child record, avg homework, avg literacy, avg technology, avg reading_specialist, total_time]
         after_schools_children = []
       enrichments = []
+        enrichments_days = []
         #Data of one element: child record
         enrichments_children = []
       field_trips = []
+        field_trips_days = []
         #Data of one element: child record
         field_trips_children = []
       locations.each do |l|
@@ -36,7 +39,7 @@ class StaticController < ApplicationController
           # Gather all program_types
           if p.program_type == 'after_school'
             after_schools << p
-            
+            after_schools_days << p.after_schools.count
             after_schools_children[after_school_index] = [] if after_schools_children[after_school_index].nil?
             #Gather all children data
             p.children.each do |c|
@@ -58,7 +61,7 @@ class StaticController < ApplicationController
             after_school_index += 1
           elsif p.program_type == 'enrichment'
             enrichments << p
-
+            enrichments_days << p.enrichments.count
             enrichments_children[enrichment_index] = [] if enrichments_children[enrichment_index].nil?
             #Gather all children data
             p.children.each do |c|
@@ -67,7 +70,7 @@ class StaticController < ApplicationController
             enrichment_index += 1
           elsif p.program_type == 'field_trip'
             field_trips << p
-
+            field_trips_days << p.field_trips.count
             field_trips_children[field_trip_index] = [] if field_trips_children[field_trip_index].nil?
             #Gather all children data
             p.children.each do |c|
@@ -78,7 +81,7 @@ class StaticController < ApplicationController
         end
       end
     end
-    render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children} 
+    render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children, after_schools_days: after_schools_days, enrichments_days: enrichments_days, field_trips_days: field_trips_days} 
   end
 
 
