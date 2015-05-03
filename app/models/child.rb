@@ -52,6 +52,8 @@ class Child < ActiveRecord::Base
 	    literacy_time = 0
 	    technology_time = 0
 	    reading_specialist_time = 0
+	    physical_time = 0
+	    hands_on_time = 0
 	    child_days = asprogram.after_schools.where("child_id = ?", self.id)
 	    total_days = child_days.count
 	    child_days.each do |a|
@@ -60,11 +62,13 @@ class Child < ActiveRecord::Base
 	      literacy_time += a.literacy_time || 0
 	      technology_time += a.technology_time || 0
 	      reading_specialist_time += a.reading_specialist_time || 0
+	      physical_time += a.physical_activity || 0
+	      hands_on_time += a.hands_on_activity || 0
 	    end
 	end
 
     if total_days != 0
-      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days], ["Physical Activity", physical_time/total_days], ["Hands On Time", hands_on_time/total_days]]
     else
       return nil
     end

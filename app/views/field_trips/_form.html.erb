@@ -1,3 +1,11 @@
+  <ol class="breadcrumb">
+    <li><a href="<%= home_path %>">Home</a></li>
+    <li><a href="<%= programs_url %>">Programs</a></li>
+    <li><a href="<%= program_path(@program) %>"><%= @program.name %></a></li>
+  </ol>
+
+<div class="panel panel-warning">
+  <div class="panel-body">
   <div class="row">
     <div class="col-lg-6">
       <%= form_for(@field_trip) do |f| %>
@@ -44,3 +52,5 @@
       <%= f.submit "Create" %>
       <% end %>
   </div>
+</div>
+</div>

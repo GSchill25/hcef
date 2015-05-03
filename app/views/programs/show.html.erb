@@ -51,7 +51,7 @@
 <% else %>
 <div class="row">
         <div class="col-lg-3 col-sm-12">
-          <div class="panel panel-default">
+          <div class="panel panel-info">
             <div class="panel-heading">Program Name</div>
             <div class="panel-body">
               <%= @program.name %>
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-lg-offset-1 col-sm-12">
-          <div class="panel panel-default">
+          <div class="panel panel-info">
             <div class="panel-heading">Type</div>
             <div class="panel-body">
               <%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %>
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-lg-offset-1 col-sm-12">
-          <div class="panel panel-default">
+          <div class="panel panel-info">
             <div class="panel-heading">Location</div>
             <div class="panel-body">
               <%= @program.location.name  %>
@@ -82,7 +82,7 @@
     <% if @program.program_type=="after_school" %>
         </br></br>
         <h5><u> Average Activity Time for All Children </u></h5>
-        <%= bar_chart @average_times, colors: ["orange", "blue", "red", "green"] %>
+        <%= bar_chart @average_times, colors: ["orange"] %>
 
       </br>
       <div class='row'>
