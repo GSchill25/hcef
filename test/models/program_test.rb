@@ -82,8 +82,8 @@ class ProgramTest < ActiveSupport::TestCase
     end
 
     should "show that average time works" do
-      assert_equal [["Homework", 6],["Literacy", 6],["Technology", 3],["Reading Specialist", 3]], @program1.average_time
-      assert_equal [["Homework", 0],["Literacy", 0],["Technology", 0],["Reading Specialist", 0]], @program4.average_time
+      assert_equal [["Homework", 6],["Literacy", 6],["Technology", 3],["Reading Specialist", 3],["Physical Activity", 0], ["Hands On Time", 0]], @program1.average_time
+      assert_equal [["Homework", 0],["Literacy", 0],["Technology", 0],["Reading Specialist", 0],["Physical Activity", 0], ["Hands On Time", 0]], @program4.average_time
     end
 
     should "show program_days works" do

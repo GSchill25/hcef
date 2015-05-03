@@ -55,8 +55,13 @@ class ChildTest < ActiveSupport::TestCase
       assert_equal ["Richard Cho", "Alex Kim", "Jason Lee", "Paul Park"], Child.alphabetical.all.map(&:name)
     end
 
-    should "show averate time works" do
-      assert_equal [["Homework", 6], ["Literacy", 6], ["Technology", 3], ["Reading Specialist", 3]], @child1.average_activity_time
+    should "show total time works" do
+      assert_equal 30, @child1.total_time
+      assert_equal nil, @inactive_child.total_time
+    end
+
+    should "show average time works" do
+      assert_equal [["Homework", 10], ["Literacy", 10], ["Technology", 5], ["Reading Specialist", 5], ["Physical Activity", 0], ["Hands On Time", 0]], @child1.average_activity_time
       assert_equal nil, @inactive_child.average_activity_time
     end
 

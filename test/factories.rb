@@ -11,6 +11,8 @@ FactoryGirl.define do
     literacy_time 2
     technology_time 1
     reading_specialist_time 1
+    physical_activity 0
+    hands_on_activity 0
     goal "To finish most of the work for the day"
   end
 
