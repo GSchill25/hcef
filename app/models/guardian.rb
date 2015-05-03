@@ -8,9 +8,7 @@ class Guardian < ActiveRecord::Base
 
 	#validations
 	validates_presence_of :first_name, :last_name, :phone, :date_of_birth
-	validates_date :date_of_birth, :before => lambda { Date.today }, on: :create
-	validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-. ]\d{4})\z/, message: "should be 10 digits", :allow_blank => true
-  	validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info|name))\z/i, message: "is not a valid format", :allow_blank => true
+	validates_date :date_of_birth_two, :before => lambda { Date.today }, on: :create
 
 	#scopes
 	scope :alphabetical, -> { order('last_name', 'first_name')}
