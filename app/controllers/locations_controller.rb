@@ -21,7 +21,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to @location, notice: "#{@location.name} was successfully created."
+      redirect_to dash_path, notice: "#{@location.name} was successfully created."
     else
       render action: "new"
     end
