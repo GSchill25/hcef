@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
       find_by_username(login).try(:authenticate, password)
     end
 
-    #there are currently three roles in the system
-    #however, guardian is not linked to user at this point
-  	ROLES = [['admin', :admin],['instructor', :instructor], ['guardian', :guardian]]
+    #there are currently two roles in the system
+    #instructor and service provider has exact same roles
+  	ROLES = [['admin', :admin],['instructor', :instructor], ['service provider', :instructor]]
 
     def role?(authorized_role)
       return false if role.nil?

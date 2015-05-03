@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SchoolDistrictTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should have_many(:schools)
+
+  should validate_presence_of(:name)
 end
