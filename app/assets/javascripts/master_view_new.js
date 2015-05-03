@@ -314,19 +314,27 @@ function create_after_school_table(children) {
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Homework';
+  th.innerHTML = 'Avg HW';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Literacy';
+  th.innerHTML = 'Avg Lit';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Technology';
+  th.innerHTML = 'Avg Tech';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Reading Specialist';
+  th.innerHTML = 'Avg Reading';
+  theadRow.appendChild(th);
+
+  var th = document.createElement('th');
+  th.innerHTML = 'Avg Physical';
+  theadRow.appendChild(th);
+  
+  var th = document.createElement('th');
+  th.innerHTML = 'Avg HandsOn';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
@@ -344,7 +352,9 @@ function create_after_school_table(children) {
     var avg_lit = children[i][2];
     var avg_tech = children[i][3];
     var avg_read = children[i][4];
-    var total_time = children[i][5];
+    var avg_physical = children[i][5];
+    var avg_handson = children[i][6];
+    var total_time = children[i][7];
 
     var tr = document.createElement('tr');
 
@@ -371,6 +381,14 @@ function create_after_school_table(children) {
     
     var td = document.createElement('td');
     td.innerHTML = avg_read;
+    tr.appendChild(td);
+    
+    var td = document.createElement('td');
+    td.innerHTML = avg_physical;
+    tr.appendChild(td);
+    
+    var td = document.createElement('td');
+    td.innerHTML = avg_handson;
     tr.appendChild(td);
     
     var td = document.createElement('td');

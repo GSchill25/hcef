@@ -40,10 +40,10 @@ class StaticController < ApplicationController
             after_schools_children[after_school_index] = [] if after_schools_children[after_school_index].nil?
             #Gather all children data
             p.children.each do |c|
-              # Format: [[homework, time], [literacy, time], [technology, time], [readingSpecialist, time]]
+              # Format: [[homework, time], [literacy, time], [technology, time], [readingSpecialist, time], [physical, time], [handson, time]]
               times = c.average_activity_time
               if times.nil?
-                after_schools_children[after_school_index] << [c, 0, 0, 0, 0, 0]
+                after_schools_children[after_school_index] << [c, 0, 0, 0, 0, 0, 0, 0]
               else 
                 averages = [c]
                 # Gather averages for each category into an array 
