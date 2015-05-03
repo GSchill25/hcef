@@ -91,7 +91,7 @@
 			      <% @instructors.each do |i| %>
 	            <% if !i.user.nil? %>
 			          <tr>
-			            <td><%= i.name %></td>
+			            <td><%= link_to i.name, instructor_path(i) %></td>
 			            <% if i.user.active==true %>
 			           	 <td><a class="btn btn-warning" href="<%= instructor_active_path(i) %>" role="button"> Make Inactive</a></td>
 			           	<% else %>
