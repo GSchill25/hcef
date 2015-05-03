@@ -11,7 +11,7 @@ class AfterSchool < ActiveRecord::Base
   #validates_format_of :time_in, with: /[0-9]{1,4}/[0-9]{1,2}/[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/, :allow_nil => false, :allow_blank => false
   #validates_format_of :time_out, with: /[0-9]{1,4}/[0-9]{1,2}/[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/, :allow_nil => false, :allow_blank => false
   #validates :time_out, after: :time_in
-  validates_numericality_of :total_hours, greater_than_or_equal_to: 0
+  validates_numericality_of :total_minutes, greater_than_or_equal_to: 0
 =begin
   validates_time :homework_time,
   :literacy_time

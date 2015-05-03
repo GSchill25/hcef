@@ -7,7 +7,7 @@ class AfterSchoolTest < ActiveSupport::TestCase
   should validate_presence_of(:date)
   should validate_presence_of(:time_in)
   should validate_presence_of(:time_out)
-  should validate_numericality_of(:total_hours)
+  should validate_numericality_of(:total_minutes)
 
   should_not allow_value(nil).for(:date)
   

@@ -6,7 +6,7 @@ FactoryGirl.define do
     date Date.today
     time_in DateTime.now
     time_out DateTime.now
-    total_hours 6
+    total_minutes 6
     homework_time 2
     literacy_time 2
     technology_time 1

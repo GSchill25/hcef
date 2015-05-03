@@ -24,11 +24,6 @@ class ProgramTest < ActiveSupport::TestCase
 
   should_not allow_value(nil).for(:start_date)
 
-  should allow_value(Date.today).for(:end_date)
-  should allow_value(10.days.from_now).for(:end_date)
-
-  should_not allow_value(nil).for(:end_date)
-
   context "Within context" do
     setup do 
       create_locations
