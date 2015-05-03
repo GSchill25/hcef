@@ -17,6 +17,7 @@
         
       </thead>
     </tr>
+    <% if !@dates.nil? %>
       <% @dates.each do |d| %>
         <tr>
           <td><%= d[0] %></td>
@@ -24,7 +25,10 @@
           <td><%= d[1] %></td>
           <td> <button type="button" class="btn btn-default"><a href=<%= "/program/#{@program.id}/#{d[0]}"%>>Show Day<a></button></td>
         </tr>
+      <% end %>
     <% end %>
   </table>
-  <%= will_paginate @dates, :param_name => 'dates_page' %>
+    <% if !@dates.nil? %>
+      <%= will_paginate @dates, :param_name => 'dates_page' %>
+    <% end %>
 </div>
