@@ -14,9 +14,25 @@ namespace :db do
     i_user.save!
 
     a_user = User.new
-    a_user.username = 'admin'
-    a_user.password = 'admin'
-    a_user.password_confirmation = 'admin'
+    a_user.username = 'knykwest'
+    a_user.password = 'knykwest'
+    a_user.password_confirmation = 'knykwest'
+    a_user.role = 'admin'
+    a_active = true
+    a_user.save!
+
+    a_user = User.new
+    a_user.username = 'lsaulle'
+    a_user.password = 'lsaulle'
+    a_user.password_confirmation = 'lsaulle'
+    a_user.role = 'admin'
+    a_active = true
+    a_user.save!
+
+    a_user = User.new
+    a_user.username = 'cpavlik'
+    a_user.password = 'cpavlik'
+    a_user.password_confirmation = 'cpavlik'
     a_user.role = 'admin'
     a_active = true
     a_user.save!
@@ -45,12 +61,6 @@ namespace :db do
     # Location
     action = Location.new
     action.name = 'ACTION-Housing'
-    action.address_line_one = '425 Sixth Avenue'
-    action.address_line_two = '#950'
-    action.city = 'Pittsburgh'
-    action.state = 'PA'
-    action.zip = '15219'
-    action.phone = '4122812102'
     action.save!
 
     avac = Location.new
