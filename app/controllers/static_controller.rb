@@ -93,17 +93,17 @@ class StaticController < ApplicationController
     @children.each do |c|
       times = c.average_activity_time
       if times.nil?
-        time_list << [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0]]
+        time_list << [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0], ["Physical Activity", 0], ["Hands On Time", 0]]
       else
         time_list << times
       end
     end
 
     workbook.add_worksheet(name: "Children") do |sheet|
-      sheet.add_row ["ID", "First Name","Last Name","Date of Birth", "Active","Guardian", "Programs", "Homework", "Literacy", "Technology", "Reading Specialist"]
+      sheet.add_row ["ID", "First Name","Last Name","Date of Birth", "Active","Guardian", "Programs", "Homework", "Literacy", "Technology", "Reading Specialist", "Physical Activity", "Hands On Time"]
       @children.each do |child|
         @guardian = child.guardian.name if !child.guardian.nil?
-        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, @guardian, child.programs.count, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1]]
+        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, @guardian, child.programs.count, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1], time_list[0][4][1], time_list[0][5][1]]
         time_list=time_list[1..time_list.length]
       end
     end
@@ -119,17 +119,17 @@ class StaticController < ApplicationController
     @programs.each do |p|
       times = p.average_time
       if times.nil?
-        time_list << [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0]]
+        time_list << [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0], ["Physical Activity", 0], ["Hands On Time", 0]]
       else
         time_list << times
       end
     end
 
     workbook.add_worksheet(name: "Programs") do |sheet|
-      sheet.add_row ["ID", "Name","Start Date","End Date", "Average Homework", "Average Literacy", "Average Technology", "Average Reading Specialist"]
+      sheet.add_row ["ID", "Name","Start Date","End Date", "Average Homework", "Average Literacy", "Average Technology", "Average Reading Specialist", "Physical Activity", "Hands On Time"]
       @programs.each do |p|
         @end_date = p.end_date if !p.end_date.nil?
-        sheet.add_row [p.id, p.name, p.start_date, @end_date, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1]]
+        sheet.add_row [p.id, p.name, p.start_date, @end_date, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1], time_list[0][4][1], time_list[0][5][1]]
         time_list=time_list[1..time_list.length]
       end
     end

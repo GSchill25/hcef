@@ -58,7 +58,7 @@ class Program < ActiveRecord::Base
     if total_days!=0
       return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days], ["Physical Activity", physical_time/total_days], ["Hands On Time", hands_on_time/total_days]]
     else
-      return [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0], ["Physical Time", 0], ["Hands On Time", 0]]
+      return [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0], ["Physical Activity", 0], ["Hands On Time", 0]]
     end
   end
 
