@@ -16,36 +16,17 @@
 </p>
 <% if @instructor.user.role != "admin" %>
 	<p>
-	  <strong>Assigned Programs:</strong>
 	  <table class='table table-striped'>
 	    <thead>
 	      <tr>
-	        <th>Name</th>
-	        <th>Program type</th>
-	        <th>Start date</th>
-	        <th>End date</th>
-	        <th>Location</th>
-	        <th></th>
-	        <th></th>
-	        <th></th>
+	        <th>Assigned Locations:</th>
 	      </tr>
 	    </thead>
 
 	    <tbody>
 	      <% @instructor.locations.each do |location| %>
-	      	<% location.programs.each do |program| %>
-		        <% if can? :read, program %>
-		          <tr>
-		            <td><%= link_to program.name, program_path(program) %></td>
-		            <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
-		            <td><%= program.start_date %></td>
-		            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
-		            <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
-		            <% if can? :edit, program %>
-		            	<td><%= link_to 'Edit', edit_program_path(program) %></td>
-		            <% end %>
-		          </tr>
-		        <% end %>
+	      	<% if can? :read, location %>
+	      		<td><%= link_to location.name, location_path(location) %></td>
 		    <% end %>
 	      <% end %>
 	    </tbody>
