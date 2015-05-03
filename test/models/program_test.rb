@@ -24,11 +24,6 @@ class ProgramTest < ActiveSupport::TestCase
 
   should_not allow_value(nil).for(:start_date)
 
-  should allow_value(Date.today).for(:end_date)
-  should allow_value(10.days.from_now).for(:end_date)
-
-  should_not allow_value(nil).for(:end_date)
-
   context "Within context" do
     setup do 
       create_locations
@@ -87,8 +82,8 @@ class ProgramTest < ActiveSupport::TestCase
     end
 
     should "show that average time works" do
-      assert_equal [["Homework", 6],["Literacy", 6],["Technology", 3],["Reading Specialist", 3]], @program1.average_time
-      assert_equal [["Homework", 0],["Literacy", 0],["Technology", 0],["Reading Specialist", 0]], @program4.average_time
+      assert_equal [["Homework", 6],["Literacy", 6],["Technology", 3],["Reading Specialist", 3],["Physical Activity", 0], ["Hands On Time", 0]], @program1.average_time
+      assert_equal [["Homework", 0],["Literacy", 0],["Technology", 0],["Reading Specialist", 0],["Physical Activity", 0], ["Hands On Time", 0]], @program4.average_time
     end
 
     should "show program_days works" do

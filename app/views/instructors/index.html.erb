@@ -3,7 +3,6 @@
   <thead>
     <tr>
       <th data-field="name">Name</th>
-      <th data-field="programs">Programs</th>
     </tr>
   </thead>
 
@@ -12,7 +11,6 @@
     <tr>
       <% if can? :read, instructor %>
         <td><%= link_to instructor.first_name + " " + instructor.last_name, instructor_path(instructor) %></td>
-        <td>Programs</td>
         <% if can? :update, instructor %>
           <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
         <% end %>

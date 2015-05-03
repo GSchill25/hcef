@@ -20,6 +20,8 @@ class Child < ActiveRecord::Base
 	scope :alphabetical, -> { order('last_name', 'first_name')}
 	scope :active, -> { where('active = ?', true)}
 
+  #calculates the total time of the activities for a child
+  #returns nil if the child does not have any after_school recorded
   def total_time
   	asprogram = nil
   	self.programs.each do |p|
@@ -39,6 +41,8 @@ class Child < ActiveRecord::Base
     return total_time
   end
 
+  #calculates the total time of the activities for a child
+  #returns nil if the child does not have any after_school recorded
   def average_activity_time
   	asprogram = nil
   	self.programs.each do |p|

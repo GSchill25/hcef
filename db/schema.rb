@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430050640) do
+ActiveRecord::Schema.define(version: 20150503152005) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150430050640) do
     t.string   "grade"
     t.integer  "school_id"
     t.integer  "guardian_id"
-    t.boolean  "active"
+    t.boolean  "active",        default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20150430050640) do
     t.string   "username"
     t.string   "password_digest"
     t.string   "role"
-    t.boolean  "active"
+    t.boolean  "active",          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "instructor_id"

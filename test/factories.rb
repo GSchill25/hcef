@@ -6,11 +6,13 @@ FactoryGirl.define do
     date Date.today
     time_in DateTime.now
     time_out DateTime.now
-    total_hours 6
+    total_minutes 6
     homework_time 2
     literacy_time 2
     technology_time 1
     reading_specialist_time 1
+    physical_activity 0
+    hands_on_activity 0
     goal "To finish most of the work for the day"
   end
 
@@ -43,6 +45,11 @@ FactoryGirl.define do
     notes "Sample Enrichment"
   end
 
+  factory :enrichment_day do
+    association :program
+    association :enrichment
+  end
+
   factory :enrollment do
     association :program
     association :child
@@ -53,6 +60,11 @@ FactoryGirl.define do
     association :program
     length 10
     notes "Sample program"
+  end
+
+  factory :field_trip_day do
+    association :program
+    association :field_trip
   end
 
   factory :guardian_location do

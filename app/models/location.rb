@@ -12,7 +12,6 @@ class Location < ActiveRecord::Base
   # Validations
   validates_presence_of :name
 
-
   # Scopes
   scope :alphabetical, -> { order("name") }
 
