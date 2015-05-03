@@ -25,7 +25,7 @@ class ProgramsController < ApplicationController
       @enrich_info = @program.enrichments
     end
 
-    @children = @program.children.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
+    @children = @program.children.active.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
   end
 
   def show_day
