@@ -18,6 +18,7 @@ class Child < ActiveRecord::Base
 
 	#scopes
 	scope :alphabetical, -> { order('last_name', 'first_name')}
+	scope :active, -> { where('active = ?', true)}
 
   def total_time
   	asprogram = nil

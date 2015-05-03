@@ -17,7 +17,7 @@ class AfterSchoolsController < ApplicationController
     @after_school = AfterSchool.new
     @data = []
     @data_sign_in = []
-    @children = @program.children
+    @children = @program.children.active
     @children_ids = []
     for child in @children
       @data.push([child.name] + [0]*6 + [""] + [""])
