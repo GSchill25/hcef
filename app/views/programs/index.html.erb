@@ -35,7 +35,8 @@
 </div>
 
   <br>
- 
+<% if can? :create, Program %> 
   <a class="btn btn-primary" href="<%= new_program_path %>" role="button"> New Program </a>
+<% end %>
 
   <%= will_paginate @programs %>

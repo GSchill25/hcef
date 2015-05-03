@@ -13,10 +13,13 @@ class User < ActiveRecord::Base
     validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
 
 
+    #authentication of user
 	  def self.authenticate(login,password)
       find_by_username(login).try(:authenticate, password)
     end
 
+    #there are currently three roles in the system
+    #however, guardian is not linked to user at this point
   	ROLES = [['admin', :admin],['instructor', :instructor], ['guardian', :guardian]]
 
     def role?(authorized_role)

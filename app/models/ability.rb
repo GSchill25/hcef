@@ -82,10 +82,7 @@ class Ability
         can :update, User do |current_user|
             current_user.id == user.id
         end
-    #elsif user.role? :guardian
-    #    can :manage, Child do |child|
-    #        child.guardian.id == user.guardian_id
-    #    end
+
     end
   end
 end
