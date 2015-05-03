@@ -3,7 +3,7 @@ class ChildrenController < ApplicationController
   authorize_resource
 
   def index
-    @children = Child.all.alphabetical.paginate(:page => params[:page], :per_page => 30)
+    @children = Child.active.alphabetical.paginate(:page => params[:page], :per_page => 30)
   end
 
   def show

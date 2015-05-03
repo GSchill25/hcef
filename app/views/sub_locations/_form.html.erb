@@ -1,3 +1,7 @@
+<div class="row">
+<div class="panel panel-info">
+  <div class="panel-body">
+
 <%= form_for(@sub_location) do |f| %>
   <% if @sub_location.errors.any? %>
     <div id="error_explanation">
@@ -10,11 +14,13 @@
       </ul>
     </div>
   <% end %>
-
-    <%= f.label :name %><%= mark_required(@sub_location, :name) %>
-    <%= f.text_field :name %><br>
-
+    <%= f.label :name %><%= mark_required(@sub_location, :name) %></br>
+    <%= f.text_field :name %></br></br>
     <%= f.collection_select :location_id, Location.all, :id, :name, :prompt => "Select Location" %>
-
-    <%= f.submit %>
+    </br></br>
+    <%= f.submit %></br></br>
 <% end %>
+
+  </div>
+</div>
+</div>

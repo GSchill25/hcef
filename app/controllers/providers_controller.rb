@@ -18,7 +18,7 @@ class ProvidersController < ApplicationController
 	def create
 		@provider = Provider.new(provider_params)
 		if @provider.save
-			redirect_to new_provider_path, notice: "The provider #{@provider.name} was added to the system"
+			redirect_to dash_path, notice: "The provider #{@provider.name} was added to the system"
 		else
 			render action: 'new'
 		end

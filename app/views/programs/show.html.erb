@@ -39,7 +39,7 @@
           <td><%= @program.program_type == "after_school" ? "After School" : @program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
           <td><%= @program.start_date %></td>
           <td><%= @program.end_date %></td>
-          <td><%= @program.children.count %></td>
+          <td><%= @program.children.active.count %></td>
           <td><%= @program.location.nil? ? "None" : @program.location == "" ? "None" : @program.location.name %></td>
         </tr>
       </table>
@@ -141,7 +141,7 @@
                 <td><%= i.provider.name %></td>
                 <td><%= i.notes %></td>
                 <td><%= i.length %></td>
-                <td><%= "#{i.children.count}/#{@program.children.count}" %></td>
+                <td><%= "#{i.children.count}/#{@program.children.active.count}" %></td>
               </tr>
             <% end %>
           <% else %>
@@ -151,13 +151,17 @@
                   <td><%= i.provider.name %></td>
                   <td><%= i.notes %></td>
                   <td><%= i.length %></td>
-                  <td><%= "#{i.children.count}/#{@program.children.count}" %></td>
+                  <td><%= "#{i.children.count}/#{@program.children.active.count}" %></td>
                 </tr>
             <% end %>
           <% end %>
           </table>
 </div>
-        
+        <% if @program.program_type=="field_trip" %>
+          <%= will_paginate @info, :param_name => 'field_trips_page' %>
+        <% elsif @program.program_type=="enrichment" %>
+          <%= will_paginate @enrich_info, :param_name => 'enrichments_page' %>
+        <% end %>
         </div>
 
 

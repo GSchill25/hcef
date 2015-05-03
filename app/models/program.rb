@@ -31,7 +31,7 @@ class Program < ActiveRecord::Base
   def by_location(loc_id)
     children = []
     ChildLocation.all.each do |c|
-      if c.location_id == loc_id
+      if c.location_id == loc_id and c.child.active == true
         children << c.child
       end
     end

@@ -18,14 +18,14 @@ class ProgramsController < ApplicationController
       @dates = @program.program_days.paginate(:page => params[:dates_page], :per_page => 10)
     end
     if !@program.field_trips.nil?
-      @info = @program.field_trips
+      @info = @program.field_trips.paginate(:page => params[:field_trips_page], :per_page => 10)
     end
 
     if !@program.enrichments.nil?
-      @enrich_info = @program.enrichments
+      @enrich_info = @program.enrichments.paginate(:page => params[:enrichments_page], :per_page => 10)
     end
 
-    @children = @program.children.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
+    @children = @program.children.active.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
   end
 
   def show_day

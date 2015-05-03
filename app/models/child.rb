@@ -18,6 +18,7 @@ class Child < ActiveRecord::Base
 
 	#scopes
 	scope :alphabetical, -> { order('last_name', 'first_name')}
+	scope :active, -> { where('active = ?', true)}
 
   #calculates the total time of the activities for a child
   #returns nil if the child does not have any after_school recorded
