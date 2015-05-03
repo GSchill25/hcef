@@ -43,6 +43,11 @@ FactoryGirl.define do
     notes "Sample Enrichment"
   end
 
+  factory :enrichment_day do
+    association :program
+    association :enrichment
+  end
+
   factory :enrollment do
     association :program
     association :child
@@ -53,6 +58,11 @@ FactoryGirl.define do
     association :program
     length 10
     notes "Sample program"
+  end
+
+  factory :field_trip_day do
+    association :program
+    association :field_trip
   end
 
   factory :guardian_location do
