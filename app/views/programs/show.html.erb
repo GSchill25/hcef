@@ -82,10 +82,14 @@
       </br>
       <div class='row'>
         <div class='col-xs-12 col-sm-9'>
-          <h5 align="center"> Daily Attendance/Time Allocation </h5>
-          </br>
-          <%= render :partial => "day_summary" %>
-          </br>
+          <% if @dates.nil? %>
+            <h5 align="center">No days recorded for this program</h5>
+          <% else %>
+            <h5 align="center"> Daily Attendance/Time Allocation </h5>
+            </br>
+            <%= render :partial => "day_summary" %>
+            </br>
+          <% end %>
         </div>
         <!-- Display children -->
         <div class='col-sm-3'>
