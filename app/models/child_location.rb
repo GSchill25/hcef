@@ -9,6 +9,7 @@ class ChildLocation < ActiveRecord::Base
   	validate :child_is_not_already_assigned_to_location, on: :create
 	
 
+  	#trying to prevent child from being assigned to same location again
 	private
 	  def child_is_not_already_assigned_to_location
 	    return true if self.location.nil? || self.child.nil?

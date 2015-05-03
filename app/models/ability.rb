@@ -8,6 +8,10 @@ class Ability
     if user.role? :admin
         can :manage, :all
     elsif user.role? :instructor
+        #Instructors should only be allowed to view information about the location
+        #that they are assigned to, as well as all programs/children that belongs to
+        #the location, but nothing else.
+
         #afterschool
         can :manage, AfterSchool do |afterschool|
             user_afterschools = user.instructor.locations.map{|c| c.programs.map{|d| d.after_schools.map(&:id)}.flatten}.flatten

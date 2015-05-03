@@ -24,5 +24,7 @@ class Instructor < ActiveRecord::Base
 		return true if self.user.active
 		return false
 	end
+
+	#try to add a function that checks to see if the instructor is being assigned to a location for sure
 end
 

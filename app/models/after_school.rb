@@ -25,6 +25,7 @@ class AfterSchool < ActiveRecord::Base
   scope :for_date, ->(date) { where("date = ?", date)}
 
 
+  #calculates the total time for one after school day
   def total_time
     times = [self.reading_specialist_time, self.technology_time, self.homework_time, self.literacy_time]
     total = 0

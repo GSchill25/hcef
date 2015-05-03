@@ -22,8 +22,8 @@
           <tr>
             <td><%= link_to program.name, program_path(program) %></td>
           <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
-            <td><%= program.start_date %></td>
-            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+            <td><%= program.start_date.strftime("%m/%d/%Y") %></td>
+            <td><%= program.end_date.strftime("%m/%d/%Y") == "" ? "None" : program.end_date %></td>
             <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
             <td><%= program.children.count %></td>
             <td><a class="btn btn-warning" href="<%= edit_program_path(program) %>" role="button"> Edit</a></td>

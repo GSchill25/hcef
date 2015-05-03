@@ -27,6 +27,7 @@ class Program < ActiveRecord::Base
 
   # Methods
 
+  #this method shows children based on the location that they are assigned to
   def by_location(loc_id)
     children = []
     ChildLocation.all.each do |c|
@@ -37,6 +38,7 @@ class Program < ActiveRecord::Base
     return children
   end
 
+  #this method shows the overall average time of after school program
   def average_time
     homework_time = 0
     literacy_time = 0
@@ -58,6 +60,7 @@ class Program < ActiveRecord::Base
     end
   end
 
+  #returns all days recorded in program for afterschool programs
   def program_days
     student_days=AfterSchool.for_program(self.id)
     days=student_days.group_by(&:date).sort
