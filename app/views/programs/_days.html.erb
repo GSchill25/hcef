@@ -1,3 +1,4 @@
+<div class="container">
 <div class="table-responsive">      
       <table class="table table-striped">
       <tr>
@@ -21,6 +22,12 @@
             Reading Time
           </th>
           <th>
+            Physical Activity Time
+          </th>
+          <th>
+            Hands On Time
+          </th>
+          <th>
             Total Minutes
           </th>
         </thead>
@@ -33,6 +40,8 @@
 	        <td><%= d.literacy_time %></td>
 	        <td><%= d.homework_time %></td>
 	        <td><%= d.reading_specialist_time %></td>
+          <td><%= d.physical_activity %></td>
+          <td><%= d.hands_on_activity %></td>
 	        <td ><%= d.total_time %></td>
 	      </tr>
 	    <% end %>
@@ -43,6 +52,6 @@
 <a class="btn btn-primary" href="<%= programs_url %>" role="button"> All Programs</a>
 
 </br></br>
-
+</div>
 
 

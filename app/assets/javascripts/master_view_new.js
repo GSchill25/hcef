@@ -85,18 +85,22 @@ function submit() {
     var enrichments = response.enrichments
     var field_trips = response.field_trips
 
+    var after_schools_days = response.after_schools_days
+    var enrichments_days = response.enrichments_days
+    var field_trips_days = response.field_trips_days
+
     var after_schools_children = response.after_schools_children
     var enrichments_children = response.enrichments_children
     var field_trips_children = response.field_trips_children
     if (response) {
-      populateProgramTables(after_schools, enrichments, field_trips);
+      populateProgramTables(after_schools, after_schools_days, enrichments, enrichments_days, field_trips, field_trips_days);
       populateChildrenTables(after_schools_children, enrichments_children, field_trips_children);
     }
   });
   return false;
 }
 
-function populateProgramTables(after_schools, enrichments, field_trips) {
+function populateProgramTables(after_schools, after_schools_days, enrichments, enrichments_days, field_trips, field_trips_days) {
   /* Gather all table bodies */
   var after_schools_table = document.getElementById('after_schools').getElementsByTagName('tbody')[0];
   var enrichments_table = document.getElementById('enrichments').getElementsByTagName('tbody')[0];
@@ -131,8 +135,15 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       a.setAttribute('role', 'button');
       /* Ensure link opens to new tab/page to preserve current page */
       a.setAttribute('target', '_blank');
-
       td.appendChild(a);
+      /* Number of days for the program */
+      var num_days = document.createElement('span')
+      num_days.className = 'number_days';
+      num_days.innerHTML = '(';
+      num_days.innerHTML += after_schools_days[i]
+      num_days.innerHTML += ' days)';
+      td.appendChild(num_days);
+
       tr.appendChild(td);
       after_schools_table.appendChild(tr);
 
@@ -187,8 +198,15 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       a.setAttribute('role', 'button');
       /* Ensure link opens to new tab/page to preserve current page */
       a.setAttribute('target', '_blank');
-
       td.appendChild(a);
+      /* Number of days for the program */
+      var num_days = document.createElement('span')
+      num_days.className = 'number_days';
+      num_days.innerHTML = '(';
+      num_days.innerHTML += enrichments_days[i]
+      num_days.innerHTML += ' days)';
+      td.appendChild(num_days);
+
       tr.appendChild(td);
       enrichments_table.appendChild(tr);
 
@@ -239,8 +257,15 @@ function populateProgramTables(after_schools, enrichments, field_trips) {
       a.setAttribute('role', 'button');
       /* Ensure link opens to new tab/page to preserve current page */
       a.setAttribute('target', '_blank');
-
       td.appendChild(a);
+      /* Number of days for the program */
+      var num_days = document.createElement('span')
+      num_days.className = 'number_days';
+      num_days.innerHTML = '(';
+      num_days.innerHTML += field_trips_days[i]
+      num_days.innerHTML += ' days)';
+      td.appendChild(num_days);
+
       tr.appendChild(td);
       field_trips_table.appendChild(tr);
 
@@ -314,19 +339,27 @@ function create_after_school_table(children) {
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Homework';
+  th.innerHTML = 'Avg HW';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Literacy';
+  th.innerHTML = 'Avg Lit';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Technology';
+  th.innerHTML = 'Avg Tech';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
-  th.innerHTML = 'Avg Reading Specialist';
+  th.innerHTML = 'Avg Reading';
+  theadRow.appendChild(th);
+
+  var th = document.createElement('th');
+  th.innerHTML = 'Avg Physical';
+  theadRow.appendChild(th);
+  
+  var th = document.createElement('th');
+  th.innerHTML = 'Avg HandsOn';
   theadRow.appendChild(th);
 
   var th = document.createElement('th');
@@ -344,7 +377,9 @@ function create_after_school_table(children) {
     var avg_lit = children[i][2];
     var avg_tech = children[i][3];
     var avg_read = children[i][4];
-    var total_time = children[i][5];
+    var avg_physical = children[i][5];
+    var avg_handson = children[i][6];
+    var total_time = children[i][7];
 
     var tr = document.createElement('tr');
 
@@ -371,6 +406,14 @@ function create_after_school_table(children) {
     
     var td = document.createElement('td');
     td.innerHTML = avg_read;
+    tr.appendChild(td);
+    
+    var td = document.createElement('td');
+    td.innerHTML = avg_physical;
+    tr.appendChild(td);
+    
+    var td = document.createElement('td');
+    td.innerHTML = avg_handson;
     tr.appendChild(td);
     
     var td = document.createElement('td');

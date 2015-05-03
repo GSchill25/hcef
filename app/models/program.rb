@@ -44,6 +44,8 @@ class Program < ActiveRecord::Base
     literacy_time = 0
     technology_time = 0
     reading_specialist_time = 0
+    physical_time = 0
+    hands_on_time = 0
     total_days = self.after_schools.count
     self.after_schools.each do |a|
       #just add 0 if the students time is nil for that particular activity
@@ -51,12 +53,14 @@ class Program < ActiveRecord::Base
       literacy_time += a.literacy_time || 0
       technology_time += a.technology_time || 0
       reading_specialist_time += a.reading_specialist_time || 0
+      physical_time += a.physical_activity || 0
+      hands_on_time += a.hands_on_activity || 0
     end
 
     if total_days!=0
-      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days], ["Physical Activity", physical_time/total_days], ["Hands On Time", hands_on_time/total_days]]
     else
-      return [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0]]
+      return [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0], ["Physical Activity", 0], ["Hands On Time", 0]]
     end
   end
 

@@ -9,7 +9,7 @@
     <tbody>
       <% @children.each do |child| %>
         <tr>
-          <td><%= link_to child.name, children_path(child) %></td>
+          <td><%= link_to child.name, child_path(child) %></td>
         </tr>
       <% end %>
     </tbody>

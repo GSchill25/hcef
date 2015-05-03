@@ -19,8 +19,28 @@ class Child < ActiveRecord::Base
 	#scopes
 	scope :alphabetical, -> { order('last_name', 'first_name')}
 
+  #calculates the total time of the activities for a child
+  #returns nil if the child does not have any after_school recorded
+  def total_time
+  	asprogram = nil
+  	self.programs.each do |p|
+  		if p.program_type == "after_school"
+  			asprogram = p
+  		end
+  	end
+  	if asprogram.nil?
+  		return nil
+  	else
+      total_time = 0
+	    child_days = asprogram.after_schools.where("child_id = ?", self.id)
+	    child_days.each do |a|
+        total_time += a.total_time
+      end
+    end
+    return total_time
+  end
 
-  #calculates the average time of the activities for a child
+  #calculates the total time of the activities for a child
   #returns nil if the child does not have any after_school recorded
   def average_activity_time
   	asprogram = nil
@@ -36,18 +56,23 @@ class Child < ActiveRecord::Base
 	    literacy_time = 0
 	    technology_time = 0
 	    reading_specialist_time = 0
-	    total_days = asprogram.after_schools.count
-	    asprogram.after_schools.each do |a|
+	    physical_time = 0
+	    hands_on_time = 0
+	    child_days = asprogram.after_schools.where("child_id = ?", self.id)
+	    total_days = child_days.count
+	    child_days.each do |a|
 	      #just add 0 if the students time is nil for that particular activity
 	      homework_time += a.homework_time || 0
 	      literacy_time += a.literacy_time || 0
 	      technology_time += a.technology_time || 0
 	      reading_specialist_time += a.reading_specialist_time || 0
+	      physical_time += a.physical_activity || 0
+	      hands_on_time += a.hands_on_activity || 0
 	    end
 	end
 
-    if total_days!=0
-      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
+    if total_days != 0
+      return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days], ["Physical Activity", physical_time/total_days], ["Hands On Time", hands_on_time/total_days]]
     else
       return nil
     end
@@ -56,6 +81,4 @@ class Child < ActiveRecord::Base
   def name
   	return "#{self.first_name} #{self.last_name}"
   end
-
-	
 end
