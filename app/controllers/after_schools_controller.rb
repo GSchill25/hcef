@@ -126,7 +126,10 @@ class AfterSchoolsController < ApplicationController
     program_id = params["program_id"]
     children_ids = params["children_ids"]
     date = Date.strptime(params["date"],"%m/%d/%Y")
-    if !children_ids.nil? 
+    if children_ids.nil? 
+      data = []
+      data_sign_in = []
+    else
       # Look at every child to check if a record exists
       for index in 0..children_ids.count-1
         child_id = children_ids[index]
