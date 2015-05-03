@@ -85,4 +85,21 @@ class StaticController < ApplicationController
     @schools = School.all.paginate(:page => params[:schools_page], :per_page => 10)
   end
 
+  def download_children
+    package = Axlsx::Package.new
+    workbook = package.workbook
+    @children = Child.alphabetical
+
+    workbook.add_worksheet(name: "Children") do |sheet|
+      sheet.add_row ["ID", "First Name","Last Name","Date of Birth", "Active","Guardian", "Programs"]
+      @children.each do |child|
+        @guardian = child.guardian.name if !child.guardian.nil?
+        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, @guardian, child.programs.count]
+      end
+    end
+    package.serialize('children.xlsx')
+    send_file("children.xlsx", filename: "children.xlsx", type: "application/vnd.ms-excel")
+  end
+
+
 end

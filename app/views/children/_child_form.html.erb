@@ -39,7 +39,7 @@
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<p>
 						<%= f.label :location_ids %><%= mark_required(@child, :location_ids) %>
-						<%= f.select :location_ids, options_for_select(@locs.map{|l| [l.name, [l.id]]}) %>
+						<%= f.select :location_ids, options_for_select(@locations.map{|l| [l.name, [l.id]]}), :prompt => "Select Location" %>
 						<%# for loc in @locations %>
 						  <%# if can? :manage, loc %>	
 						    <%#= check_box_tag "child[location_ids][]", loc.id, @child.locations.include?(loc), {id: loc.id} %>
@@ -51,7 +51,7 @@
 				</div>
 	        	<div class="col-lg-6 col-md-6 col-sm-12">	
 						<%#= f.label :active %>
-							<%= f.check_box :active %>
+							<%= f.check_box :active, {checked: true} %>
 						    <%= f.label :active %></br></br>
 						<%= f.submit "Create" %>
 				</div>

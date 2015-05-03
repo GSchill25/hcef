@@ -12,11 +12,11 @@
 				        	</div></br></br>
 				        	<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12">
-				        		<label>Telephone</label><%= mark_required(@guardian, :phone) %>
+				        		<label>Telephone</label>
 						        <%= f.text_field :phone %> 
 						        </div>
 	        					<div class="col-lg-6 col-md-6 col-sm-12">
-						        	<label for="email">Email</label><%= mark_required(@guardian, :email) %>
+						        	<label for="email">Email</label>
 						        	<%= f.text_field :email %>
 						        </div>
 				        	</div></br></br>
@@ -32,7 +32,7 @@
 	        					<div class="col-lg-6 col-md-6 col-sm-12">
 									<p>
 										<%= f.label :location_ids %><%= mark_required(@guardian, :location_ids) %>
-										<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}) %>
+										<%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}), :prompt => "Select Location" %>
 									</p>
 								</div>
 				        	</div></br></br>
