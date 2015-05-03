@@ -5,20 +5,6 @@ class SubLocationTest < ActiveSupport::TestCase
   should belong_to(:location)
 
   should validate_presence_of(:name)
-  #Zip
-  should allow_value("12345").for(:zip)
-  should allow_value("18298-4834").for(:zip)
-
-  should_not allow_value("4028389").for(:zip)
-  should_not allow_value("3837-49832758").for(:zip)
-  #Phone
-  should allow_value("0000000000").for(:phone)
-  should allow_value("(412)-555-5555").for(:phone)
-  should allow_value("412.555.5555").for(:phone)
-  should allow_value("849-939-3938").for(:phone)
-
-  should_not allow_value("8230942730235").for(:phone)
-  should_not allow_value(")412)-84-93848").for(:phone)
 
   context "Within context" do
     setup do

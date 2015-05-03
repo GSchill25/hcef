@@ -14,23 +14,5 @@
     <%= f.label :name %><%= mark_required(@location, :name) %>
     <%= f.text_field :name %><br>
 
-    <%= f.label :address_line_one %><%= mark_required(@location, :address_line_one) %>
-    <%= f.text_field :address_line_one %><br>
-    
-    <%= f.label :address_line_two %><%= mark_required(@location, :address_line_two) %>
-    <%= f.text_field :address_line_two %><br>
-
-    <%= f.label :city %><%= mark_required(@location, :city) %>
-    <%= f.text_field :city %><br>
-
-    <%= f.label :state %><%= mark_required(@location, :state) %>
-    <%= f.text_field :state %><br>
-
-    <%= f.label :zip %><%= mark_required(@location, :zip) %>
-    <%= f.text_field :zip %><br>
-
-    <%= f.label :phone %><%= mark_required(@location, :phone) %>
-    <%= f.text_field :phone %><br>
-
     <%= f.submit %>
 <% end %>
