@@ -126,79 +126,80 @@ class AfterSchoolsController < ApplicationController
     program_id = params["program_id"]
     children_ids = params["children_ids"]
     date = Date.strptime(params["date"],"%m/%d/%Y")
-    
-    # Look at every child to check if a record exists
-    for index in 0..children_ids.count-1
-      child_id = children_ids[index]
-      record = AfterSchool.where(:program_id=>program_id).where(:child_id=>child_id).where(:date=>date).first
-      
-      # If the record exists, give the row this data
-      if !record.nil?
-
-        if record.homework_time.nil?
-          data[index][1] = 0
-        else
-          data[index][1] = record.homework_time
-        end
-        if record.literacy_time.nil?
-          data[index][2] = 0
-        else
-          data[index][2] = record.literacy_time
-        end
-        if record.technology_time.nil?
-          data[index][3] = 0
-        else
-          data[index][3] = record.technology_time
-        end
-        if record.reading_specialist_time.nil?
-          data[index][4] = 0
-        else
-          data[index][4] = record.reading_specialist_time
-        end
-        if record.physical_activity.nil?
-          data[index][5] = 0
-        else
-          data[index][5] = record.physical_activity
-        end
-        if record.hands_on_activity.nil?
-          data[index][6] = 0
-        else
-          data[index][6] = record.hands_on_activity
-        end
-        if record.goal.nil?
-          data[index][7] = ""
-        else
-          data[index][7] = record.goal
-        end
-        if record.notes.nil?
-          data[index][8] = ""
-        else
-          data[index][8] = record.notes
-        end
-
-        if record.time_in.nil?
-          data_sign_in[index][3] = ""
-        else
-          hour = record.time_in.hour
-          minute = record.time_in.min 
-          time = toStandardTime(hour, minute)
-          data_sign_in[index][3] = time
-        end
-        if record.time_out.nil?
-          data_sign_in[index][4] = ""
-        else
-          hour = record.time_out.hour
-          minute = record.time_out.min 
-          time = toStandardTime(hour, minute)
-          data_sign_in[index][4] = time
-        end
-
-      # If the record doesn't exist, set the row to initial, zero'd values
-      else
-        data[index] = [data[index][0]] + [0]*6 + [""] + [""]
+    if !children_ids.nil? 
+      # Look at every child to check if a record exists
+      for index in 0..children_ids.count-1
+        child_id = children_ids[index]
+        record = AfterSchool.where(:program_id=>program_id).where(:child_id=>child_id).where(:date=>date).first
         
-        data_sign_in[index][3] = ""
-        data_sign_in[index][4] = ""
+        # If the record exists, give the row this data
+        if !record.nil?
+
+          if record.homework_time.nil?
+            data[index][1] = 0
+          else
+            data[index][1] = record.homework_time
+          end
+          if record.literacy_time.nil?
+            data[index][2] = 0
+          else
+            data[index][2] = record.literacy_time
+          end
+          if record.technology_time.nil?
+            data[index][3] = 0
+          else
+            data[index][3] = record.technology_time
+          end
+          if record.reading_specialist_time.nil?
+            data[index][4] = 0
+          else
+            data[index][4] = record.reading_specialist_time
+          end
+          if record.physical_activity.nil?
+            data[index][5] = 0
+          else
+            data[index][5] = record.physical_activity
+          end
+          if record.hands_on_activity.nil?
+            data[index][6] = 0
+          else
+            data[index][6] = record.hands_on_activity
+          end
+          if record.goal.nil?
+            data[index][7] = ""
+          else
+            data[index][7] = record.goal
+          end
+          if record.notes.nil?
+            data[index][8] = ""
+          else
+            data[index][8] = record.notes
+          end
+
+          if record.time_in.nil?
+            data_sign_in[index][3] = ""
+          else
+            hour = record.time_in.hour
+            minute = record.time_in.min 
+            time = toStandardTime(hour, minute)
+            data_sign_in[index][3] = time
+          end
+          if record.time_out.nil?
+            data_sign_in[index][4] = ""
+          else
+            hour = record.time_out.hour
+            minute = record.time_out.min 
+            time = toStandardTime(hour, minute)
+            data_sign_in[index][4] = time
+          end
+
+        # If the record doesn't exist, set the row to initial, zero'd values
+        else
+          data[index] = [data[index][0]] + [0]*6 + [""] + [""]
+          
+          data_sign_in[index][3] = ""
+          data_sign_in[index][4] = ""
+        end
       end
     end
     
