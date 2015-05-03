@@ -19,7 +19,24 @@ class Child < ActiveRecord::Base
 	#scopes
 	scope :alphabetical, -> { order('last_name', 'first_name')}
 
-
+  def total_time
+  	asprogram = nil
+  	self.programs.each do |p|
+  		if p.program_type == "after_school"
+  			asprogram = p
+  		end
+  	end
+  	if asprogram.nil?
+  		return nil
+  	else
+      total_time = 0
+	    child_days = asprogram.after_schools.where("child_id = ?", self.id)
+	    child_days.each do |a|
+        total_time += a.total_time
+      end
+    end
+    return total_time
+  end
 
   def average_activity_time
   	asprogram = nil
@@ -46,7 +63,7 @@ class Child < ActiveRecord::Base
 	    end
 	end
 
-    if total_days!=0
+    if total_days != 0
       return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days]]
     else
       return nil
@@ -56,6 +73,4 @@ class Child < ActiveRecord::Base
   def name
   	return "#{self.first_name} #{self.last_name}"
   end
-
-	
 end

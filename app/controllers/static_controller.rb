@@ -40,7 +40,20 @@ class StaticController < ApplicationController
             after_schools_children[after_school_index] = [] if after_schools_children[after_school_index].nil?
             #Gather all children data
             p.children.each do |c|
-              after_schools_children[after_school_index] << [c, 5, 5, 5, 5, 2000]
+              # Format: [[homework, time], [literacy, time], [technology, time], [readingSpecialist, time]]
+              times = c.average_activity_time
+              if times.nil?
+                after_schools_children[after_school_index] << [c, 0, 0, 0, 0, 0]
+              else 
+                averages = [c]
+                # Gather averages for each category into an array 
+                for category in times
+                  averages << category[1]
+                end
+                # Include the child's total time
+                averages << c.total_time
+                after_schools_children[after_school_index] << averages
+              end
             end
             after_school_index += 1
           elsif p.program_type == 'enrichment'
@@ -89,54 +102,17 @@ class StaticController < ApplicationController
     package = Axlsx::Package.new
     workbook = package.workbook
     @children = Child.alphabetical
-    time_list = []
-    @children.each do |c|
-      times = c.average_activity_time
-      if times.nil?
-        time_list << [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0]]
-      else
-        time_list << times
-      end
-    end
 
     workbook.add_worksheet(name: "Children") do |sheet|
-      sheet.add_row ["ID", "First Name","Last Name","Date of Birth", "Active","Guardian", "Programs", "Homework", "Literacy", "Technology", "Reading Specialist"]
+      sheet.add_row ["ID", "First Name","Last Name","Date of Birth", "Active","Guardian", "Programs"]
       @children.each do |child|
         @guardian = child.guardian.name if !child.guardian.nil?
-        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, @guardian, child.programs.count, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1]]
-        time_list=time_list[1..time_list.length]
+        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, @guardian, child.programs.count]
       end
     end
     package.serialize('children.xlsx')
     send_file("children.xlsx", filename: "children.xlsx", type: "application/vnd.ms-excel")
   end
-
-  def download_programs
-    package = Axlsx::Package.new
-    workbook = package.workbook
-    @programs = Program.alphabetical
-    time_list = []
-    @programs.each do |p|
-      times = p.average_time
-      if times.nil?
-        time_list << [["Homework", 0], ["Literacy", 0], ["Technology", 0], ["Reading Specialist", 0]]
-      else
-        time_list << times
-      end
-    end
-
-    workbook.add_worksheet(name: "Programs") do |sheet|
-      sheet.add_row ["ID", "Name","Start Date","End Date", "Average Homework", "Average Literacy", "Average Technology", "Average Reading Specialist"]
-      @programs.each do |p|
-        @end_date = p.end_date if !p.end_date.nil?
-        sheet.add_row [p.id, p.name, p.start_date, @end_date, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1]]
-        time_list=time_list[1..time_list.length]
-      end
-    end
-    package.serialize('programs.xlsx')
-    send_file("programs.xlsx", filename: "programs.xlsx", type: "application/vnd.ms-excel")
-  end
-
 
 
 end
