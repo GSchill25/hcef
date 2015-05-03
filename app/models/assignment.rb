@@ -7,6 +7,4 @@ class Assignment < ActiveRecord::Base
 	#because assignment would attempt to connect locaiton to empty class
   	validates :location_id, presence: true, numericality: { greater_than: 0, only_integer: true }
 
-
-
 end
