@@ -89,6 +89,9 @@ function submit() {
     var enrichments_days = response.enrichments_days
     var field_trips_days = response.field_trips_days
 
+    console.log(after_schools);
+    console.log(after_schools_children);
+
     var after_schools_children = response.after_schools_children
     var enrichments_children = response.enrichments_children
     var field_trips_children = response.field_trips_children

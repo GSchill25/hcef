@@ -152,12 +152,6 @@ namespace :db do
 
     hearth = Location.new
     hearth.name = 'HEARTH'
-    hearth.address_line_one = '3724 Mount Royal Blvd'
-    hearth.address_line_two = 'abc'
-    hearth.city = 'Glenshaw'
-    hearth.state = 'PA'
-    hearth.zip = '15116'
-    hearth.phone = '4123669801'
     hearth.save!
 
     lol = Location.new
@@ -174,12 +168,6 @@ namespace :db do
 
     soj = Location.new
     soj.name =  'Sojourner House'
-    soj.address_line_one = '1234 Pitt Street'
-    soj.address_line_two = 'PO Box 1234'
-    soj.city = 'Pittsburgh'
-    soj.state = 'PA'
-    soj.zip = '15213'
-    soj.phone = '1234567890'
     soj.save!
     
     sp = Location.new
@@ -283,26 +271,6 @@ namespace :db do
     end
 
     # StudentInfo
-
-    # Program
-     Program.populate 3 do |p|
-       p.name = Faker::Company.name
-       p.program_type = "after_school"
-       p.start_date = Faker::Date.between(5.years.ago, 1.year.ago)
-       p.end_date = p.start_date + 200.days
-       p.location_id = hearth.id
-     end
-
-
-
-    #Sojourner House Test
-    p2 = Program.new
-    p2.name = "Sojourner House Moms Afterschool"
-    p2.program_type = "after_school"
-    p2.start_date = 1.year.ago.to_date
-    p2.location_id = soj.id
-    p2.save!
-
 
     s1 = School.new
     s1.name = "Sunnyside"
