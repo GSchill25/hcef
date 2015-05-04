@@ -7,15 +7,17 @@
   </thead>
 
   <tbody>
-  <% @instructors.each do |instructor| %>
-    <tr>
-      <% if can? :read, instructor %>
-        <td><%= link_to instructor.first_name + " " + instructor.last_name, instructor_path(instructor) %></td>
-        <% if can? :update, instructor %>
-          <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+  <% if !@instructors.empty? %>
+    <% @instructors.each do |instructor| %>
+      <tr>
+        <% if can? :read, instructor %>
+          <td><%= link_to instructor.first_name + " " + instructor.last_name, instructor_path(instructor) %></td>
+          <% if can? :update, instructor %>
+            <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+          <% end %>
         <% end %>
-      <% end %>
-  </tr>
+    </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>
