@@ -43,11 +43,6 @@ class ProgramsController < ApplicationController
   def edit
     @children = @program.by_location(@program.location_id)
     @instructor = Instructor.all
-    # if @program.program_type=="enrichment" and @program.enrichment.nil?
-    #   @program.build_enrichment
-    # elsif @program.program_type=="field_trip" and @program.field_trip.nil?
-    #   @program.build_field_trip
-    # end
   end
 
   # POST /programs

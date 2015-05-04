@@ -21,7 +21,8 @@ class ChildrenController < ApplicationController
   end
 
   def edit
-  	@locations = Location.new
+  	@locations = Location.all                      if current_user.role == 'admin'
+  	@locations = current_user.instructor.locations if current_user.role == 'instructor'
   end
 
   def child_active

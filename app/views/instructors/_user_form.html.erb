@@ -1,20 +1,18 @@
 <div class="row">
-	<div class="col-lg-4">
-		<label for="icon_prefix">Username</label><%= mark_required(@instructor.user, :username) %>
-		<%= f.text_field :username %>
-	</div>
-    <div class="col-lg-4">	
-    	<label for="icon_prefix">Password</label><%= mark_required(@instructor.user, :password) %>
-		<%= f.password_field :password %>
-	   	
-	</div>
+  <div class="col-lg-4">
+    <label for="icon_prefix">Username</label><%= mark_required(@instructor.user, :username) %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="col-lg-4">	
+    <label for="icon_prefix">Password</label><%= mark_required(@instructor.user, :password) %><br />
+    <%= f.password_field :password %>
+  </div>
 
-	<div class="col-lg-4">
-		<label for="icon_prefix">Confirm</label><%= mark_required(@instructor.user, :password_confirmation) %>
-		<%= f.password_field :password_confirmation %>	
-	</div>
+  <div class="col-lg-4">
+    <label for="icon_prefix">Confirm</label><%= mark_required(@instructor.user, :password_confirmation) %><br />
+    <%= f.password_field :password_confirmation %>	
+  </div>
 </div>
 </br>
-<label>Role</label><%= mark_required(@instructor.user, :role) %>
-<%= f.select :role, User::ROLES %>
-</br></br>
+<label>Role</label><%= mark_required(@instructor.user, :role) %><br />
+  <%= f.select :role, User::ROLES, :prompt => "Select Role" %>
