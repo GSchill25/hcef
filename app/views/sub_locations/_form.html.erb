@@ -21,7 +21,7 @@
         </div>
         <% end %>
 
-        <%= f.label :name %></br>
+        <%= f.label :name %><%= mark_required(@sub_location, :name) %></br>
         <%= f.text_field :name %></br></br>
         <label>Parent Location</label><br />
         <%= f.collection_select :location_id, Location.all, :id, :name, :prompt => "Select Location" %>

@@ -15,13 +15,15 @@ class Child < ActiveRecord::Base
 	validates_presence_of :first_name, :last_name, :date_of_birth
 	validates_date :date_of_birth, :before => lambda { Date.today }, on: :create
 
-
 	#scopes
 	scope :alphabetical, -> { order('last_name', 'first_name')}
 	scope :active, -> { where('active = ?', true)}
 
+
+
   #calculates the total time of the activities for a child
   #returns nil if the child does not have any after_school recorded
+
   def total_time
   	asprogram = nil
   	self.programs.each do |p|

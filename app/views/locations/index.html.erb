@@ -4,13 +4,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Address line one</th>
-      <th>Address line two</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Phone</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -20,12 +13,6 @@
     <% @locations.each do |location| %>
       <tr>
         <td><%= location.name %></td>
-        <td><%= location.address_line_one %></td>
-        <td><%= location.address_line_two %></td>
-        <td><%= location.city %></td>
-        <td><%= location.state %></td>
-        <td><%= location.zip %></td>
-        <td><%= location.phone %></td>
         <td><%= link_to 'Show', location %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
         <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -38,12 +38,15 @@ class ChildrenController < ApplicationController
   end
 
   def create
-  		@locations = Location.all
+  	@locations = Location.all
 		@child = Child.new(child_params)
-		if @child.save
+    if params[:child][:location_ids].nil? #this part checks to see if child was assigned a location, which is mandatory
+      @child.errors.add(:base, "Child needs to be assigned to location")
+      redirect_to new_child_path
+		elsif @child.save
 			redirect_to programs_url, notice: "#{@child.name} was added to the system"
 		else
-			redirect_to new_child_path
+      redirect_to new_child_path
 		end
 	end
 
