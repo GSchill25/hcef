@@ -10,7 +10,7 @@ class Instructor < ActiveRecord::Base
 	validates :last_name, presence: true
 
 	scope :alphabetical, -> { order('last_name', 'first_name')}
-	scope :active, -> {where('active = ?', true)}
+	scope :active, -> {joins(:user).where("active = ?", true)}
 
 
 	def name

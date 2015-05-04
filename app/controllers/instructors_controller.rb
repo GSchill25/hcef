@@ -3,7 +3,7 @@ class InstructorsController < ApplicationController
   authorize_resource
 
   def index
-  	@instructors = Instructor.active
+  	@instructors = Instructor.active.alphabetical
   end
 
   def show
