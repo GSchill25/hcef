@@ -41,7 +41,7 @@
     <%= f.label :Location %><%= mark_required(@child, :location_ids) %></br>
     <%#= f.select :location_ids, options_for_select(@locations.map{|l| [l.name, [l.id]]}), :prompt => "Select Location" %>
     <% for loc in @locations %>
-    <% if can? :manage, loc %>	
+    <% if can? :read, loc %>	
     <%= check_box_tag "child[location_ids][]", loc.id, @child.locations.include?(loc), {id: loc.id} %>
     <label for="<%= loc.id %>"><%= loc.name %></label>
     <br /-->
