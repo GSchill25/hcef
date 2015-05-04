@@ -20,7 +20,7 @@ class SchoolsController < ApplicationController
 		if @school.save
 			redirect_to new_child_path, notice: "The school #{@school.name} was added to the system"
 		else
-			render action: 'new'
+			redirect_to new_child_path, alert: "The school #{@school.name} was not added to the system"
 		end
 	end
 

@@ -40,7 +40,10 @@ class InstructorsController < ApplicationController
 	end
 
 	def update
-		if @instructor.update(instructor_params)
+		if @instructor.user.role == 'instructor' && params[:instructor][:location_ids].nil? 
+		  	@instructor.errors.add(:base, "Instructor needs to be assigned to at least 1 location")
+		  	render action: 'edit'
+	      elsif @instructor.update(instructor_params)
 			redirect_to @instructor, notice: "#{@instructor.name} has been updated"
 		else
 			render action: 'edit'

@@ -6,7 +6,7 @@ class ChildLocation < ActiveRecord::Base
 	#validations
 	#validates :child_id, presence: true, numericality: { greater_than: 0, only_integer: true }
   	#validates :location_id, presence: true, numericality: { greater_than: 0, only_integer: true }
-  	#validate :child_is_not_already_assigned_to_location, on: :create
+  	validate :child_is_not_already_assigned_to_location, on: :create
 	
 
   	#trying to prevent child from being assigned to same location again
