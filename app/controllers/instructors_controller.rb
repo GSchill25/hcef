@@ -24,7 +24,8 @@ class InstructorsController < ApplicationController
   def create
 		@instructor = Instructor.new(instructor_params)
 		respond_to do |format|
-		  if @instructor.user.role == 'instructor' && params[:instructor][:location_ids].nil?
+		  #this part checks to see if instructor was assigned a location, which is mandatory if their role is instructor, not admin
+		  if @instructor.user.role == 'instructor' && params[:instructor][:location_ids].nil? 
 		  	@instructor.errors.add(:base, "Instructor needs to be assigned to at least 1 location")
 		  	format.html { render action: 'new' }
 		  	format.json { render json: @instructor.errors.full_messages, status: :unprocessable_entity}
