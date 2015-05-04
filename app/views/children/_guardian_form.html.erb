@@ -22,10 +22,14 @@
 </div></br>
 <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-12">
+    <%= f.label :date_of_birth_two, 'Date of Birth', :for => 'date_of_birth_two' %><%= mark_required(@guardian, :date_of_birth_two) %></br>
+    <%= f.text_field :date_of_birth_two, :id => 'date_of_birth_two', :class => 'datepick' %></br></br>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12">
     <p>
-    <%= f.label :Location %><%= mark_required(@child, :location_ids) %></br>
+    <%= f.label :Location %>*<%#= mark_required(@guardian, :location_ids) %></br>
     <% for loc in @locations %>
-    <% if can? :manage, loc %>	
+    <% if can? :read, loc %>	
     <%= check_box_tag "guardian[location_ids][]", loc.id, @guardian.locations.include?(loc), {id: loc.id} %>
     <label for="<%= loc.id %>"><%= loc.name %></label>
     <br /-->
@@ -35,11 +39,6 @@
 
     <%#= f.label :date_of_birth %></br>
     <%#= f.date_select(:date_of_birth, :start_year => 1900) %>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-12">
-    <%= f.label :date_of_birth_two, 'Date of Birth', :for => 'date_of_birth_two' %><%= mark_required(@guardian, :date_of_birth_two) %></br>
-    <%= f.text_field :date_of_birth_two, :id => 'date_of_birth_two', :class => 'datepick' %></br></br>
   </div>
 </div>
 <br /><br />
