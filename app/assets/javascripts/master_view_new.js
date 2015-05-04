@@ -85,22 +85,23 @@ function submit() {
     var enrichments = response.enrichments
     var field_trips = response.field_trips
 
-    var after_schools_days = response.after_schools_days
     var enrichments_days = response.enrichments_days
     var field_trips_days = response.field_trips_days
 
     var after_schools_children = response.after_schools_children
     var enrichments_children = response.enrichments_children
     var field_trips_children = response.field_trips_children
+
+
     if (response) {
-      populateProgramTables(after_schools, after_schools_days, enrichments, enrichments_days, field_trips, field_trips_days);
+      populateProgramTables(after_schools, enrichments, enrichments_days, field_trips, field_trips_days);
       populateChildrenTables(after_schools_children, enrichments_children, field_trips_children);
     }
   });
   return false;
 }
 
-function populateProgramTables(after_schools, after_schools_days, enrichments, enrichments_days, field_trips, field_trips_days) {
+function populateProgramTables(after_schools, enrichments, enrichments_days, field_trips, field_trips_days) {
   /* Gather all table bodies */
   var after_schools_table = document.getElementById('after_schools').getElementsByTagName('tbody')[0];
   var enrichments_table = document.getElementById('enrichments').getElementsByTagName('tbody')[0];
@@ -136,13 +137,6 @@ function populateProgramTables(after_schools, after_schools_days, enrichments, e
       /* Ensure link opens to new tab/page to preserve current page */
       a.setAttribute('target', '_blank');
       td.appendChild(a);
-      /* Number of days for the program */
-      var num_days = document.createElement('span')
-      num_days.className = 'number_days';
-      num_days.innerHTML = '(';
-      num_days.innerHTML += after_schools_days[i]
-      num_days.innerHTML += ' days)';
-      td.appendChild(num_days);
 
       tr.appendChild(td);
       after_schools_table.appendChild(tr);
