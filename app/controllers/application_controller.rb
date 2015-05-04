@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_not_found
+
   before_filter do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
@@ -19,6 +21,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def rescue_not_found
+    render :file => "#{Rails.root}/public/404.html", :status => 404 
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
