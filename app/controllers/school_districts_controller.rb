@@ -28,7 +28,7 @@ class SchoolDistrictsController < ApplicationController
       if @school_district.save
         redirect_to new_child_path, notice: "The school #{@school_district.name} was added to the system"
       else
-        redirect_to new_child_path, notice: "The school #{@school_district.name} was not added to the system"
+        redirect_to new_child_path, alert: "The school #{@school_district.name} was not added to the system"
       end
   end
 

@@ -79,7 +79,7 @@ FactoryGirl.define do
     last_name "Kim"
     phone "4125551234"
     email "jkim@sample.com"
-    date_of_birth Date.new(1980,5,1)
+    date_of_birth_two Date.new(1980,5,1)
   end
 
   factory :instructor do
