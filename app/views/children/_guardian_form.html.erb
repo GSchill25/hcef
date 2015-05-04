@@ -9,8 +9,7 @@
     <label>Last Name</label><%= mark_required(@guardian, :last_name) %></br>
     <%= f.text_field :last_name %>
   </div>
-</div>
-<br />
+</div></br>
 <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-12">
     <label>Telephone</label></br>
@@ -20,21 +19,28 @@
     <label for="email">Email</label></br>
     <%= f.text_field :email %>
   </div>
-</div>
-<br />
+</div></br>
 <div class="row">
-  <div class="col-lg-6 col-md-6 col-sm-12">  
-    <%= f.label :date_of_birth, 'Date of Birth', :for => 'date_of_birth' %><%= mark_required(@guardian, :date_of_birth) %></br>
-    <%= f.text_field :date_of_birth, :id => 'date_of_birth', :class => 'datepick' %>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <p>
+    <% for loc in @locations %>
+    <% if can? :manage, loc %>	
+    <%= check_box_tag "guardian[location_ids][]", loc.id, @guardian.locations.include?(loc), {id: loc.id} %>
+    <label for="<%= loc.id %>"><%= loc.name %></label>
+    <br /-->
+    <% end %>
+    <% end %>
+    </p>
+
     <%#= f.label :date_of_birth %></br>
     <%#= f.date_select(:date_of_birth, :start_year => 1900) %>
   </div>
+
   <div class="col-lg-6 col-md-6 col-sm-12">
-    <p>
-    <%= f.label :location_ids %><%= mark_required(@guardian, :location_ids) %></br>
-    <%= f.select :location_ids, options_for_select(Location.all.map{|l| [l.name, [l.id]]}), :prompt => "Select Location" %>
-    </p>
+    <%= f.label :date_of_birth_two, 'Date of Birth', :for => 'date_of_birth_two' %><%= mark_required(@guardian, :date_of_birth_two) %></br>
+    <%= f.text_field :date_of_birth_two, :id => 'date_of_birth_two', :class => 'datepick' %></br></br>
+    <%= f.submit "Create" %>
   </div>
-</div><br /><br />
-<%= f.submit "Create", html: {class: ""} %>
+</div>
+
 <% end %>

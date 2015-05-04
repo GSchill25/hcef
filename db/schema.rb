@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503152005) do
+ActiveRecord::Schema.define(version: 20150503214841) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20150503152005) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date_of_birth"
+    t.date     "date_of_birth_two"
   end
 
   create_table "instructors", force: true do |t|
