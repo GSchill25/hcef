@@ -520,5 +520,16 @@ namespace :db do
     pv14 = Provider.new
     pv14.name = "Children's Museum"
     pv14.save!
+
+
+    sds = ["Allegheny Valley School District", "Avonworth School District", "Baldwin-Whitehall School District", "Bethal Park School District", "Brentwood Borough School District", "Carlynton School District", "Chartiers Valley School District", "Clairton School District", "Cornell School District", "Deer Lakes School District", "Duquesne City School District", "East Allegheny School District", "Elizabeth Forward School District", "Fox Chapel Area School District", "Gateway School District", "Hampton Township School District", "Highlands School District", "Keystone Oaks School District", "Mckeesport Area School District", "Montour School District", "Moon Area School District", "Mt. Lebanon School District", "North Allegheny School District", "North Hills School District", "Northgate School District", "Penn Hills School District", "Pine-Richland School District","Pittsburgh Public School District", "Plum Borough School District", "Quaker Vallley School District", "Riverview School District", "Shaler Area School District", "South Allegheny School District"]
+
+    sds.each do |s|
+        district = SchoolDistrict.new
+        district.name = s
+        district.save!
+    end
+
+
   end
 end
