@@ -17,12 +17,10 @@
 
     <%= f.label :name %></br>
     <%= f.text_field :name %></br></br>
-
-
-    
+    <label>Parent Location</label><br />
     <%= f.collection_select :location_id, Location.all, :id, :name, :prompt => "Select Location" %>
-    </br></br>
-    <%= f.submit %></br></br>
+    <br /><br /><br />
+    <%= f.submit %>
 <% end %>
 
   </div>
