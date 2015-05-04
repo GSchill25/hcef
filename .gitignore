@@ -7,3 +7,4 @@ db/development.sqlite3
 *.swo
 coverage/
 config/secrets.yml
+config/initializers/secret_token.rb
