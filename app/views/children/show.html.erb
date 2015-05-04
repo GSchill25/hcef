@@ -13,7 +13,9 @@
 	  </div>
 	  <div class="panel panel-primary col-lg-5 col-lg-offset-1 col-sm-12">
 		  <div class="panel-body">
-		    <h5><%= "Guardian: #{@child.guardian.name}" %></h5>
+		    <%if !@child.guardian.nil? %>
+		    	<h5><%= "Guardian: #{@child.guardian.name}" %></h5>
+		    <% end %>
 		    <% if !@child.locations.last.nil? %>
 		    	<h5><%= "Location: #{@child.locations.last.name}" %></h5>
 		    <% end %>

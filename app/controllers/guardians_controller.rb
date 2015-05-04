@@ -17,7 +17,10 @@ class GuardiansController < ApplicationController
 
   def create
 		@guardian = Guardian.new(guardian_params)
-		if @guardian.save!
+		if params[:guardian][:location_ids].nil? #this part checks to see if guardian was assigned a location, which is mandatory
+			@guardian.errors.add(:base, "Guardian needs to be assigned to location")
+			render action: 'new'
+		elsif @guardian.save
 			redirect_to new_child_path, notice: "#{@guardian.name} was added to the system"
 		else
 			render action: 'new'

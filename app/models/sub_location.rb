@@ -9,7 +9,6 @@ class SubLocation < ActiveRecord::Base
   #validates_presence_of :state
   #validates_presence_of :zip
   #validates_presence_of :phone
-
   # Scopes
   scope :alphabetical, -> { order("name") }
   
