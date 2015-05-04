@@ -53,7 +53,7 @@ namespace :db do
       g.last_name = Faker::Name.last_name
       g.phone = Faker::PhoneNumber.phone_number
       g.email = Faker::Internet.email(g.first_name)
-      g.date_of_birth = Faker::Date.between(50.years.ago, 40.years.ago)
+      g.date_of_birth_two = Faker::Date.between(50.years.ago, 40.years.ago)
     end
 
     # School
@@ -285,7 +285,7 @@ namespace :db do
     g1.last_name = "Clark"
     g1.phone = "4125551234"
     g1.email = Faker::Internet.email(g1.first_name)
-    g1.date_of_birth = Faker::Date.between(35.years.ago, 25.years.ago)
+    g1.date_of_birth_two = Faker::Date.between(35.years.ago, 25.years.ago)
     g1.save!
 
     g2 = Guardian.new
@@ -293,7 +293,7 @@ namespace :db do
     g2.last_name = "Gormley"
     g2.phone = "4125551234"
     g2.email = Faker::Internet.email(g2.first_name)
-    g2.date_of_birth = Faker::Date.between(35.years.ago, 25.years.ago)
+    g2.date_of_birth_two = Faker::Date.between(35.years.ago, 25.years.ago)
     g2.save!
 
     g3 = Guardian.new
@@ -301,7 +301,7 @@ namespace :db do
     g3.last_name = "Jefferson"
     g3.phone = "4125551234"
     g3.email = Faker::Internet.email(g3.first_name)
-    g3.date_of_birth = Faker::Date.between(35.years.ago, 25.years.ago)
+    g3.date_of_birth_two = Faker::Date.between(35.years.ago, 25.years.ago)
     g3.save!
 
     g4 = Guardian.new
@@ -309,7 +309,7 @@ namespace :db do
     g4.last_name = "Bac"
     g4.phone = "4125551234"
     g4.email = Faker::Internet.email(g4.first_name)
-    g4.date_of_birth = Faker::Date.between(35.years.ago, 25.years.ago)
+    g4.date_of_birth_two = Faker::Date.between(35.years.ago, 25.years.ago)
     g4.save!
 
     g5 = Guardian.new
@@ -317,7 +317,7 @@ namespace :db do
     g5.last_name = "Gregory"
     g5.phone = "4125551234"
     g5.email = Faker::Internet.email(g5.first_name)
-    g5.date_of_birth = Faker::Date.between(35.years.ago, 25.years.ago)
+    g5.date_of_birth_two = Faker::Date.between(35.years.ago, 25.years.ago)
     g5.save!
 
     c1 = Child.new
