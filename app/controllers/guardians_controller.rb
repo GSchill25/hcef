@@ -17,7 +17,7 @@ class GuardiansController < ApplicationController
 
   def create
 		@guardian = Guardian.new(guardian_params)
-		if @guardian.save
+		if @guardian.save!
 			redirect_to new_child_path, notice: "#{@guardian.name} was added to the system"
 		else
 			render action: 'new'
