@@ -14,5 +14,7 @@
   </div>
 </div>
 </br>
-<label>Role</label><%= mark_required(@instructor.user, :role) %><br />
-  <%= f.select :role, User::ROLES, :prompt => "Select Role" %>
+<% if can? :create, User %>
+  <label>Role</label><%= mark_required(@instructor.user, :role) %><br />
+    <%= f.select :role, User::ROLES, :prompt => "Select Role" %>
+<% end %>
