@@ -5,14 +5,6 @@ namespace :db do
     [AfterSchool, Assignment, ChildLocation, Child, Enrichment, Enrollment, FieldTrip, Guardian, Instructor, Location, Program, Provider, School, User].each(&:delete_all)
 
     # User
-    i_user = User.new
-    i_user.username = 'instructor'
-    i_user.password = 'instructor'
-    i_user.password_confirmation = 'instructor'
-    i_user.role = 'instructor'
-    i_active = true
-    i_user.save!
-
     a_user = User.new
     a_user.username = 'knykwest'
     a_user.password = 'knykwest'
