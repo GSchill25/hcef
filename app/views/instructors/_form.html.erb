@@ -34,12 +34,14 @@
             <%= render :partial => "user_form", :locals => { :f => users } %>
             <% end %>
           <br />
-          <h5><b>Assign Instructor to Location</b>*<%#= mark_required(@instructor, :location_ids %></h5>
-          <p>
-            <% for location in Location.all %>
-              <%= check_box_tag "instructor[location_ids][]", location.id, @instructor.locations.include?(location), {id: location.id} %>
-              <label for="<%= location.id %>"><%= location.name %></label>
-              <br />
+          <%if can? :manage, Location%>
+            <h5><b>Assign Instructor to Location</b>*<%#= mark_required(@instructor, :location_ids %></h5>
+            <p>
+              <% for location in Location.all %>
+                <%= check_box_tag "instructor[location_ids][]", location.id, @instructor.locations.include?(location), {id: location.id} %>
+                <label for="<%= location.id %>"><%= location.name %></label>
+                <br />
+              <% end %>
             <% end %>
           </p>
           <br /><br />
