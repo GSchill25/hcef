@@ -18,9 +18,8 @@ gem 'ransack'
 #export to excel
 gem 'axlsx'
 
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby # We are now using nodejs instead
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -75,7 +74,7 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
+  #gem 'pg' # We are now using MySQL instead of postgreSQL
 end
 
 # Use ActiveModel has_secure_password
