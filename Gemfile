@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.12'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', :group => [:development, :test]
+# gem 'sqlite3', :group => [:development, :test] # No longer using
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -51,6 +51,8 @@ gem 'chartkick'
 
 #pagination
 gem 'will_paginate', '~> 3.0.6'
+
+gem 'mysql2', '~> 0.3.10'
 
 # For database and asset backups
 gem 'dump'
