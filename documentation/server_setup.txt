@@ -146,7 +146,7 @@ Commands:
 
 13. Add convenient RAILS_ENV and secret info to Apache envars
   a. sudo vi /etc/apache2/envvars
-  b. Add the following to the botom of the file
+  b. Add the following to the bottom of the file
 
   export RAILS_ENV=production
   export HCEF_DATABASE_PASSWORD="REPLACEME"
@@ -155,7 +155,9 @@ Commands:
   # MAKE SURE TO ADD ACTUAL SECRET INFO WHERE IT SAYS "REPLACEME"
 
   c. sudo service apache2 restart
-
+  d. sudo vi /etc/environment
+  e. Repeat step b for this file.
+  f. restart server with: sudo shutdown -h now
 
 14. Add ssh key for whatever machine you want to deploy from (vagrant box in this case)
   a. ssh-keygen -t rsa -C "vagrant capistrano deployment key"
@@ -170,7 +172,6 @@ add the production server's railsadmin user's ssh key to bitbucket instead.
   b. Visit settings page
   c. Goto deployment keys
   d. Add your ssh key by copy pasting your public SSH key (id_rsa.pub)
-
 
 
 
