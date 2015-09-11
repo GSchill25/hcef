@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.12'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', :group => [:development, :test]
+# gem 'sqlite3', :group => [:development, :test] # No longer using
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -18,9 +18,8 @@ gem 'ransack'
 #export to excel
 gem 'axlsx'
 
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby # We are now using nodejs instead
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -53,6 +52,11 @@ gem 'chartkick'
 #pagination
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'mysql2', '~> 0.3.10'
+
+# For database and asset backups
+gem 'dump'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -75,7 +79,7 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
+  #gem 'pg' # We are now using MySQL instead of postgreSQL
 end
 
 # Use ActiveModel has_secure_password
@@ -89,3 +93,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Capistrano for deployment
+gem 'capistrano', '~> 3.4.0', group: :development
+gem 'capistrano-rvm', group: :development
+gem 'capistrano-passenger', group: :development
+gem 'capistrano-bundler', group: :development
+gem 'capistrano-rails', group: :development
+# gem 'capistrano-delayed-job', group: :development
+

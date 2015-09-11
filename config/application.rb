@@ -19,5 +19,8 @@ module HCEF
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Set to true to reduce log spam from asset pipeline
+    config.quiet_assets = true
   end
 end
