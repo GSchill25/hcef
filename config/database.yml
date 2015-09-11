@@ -32,8 +32,8 @@ test: &test
 
 production:
   <<: *default
-  username: root
-  # password: # Add password to secrets file
+  username: hcefapp
+  password: <%= ENV['HCEF_DATABASE_PASSWORD'] %>
   database: hcefapp_production
 
 cucumber:
