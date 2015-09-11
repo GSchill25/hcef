@@ -173,8 +173,8 @@ add the production server's railsadmin user's ssh key to bitbucket instead.
   c. Goto deployment keys
   d. Add your ssh key by copy pasting your public SSH key (id_rsa.pub)
 
+16. Enable apache site
+  a. sudo a2ensite hcefapp
 
-
-
-
+17. cap production deploy
 
