@@ -28,7 +28,7 @@ role :db,  %w{railsadmin@162.243.186.27}
 set :stage, :production
 set :rails_env, 'production'
 
-server '162.243.186.275', user: 'railsadmin', roles: %w{web app db}
+server '162.243.186.27', user: 'railsadmin', roles: %w{web app db}
 
 # Configuration
 # =============
