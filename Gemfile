@@ -93,3 +93,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Capistrano for deployment
+gem 'capistrano', '~> 3.4.0', group: :development
+gem 'capistrano-rvm', group: :development
+gem 'capistrano-passenger', group: :development
+gem 'capistrano-bundler', group: :development
+gem 'capistrano-rails', group: :development
+# gem 'capistrano-delayed-job', group: :development
+

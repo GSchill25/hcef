@@ -1,0 +1,179 @@
+New 1GB Digital Ocean droplet with backups enabled (used SSH key for root)
+ip: 162.243.186.27
+
+Commands:
+
+1. install essential libraries
+  a. sudo apt-get update
+  b. sudo apt-get upgrade -y
+  c. sudo apt-get install -y build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev libsqlite3-dev sqlite3 libgmp3-dev nodejs
+
+    # Somehow libgmp3-dev (https://gmplib.org/) was missing from the list above
+    # causing "rvmsudo passenger-install-apache2-module" to fail below
+    # may be a new requirement in Passenger 5
+
+2. Add new user
+  a. adduser railsadmin
+  b. See secrets file for password
+
+3. Grant all permisions and passwordless sudo to "railsadmin"
+  a. visudo
+  b. Add line "railsadmin  ALL=(ALL:ALL) NOPASSWD:ALL"
+
+4. disable root login via ssh
+  a. vi /etc/ssh/sshd_config
+  b. Set "PermitRootLogin no"
+  c. :wq
+  d. reload ssh
+  e. Close ssh session as root and reconnect as railsadmin
+
+5. Add ssh key to railsadmin
+  a. mkdir ~/.ssh
+  b. chmod 700 ~/.ssh
+  c. Copy public key into ~/.ssh/authorized_keys
+  d. If it does not exist create and chmod 600 (don't use sudo as railsadmin should own the file)
+  e. Exit ssh session and reconnect to make sure you ssh key works
+
+6. Using railsready to install rvm,ruby,passenger etc. https://github.com/joshfng/railsready
+  a. wget --no-check-certificate https://raw.githubusercontent.com/joshfng/railsready/master/railsready.sh && bash railsready.sh
+
+  b. Choose option "2. Install RVM" and wait...
+
+  c. Close ssh session and reconnect as railsadmin
+
+7. Install Apache
+  a. rvmsudo passenger-install-apache2-module
+  b. Select language otpion "Ruby"
+  c. This module will tell you how to install any missing libraries, I got this output:
+
+    "Installation instructions for required software
+
+   * To install Apache 2:
+     Please install it with apt-get install apache2-mpm-worker
+
+   * To install Apache 2 development headers:
+     Please install it with apt-get install apache2-threaded-dev
+
+   * To install Apache Portable Runtime (APR) development headers:
+     Please install it with apt-get install libapr1-dev
+
+   * To install Apache Portable Runtime Utility (APU) development headers:
+     Please install it with apt-get install libaprutil1-dev"
+
+  d. sudo apt-get install -y apache2-mpm-worker apache2-threaded-dev libapr1-dev libaprutil1-dev
+
+  e. Rerun rvmsudo passenger-install-apache2-module
+
+  g. You may get a message about not having enough memory (follow the steps below to use swap or you will encounter an error while compiling):
+
+    "Compiling Phusion Passenger works best when you have at least 1024 MB of virtual
+    memory. However your system only has 994 MB of total virtual memory (994 MB
+    RAM, 0 MB swap). It is recommended that you temporarily add more swap space
+    before proceeding. You can do it as follows:
+
+      sudo dd if=/dev/zero of=/swap bs=1M count=1024
+      sudo mkswap /swap
+      sudo swapon /swap
+
+    See also https://wiki.archlinux.org/index.php/Swap for more information about
+    the swap file on Linux."
+
+  h. When it finished compiling it should give you some output for adding the module to Apache
+  Open a new terminal so you can copy the output as necessary
+
+    LoadModule passenger_module /home/railsadmin/.rvm/gems/ruby-2.2.3/gems/passenger-5.0.18/buildout/apache2/mod_passenger.so
+     <IfModule mod_passenger.c>
+       PassengerRoot /home/railsadmin/.rvm/gems/ruby-2.2.3/gems/passenger-5.0.18
+       PassengerDefaultRuby /home/railsadmin/.rvm/gems/ruby-2.2.3/wrappers/ruby
+     </IfModule>
+
+    i.    sudo vi /etc/apache2/mods-available/passenger.load
+    ii.   Copy the first line LoadModule... into a new file /etc/apache2/mods-available/passenger.load
+    iii.  sudo vi /etc/apache2/mods-available/passenger.conf
+    iv.   Copy the rest <IfModule>...</IfModule> into new file /etc/apache2/mods-available/passenger.conf
+
+  i. Enable the new mod with "sudo a2enmod passenger"
+  j. Restart apache with "sudo service apache2 restart"
+  k. Go back to other terminal and press enter to finish the passenger apache module install
+
+    # Deployment instructions from apache (we will still do our own thing with capistrano instead)
+    # https://www.phusionpassenger.com/library/deploy/apache/deploy/ruby/
+
+  l. Reclaim swap space
+    a. sudo swapoff /swap
+    b. rm /swap
+    c. Restart the server with "sudo shutdown -h now"
+
+
+8. Create a new directory for the hcef rails app in /var/www
+  a. sudo mkdir /var/www/hcefapp
+  b. sudo chown railsadmin:railsadmin /var/www/hcefapp
+
+9. Disable default site
+  a. sudo a2dissite 000-default.conf
+  b. Make sure to check in /etc/apache2/sites-enabled and disable any other sites that may be there
+
+10. Create and enable new available-site in apache
+  a. sudo vi /etc/apache2/sites-available/hcefapp.conf
+  b. Paste the following into hcefapp.conf and save
+
+<VirtualHost *:80>
+ ServerName hceflogin.com
+ ServerAlias www.hceflogin.com
+ # !!! Be sure to point DocumentRoot to 'public'!
+ DocumentRoot /var/www/hcefapp/current/public
+ <Directory /var/www/hcefapp/current/public>
+  # This relaxes Apache security settings.
+  AllowOverride all
+  # MultiViews must be turned off.
+  Options -MultiViews
+  # Uncomment this if you're on Apache >= 2.4:
+  Require all granted
+ </Directory>
+</VirtualHost>
+
+  c. We will enable this later after our first capistrano deployment
+
+11. Install MySQL Server
+  a. Install MySQL with: sudo apt-get install -y mysql-server
+  b. Set root password to something secure
+
+12. Add new MySQL Database and User and grant privileges
+  a. mysql --user=root mysql -p
+  b. CREATE DATABASE hcefapp_production;
+  c. CREATE USER 'hcefapp'@'localhost' IDENTIFIED BY ''; # Enter a secure password in single quotes
+  d. GRANT ALL PRIVILEGES ON hcefapp_production.* To 'hcefapp'@'localhost';
+
+13. Add convenient RAILS_ENV and secret info to Apache envars
+  a. sudo vi /etc/apache2/envvars
+  b. Add the following to the botom of the file
+
+  export RAILS_ENV=production
+  export HCEF_DATABASE_PASSWORD="REPLACEME"
+  export HCEF_SECRET_KEY_BASE=REPLACEME
+
+  # MAKE SURE TO ADD ACTUAL SECRET INFO WHERE IT SAYS "REPLACEME"
+
+  c. sudo service apache2 restart
+
+
+14. Add ssh key for whatever machine you want to deploy from (vagrant box in this case)
+  a. ssh-keygen -t rsa -C "vagrant capistrano deployment key"
+  b. Enter a passphrase if you desire
+  c. ssh-copy-id railsadmin@162.243.186.27
+  d. Enter the password for railsadmin account to complete this operation
+  e. Make sure you can ssh with your new key with: ssh railsadmin@162.243.186.27
+
+15. Add your ssh key for your machine to bitbucket (if you want to use passthrough) or you can
+add the production server's railsadmin user's ssh key to bitbucket instead.
+  a. Visit hcef repo on bitbucket
+  b. Visit settings page
+  c. Goto deployment keys
+  d. Add your ssh key by copy pasting your public SSH key (id_rsa.pub)
+
+
+
+
+
+
+
