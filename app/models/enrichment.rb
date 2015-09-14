@@ -8,4 +8,5 @@ class Enrichment < ActiveRecord::Base
   # Validations
   validates_presence_of :length
   validates_numericality_of :length
+  validates_date :event_date, allow_nil: false
 end

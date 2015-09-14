@@ -12,12 +12,12 @@
     <div class="panel-heading">
       <h3 align="center"><%= @program.name %></h3>
     </div>
-      
+
 <div class="table-responsive">
       <table class="table table-condensed">
       <thead>
         <tr class="info">
-            
+
             <th>
               Type
             </th>
@@ -45,7 +45,7 @@
       </table>
 </div>
 
-    
+
 </div>
 
 <% else %>
@@ -72,7 +72,7 @@
             <div class="panel-body">
               <%= @program.location.name  %>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -87,12 +87,12 @@
       </br>
       <div class='row'>
         <div class='col-xs-12 col-sm-9'>
-          <% if @dates.nil? %>
+          <% if @days.nil? %>
             <h5 align="center">No days recorded for this program</h5>
           <% else %>
             <h5 align="center"> Daily Attendance/Time Allocation </h5>
             </br>
-            <%= render :partial => "day_summary" %>
+            <%= render :partial => "day_summary", :locals => { :days => @days } %>
             </br>
           <% end %>
         </div>
@@ -111,12 +111,12 @@
         <div class="panel-heading">
           <h3 align="center">Attendance and Info</h3>
         </div>
-        
-<div class="table-responsive">  
+
+<div class="table-responsive">
           <table class="table table-condensed">
           <thead>
             <tr class="info">
-                
+
                 <th>
                   Date
                 </th>
@@ -132,26 +132,31 @@
                 <th>
                   Attendance
                 </th>
+                <th>
+                  Actions
+                </th>
             </tr>
           </thead>
           <% if @program.program_type=="field_trip" %>
             <% @info.each do |i| %>
               <tr>
-                <td><%= Date.today %></td>
+                <td><%= i.event_date.try(:to_s) %></td>
                 <td><%= i.provider.name %></td>
                 <td><%= i.notes %></td>
                 <td><%= i.length %></td>
                 <td><%= "#{i.children.count}/#{@program.children.active.count}" %></td>
+                <td><%= link_to("Edit", edit_field_trip_path(i)) if can? :edit, i %></td>
               </tr>
             <% end %>
           <% else %>
             <% @enrich_info.each do |i| %>
               <tr>
-                  <td><%= Date.today %></td>
+                  <td><%= i.event_date.try(:to_s) %></td>
                   <td><%= i.provider.name %></td>
                   <td><%= i.notes %></td>
                   <td><%= i.length %></td>
                   <td><%= "#{i.children.count}/#{@program.children.active.count}" %></td>
+                  <td><%= link_to "Edit", edit_enrichment_path(i) if can? :edit, i %></td>
                 </tr>
             <% end %>
           <% end %>
@@ -171,7 +176,7 @@
       <% if @program.program_type=="after_school" %>
         <a class="btn btn-primary" href="<%= new_after_school_path(program_id: @program.id) %>" role="button"> New Day</a>
       <% elsif @program.program_type=="enrichment" %>
-        <a class="btn btn-primary" href="<%= new_enrichment_path(program_id: @program.id) %>" role="button">New Enrichment</a> 
+        <a class="btn btn-primary" href="<%= new_enrichment_path(program_id: @program.id) %>" role="button">New Enrichment</a>
       <% else %>
         <a class="btn btn-primary" href="<%= new_field_trip_path(program_id: @program.id) %>" role="button">New Field Trip</a>
       <% end %>
