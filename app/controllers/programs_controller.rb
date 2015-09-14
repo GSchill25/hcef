@@ -13,16 +13,17 @@ class ProgramsController < ApplicationController
   # GET /programs/1.json
   def show
     @average_times = @program.average_time
-    @days=AfterSchool.for_program(@program.id).ascending
+    #@days=AfterSchool.for_program(@program.id).ascending # old
+    @days = AfterSchool.for_program(@program.id).ascending.group_by(&:date)
     if @program.program_days.count > 0
-      @dates = @program.program_days.paginate(:page => params[:dates_page], :per_page => 10)
+      @dates = @program.program_days.paginate(:page => params[:dates_page], :per_page => 2)
     end
     if !@program.field_trips.nil?
-      @info = @program.field_trips.paginate(:page => params[:field_trips_page], :per_page => 10)
+      @info = @program.field_trips.order(event_date: :desc).paginate(:page => params[:field_trips_page], :per_page => 10)
     end
 
     if !@program.enrichments.nil?
-      @enrich_info = @program.enrichments.paginate(:page => params[:enrichments_page], :per_page => 10)
+      @enrich_info = @program.enrichments.order(event_date: :desc).paginate(:page => params[:enrichments_page], :per_page => 10)
     end
 
     @children = @program.children.active.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
@@ -30,13 +31,13 @@ class ProgramsController < ApplicationController
 
   def show_day
     @average_times = @program.average_time
-    @days=AfterSchool.for_program(@program.id).for_date(params[:date]).ascending
+    @days=AfterSchool.for_program(@program.id).for_date(params[:date].try(:to_date)).ascending
   end
 
   # GET /programs/new
   def new
     @program = Program.new
-    
+
   end
 
   # GET /programs/1/edit

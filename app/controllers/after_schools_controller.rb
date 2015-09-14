@@ -30,6 +30,20 @@ class AfterSchoolsController < ApplicationController
   end
 
   def edit
+    @program = @after_school.program
+    @program_id = @program.try(:id)
+    @data = []
+    @data_sign_in = []
+    @children = @program.children.active
+    @children_ids = []
+    for child in @children
+      @data.push([child.name] + [0]*6 + [""] + [""])
+      @data_sign_in.push([child.name] + [""] + [""])
+      @children_ids.push(child.id)
+    end
+    if cannot? :read, @program
+      redirect_to "public/404.html"
+    end
   end
 
   def create
@@ -82,7 +96,7 @@ class AfterSchoolsController < ApplicationController
     # Don't need to return anything
     head :ok
   end
-  
+
   def update_sign_in_by_id
     program_id = params["program_id"]
     child_id = params[:id]
@@ -126,7 +140,7 @@ class AfterSchoolsController < ApplicationController
     program_id = params["program_id"]
     children_ids = params["children_ids"]
     date = Date.strptime(params["date"],"%m/%d/%Y")
-    if children_ids.nil? 
+    if children_ids.nil?
       data = []
       data_sign_in = []
     else
@@ -134,7 +148,7 @@ class AfterSchoolsController < ApplicationController
       for index in 0..children_ids.count-1
         child_id = children_ids[index]
         record = AfterSchool.where(:program_id=>program_id).where(:child_id=>child_id).where(:date=>date).first
-        
+
         # If the record exists, give the row this data
         if !record.nil?
 
@@ -183,7 +197,7 @@ class AfterSchoolsController < ApplicationController
             data_sign_in[index][3] = ""
           else
             hour = record.time_in.hour
-            minute = record.time_in.min 
+            minute = record.time_in.min
             time = toStandardTime(hour, minute)
             data_sign_in[index][3] = time
           end
@@ -191,7 +205,7 @@ class AfterSchoolsController < ApplicationController
             data_sign_in[index][4] = ""
           else
             hour = record.time_out.hour
-            minute = record.time_out.min 
+            minute = record.time_out.min
             time = toStandardTime(hour, minute)
             data_sign_in[index][4] = time
           end
@@ -199,13 +213,13 @@ class AfterSchoolsController < ApplicationController
         # If the record doesn't exist, set the row to initial, zero'd values
         else
           data[index] = [data[index][0]] + [0]*6 + [""] + [""]
-          
+
           data_sign_in[index][3] = ""
           data_sign_in[index][4] = ""
         end
       end
     end
-    
+
     render :json => {data: data, data_sign_in: data_sign_in}
     end
 

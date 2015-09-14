@@ -26,6 +26,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.7)
+    american_date (1.1.0)
     ansi (1.5.0)
     archive-tar-minitar (0.5.2)
     arel (4.0.2)
@@ -130,6 +131,8 @@ GEM
       activerecord (>= 3.0)
     populator (1.0.0)
     progress (3.1.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -212,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  american_date
   axlsx
   bcrypt (~> 3.1.7)
   cancancan
@@ -235,6 +239,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.10)
   nested_form
   populator
+  quiet_assets
   rails (= 4.0.12)
   ransack
   sass-rails (~> 4.0.2)

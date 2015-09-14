@@ -24,31 +24,31 @@ class Ability
             user_child = user.instructor.locations.map{|c| c.children.map(&:id)}.flatten
             user_child.include? child.id
         end
-        
+
         #enrichment
         can :manage, Enrichment do |enrichment|
-            user_enrichments = user.instructor.locations.map{|c| c.programs.map{|d| d.after_schools.map(&:id)}.flatten}.flatten
-            user_enrichments.include? afterschool.id
+            user_enrichments = user.instructor.locations.map{|c| c.programs.map{|d| d.enrichments.map(&:id)}.flatten}.flatten
+            user_enrichments.include? enrichment.id
         end
-        
+
         #field_trip
         can :manage, FieldTrip do |field_trip|
             user_field_trips = user.instructor.locations.map{|c| c.programs.map{|d| d.field_trips.map(&:id)}.flatten}.flatten
             user_field_trips.include? field_trip.id
         end
-        
+
         #guardian
         can :create, Guardian
         can :manage, Guardian do |guardian|
             user_location = user.instructor.locations.map{|c| c.guardians.map(&:id)}.flatten
             user_location.include? guardian.id
         end
-        
+
         #instructor
         can :read, Instructor do |instructor|
             user_location = user.instructor.locations.map(&:id)
             instructor_location = instructor.locations.map(&:id)
-            (user_location & instructor_location).any?            
+            (user_location & instructor_location).any?
         end
 
         can :update, Instructor do |instructor|
@@ -67,14 +67,20 @@ class Ability
         end
 
         #program
-        can :read, Program do |program|
+        can [:read, :show_day], Program do |program|
+            user_programs = user.instructor.locations.map{|c| c.programs.map(&:id)}.flatten
+            user_programs.include? program.id
+        end
+
+        # Can edit programs that they manage
+        can [:edit, :update], Program do |program|
             user_programs = user.instructor.locations.map{|c| c.programs.map(&:id)}.flatten
             user_programs.include? program.id
         end
 
         #provider
         can :read, Provider
-        
+
         #school
         can :manage, School
 

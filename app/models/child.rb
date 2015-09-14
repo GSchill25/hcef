@@ -26,6 +26,7 @@ class Child < ActiveRecord::Base
   #returns nil if the child does not have any after_school recorded
 
   def total_time
+    # TODO: This method needs rewritten with .select.each as this way only handles one program
   	asprogram = nil
   	self.programs.each do |p|
   		if p.program_type == "after_school"
@@ -47,6 +48,7 @@ class Child < ActiveRecord::Base
   #calculates the total time of the activities for a child
   #returns nil if the child does not have any after_school recorded
   def average_activity_time
+    # TODO: This method needs rewritten with .select.each as this way only handles one program
   	asprogram = nil
   	self.programs.each do |p|
   		if p.program_type == "after_school"

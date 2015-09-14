@@ -57,6 +57,13 @@ gem 'mysql2', '~> 0.3.10'
 # For database and asset backups
 gem 'dump'
 
+# Force parsing date formats in American
+gem 'american_date'
+
+group :development do
+  gem 'quiet_assets' # Stop asset spam in logs
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
