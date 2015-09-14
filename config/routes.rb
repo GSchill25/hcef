@@ -7,7 +7,7 @@ HCEF::Application.routes.draw do
   match "/after_schools/update_sign_in_by_id/:id" => "after_schools#update_sign_in_by_id", via: :post
   match "/after_schools/load_data" => "after_schools#load_data", via: :post
   match "/master_view_new/submit" => "static#master_view_submit", via: :post
-  get 'program/:id/:date' => "programs#show_day"
+  get 'program/:id/:date' => "programs#show_day", as: "program_show_day"
 
   resources :programs
   resources :locations
@@ -40,6 +40,6 @@ HCEF::Application.routes.draw do
   get 'download_children' => 'static#download_children', :as => :download_children
   get 'download_programs' => 'static#download_programs', :as => :download_programs
 
-  match '*post' => "errors#error_404", via: [:post, :get] 
+  match '*post' => "errors#error_404", via: [:post, :get]
 
 end

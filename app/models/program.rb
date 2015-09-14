@@ -40,21 +40,21 @@ class Program < ActiveRecord::Base
 
   #this method shows the overall average time of after school program
   def average_time
-    homework_time = 0
-    literacy_time = 0
-    technology_time = 0
-    reading_specialist_time = 0
-    physical_time = 0
-    hands_on_time = 0
+    homework_time = 0.0
+    literacy_time = 0.0
+    technology_time = 0.0
+    reading_specialist_time = 0.0
+    physical_time = 0.0
+    hands_on_time = 0.0
     total_days = self.after_schools.count
     self.after_schools.each do |a|
       #just add 0 if the students time is nil for that particular activity
-      homework_time += a.homework_time || 0
-      literacy_time += a.literacy_time || 0
-      technology_time += a.technology_time || 0
-      reading_specialist_time += a.reading_specialist_time || 0
-      physical_time += a.physical_activity || 0
-      hands_on_time += a.hands_on_activity || 0
+      homework_time += a.homework_time.try(:to_f) || 0.0
+      literacy_time += a.literacy_time.try(:to_f)|| 0.0
+      technology_time += a.technology_time.try(:to_f)|| 0.0
+      reading_specialist_time += a.reading_specialist_time.try(:to_f) || 0.0
+      physical_time += a.physical_activity.try(:to_f) || 0.0
+      hands_on_time += a.hands_on_activity.try(:to_f) || 0.0
     end
 
     if total_days!=0

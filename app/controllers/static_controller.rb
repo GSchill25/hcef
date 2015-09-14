@@ -11,7 +11,7 @@ class StaticController < ApplicationController
 
   def master_view_submit
     location_indices = params["locations"]
-    if !location_indices.nil? 
+    if !location_indices.nil?
       # Cast location_indices to integers
       location_indices.map!(&:to_i)
       # Rejects all locations that are in the ith index spot of the array
@@ -47,9 +47,9 @@ class StaticController < ApplicationController
               times = c.average_activity_time
               if times.nil?
                 after_schools_children[after_school_index] << [c, 0, 0, 0, 0, 0, 0, 0]
-              else 
+              else
                 averages = [c]
-                # Gather averages for each category into an array 
+                # Gather averages for each category into an array
                 for category in times
                   averages << category[1]
                 end
@@ -82,7 +82,7 @@ class StaticController < ApplicationController
         end
       end
     end
-    render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children, enrichments_days: enrichments_days, field_trips_days: field_trips_days} 
+    render :json => {locations: locations, after_schools: after_schools, enrichments: enrichments, field_trips: field_trips, after_schools_children: after_schools_children, enrichments_children: enrichments_children, field_trips_children: field_trips_children, enrichments_days: enrichments_days, field_trips_days: field_trips_days}
   end
 
 
@@ -119,10 +119,10 @@ class StaticController < ApplicationController
     workbook.add_worksheet(name: "Children") do |sheet|
       sheet.add_row ["ID", "First Name","Last Name","Date of Birth", "Active","Guardian", "Programs", "Homework", "Literacy", "Technology", "Reading Specialist", "Physical Activity", "Hands On Time"]
       @children.each do |child|
-        @guardian = child.guardian.name if !child.guardian.nil?
-        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, @guardian, child.programs.count, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1], time_list[0][4][1], time_list[0][5][1]]
+        guardian = child.guardian.blank? ? "" : child.guardian.name
+        sheet.add_row [child.id, child.first_name ,child.last_name,child.date_of_birth,child.active, guardian, child.programs.count, time_list[0][0][1], time_list[0][1][1], time_list[0][2][1], time_list[0][3][1], time_list[0][4][1], time_list[0][5][1]]
         time_list=time_list[1..time_list.length]
-      end
+      end\
     end
     package.serialize('children.xlsx')
     send_file("children.xlsx", filename: "children.xlsx", type: "application/vnd.ms-excel")

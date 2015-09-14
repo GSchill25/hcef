@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910015015) do
+ActiveRecord::Schema.define(version: 20150914010047) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150910015015) do
     t.datetime "updated_at"
     t.integer  "program_id"
     t.integer  "provider_id"
+    t.date     "event_date"
   end
 
   create_table "enrollments", force: true do |t|
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150910015015) do
     t.datetime "updated_at"
     t.integer  "program_id"
     t.integer  "provider_id"
+    t.date     "event_date"
   end
 
   create_table "guardian_locations", force: true do |t|

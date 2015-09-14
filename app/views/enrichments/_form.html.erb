@@ -7,28 +7,50 @@
 <div class="panel panel-warning">
   <div class="panel-body">
   <div class="row">
+    <% if @enrichment.errors.any? %>
+      <div class="col-xs-12" id="error_explanation">
+        <h2><%= pluralize(@enrichment.errors.count, "errors") %> prohibited this Enrihment Form from being saved:</h2>
+
+        <ul>
+          <% @enrichment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
     <div class="col-lg-6">
       <%= form_for(@enrichment) do |f| %>
-      <%= f.label :length %></br>
-      <%= f.text_field :length %>
-      
+
       <p>
-      <%= f.label :notes %></br>
-      <%= f.text_area :notes %>
+        <%= f.label :event_date, "Date" %><br />
+        <%= f.text_field :event_date, :class => 'datepick', :placeholder => "Select Date*" %>
       </p>
 
       <p>
-      <%= f.label :provider_id %></br>
-      <%= f.collection_select :provider_id, Provider.all, :id, :name %>
+        <%= f.label :length %></br>
+        <%= f.select :length,
+          options_for_select([15.0,30.0,45.0,60.0,75.0,90.0,105.0,120.0], f.object.length) %>
       </p>
 
       <p>
-      <%= f.label :program_id %></br>
-      <%= f.collection_select :program_id, Program.all, :id, :name %>
+        <%= f.label :notes %></br>
+        <%= f.text_area :notes %>
       </p>
-      
+
+      <p>
+        <%= f.label :provider_id %></br>
+        <%= f.collection_select :provider_id, Provider.all, :id, :name %>
+      </p>
+
+      <p>
+        <%= f.label :program_id %></br>
+        <%= f.collection_select :program_id, Program.all, :id, :name %>
+      </p>
+
       <br>
-      
     </div>
     <div class="col-lg-6">
       <% if @program.program_type=="field_trip" %>
@@ -49,7 +71,7 @@
                     <% end  %>
          <% end  %>
       </div>
-      <%= f.submit  "Create" %>
+      <%= f.submit class: "btn btn-primary" %>
       <% end %>
   </div>
 </div>

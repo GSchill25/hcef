@@ -27,8 +27,7 @@ function checkIn(row, col) {
   return false;
 }
 
-window.onload = function() {
-
+$('.after_schools.new, .after_schools.edit').ready(function() {
 
 var container = document.getElementById('hot');
 var container_sign_in = document.getElementById('hot_sign_in');
@@ -44,7 +43,7 @@ var createCellProperties = function(row, col, prop) {
     cellProperties.readOnly = true;
     this.renderer = readOnlyRenderer;
   }
-  return cellProperties;        
+  return cellProperties;
 }
 var createCellProperties_sign_in = function(row, col, prop) {
   var cellProperties = {};
@@ -57,9 +56,9 @@ var createCellProperties_sign_in = function(row, col, prop) {
     cellProperties.readOnly = true;
     this.renderer = "html";
   }
-  return cellProperties;        
+  return cellProperties;
 }
-var onChange = function(change, source) { 
+var onChange = function(change, source) {
   if (change) {
     var row = change[0][0];
     var col = change[0][1];
@@ -73,7 +72,7 @@ var onChange = function(change, source) {
     request.send(params);
   }
 }
-var onChange_sign_in = function(change, source) { 
+var onChange_sign_in = function(change, source) {
   if (change) {
     var row = change[0][0];
     var col = change[0][1];
@@ -129,7 +128,7 @@ $('.datepick').change(function(){
     var params = JSON.stringify({data: data, data_sign_in: data_sign_in, program_id: program_id, children_ids: children_ids, date: date});
     var request = new XMLHttpRequest();
 
-    request.onreadystatechange = function() { 
+    request.onreadystatechange = function() {
       if (request.readyState == 4) { // `DONE`
         var status = request.status;
         if (status == 200) {
@@ -148,7 +147,7 @@ $('.datepick').change(function(){
     request.send(params);
 });
 
-} /* end window.onload */
+}); /* end $('.after_schools new, .after_schools edit') */
 
 $(document).on('click', '.custom_btn', function() {
    $(".custom_btn").removeClass('active');
