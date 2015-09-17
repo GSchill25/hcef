@@ -1,7 +1,7 @@
   <div>
       <%= f.label :length %></br>
       <%= f.text_field :length %>
-      
+
       <p>
       <%= f.label :notes %></br>
       <%= f.text_area :notes %>
@@ -9,7 +9,7 @@
 
       <p>
       <%= f.label :provider_id %></br>
-      <%= f.collection_select :provider_id, Provider.all, :id, :name %>
+      <%= f.collection_select :provider_id, Provider.active.all, :id, :name %>
       </p>
 
       <% if @program.program_type=="field_trip" %>
@@ -27,5 +27,5 @@
                     <br />
                   <% end  %>
        <% end  %>
-      
+
   </div>

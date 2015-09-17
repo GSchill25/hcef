@@ -79,7 +79,7 @@ class Ability
         end
 
         #provider
-        can :read, Provider
+        can :read, Provider # TODO: Consider limiting to only active providers?
 
         #school
         can :manage, School

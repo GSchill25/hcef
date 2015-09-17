@@ -41,8 +41,16 @@
       </p>
 
       <p>
-        <%= f.label :provider_id %></br>
-        <%= f.collection_select :provider_id, Provider.all, :id, :name %>
+        <% if f.object.persisted? and !Provider.active.include?(f.object.provider) %>
+          <%= f.label :provider_id, class: "has-warning" %><br />
+          <span class="help-block red" style="color: red;">
+            <%= "(WARNING! The provider '#{f.object.provider.try(:name)}' has been deactivated.)" %>
+          </span>
+        <% else %>
+          <%= f.label :provider_id %></br>
+        <% end %>
+
+        <%= f.collection_select :provider_id, Provider.active.all | [f.object.provider], :id, :name %>
       </p>
 
       <p>
