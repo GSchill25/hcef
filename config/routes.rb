@@ -19,7 +19,12 @@ HCEF::Application.routes.draw do
   resources :sub_locations
   resources :enrichments
   resources :field_trips
-  resources :providers
+
+  resources :providers do
+    member do
+      put :toggle_activity
+    end
+  end
 
   get 'home' => 'static#beta'
   get 'master_view' => 'static#home'

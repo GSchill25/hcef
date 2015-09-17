@@ -1,164 +1,190 @@
 <% if cannot? :manage, :all %>
   <%= render :file => "#{Rails.root}/public/404", :layout => false, :status => 404 %>
 <% else %>
-	<div class="row">
-		<div class="jumbotron">
-		  	<h3 align="center"> Admin Dashboard </h3>
-		  		<p>
-		  		<ul class="list-group col-lg-2">
-				  <li class="list-group-item">
-				    <span class="badge"><%= @student_count %></span>
-				    Students -
-				  </li>
-				  <li class="list-group-item">
-				    <span class="badge"><%= @program_count %></span> 
-				    Programs -  
-				  </li>
-				  <li class="list-group-item">
-				    <span class="badge"><%= @location_count %></span>
-				    Locations - 
-				  </li>
-				</ul>
-		  		</p>
-		  		<h4 class="col-lg-6 col-lg-offset-1" align="center" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </h4>
-          	</br></br></br></br></br></br></br>
-	  		<div class="btn-group col-lg-8 col-lg-offset-2">
-	  			<a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
-	  			<a class="btn btn-primary" href="<%= new_location_path %>" role="button">New Main Location</a>
-	  			<a class="btn btn-primary" href="<%= new_sub_location_path %>" role="button">New Sub Location</a>
-	  			<a class="btn btn-primary" href="<%= new_school_path %>" role="button">New School</a>
-	  		 	<!-- Need a new provider form -->
-	  			<a class="btn btn-primary" href="<%= new_provider_path %>" role="button">New Provider</a>
-	  			
-	  		</div>
-	  	</br></br>
-	  		<div class="btn-group col-lg-6 col-lg-offset-4">
-	  			<a class="btn btn-info" href="<%= download_children_path %>" role="button">Children Download</a>
-	  			<a class="btn btn-info" href="<%= download_programs_path %>" role="button">Programs Download</a>
-	  		</div>
+  <div class="row">
+    <div class="jumbotron">
+        <h3 align="center"> Admin Dashboard </h3>
+          <p>
+          <ul class="list-group col-lg-2">
+          <li class="list-group-item">
+            <span class="badge"><%= @student_count %></span>
+            Students -
+          </li>
+          <li class="list-group-item">
+            <span class="badge"><%= @program_count %></span>
+            Programs -
+          </li>
+          <li class="list-group-item">
+            <span class="badge"><%= @location_count %></span>
+            Locations -
+          </li>
+        </ul>
+          </p>
+          <h4 class="col-lg-6 col-lg-offset-1" align="center" > <%= "HCEF is currently serving #{@student_count} children through #{@afterschool} Afterschool Programs, #{@enrichment} Enrichment Programs, and #{@field_trip} Field Trip Programs at #{@location_count} different locations." %> </h4>
+            </br></br></br></br></br></br></br>
+        <div class="btn-group col-lg-8 col-lg-offset-2">
+          <a class="btn btn-primary" href="<%= new_instructor_path %>" role="button">New Instructor</a>
+          <a class="btn btn-primary" href="<%= new_location_path %>" role="button">New Main Location</a>
+          <a class="btn btn-primary" href="<%= new_sub_location_path %>" role="button">New Sub Location</a>
+          <a class="btn btn-primary" href="<%= new_school_path %>" role="button">New School</a>
+          <!-- Need a new provider form -->
+          <a class="btn btn-primary" href="<%= new_provider_path %>" role="button">New Provider</a>
 
-		</div>
-	<div class="panel panel-info">
-	  <div class="panel-body">
-		<div class="col-lg-6">
-			<div>
-				<h4>Children</h4>
-				<%= search_form_for @q, url: dash_path do |f| %>
-					<%= f.search_field :first_name_or_last_name_cont %>
-					<%= f.submit %>
-				<% end %>
-			</div>
-			<table class="table table-hover table-striped2">
-			  <thead>
-			      <tr>
-			        <th>Name</th>
-			        <th>Date of Birth</th>
-			        <th>Active/Inactive</th>
-			        <th>Delete</th>
-			      </tr>
-			  </thead>
+        </div>
+      </br></br>
+        <div class="btn-group col-lg-6 col-lg-offset-4">
+          <a class="btn btn-info" href="<%= download_children_path %>" role="button">Children Download</a>
+          <a class="btn btn-info" href="<%= download_programs_path %>" role="button">Programs Download</a>
+        </div>
 
-			  <tbody>
-			      <% @children.each do |child| %>
-			          <tr>
-			            <td><%= link_to child.name, child_path(child) %></td>
-			            <td><%= child.date_of_birth %></td>
-			            <% if child.active==true %>
-			           	 <td><a class="btn btn-warning" href="<%= child_active_path(child) %>" role="button"> Make Inactive</a></td>
-			           	<% else %>
-			           	 <td><a class="btn btn-info" href="<%= child_active_path(child) %>" role="button"> Make Active</a></td>
-			           	<% end %>
-			            <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
-			          </tr>
-			      <% end %>
-			    </tbody>
-			</table>
-			<%= will_paginate @children, :param_name => 'children_page' %>
-		</div>
+    </div>
+  <div class="panel panel-info">
+    <div class="panel-body">
+    <div class="col-lg-6">
+      <div>
+        <h4>Children</h4>
+        <%= search_form_for @q, url: dash_path do |f| %>
+          <%= f.search_field :first_name_or_last_name_cont %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <table class="table table-hover table-striped2">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date of Birth</th>
+              <th>Active/Inactive</th>
+              <th>Delete</th>
+            </tr>
+        </thead>
 
-		<div class="col-lg-5 col-lg-offset-1">
-			<h4>Instructors</h4>
-			<table class="table table-hover table-striped2">
-			  <thead>
-			      <tr>
-			        <th>Name</th>
-			        <th>Active/Inactive</th>
-			        <th>Delete</th>
-			      </tr>
-			  </thead>
+        <tbody>
+            <% @children.each do |child| %>
+                <tr>
+                  <td><%= link_to child.name, child_path(child) %></td>
+                  <td><%= child.date_of_birth %></td>
+                  <% if child.active==true %>
+                   <td><a class="btn btn-warning" href="<%= child_active_path(child) %>" role="button"> Make Inactive</a></td>
+                  <% else %>
+                   <td><a class="btn btn-info" href="<%= child_active_path(child) %>" role="button"> Make Active</a></td>
+                  <% end %>
+                  <td><%= link_to 'Delete', child_path(child), data: { confirm: 'Are you sure you want to permanently remove this child from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+                </tr>
+            <% end %>
+          </tbody>
+      </table>
+      <%= will_paginate @children, :param_name => 'children_page' %>
+    </div>
 
-			  <tbody>
-			      <% @instructors.each do |i| %>
-	            <% if !i.user.nil? %>
-			          <tr>
-			            <td><%= link_to i.name, instructor_path(i) %></td>
-			            <% if i.user.active==true %>
-			           	 <td><a class="btn btn-warning" href="<%= instructor_active_path(i) %>" role="button"> Make Inactive</a></td>
-			           	<% else %>
-			           	 <td><a class="btn btn-info" href="<%= instructor_active_path(i) %>" role="button"> Make Active</a></td>
-			           	<% end %>
-			            <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
-			          </tr>
-	            <% end %>
-			      <% end %>
-			    </tbody>
-			</table>
-			<%= will_paginate @instructors, :param_name => 'instructor_page' %>
-		</div>
-	</div>
-	</div>
-	</br></br></br>
+    <div class="col-lg-5 col-lg-offset-1">
+      <h4>Instructors</h4>
+      <table class="table table-hover table-striped2">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Active/Inactive</th>
+              <th>Delete</th>
+            </tr>
+        </thead>
 
-	<div class="panel panel-info">
-	  <div class="panel-body">
-	  		<div class="col-lg-6">
-			<h4>Locations</h4>
-			<table class="table table-hover table-striped2">
-			  <thead>
-			      <tr>
-			        <th>Name</th>
-			        <th>Edit</th>
-			      </tr>
-			  </thead>
+        <tbody>
+            <% @instructors.each do |i| %>
+              <% if !i.user.nil? %>
+                <tr>
+                  <td><%= link_to i.name, instructor_path(i) %></td>
+                  <% if i.user.active==true %>
+                   <td><a class="btn btn-warning" href="<%= instructor_active_path(i) %>" role="button"> Make Inactive</a></td>
+                  <% else %>
+                   <td><a class="btn btn-info" href="<%= instructor_active_path(i) %>" role="button"> Make Active</a></td>
+                  <% end %>
+                  <td><%= link_to 'Delete', instructor_path(i), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+      </table>
+      <%= will_paginate @instructors, :param_name => 'instructor_page' %>
+    </div>
+  </div>
+  </div>
+  </br></br></br>
 
-			  <tbody>
-			      <% @locations.each do |loc| %>
-			          <tr>
-			            <td><%= loc.name %></td>
-			            <td><%= link_to 'Edit', edit_location_path(loc), class: "btn btn-warning" %></td>
-			          </tr>
-			      <% end %>
-			    </tbody>
-			</table>
-			<%= will_paginate @locations, :param_name => 'locations_page' %>
-		</div>
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <div class="col-lg-6">
+        <h4>Locations</h4>
+        <table class="table table-hover table-striped2">
+          <thead>
+              <tr>
+                <th>Name</th>
+                <th>Edit</th>
+              </tr>
+          </thead>
 
-		<div class="col-lg-5 col-lg-offset-1">
-			<h4>Schools</h4>
-			<table class="table table-hover table-striped2">
-			  <thead>
-			      <tr>
-			        <th>Name</th>
-			        <th>Edit</th>
-			        <th>Delete</th>
-			      </tr>
-			  </thead>
+          <tbody>
+              <% @locations.each do |loc| %>
+                  <tr>
+                    <td><%= loc.name %></td>
+                    <td><%= link_to 'Edit', edit_location_path(loc), class: "btn btn-warning" %></td>
+                  </tr>
+              <% end %>
+            </tbody>
+        </table>
+        <%= will_paginate @locations, :param_name => 'locations_page' %>
+      </div>
 
-			  <tbody>
-			      <% @schools.each do |s| %>
-			          <tr>
-			            <td><%= s.name %></td>
-			            <td><%= link_to 'Edit', edit_school_path(s), class: "btn btn-warning" %></td>
-			            <td><%= link_to 'Delete', school_path(s), data: { confirm: 'Are you sure you want to permanently remove this school from the system?' }, method: :delete, class: "btn btn-danger" %></td>
-			          </tr>
-			      <% end %>
-			    </tbody>
-			</table>
-			<%= will_paginate @schools, :param_name => 'school_page' %>
-		</div>
-	  </div>
-	</div>
+      <div class="col-lg-5 col-lg-offset-1">
+        <h4>Schools</h4>
+        <table class="table table-hover table-striped2">
+          <thead>
+              <tr>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+          </thead>
+
+          <tbody>
+              <% @schools.each do |s| %>
+                  <tr>
+                    <td><%= s.name %></td>
+                    <td><%= link_to 'Edit', edit_school_path(s), class: "btn btn-warning" %></td>
+                    <td><%= link_to 'Delete', school_path(s), data: { confirm: 'Are you sure you want to permanently remove this school from the system?' }, method: :delete, class: "btn btn-danger" %></td>
+                  </tr>
+              <% end %>
+            </tbody>
+        </table>
+        <%= will_paginate @schools, :param_name => 'school_page' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <div class="col-lg-6">
+        <h4>Providers</h4>
+        <table class="table table-hover table-striped2">
+          <thead>
+              <tr>
+                <th>Name</th>
+                <th>Active/Inactive</th>
+              </tr>
+          </thead>
+
+          <tbody>
+              <% @providers.each do |pro| %>
+                  <tr>
+                    <td><%= pro.name %></td>
+                    <td><%= toggle_activity_button(pro) %></td>
+                  </tr>
+              <% end %>
+            </tbody>
+        </table>
+        <%= will_paginate @providers, :param_name => 'providers_page' %>
+      </div>
+    </div>
+  </div>
 
 
-	</div>
+  </div>
 <% end %>

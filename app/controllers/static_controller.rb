@@ -88,18 +88,19 @@ class StaticController < ApplicationController
 
 
   def admin_dash
-    @student_count = Child.all.count
-    @program_count = Program.all.count
+    @student_count = Child.count
+    @program_count = Program.count
     @afterschool = Program.where("program_type=?", "after_school").count
     @enrichment = Program.where("program_type=?", "enrichment").count
     @field_trip = Program.where("program_type=?", "field_trip").count
-    @location_count = Location.all.count
+    @location_count = Location.count
     @q = Child.ransack(params[:q])
     @children = @q.result(distinct: true).alphabetical.paginate(:page => params[:children_page], :per_page => 10)
     #@children = Child.all.alphabetical.paginate(:page => params[:children_page], :per_page => 10)
-    @instructors = Instructor.all.alphabetical.paginate(:page => params[:instructors_page], :per_page => 10)
-    @locations = Location.all.alphabetical.paginate(:page => params[:locations_page], :per_page => 10)
-    @schools = School.all.paginate(:page => params[:schools_page], :per_page => 10)
+    @instructors = Instructor.alphabetical.paginate(:page => params[:instructors_page], :per_page => 10)
+    @locations = Location.alphabetical.paginate(:page => params[:locations_page], :per_page => 10)
+    @schools = School.paginate(:page => params[:schools_page], :per_page => 10)
+    @providers = Provider.paginate(:page => params[:providers_page], :per_page => 10)
   end
 
   def download_children
