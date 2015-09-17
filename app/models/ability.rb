@@ -20,7 +20,7 @@ class Ability
 
         #child
         can :create, Child
-        can :manage, Child do |child|
+        can [:show, :update, :child_active], Child do |child|
             user_child = user.instructor.locations.map{|c| c.children.map(&:id)}.flatten
             user_child.include? child.id
         end
@@ -73,7 +73,7 @@ class Ability
         end
 
         # Can edit programs that they manage
-        can [:edit, :update], Program do |program|
+        can [:update], Program do |program|
             user_programs = user.instructor.locations.map{|c| c.programs.map(&:id)}.flatten
             user_programs.include? program.id
         end
