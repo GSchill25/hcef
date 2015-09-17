@@ -62,8 +62,13 @@ class ChildrenController < ApplicationController
 	end
 
 	def destroy
-		@child.destory
-		redirect_to children_url, notice: "#{@child.name} has been deleted"
+    guardian_name = @child.guardian.try(:name)
+    name = @child.name
+		@child.destroy
+
+		redirect_to dash_path, notice: "#{name} and all of their associated data has been deleted.
+      Please note, that their guardian #{guardian_name} remains in the system and will need to be removed
+      separately."
 	end
 
 	private
