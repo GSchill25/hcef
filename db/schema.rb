@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914010047) do
+ActiveRecord::Schema.define(version: 20150916015053) do
 
   create_table "after_schools", force: true do |t|
     t.date     "date"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20150914010047) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_active",  default: true, null: false
   end
 
   create_table "school_districts", force: true do |t|
