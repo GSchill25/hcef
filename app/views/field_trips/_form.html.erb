@@ -44,14 +44,16 @@
       <p>
         <% if f.object.persisted? and !Provider.active.include?(f.object.provider) %>
           <%= f.label :provider_id %><br />
-          <small>
+          <span class="help-block red" style="color: red;">
             <%= "Provider (WARNING! Provider '#{f.object.provider.try(:name)}' has been deactivated.)" %>
-          </small><br />
+          </span>
         <% else %>
           <%= f.label :provider_id %></br>
         <% end %>
 
-        <%= f.collection_select :provider_id, Provider.active.all | [f.object.provider], :id, :name %>
+        <%= f.collection_select :provider_id,
+          Provider.active.all | [f.object.provider].reject{ |pc| pc.blank? },
+          :id, :name %>
       </p>
 
       <p>
