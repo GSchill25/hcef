@@ -9,4 +9,5 @@ class Enrichment < ActiveRecord::Base
   validates_presence_of :length
   validates_numericality_of :length
   validates_date :event_date, allow_nil: false
+  validates_presence_of :provider
 end

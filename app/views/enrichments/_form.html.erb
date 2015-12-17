@@ -50,7 +50,9 @@
           <%= f.label :provider_id %></br>
         <% end %>
 
-        <%= f.collection_select :provider_id, Provider.active.all | [f.object.provider], :id, :name %>
+        <%= f.collection_select :provider_id,
+          Provider.active.all | [f.object.provider].reject{ |pc| pc.blank? },
+          :id, :name %>
       </p>
 
       <p>
