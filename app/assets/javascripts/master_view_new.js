@@ -5,7 +5,7 @@ window.onbeforeunload = function (e) {
 };
 */
 
-$(document).ready(function() {
+$('.static.master_view_new').ready(function() {
   /* $('#main-container').removeClass('container'); */
 
   /* Select sub-locations on parent click */
