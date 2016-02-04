@@ -48,7 +48,7 @@ class FieldTripsController < ApplicationController
 	end
 
 	def destroy
-		@field_trip.destory
+		@field_trip.destroy
 		redirect_to field_trips_url, notice: "The field trip has been deleted"
 	end
 

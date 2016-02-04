@@ -48,7 +48,7 @@ class EnrichmentsController < ApplicationController
 	end
 
 	def destroy
-		@enrichment.destory
+		@enrichment.destroy
 		redirect_to enrichments_url, notice: "The enrichment has been deleted"
 	end
 
