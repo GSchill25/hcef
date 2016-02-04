@@ -52,7 +52,7 @@ class InstructorsController < ApplicationController
 
 	def destroy
 		@instructor.destroy
-		redirect_to instructors_url, notice: "#{@instructor.name} has been deleted"
+		redirect_to dash_path, notice: "#{@instructor.name} has been deleted"
 	end
 
 	def instructor_active
