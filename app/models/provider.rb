@@ -1,7 +1,7 @@
 class Provider < ActiveRecord::Base
   # Relationships
-  has_many :enrichments
-  has_many :field_trips
+  has_many :enrichments, dependent: :destroy
+  has_many :field_trips, dependent: :destroy
 
   # Validations
   validates :name, presence: true, uniqueness: { case_sensitive: false }

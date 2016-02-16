@@ -26,12 +26,12 @@ class ChildrenController < ApplicationController
   end
 
   def child_active
-  	if @child.active==true
-  		@child.active=false
+  	if @child.active
+  		@child.active = false
   		@child.save
   		redirect_to dash_path, notice: "#{@child.name} was made inactive"
   	else
-  		@child.active=true
+  		@child.active = true
   		@child.save
   		redirect_to dash_path, notice: "#{@child.name} was made active"
   	end

@@ -12,7 +12,7 @@ class Child < ActiveRecord::Base
 	has_many :enrichments, through: :enrichment_days
 
   # TODO: Temporary, may need to change if we refactor AfterSchool model
-  has_many :after_schools, :dependent => :destroy
+  has_many :after_schools #, :dependent => :destroy
 
 
 	#validations
@@ -23,7 +23,7 @@ class Child < ActiveRecord::Base
 	scope :alphabetical, -> { order('last_name', 'first_name')}
 	scope :active, -> { where('active = ?', true)}
 
-
+  #callbacks
 
   #calculates the total time of the activities for a child
   #returns nil if the child does not have any after_school recorded

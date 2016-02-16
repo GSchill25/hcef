@@ -2,8 +2,8 @@ class Guardian < ActiveRecord::Base
 	#add date of birth to uniquely identify
 
 	#relationships
-	has_many :children
-	has_many :guardian_locations
+	has_many :children, dependent: :destroy
+	has_many :guardian_locations, dependent: :destroy
 	has_many :locations, through: :guardian_locations
 
 	#validations
@@ -17,5 +17,6 @@ class Guardian < ActiveRecord::Base
 	def name
 		"#{first_name} #{last_name}"
 	end
+
 
 end

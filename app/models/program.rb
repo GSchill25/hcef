@@ -1,10 +1,10 @@
 class Program < ActiveRecord::Base
   # Relationships
   belongs_to :location
-  has_many :after_schools
-  has_many :enrichments
-  has_many :field_trips
-  has_many :enrollments
+  has_many :after_schools, dependent: :destroy
+  has_many :enrichments, dependent: :destroy
+  has_many :field_trips, dependent: :destroy
+  has_many :enrollments, dependent: :destroy
   has_many :children, through: :enrollments
 
   accepts_nested_attributes_for :enrichments, reject_if: lambda { |enr| enr[:length].blank? }
