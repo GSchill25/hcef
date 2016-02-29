@@ -12211,3 +12211,22 @@ Processing by ChildrenController#new as HTML
   Rendered partials/_nav.html.erb (0.8ms)
   Rendered partials/_flash.html.erb (0.1ms)
 Completed 200 OK in 405ms (Views: 369.1ms | ActiveRecord: 15.5ms)
+
+
+Started GET "/children/new" for 127.0.0.1 at 2016-02-29 15:57:09 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by ChildrenController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mGuardian Load (0.2ms)[0m  [1mSELECT `guardians`.* FROM `guardians`[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT `schools`.* FROM `schools`
+  [1m[36mLocation Load (0.3ms)[0m  [1mSELECT `locations`.* FROM `locations`[0m
+  Rendered children/_child_form.html.erb (368.1ms)
+  Rendered children/_guardian_form.html.erb (16.4ms)
+  [1m[35mSchoolDistrict Load (0.2ms)[0m  SELECT `school_districts`.* FROM `school_districts`
+  Rendered children/_school_form.html.erb (9.9ms)
+  Rendered children/_school_district_form.html.erb (2.4ms)
+  Rendered children/_form.html.erb (401.7ms)
+  Rendered children/new.html.erb within layouts/application (406.2ms)
+  Rendered partials/_nav.html.erb (7.3ms)
+  Rendered partials/_flash.html.erb (0.4ms)
+Completed 200 OK in 595ms (Views: 523.1ms | ActiveRecord: 15.0ms)
