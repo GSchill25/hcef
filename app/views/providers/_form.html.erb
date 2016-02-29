@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+  <div class="col-lg-6">
+    <div class="panel-heading">
+      <h3>Provider</h3>
+    </div>
+    <div class="panel-body">
+      <div class="well well-lg">
+        <%= form_for(@provider, validate: true) do |f| %>
+
+        <%= f.label :name %><%= mark_required(@provider, :name) %><br>
+        <%= f.text_field :name %></br></br>
+        <br />
+        <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

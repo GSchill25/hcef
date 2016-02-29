@@ -1,0 +1,18 @@
+<div class="table-responsive">
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @children.each do |child| %>
+        <tr>
+          <td><%= link_to child.name, child_path(child) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @children, :param_name => 'children_page' %>
+</div>

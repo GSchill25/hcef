@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4>Program</h4>
+      </div>
+      <div class="panel-body">
+        <%= form_for(@program, validate: true) do |f| %>
+          <% if @program.errors.any? %>
+
+              <h2><%= pluralize(@program.errors.count, 'error') %> prohibited this program from being saved:</h2>
+
+              <ul>
+              <% @program.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+
+          <% end %>
+
+              <%= f.label :name %><%= mark_required(@program, :name) %> <br>
+              <%= f.text_field :name %>
+
+              <br /><br />
+
+              <% unless f.object.persisted? # Prevent editing program type after creation %>
+                <%= f.label :program_type, 'Program Type' %><%= mark_required(@program, :program_type) %>
+                <br />
+                  <%= f.radio_button :program_type, 'after_school', :id => 'after_school', :checked => true %>
+                  <%= f.label :program_type, 'After School', :for => 'after_school' %><br />
+                  <%= f.radio_button :program_type, 'enrichment', :id => 'enrichment' %>
+                  <%= f.label :program_type, 'Enrichment', :for => 'enrichment' %><br />
+                  <%= f.radio_button :program_type, 'field_trip', :id => 'field_trip' %>
+                  <%= f.label :program_type, 'Field Trip', :for => 'field_trip' %><br /><br />
+              <% else %>
+                <%= f.label :program_type, 'Program Type' %><br />
+                <p><strong>The program type of an existing program may not be changed.</strong></p>
+              <% end %>
+
+              <%= f.label :start_date, 'Start Date', :for => 'start_date' %><%= mark_required(@program, :start_date) %>
+              <br />
+              <%= f.text_field :start_date, :id=> 'start_date', :class => 'datepick' %></br>
+
+              <br />
+
+              <%= f.label :end_date, 'End Date', :for => 'end_date' %><%= mark_required(@program, :end_date) %>
+              <br />
+              <%= f.text_field :end_date, :id=> 'end_date', :class => 'datepick' %>
+
+
+              <br /><br />
+              <%= f.label :location_id %><%= mark_required(@program, :location_id) %>
+              <br />
+              <%= collection_select(:program, :location_id, Location.alphabetical, :id, :name, prompt: true) %>
+                <% if controller.action_name == "edit" %>
+                  <h6> Add Children to This Program </h6>
+                  <input type="checkbox" name="select_all" id="select_all" value="select_all"> Select All</input></br>
+                  <% for child in @children %>
+                    <%= check_box_tag "program[child_ids][]", child.id, @program.children.include?(child), {id: child.id} %>
+                    <label for="<%= child.id %>"><%= child.name %></label>
+                    <br />
+                  <% end %>
+                  <br /><br />
+                <% end %>
+              <br />
+              <br />
+              <br />
+            <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+  </div>
+</div>
+
+

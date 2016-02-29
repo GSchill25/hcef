@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <ul class="nav nav-tabs">
+          <li role="presentation"class="active"><a href="#child" data-toggle="tab">New Child</a></li>
+          <li role="presentation"><a href="#guardian" data-toggle="tab">New Guardian</a></li>
+          <li role="presentation"><a href="#school" data-toggle="tab">New School</a></li>
+          <li role="presentation"><a href="#school_district" data-toggle="tab">New District</a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+        <div class="tab-content">
+              	<div id="child" class="tab-pane active">
+              		<%= render :partial => "child_form" %>
+              	</div>
+
+              	<div id="guardian" class="tab-pane">
+                	<%= render :partial => "guardian_form" %>
+                </div>
+
+                <div id="school" class="tab-pane">
+              		<%= render :partial => "school_form" %>
+              	</div>
+
+                <div id="school_district" class="tab-pane">
+                  <%= render :partial => "school_district_form" %>
+                </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+  </div>
+</div>
+

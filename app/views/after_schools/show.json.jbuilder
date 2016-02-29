@@ -1,0 +1,1 @@
+json.extract! @after_school, :id, :program_id, :guardian_id, :date, :time_in, :time_out, :total_hours, :homework_time, :literacy_time, :technology_time, :reading_specialist_time, :goal, :created_at, :updated_at

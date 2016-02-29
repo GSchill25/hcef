@@ -1,0 +1,40 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+
+# No longer using sqlite3
+# development:
+#   adapter: sqlite3
+#   database: db/development.sqlite3
+#   pool: 5
+#   timeout: 5000
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: MySuperPassword
+  #socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: hcefapp_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  <<: *default
+  database: hcefapp_test
+
+production:
+  <<: *default
+  username: hcefapp
+  password: <%= ENV['HCEF_DATABASE_PASSWORD'] %>
+  database: hcefapp_production
+
+cucumber:
+  <<: *test

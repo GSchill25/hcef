@@ -1,0 +1,34 @@
+#main-container {
+}
+
+#sidebar {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-bottom: 100px;
+}
+
+#info-nav {
+  margin-left: 0;
+  padding-left: 0;
+  padding-top: 15px;
+}
+
+#slider {
+padding-top: 15px;
+}
+.highlight {
+  background-color:yellow;
+}
+
+/* BUG */
+/*ul.#nav-mobile li a {
+  text-color: #0F0;
+}
+*/
+.nav-highlight {
+  background-color: #ffa000; /* amber darken-2 */
+}
+
+.sidebar-highlight {
+  background-color: #ffb74d; /* orange darken-2 */
+}

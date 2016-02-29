@@ -1,0 +1,88 @@
+  <ol class="breadcrumb">
+    <li><a href="<%= home_path %>">Home</a></li>
+    <li><a href="<%= programs_url %>">Programs</a></li>
+    <li><a href="<%= program_path(@program) %>"><%= @program.name %></a></li>
+  </ol>
+
+<div class="panel panel-warning">
+  <div class="panel-body">
+  <div class="row">
+    <% if @enrichment.errors.any? %>
+      <div class="col-xs-12" id="error_explanation">
+        <h2><%= pluralize(@enrichment.errors.count, "errors") %> prohibited this Enrihment Form from being saved:</h2>
+
+        <ul>
+          <% @enrichment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <%= form_for(@enrichment, validate: true) do |f| %>
+
+      <p>
+        <%= f.label :event_date, "Date" %><br />
+        <%= f.text_field :event_date, :class => 'datepick', :placeholder => "Select Date*" %>
+      </p>
+
+      <p>
+        <%= f.label :length %></br>
+        <%= f.select :length,
+          options_for_select([15.0,30.0,45.0,60.0,75.0,90.0,105.0,120.0], f.object.length) %>
+      </p>
+
+      <p>
+        <%= f.label :notes %></br>
+        <%= f.text_area :notes %>
+      </p>
+
+      <p>
+        <% if f.object.persisted? and !Provider.active.include?(f.object.provider) %>
+          <%= f.label :provider_id, class: "has-warning" %><br />
+          <span class="help-block red" style="color: red;">
+            <%= "(WARNING! The provider '#{f.object.provider.try(:name)}' has been deactivated.)" %>
+          </span>
+        <% else %>
+          <%= f.label :provider_id %></br>
+        <% end %>
+
+        <%= f.collection_select :provider_id,
+          Provider.active.all | [f.object.provider].reject{ |pc| pc.blank? },
+          :id, :name %>
+      </p>
+
+      <p>
+        <%= f.label :program_id %></br>
+        <%= f.collection_select :program_id, Program.all, :id, :name %>
+      </p>
+
+      <br>
+    </div>
+    <div class="col-lg-6">
+      <% if @program.program_type=="field_trip" %>
+                    <h6> Field Trip Attendance </h6>
+                    <input type="checkbox" name="select_all" id="select_all" value="select_all"> Select All</input></br>
+                    <% for child in @children %>
+                      <%= check_box_tag "field_trip[child_ids][]", child.id, @field_trip.children.include?(child), {id: child.id} %>
+                      <label for="<%= child.id %>"><%= child.name %></label>
+                      <br />
+                    <% end  %>
+        <% elsif @program.program_type=="enrichment" %>
+                    <h6> Enrichment Attendance </h6>
+                    <input type="checkbox" name="select_all" id="select_all" value="select_all"> Select All</input></br>
+                    <% for child in @children %>
+                      <%= check_box_tag "enrichment[child_ids][]", child.id, @enrichment.children.include?(child), {id: child.id} %>
+                      <label for="<%= child.id %>"><%= child.name %></label>
+                      <br />
+                    <% end  %>
+         <% end  %>
+      </div>
+      <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+  </div>
+</div>
+</div>

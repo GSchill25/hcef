@@ -1,0 +1,29 @@
+<h1 class="">Instructors</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if !@instructors.empty? %>
+    <% @instructors.each do |instructor| %>
+      <tr>
+        <% if can? :read, instructor %>
+          <td><%= link_to instructor.first_name + " " + instructor.last_name, instructor_path(instructor) %></td>
+          <% if can? :update, instructor %>
+            <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+          <% end %>
+        <% end %>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<br><br>
+
+<button  type="button" class="btn btn-default">
+<%= link_to 'New Instructor', new_instructor_path %>
+</button></br></br>

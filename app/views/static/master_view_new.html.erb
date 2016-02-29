@@ -1,0 +1,96 @@
+<% if cannot? :manage, :all %>
+  <%= render :file => "#{Rails.root}/public/404", :layout => false, :status => 404 %>
+<% else %>
+  <div class='row' id="no_container">
+
+    <div class='col-xs-6 col-xs-offset-3'>
+      <div class="btn-group" data-toggle="buttons">
+        <label id='afterSchoolButton' class="btn btn-primary active">
+          <input type="checkbox" >AfterSchool</label>
+        <label id='enrichmentButton' class="btn btn-primary">
+          <input type="checkbox" >Enrichment</label>
+        <label id='fieldTripButton' class="btn btn-primary">
+          <input type="checkbox">Field Trip</label>
+      </div>
+    </div>
+
+    <div id='submit-column' class='col-xs-3'>
+      <button type="submit" class="btn btn-default" onclick='return submit()'>Submit</button>
+    </div>
+  </div>
+
+  <div class='row'>
+
+  <!--TODO search-bar -->
+
+  <nav class='col-xs-3'>
+  <ul id='sidebar1' class='nav nav-stacked fixed'>
+    <li id='locations'>
+      <a id='locationsText' data-toggle="collapse" href='#groupA'>Locations</a>
+      <ul id='groupA' class='nav nav-stacked collapse in'>
+        <div class="btn-group" data-toggle="buttons">
+          <li><label id='locations-all' class='btn btn-primary'><input type='checkbox'> All</li></label>
+        
+          <% @locations.each do |location| %>
+            <li><label class='btn btn-primary parent-button'><input type='checkbox'> <%= location.name %></label>
+
+              <% if !location.sub_locations.empty? %>
+                <ul class='nav nav-stacked'>
+                  <div class="btn-group">
+                    <% location.sub_locations.each do |sl| %>
+                      <li><label class='btn btn-primary child-button'><input type='checkbox'> <%= sl.name %></label></li>
+                    <% end %>
+                  </div>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </div>
+      </ul>
+    <!-- TODO:           
+    <li id='providers'>
+    </li>
+    -->
+  </ul>
+  </nav>
+
+  <div id='tables' class='col-xs-9'> 
+
+    <table id='after_schools'  class='table table-striped'>
+      <caption><h4>AfterSchool</h4></caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      </tbody>
+    </table>
+
+    <table id='enrichments'  class='table table-striped'>
+    <caption><h4>Enrichment</h4></caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody id='table_body'>
+      </tbody>
+    </table>
+
+    <table id='field_trips'  class='table table-striped'>
+      <caption><h4>Field Trip</h4></caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody id='table_body'>
+      </tbody>
+    </table>
+
+  </div>
+<% end %>

@@ -1,0 +1,55 @@
+<%= form_for(@after_school, validate: true) do |f| %>
+  <% if @after_school.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@after_school.errors.count, "error") %> prohibited this After School Form from being saved:</h2>
+
+      <ul>
+      <% @after_school.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='row'>
+    <div class='col-md-12 text-center'>
+    <%= f.label :date, 'Date', :for => 'date' %><br />
+
+    <%= f.text_field :date, :id=> 'date', :class => 'datepick', :placeholder => "Select Date*",
+      disabled: (f.object.persisted? ? true : false) %>
+    </div>
+  </div>
+  <div id='toggleTables'>
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <div id='button' class='btn-group' role='group'>
+          <button type='button' class='custom_btn btn btn-default active' onclick='return showHotSignIn()'>Sign-in</button>
+          <button type='button' class='custom_btn btn btn-default' onclick='return showHot()'>Daily Log</button>
+        </div>
+      </div>
+    </div>
+    <!-- Start hot -->
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <div id='hot'></div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <div id='hot_sign_in'></div>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+    <script>
+      var data = <%= raw @data.to_json %>;
+      var data_sign_in = <%= raw @data_sign_in.to_json %>;
+      var children_ids = <%= raw @children_ids.to_json %>;
+      var program_id = <%= raw @program_id %>;
+    </script>
+<!-- End hot -->
+
+<a class="btn btn-primary" href="<%= program_path(@program) %>" role="button"> Create </a>
+<a class="btn btn-danger" href="<%= programs_url %>" role="button"> Cancel </a>
+
+<% end %>

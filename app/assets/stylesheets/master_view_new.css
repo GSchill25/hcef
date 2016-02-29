@@ -1,0 +1,99 @@
+#sidebar1 {
+  width: 100%;
+}
+#locations{
+  background-color: #EBEBEB;
+}
+
+#providers {
+  background-color: #EBEBEB;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+/* Parent links */
+#sidebar1 li>a {
+  font-size: 15px ;
+  padding-left: 0px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Child links */
+#sidebar1 .nav>div>li>label {
+  text-align: left;
+  width: 100%;
+  font-size: 13px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+/* Baby links */
+#sidebar1 .nav ul>div{
+  width: 100%;
+}
+
+#sidebar1 .nav ul>div>li{
+  margin-left: 15px;
+}
+
+#sidebar1 .nav ul>div>li>label{
+  text-align: left;
+  font-size: 11px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+/* Hover color */
+#sidebar1 .nav > li > a:hover, #sidebar1 .nav > li > a:focus {
+  /* background-color: #000; */
+}
+
+#sidebar1 .btn {
+  border-radius: 0px;
+}
+
+#submit-column {
+  text-align: right;
+}
+
+#after_schools {
+
+}
+
+#enrichments {
+  display: none;
+}
+
+#field_trips {
+  display: none;
+}
+
+#field_trips caption{
+  min-width: 100px;
+}
+
+.hidden-row {
+  padding: 0 !important;
+  padding-left: 20px !important;
+}
+
+/* Overrides application.css */
+.btn-group {
+  padding-left: 0;
+}
+
+#enrichmentButton {
+  
+}
+
+.number_days {
+  float: right;
+  margin-right: 20px;
+}
+
+.view-button {
+  float: right;
+}

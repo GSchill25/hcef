@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @after_school.program_id %>
+</p>
+
+<p>
+  <strong>Guardian:</strong>
+  <%= @after_school.guardian_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @after_school.date %>
+</p>
+
+<p>
+  <strong>Time in:</strong>
+  <%= @after_school.time_in %>
+</p>
+
+<p>
+  <strong>Time out:</strong>
+  <%= @after_school.time_out %>
+</p>
+
+<p>
+  <strong>Total hours:</strong>
+  <%= @after_school.total_hours %>
+</p>
+
+<p>
+  <strong>Homework time:</strong>
+  <%= @after_school.homework_time %>
+</p>
+
+<p>
+  <strong>Literacy time:</strong>
+  <%= @after_school.literacy_time %>
+</p>
+
+<p>
+  <strong>Technology time:</strong>
+  <%= @after_school.technology_time %>
+</p>
+
+<p>
+  <strong>Reading specialist time:</strong>
+  <%= @after_school.reading_specialist_time %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @after_school.goal %>
+</p>
+
+<%= link_to 'Edit', edit_after_school_path(@after_school) %> |
+<%= link_to 'Back', after_schools_path %>

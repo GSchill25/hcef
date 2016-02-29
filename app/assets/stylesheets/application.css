@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery-ui
+ *= require_self
+ *= require_tree .
+ */
+
+.message {
+  background-color: red;
+  border-bottom-right-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  padding: 2px 5px;
+}
+
+div.field_with_errors div.ui-effects-wrapper {
+  display: inline-block !important;
+}
+
+.top-pad{
+	padding-top: 20px;
+}
+
+#pad-left{
+	padding-left: 50px;
+}
+
+#pad-right{
+	padding-right: 50px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: 50px; /* Footer height */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+	background-color: #4f759b;
+  background-color: #0078B4;
+}
+
+.navbar-default .navbar-brand {
+  padding: 0px 30px;
+}
+
+.navbar-default {
+  border-radius: 0 !important;
+  background-color: #0078B4 !important;
+  border-color: #0078B4 !important;
+}
+
+/* Sign-in Username */
+.navbar-default .navbar-text {
+  color: #FFFFFF !important;
+}
+
+/* Login/Logout */
+.navbar-default a {
+  color: #FFFFFF !important;
+}
+
+.navbar-default li a {
+  color: #FFFFFF !important;
+}
+
+.navbar-default .navbar-text {
+  color: #FFFFFF !important;
+}
+
+.navbar-brand {
+  color: #FFFFFF !important;
+}
+
+#home-panels .panel{
+  height: 200px;
+}
+/* Ensure alignment on mobile collapse */
+#nav-username {
+  padding-left:15px;
+}
+
+.table-striped2 > tbody > tr:nth-child(2n+1) > td, .table-striped2 > tbody > tr:nth-child(2n+1) > th {
+   background-color: #b1e4f4;
+}
+

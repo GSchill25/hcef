@@ -1,0 +1,91 @@
+<div class="row">
+<div class="col-lg-8 col-md-12 col-sm-12 col-lg-offset-2">
+	<div class="jumbotron">
+	  <h3 align="center"><%= @child.name %></h3></br>
+	  <div class="panel panel-primary col-lg-5 col-lg-offset-1 col-sm-12">
+		  <div class="panel-body">
+		    <h5><%= "Date of Birth: #{@child.date_of_birth}" %></h5>
+		    <h5><%= "Grade: #{@child.grade}" %></h5>
+		    <% if !@child.school.nil? %> 
+		    	<h5><%= "School: #{@child.school.name}" %></h5>
+		    <% end %>
+		  </div>
+	  </div>
+	  <div class="panel panel-primary col-lg-5 col-lg-offset-1 col-sm-12">
+		  <div class="panel-body">
+		    <%if !@child.guardian.nil? %>
+		    	<h5><%= "Guardian: #{@child.guardian.name}" %></h5>
+		    <% end %>
+		    <% if !@child.locations.last.nil? %>
+		    	<h5><%= "Location: #{@child.locations.last.name}" %></h5>
+		    <% end %>
+		    <h5><%= "Programs: #{@programs.count}" %></h5>
+		  </div>
+      </div>
+	  <p align="right"><a class="btn btn-warning btn-sm" href="<%= edit_child_path(@child) %>" role="button">Edit Info</a></p>
+	</div>
+</div>
+</div>
+
+
+
+<div class="row">
+	<div class="panel panel-info">
+	<div class="panel-body">
+	<h3>Programs</h3>
+
+	<div class="table-responsive">
+	  <table class='table table-striped'>
+	    <thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Program type</th>
+	        <th>Start date</th>
+	        <th>End date</th>
+	        <th>Location</th>
+	        <th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	      <% @programs.each do |program| %>
+	        <% if can? :read, program %>
+	          <tr>
+	            <td><%= link_to program.name, program_path(program) %></td>
+	          <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+	            <td><%= program.start_date %></td>
+	            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+	            <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
+	            <% if program.program_type == "after_school"  and !@average_times.nil? %>
+	            	<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Activity Time</button></td>
+	            <% end %>
+	          </tr>
+	        <% end %>
+	      <% end %>
+	    </tbody>
+	  </table>
+	</div>
+	</div>
+</div>
+</div>
+
+<% if !@average_times.nil? %>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+  	<div class="modal-content">
+  	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Average Times</h4>
+     </div>
+    
+      <div class="panel panel-info">
+		  <div class="panel-body">
+		  	<% @average_times.each do |a| %>
+		    	<p><%= "#{a[0]}: #{a[1]} minutes" %></p>
+		    <% end %>
+		  </div>
+	  </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+  <div class="col-lg-6">
+    <div class="panel-heading">
+      <h3>Instructor</h3>
+    </div>
+    <div class="panel-body">
+      <div class="well well-lg">
+        <%= form_for(@instructor, validate: true) do |f| %>
+          <% if @instructor.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
+
+            <ul>
+              <% @instructor.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <label>First Name</label><%= mark_required(@instructor, :first_name) %><br />
+              <%= f.text_field :first_name %>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <label>Last Name</label><%= mark_required(@instructor, :last_name) %><br />
+              <%= f.text_field :last_name %>
+            </div>
+          </div>	
+          </br>
+          <%= f.fields_for :user do |users| %>
+            <%= render :partial => "user_form", :locals => { :f => users } %>
+            <% end %>
+          <br />
+          <%if can? :manage, Location%>
+            <h5><b>Assign Instructor to Location</b>*<%#= mark_required(@instructor, :location_ids %></h5>
+            <p>
+              <% for location in Location.all %>
+                <%= check_box_tag "instructor[location_ids][]", location.id, @instructor.locations.include?(location), {id: location.id} %>
+                <label for="<%= location.id %>"><%= location.name %></label>
+                <br />
+              <% end %>
+            <% end %>
+          </p>
+          <br /><br />
+          <button class="" type="submit" name="action">Submit</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

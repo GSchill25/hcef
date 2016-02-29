@@ -1,0 +1,46 @@
+<ol class="breadcrumb">
+  <li><a href="<%= home_path %>">Home</a></li>
+</ol>
+
+<h1>Programs </h1>
+
+<div class="table-responsive">
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Program type</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Location</th>
+        <th>Total Enrolled</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @programs.each do |program| %>
+        <% if can? :read, program %>
+          <tr>
+            <td><%= link_to program.name, program_path(program) %></td>
+          <td><%= program.program_type == "after_school" ? "After School" : program.program_type == "enrichment" ? "Enrichment" : "Field Trip" %></td>
+            <td><%= program.start_date %></td>
+            <td><%= program.end_date == "" ? "None" : program.end_date %></td>
+            <td><%= program.location.nil? ? "None" : program.location == "" ? "None" : program.location.name %></td>
+            <td><%= program.children.active.count %></td>
+            <td><a class="btn btn-warning" href="<%= edit_program_path(program) %>" role="button"> Edit</a></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+  <br>
+<% if can? :create, Program %> 
+  <a class="btn btn-primary" href="<%= new_program_path %>" role="button"> New Program </a>
+<% end %>
+
+<%= will_paginate @programs %>

@@ -1,0 +1,56 @@
+<div class="container">
+<div class="table-responsive">      
+      <table class="table table-striped">
+      <tr>
+        <thead>
+          <th>
+            Date
+          </th>
+          <th>
+            Student
+          </th>
+          <th>
+            Tech Time
+          </th>
+          <th>
+            Literature Time
+          </th>
+          <th>
+            Homework Time
+          </th>
+          <th>
+            Reading Time
+          </th>
+          <th>
+            Physical Activity Time
+          </th>
+          <th>
+            Hands On Time
+          </th>
+          <th>
+            Total Minutes
+          </th>
+        </thead>
+      </tr>
+        <% @days.each do |d| %>
+	      <tr>
+	        <td><%= d.date %></td>
+	        <td><%= d.child.name %></td>
+	        <td><%= d.technology_time %></td>
+	        <td><%= d.literacy_time %></td>
+	        <td><%= d.homework_time %></td>
+	        <td><%= d.reading_specialist_time %></td>
+          <td><%= d.physical_activity %></td>
+          <td><%= d.hands_on_activity %></td>
+	        <td ><%= d.total_time %></td>
+	      </tr>
+	    <% end %>
+      </table>
+</div>
+<a class="btn btn-default" href="<%= program_path(@program.id) %>" role="button"> Back</a>
+<a class="btn btn-primary" href="<%= programs_url %>" role="button"> All Programs</a>
+
+</br></br>
+</div>
+
+

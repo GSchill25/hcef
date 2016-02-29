@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HCEF</title>
+
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag    "bootstrap.min.css", media: "all" %>
+
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+   
+  <!-- Proper mobile rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+  <%= render :partial => "partials/nav" %>
+	<%= render :partial => "partials/flash" %>
+
+  <div id='main-container' class="container">
+    <%= yield %>
+  </div>
+
+</body>
+
+</html>
