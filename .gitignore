@@ -13,4 +13,3 @@ config/secrets.yml
 dump.rdb
 data/*
 config/initializers/abstract_mysql2_adapter.rb
-config/database.yml
