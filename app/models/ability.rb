@@ -83,6 +83,8 @@ class Ability
             provider.is_active?
         end 
 
+        can :read, Provider # TODO: Consider limiting to only active providers?
+
         #school
         can :manage, School
 
@@ -90,6 +92,7 @@ class Ability
         can :update, User do |current_user|
             current_user.id == user.id
         end
+
     else
         can [:read, :show_day], Program do |program|
             user_programs = user.instructor.locations.map{|c| c.programs.map(&:id)}.flatten

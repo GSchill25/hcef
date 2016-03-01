@@ -24,6 +24,7 @@ class Child < ActiveRecord::Base
 	scope :active, -> { where('active = ?', true)}
 
 
+  #callbacks
 
   #calculates the total time of the activities for a child
   #returns nil if the child does not have any after_school recorded
@@ -48,6 +49,7 @@ class Child < ActiveRecord::Base
   #returns nil if the child does not have any after_school recorded
   def average_activity_time
   	asprogram = self.programs.each.select { |prog| prog.program_type == "after_school" }
+
   	if asprogram.nil?
   		return nil
   	else
@@ -71,7 +73,7 @@ class Child < ActiveRecord::Base
   	      hands_on_time += a.hands_on_activity || 0
         end
 	    end
-	end
+	  end
 
     if total_days != 0
       return [["Homework", homework_time/total_days], ["Literacy", literacy_time/total_days], ["Technology", technology_time/total_days], ["Reading Specialist", reading_specialist_time/total_days], ["Physical Activity", physical_time/total_days], ["Hands On Time", hands_on_time/total_days]]

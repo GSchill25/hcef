@@ -37,7 +37,7 @@ class LocationsController < ApplicationController
 
   def destroy
     @location.destroy
-    redirect_to locations_url, notice: "#{@location.name} has been destroyed"
+    redirect_to dash_path, notice: "#{@location.name} has been destroyed"
   end
 
   private

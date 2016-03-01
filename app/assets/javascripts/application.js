@@ -15,11 +15,15 @@
 //= require jquery_ujs
 //= require jquery_readyselector
 //= require jquery_nested_form
+<<<<<<< HEAD
 //= require rails.validations
+=======
+>>>>>>> 604e34373d7092662db4a6c29810af88b971ac2f
 //= require_tree .
 
 $('.dropdown-toggle').dropdown();
 
+<<<<<<< HEAD
 
 
 $(function() {
@@ -50,3 +54,20 @@ window.ClientSideValidations.callbacks.element.pass = function(element, callback
   // method so it is run after the animation is complete.
   element.parent().find('.message').hide('slide', {direction: "left"}, 500, callback);
 }
+=======
+$(function() {
+  $('#select_all').click(function(event) {
+    if(this.checked) {
+      // Iterate each checkbox
+      $(':checkbox').each(function() {
+        this.checked = true;
+      });
+    }
+    else {
+      $(':checkbox').each(function() {
+        this.checked = false;
+      });
+    }
+  });
+});
+>>>>>>> 604e34373d7092662db4a6c29810af88b971ac2f

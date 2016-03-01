@@ -39,20 +39,28 @@ class InstructorsController < ApplicationController
     	end
 	end
 
-	def update
-		if @instructor.user.role == 'instructor' && params[:instructor][:location_ids].nil? 
-		  	@instructor.errors.add(:base, "Instructor needs to be assigned to at least 1 location")
-		  	render action: 'edit'
-	      elsif @instructor.update(instructor_params)
-			redirect_to @instructor, notice: "#{@instructor.name} has been updated"
-		else
-			render action: 'edit'
-		end
-	end
+  def update
+    if @instructor.user.role == 'instructor' && params[:instructor][:location_ids].nil? 
+      @instructor.errors.add(:base, "Instructor needs to be assigned to at least 1 location")
+      render action: 'edit'
+    elsif @instructor.update(instructor_params)
+      # Make instructor active if they have one or more locations
+      if @instructor.locations.length > 0
+        if !@instructor.is_active
+          @instructor.user.active = true
+          @instructor.user.save!
+        end
+      end
+
+      redirect_to @instructor, notice: "#{@instructor.name} has been updated"
+    else
+      render action: 'edit'
+    end
+  end
 
 	def destroy
 		@instructor.destroy
-		redirect_to instructors_url, notice: "#{@instructor.name} has been deleted"
+		redirect_to dash_path, notice: "#{@instructor.name} has been deleted"
 	end
 
 	def instructor_active

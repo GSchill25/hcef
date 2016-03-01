@@ -33,8 +33,8 @@ class SchoolsController < ApplicationController
 	end
 
 	def destroy
-		@school.destory
-		redirect_to schools_url, notice: "The school #{@school.name} has been deleted"
+		@school.destroy
+		redirect_to dash_path, notice: "The school #{@school.name} has been deleted"
 	end
 
 	private

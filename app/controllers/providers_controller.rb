@@ -55,7 +55,7 @@ class ProvidersController < ApplicationController
   end
 
   def destroy
-    @provider.destory
+    @provider.destroy
     redirect_to providers_url, notice: "The provider #{@provider.name} has been deleted"
   end
 

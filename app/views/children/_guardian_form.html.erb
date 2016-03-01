@@ -1,5 +1,4 @@
 <%= form_for(@guardian, :url=>{:controller=>"guardians", :action=>"create"}, validate: true) do |f| %>
-
 <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-12">
     <label >First Name</label><%= mark_required(@guardian, :first_name) %></br>

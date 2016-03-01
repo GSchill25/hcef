@@ -27,6 +27,7 @@ class AfterSchool < ActiveRecord::Base
   #calculates the total time for one after school day
   def total_time
     times = [self.reading_specialist_time, self.technology_time, self.homework_time, self.literacy_time, self.physical_activity, self.hands_on_activity]
+
     total = 0
     times.each do |t|
       if !t.nil?

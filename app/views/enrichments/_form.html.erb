@@ -23,7 +23,6 @@
   <div class="row">
     <div class="col-lg-6">
       <%= form_for(@enrichment, validate: true) do |f| %>
-
       <p>
         <%= f.label :event_date, "Date" %><br />
         <%= f.text_field :event_date, :class => 'datepick', :placeholder => "Select Date*" %>

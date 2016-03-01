@@ -39,7 +39,7 @@ class GuardiansController < ApplicationController
 	end
 
 	def destroy
-		@guardian.destory
+		@guardian.destroy
 		redirect_to guardians_url, notice: "#{@guardian.name} has been deleted"
 	end
 

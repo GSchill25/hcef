@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
       find_by_username(login).try(:authenticate, password)
     end
 
-    #there are currently two roles in the system
-    #instructor and service provider has exact same roles
+    #there are currently three roles in the system
   	ROLES = [['admin', :admin],['instructor', :instructor], ['service provider', :service_provider]]
 
     def role?(authorized_role)
